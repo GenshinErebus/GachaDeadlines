@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gacha Event Deadlines</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="game-selector">
+        <select id="gameSelect" onchange="loadGameEvents()">
+            <option value="">-- Select a Game --</option>
+            <option value="genshin">Genshin Impact</option>
+            <option value="hsr">Honkai Star Rail</option>
+            <option value="zzz">Zenless Zone Zero</option>
+            <option value="arknights">Arknights Endfield</option>
+            <option value="duet">Duet Night Abyss</option>
+            <option value="nte">Neverness To Everness</option>
+            <option value="mongil">MONGIL STAR DIVE</option>
+            <option value="reverse1999">Reverse 1999</option>
+            <option value="wuwa">Wuthering Waves</option>
+        </select>
+    </nav>
+    <!-- Main content container -->
+    <div class="container"></div>
+
+    <!-- Load JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

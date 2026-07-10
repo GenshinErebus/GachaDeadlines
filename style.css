@@ -1,0 +1,418 @@
+/* Color Variables - Matrix Palette */
+:root {
+    --matrix-black: #000000;
+    --matrix-dark-green: #0a0a0a;
+    --matrix-green: #00ff00;
+    --matrix-light-green: #00ff33;
+    --matrix-dim-green: #008f11;
+    --matrix-terminal-bg: #0d0d0d;
+    --crt-scanline: rgba(18, 16, 16, 0.5);
+}
+
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', 'Consolas', 'monospace';
+    background-color: var(--matrix-black);
+    color: var(--matrix-green);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Matrix Digital Rain Background Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(180deg, 
+            transparent 95%, 
+            rgba(0, 255, 0, 0.1) 100%),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 2px,
+            rgba(0, 255, 0, 0.03) 3px
+        );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* CRT Scanline Effect Overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.3;
+}
+
+/* Navigation Bar - Terminal Header Style */
+.game-selector {
+    position: sticky;
+    top: 0;
+    background: var(--matrix-dark-green);
+    border-bottom: 2px solid var(--matrix-dim-green);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.2);
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+#gameSelect {
+    appearance: none;
+    background: var(--matrix-black);
+    color: var(--matrix-green);
+    border: 1px solid var(--matrix-dim-green);
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    font-family: 'Courier New', 'Consolas', 'monospace';
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: 280px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+#gameSelect:hover {
+    border-color: var(--matrix-light-green);
+    box-shadow: 
+        inset 0 0 15px rgba(0, 255, 0, 0.2),
+        0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+#gameSelect:focus {
+    outline: none;
+    border-color: var(--matrix-light-green);
+    box-shadow: 
+        inset 0 0 20px rgba(0, 255, 0, 0.3),
+        0 0 25px rgba(0, 255, 0, 0.4);
+}
+
+/* REMOVED: Dropdown arrow custom styling */
+/* .game-selector::after { ... } - DELETED */
+
+/* Option Dropdown Styling */
+#gameSelect option {
+    background: var(--matrix-black);
+    color: var(--matrix-green);
+    font-family: 'Courier New', 'Consolas', 'monospace';
+    padding: 0.5rem;
+}
+
+#gameSelect option:hover {
+    background: var(--matrix-dim-green);
+}
+
+/* Main Content Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Section Headers - Clean Terminal Style (NO GLITCH) */
+h1, h2, h3 {
+    color: var(--matrix-light-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.5),
+        0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Event Cards - Terminal Window Style */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: var(--matrix-terminal-bg);
+    border: 1px solid var(--matrix-dim-green);
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.1),
+        inset 0 0 20px rgba(0, 255, 0, 0.05);
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--matrix-light-green), 
+        transparent
+    );
+    animation: pulse-border 3s infinite;
+}
+
+.event-card:hover {
+    border-color: var(--matrix-light-green);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.3),
+        inset 0 0 30px rgba(0, 255, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+@keyframes pulse-border {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Card Corner Decorations */
+.event-card::after {
+    content: '■ ■ ■ ■';
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.5rem;
+    color: var(--matrix-dim-green);
+    letter-spacing: 2px;
+}
+
+/* Event Info Typography */
+.event-name {
+    font-size: 1.1rem;
+    color: var(--matrix-light-green);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 5px rgba(0, 255, 51, 0.5);
+}
+
+/* Countdown Timer Styling */
+.countdown {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px dashed var(--matrix-dim-green);
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--matrix-light-green);
+    text-shadow: 0 0 10px rgba(0, 255, 51, 0.8);
+    display: block;
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    color: var(--matrix-dim-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Urgency States */
+.countdown.urgent {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.countdown.urgent .countdown-value {
+    color: #ff3333;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.countdown.expired {
+    border-color: var(--matrix-dim-green);
+    opacity: 0.6;
+}
+
+.countdown.expired .countdown-value {
+    color: var(--matrix-dim-green);
+}
+
+/* Footer Status Bar */
+.status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--matrix-black);
+    border-top: 1px solid var(--matrix-dim-green);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    color: var(--matrix-dim-green);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--matrix-light-green);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 5px var(--matrix-light-green); }
+    50% { box-shadow: 0 0 15px var(--matrix-light-green); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #gameSelect {
+        min-width: 200px;
+        width: 100%;
+    }
+    
+    .container {
+        padding: 1rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    color: var(--matrix-light-green);
+    font-size: 0.9rem;
+    animation: loading-pulse 1.5s infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--matrix-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--matrix-dim-green);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--matrix-light-green);
+}
+
+/* Stats Overview Styling */
+.stats-overview {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: var(--matrix-terminal-bg);
+    border: 1px solid var(--matrix-dim-green);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--matrix-dim-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: var(--matrix-light-green);
+    font-weight: bold;
+}
+
+/* Meta Row Styling */
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.meta-label {
+    color: var(--matrix-dim-green);
+}
+
+.meta-value {
+    color: var(--matrix-green);
+}
+
+/* Status Indicators */
+.meta-value.status-active {
+    color: var(--matrix-green);
+}
+
+.meta-value.status-urgent {
+    color: #ff3333;
+    font-weight: bold;
+}
+
+.meta-value.status-expired {
+    color: var(--matrix-dim-green);
+    opacity: 0.7;
+}
