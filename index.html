@@ -26,6 +26,31 @@
 
     <!-- Load JavaScript -->
     <script src="script.js"></script>
-    <img src="https://genshinerebus.goatcounter.com/count?p=/" alt="" style="display:none;">
+<style>
+  /* Responsive viewport container styling */
+  .viewport-check { display: none; }
+
+  @media (max-width: 480px) {
+    .vp-small { display: block; }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .vp-medium { display: block; }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1200px) {
+    .vp-large { display: block; }
+  }
+  
+  @media (min-width: 1201px) {
+    .vp-extra { display: block; }
+  }
+</style>
+
+<!-- Anonymous visitor metrics -->
+<img src="https://genshinerebus.goatcounter.com/count?p=/view-small" class="viewport-check vp-small" alt="">
+<img src="https://genshinerebus.goatcounter.com/count?p=/view-medium" class="viewport-check vp-medium" alt="">
+<img src="https://genshinerebus.goatcounter.com/count?p=/view-large" class="viewport-check vp-large" alt="">
+<img src="https://genshinerebus.goatcounter.com/count?p=/view-extra" class="viewport-check vp-extra" alt="">
 </body>
 </html>
