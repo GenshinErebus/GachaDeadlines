@@ -382,6 +382,11 @@ const eventDatabase = {
                 id: "wuwa_006",
                 name: "Hazard Revisited",
                 endDate: "2026-07-20T02:00:00Z"
+            },
+                             {
+                id: "wuwa_007",
+                name: "Lament Recon: Tacet Crisis",
+                endDate: "2026-08-19T10:00:00Z"
             }
         ]
     }
