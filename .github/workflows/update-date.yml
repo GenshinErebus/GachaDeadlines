@@ -1,0 +1,23 @@
+name: Auto Update Timestamp
+on:
+  push:
+    paths:
+      - 'script.js'
+
+jobs:
+  update-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Insert current date
+        env:
+          CURRENT_DATE: "Updated $(date -u +'%d %B %Y')"
+        run: |
+          sed -i "s|<!-- LAST_UPDATE_HERE -->|<!-- LAST_UPDATE_HERE -->$CURRENT_DATE|g" index.html
+
+      - name: Commit and Push changes
+        uses: stefanzweimel/git-commit-push-actions@v1
+        with:
+          commit-message: "system: auto update timestamp [skip ci]"
