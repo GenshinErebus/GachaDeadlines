@@ -16,7 +16,7 @@ jobs:
       - name: Insert current date
         run: |
           CURRENT_DATE="Updated $(date -u +'%d %B %Y')"
-          sed -i "s|<!-- LAST_UPDATE_HERE -->|<!-- LAST_UPDATE_HERE -->$CURRENT_DATE|g" index.html
+          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->$CURRENT_DATE<!-- END_UPDATE -->|g" index.html
 
       - name: Commit and push changes
         run: |
