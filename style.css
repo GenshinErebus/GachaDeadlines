@@ -425,3 +425,13 @@ h1 {
   overflow: hidden;
   pointer-events: none;
 }
+
+#update-status {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  margin: 0;
+  color: #00ff00;
+  font-family: monospace;
+}
