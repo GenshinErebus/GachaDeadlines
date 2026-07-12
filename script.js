@@ -1,4 +1,4 @@
-// Event database for all supported games
+// Event database for all my games
 const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
