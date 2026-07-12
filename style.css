@@ -418,12 +418,27 @@ h1 {
 }
 
 .bg-layer-fix {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
+    /* Position the tracking pixel outside the normal document flow */
+    position: absolute;
+    
+    /* Shrink the element down to prevent it from affecting the layout */
+    width: 1px;
+    height: 1px;
+    
+    /* Make the element completely transparent */
+    opacity: 0;
+    
+    /* Hide any content that might overflow the 1px container */
+    overflow: hidden;
+    
+    /* Prevent the pixel from intercepting clicks or hover events */
+    pointer-events: none;
+    
+    /* Ensure no borders are rendered around the image */
+    border: 0;
+    
+    /* Modern standard to visually hide the element completely */
+    clip-path: inset(50%);
 }
 
 #update-status {
