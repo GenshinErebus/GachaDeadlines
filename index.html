@@ -26,32 +26,12 @@
 
     <!-- Load JavaScript -->
     <script src="script.js"></script>
-<style>
-  /* Responsive viewport container styling */
-  .viewport-check { display: none; }
-
-  @media (max-width: 480px) {
-    .vp-small { display: block; }
-  }
-  
-  @media (min-width: 481px) and (max-width: 768px) {
-    .vp-medium { display: block; }
-  }
-  
-  @media (min-width: 769px) and (max-width: 1200px) {
-    .vp-large { display: block; }
-  }
-  
-  @media (min-width: 1201px) {
-    .vp-extra { display: block; }
-  }
-</style>
-
-<!-- Anonymous visitor metrics -->
-<img src="https://genshinerebus.goatcounter.com/count?p=/view-small&t=Mobile+Viewers" class="viewport-check vp-small" alt="">
-<img src="https://genshinerebus.goatcounter.com/count?p=/view-medium&t=Tablet+Viewers" class="viewport-check vp-medium" alt="">
-<img src="https://genshinerebus.goatcounter.com/count?p=/view-large&t=Desktop+Viewers" class="viewport-check vp-large" alt="">
-<img src="https://genshinerebus.goatcounter.com/count?p=/view-extra&t=Large+Desktop+Viewers" class="viewport-check vp-extra" alt="">
+<picture>
+  <source media="(max-width: 480px)" srcset="https://genshinerebus.goatcounter.com/count?p=/view-small&amp;t=Mobile+Viewers">
+  <source media="(max-width: 768px)" srcset="https://genshinerebus.goatcounter.com/count?p=/view-medium&amp;t=Tablet+Viewers">
+  <source media="(max-width: 1200px)" srcset="https://genshinerebus.goatcounter.com/count?p=/view-large&amp;t=Desktop+Viewers">
+  <img src="https://genshinerebus.goatcounter.com/count?p=/view-extra&amp;t=Large+Desktop+Viewers" style="display:none;" alt="">
+</picture>
 <p id="update-status" style="position: absolute; top: 20px; right: 20px; margin: 0; color: #00ff00; font-family: monospace;"><!-- LAST_UPDATE_HERE --></p>
 </body>
 </html>
