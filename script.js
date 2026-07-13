@@ -108,12 +108,7 @@ const eventDatabase = {
                 name: "Tales of the Hobbling Crow",
                 endDate: "2026-07-19T03:00:00Z"
             },
-            {
-                id: "zzz_004",
-                name: "Gleaming Shadow Team Battle",
-                endDate: "2026-07-13T02:00:00Z"
-            },
-            {
+               {
                 id: "zzz_005",
                 name: "Celestial Nexus Intelligence Dossier",
                 endDate: "2026-07-28T03:00:00Z"
@@ -129,7 +124,7 @@ const eventDatabase = {
                 endDate: "2026-07-17T02:00:00Z"
             },
             {
-                id: "zzz_008",
+                id: "zzz_00",
                 name: "Return to Ridu: Together in a New Chapter",
                 endDate: "2026-07-17T02:00:00Z"
             }
@@ -223,12 +218,7 @@ const eventDatabase = {
                 name: "Pulse of the Empire",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
-                id: "dna_009",
-                name: "Starry Gleanings",
-                endDate: "2026-07-13T03:00:00Z"
-            },
-                           {
+                                        {
                 id: "dna_010",
                 name: "Silver Torrent, Rising Star",
                 endDate: "2026-07-23T03:00:00Z"
