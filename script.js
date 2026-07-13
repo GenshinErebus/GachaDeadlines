@@ -46,12 +46,12 @@ const eventDatabase = {
             {
                 id: "hsr_001",
                 name: "Wispae Amusement Park",
-                endDate: "2026-07-14T19:00:00Z"
+                endDate: "2026-07-14T20:00:00Z"
             },
                      {
                 id: "hsr_002",
                 name: "Pixel Plane Rumble",
-                endDate: "2026-07-14T19:00:00Z"
+                endDate: "2026-07-14T20:00:00Z"
             },
                           {
                 id: "hsr_003",
@@ -86,7 +86,7 @@ const eventDatabase = {
              {
                 id: "hsr_009",
                 name: "Aptitude Showcase",
-                endDate: "2026-07-14T13:00:00Z"
+                endDate: "2026-07-14T14:00:00Z"
             }
         ]
     },
