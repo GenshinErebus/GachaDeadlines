@@ -33,16 +33,14 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        linear-gradient(180deg, 
-            transparent 95%, 
+    background:
+        linear-gradient(180deg,
+            transparent 95%,
             rgba(0, 255, 0, 0.1) 100%),
-        repeating-linear-gradient(
-            0deg,
+        repeating-linear-gradient(0deg,
             transparent 0px,
             transparent 2px,
-            rgba(0, 255, 0, 0.03) 3px
-        );
+            rgba(0, 255, 0, 0.03) 3px);
     pointer-events: none;
     z-index: -1;
 }
@@ -55,10 +53,8 @@ body::after {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%,
-        rgba(0, 0, 0, 0.25) 50%
-    );
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.25) 50%);
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 1000;
@@ -95,7 +91,7 @@ body::after {
 
 #gameSelect:hover {
     border-color: var(--matrix-light-green);
-    box-shadow: 
+    box-shadow:
         inset 0 0 15px rgba(0, 255, 0, 0.2),
         0 0 15px rgba(0, 255, 0, 0.3);
 }
@@ -103,7 +99,7 @@ body::after {
 #gameSelect:focus {
     outline: none;
     border-color: var(--matrix-light-green);
-    box-shadow: 
+    box-shadow:
         inset 0 0 20px rgba(0, 255, 0, 0.3),
         0 0 25px rgba(0, 255, 0, 0.4);
 }
@@ -131,13 +127,15 @@ body::after {
 }
 
 /* Section Headers - Clean Terminal Style (NO GLITCH) */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: var(--matrix-light-green);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 1rem;
     position: relative;
-    text-shadow: 
+    text-shadow:
         0 0 10px rgba(0, 255, 0, 0.5),
         0 0 20px rgba(0, 255, 0, 0.3);
 }
@@ -162,7 +160,7 @@ h1 {
     padding: 1.5rem;
     position: relative;
     transition: all 0.3s ease;
-    box-shadow: 
+    box-shadow:
         0 0 10px rgba(0, 255, 0, 0.1),
         inset 0 0 20px rgba(0, 255, 0, 0.05);
     overflow: hidden;
@@ -175,25 +173,31 @@ h1 {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--matrix-light-green), 
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            var(--matrix-light-green),
+            transparent);
     animation: pulse-border 3s infinite;
 }
 
 .event-card:hover {
     border-color: var(--matrix-light-green);
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(0, 255, 0, 0.3),
         inset 0 0 30px rgba(0, 255, 0, 0.1);
     transform: translateY(-5px);
 }
 
 @keyframes pulse-border {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Card Corner Decorations */
@@ -257,8 +261,15 @@ h1 {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .countdown.expired {
@@ -301,8 +312,15 @@ h1 {
 }
 
 @keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 5px var(--matrix-light-green); }
-    50% { box-shadow: 0 0 15px var(--matrix-light-green); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--matrix-light-green);
+    }
+
+    50% {
+        box-shadow: 0 0 15px var(--matrix-light-green);
+    }
 }
 
 /* Responsive Design */
@@ -310,12 +328,12 @@ h1 {
     .events-grid {
         grid-template-columns: 1fr;
     }
-    
+
     #gameSelect {
         min-width: 200px;
         width: 100%;
     }
-    
+
     .container {
         padding: 1rem;
         padding-bottom: 4rem;
@@ -331,8 +349,15 @@ h1 {
 }
 
 @keyframes loading-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Scrollbar Styling */
@@ -420,33 +445,33 @@ h1 {
 .bg-layer-fix {
     /* Position the tracking pixel outside the normal document flow */
     position: absolute;
-    
+
     /* Shrink the element down to prevent it from affecting the layout */
     width: 1px;
     height: 1px;
-    
+
     /* Make the element completely transparent */
     opacity: 0;
-    
+
     /* Hide any content that might overflow the 1px container */
     overflow: hidden;
-    
+
     /* Prevent the pixel from intercepting clicks or hover events */
     pointer-events: none;
-    
+
     /* Ensure no borders are rendered around the image */
     border: 0;
-    
+
     /* Modern standard to visually hide the element completely */
     clip-path: inset(50%);
 }
 
 #update-status {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  margin: 0;
-  color: #00ff00;
-  font-family: monospace;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    margin: 0;
+    color: #00ff00;
+    font-family: monospace;
 }

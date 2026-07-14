@@ -13,12 +13,12 @@ const eventDatabase = {
                 name: "Sunny Summer Fontinalia",
                 endDate: "2026-08-11T02:00:00Z"
             },
-               {
+            {
                 id: "gi_003",
                 name: "To Temper Thyself and Journey Far",
                 endDate: "2026-08-10T02:00:00Z"
             },
-               {
+            {
                 id: "gi_004",
                 name: "When We Look Up at the Moon",
                 endDate: "2026-09-22T13:00:00Z"
@@ -28,12 +28,12 @@ const eventDatabase = {
                 name: "Test Run",
                 endDate: "2026-07-21T16:00:00Z"
             },
-             {
+            {
                 id: "gi_006",
                 name: "Nod-Krai: Where Roads Are Pledged to Cross",
                 endDate: "2026-08-11T13:00:00Z"
             },
-             {
+            {
                 id: "gi_007",
                 name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
                 endDate: "2026-08-10T02:00:00Z"
@@ -44,36 +44,21 @@ const eventDatabase = {
         name: "Honkai Star Rail",
         events: [
             {
-                id: "hsr_001",
-                name: "Wispae Amusement Park",
-                endDate: "2026-07-14T20:00:00Z"
-            },
-                     {
-                id: "hsr_002",
-                name: "Pixel Plane Rumble",
-                endDate: "2026-07-14T20:00:00Z"
-            },
-                          {
-                id: "hsr_003",
-                name: "Anomaly Arbitration",
-                endDate: "2026-07-14T21:00:00Z"
-            },
-                          {
                 id: "hsr_004",
                 name: "Memory of Chaos",
                 endDate: "2026-08-17T02:00:00Z"
             },
-                                  {
+            {
                 id: "hsr_005",
                 name: "Pure Fiction",
                 endDate: "2026-08-03T02:00:00Z"
             },
-               {
+            {
                 id: "hsr_006",
                 name: "Apocalyptic Shadow",
                 endDate: "2026-07-20T02:00:00Z"
             },
-             {
+            {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game",
                 endDate: "2026-07-14T21:00:00Z"
@@ -83,7 +68,7 @@ const eventDatabase = {
                 name: "Divergent Universe: Arcadian Chronicles",
                 endDate: "2026-08-25T21:00:00Z"
             },
-             {
+            {
                 id: "hsr_009",
                 name: "Aptitude Showcase",
                 endDate: "2026-07-14T14:00:00Z"
@@ -98,17 +83,17 @@ const eventDatabase = {
                 name: "Assemble Mock Exam Comeback Plan",
                 endDate: "2026-07-26T03:00:00Z"
             },
-                      {
+            {
                 id: "zzz_002",
                 name: "Art is Bangboo!",
                 endDate: "2026-07-26T03:00:00Z"
             },
-                            {
+            {
                 id: "zzz_003",
                 name: "Tales of the Hobbling Crow",
                 endDate: "2026-07-19T03:00:00Z"
             },
-               {
+            {
                 id: "zzz_005",
                 name: "Celestial Nexus Intelligence Dossier",
                 endDate: "2026-07-28T03:00:00Z"
@@ -138,37 +123,37 @@ const eventDatabase = {
                 name: "Contingency Contract: Re-Ignition Experimental Operation",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                   {
+            {
                 id: "ake_002",
                 name: "Carly's Fairytale of Wuling",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_003",
                 name: "Trial Algorithmics",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_004",
                 name: "Monumental Etching: Dirge of Grief",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_005",
                 name: "Combat Drills",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_006",
                 name: "Sanity Supply",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_007",
                 name: "Danse Macabre",
                 endDate: "2026-07-15T21:00:00Z"
             },
-                      {
+            {
                 id: "ake_008",
                 name: "A Fistful of Reflections",
                 endDate: "2026-07-15T21:00:00Z"
@@ -183,42 +168,42 @@ const eventDatabase = {
                 name: "Atlasia Calling",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                    {
+            {
                 id: "dna_002",
                 name: "Dance with the Sea",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
+            {
                 id: "dna_003",
                 name: "To the Distant Shore",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
+            {
                 id: "dna_004",
                 name: "Immersive Theatre",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
+            {
                 id: "dna_005",
                 name: "Traces in the Sand",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
+            {
                 id: "dna_006",
                 name: "Starry Sojourn",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                           {
+            {
                 id: "dna_007",
                 name: "Bountiful Day",
                 endDate: "2026-07-17T03:00:00Z"
             },
-                           {
+            {
                 id: "dna_008",
                 name: "Pulse of the Empire",
                 endDate: "2026-07-27T15:00:00Z"
             },
-                                        {
+            {
                 id: "dna_010",
                 name: "Silver Torrent, Rising Star",
                 endDate: "2026-07-23T03:00:00Z"
@@ -233,22 +218,22 @@ const eventDatabase = {
                 name: "Market Opening Rehearsal",
                 endDate: "2026-07-28T21:00:00Z"
             },
-                  {
+            {
                 id: "nte_002",
                 name: "999 Nights",
                 endDate: "2026-08-18T21:00:00Z"
             },
-                      {
+            {
                 id: "nte_003",
                 name: "Eibon Partner Program",
                 endDate: "2026-08-18T21:00:00Z"
             },
-                      {
+            {
                 id: "nte_004",
                 name: "Mews Flash",
                 endDate: "2026-08-18T21:00:00Z"
             },
-                      {
+            {
                 id: "nte_005",
                 name: "Beyond the Rails",
                 endDate: "2026-07-15T21:00:00Z"
@@ -263,45 +248,45 @@ const eventDatabase = {
                 name: "Summer Lane",
                 endDate: "2026-07-28T23:00:00Z"
             },
-                   {
+            {
                 id: "msd_002",
                 name: "Grand Summer Festival Missions",
                 endDate: "2026-07-28T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_003",
                 name: "Embracing Even the Summer Heat",
                 endDate: "2026-07-28T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_004",
                 name: "An Unforgettable First Summer Drive",
                 endDate: "2026-08-04T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_005",
                 name: "Herald of Love, Festival Dreamer",
                 endDate: "2026-07-28T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_006",
                 name: "The Girl More Fiery than the Summer Heat",
                 endDate: "2026-07-28T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_007",
                 name: "Legendary Monster Reginula",
                 endDate: "2026-08-18T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_008",
                 name: "Monsterling Trait Change Support",
                 endDate: "2026-08-18T23:00:00Z"
             },
-                           {
+            {
                 id: "msd_009",
                 name: "All Those Who Do Not Revere Are Guilty",
-                endDate: "2026-07-14T23:00:00Z"
+                endDate: "2026-07-14T24:00:00Z"
             }
         ]
     },
@@ -313,27 +298,27 @@ const eventDatabase = {
                 name: "Last and First Principles",
                 endDate: "2026-07-22T09:00:00Z"
             },
-                       {
+            {
                 id: "rev_002",
                 name: "Focused Flashback",
                 endDate: "2026-07-23T09:00:00Z"
             },
-                            {
+            {
                 id: "rev_003",
                 name: "Mane's Bulletin",
                 endDate: "2026-07-23T09:00:00Z"
             },
-                            {
+            {
                 id: "rev_004",
                 name: "Complete Induction",
                 endDate: "2026-07-23T09:00:00Z"
             },
-                            {
+            {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-07-14T22:00:00Z"
+                endDate: "2026-07-15T22:00:00Z"
             },
-                            {
+            {
                 id: "rev_006",
                 name: "Lucidscape",
                 endDate: "2026-07-30T22:00:00Z"
@@ -348,32 +333,32 @@ const eventDatabase = {
                 name: "Glamour Couture",
                 endDate: "2026-08-19T10:00:00Z"
             },
-                  {
+            {
                 id: "wuwa_002",
                 name: "Ascendant Aces",
                 endDate: "2026-07-30T08:00:00Z"
             },
-                             {
+            {
                 id: "wuwa_003",
                 name: "Tactical Hologram: Simulation",
                 endDate: "2026-08-19T02:00:00Z"
             },
-                             {
+            {
                 id: "wuwa_004",
                 name: "Endstate Matrix",
                 endDate: "2026-08-19T19:00:00Z"
             },
-                             {
+            {
                 id: "wuwa_005",
                 name: "Whimpering Wastes",
                 endDate: "2026-08-03T02:00:00Z"
             },
-                             {
+            {
                 id: "wuwa_006",
                 name: "Hazard Revisited",
                 endDate: "2026-07-20T02:00:00Z"
             },
-                             {
+            {
                 id: "wuwa_007",
                 name: "Lament Recon: Tacet Crisis",
                 endDate: "2026-08-19T10:00:00Z"
@@ -389,7 +374,7 @@ let countdownInterval = null;
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[Matrix Tracker] Initializing...');
     initUI();
-    
+
     // Auto-load first game or default
     const select = document.getElementById('gameSelect');
     if (select && select.options.length > 1) {
@@ -401,21 +386,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // UI initialization
 function initUI() {
     console.log('[Matrix Tracker] Setting up UI...');
-    
+
     let container = document.querySelector('.container');
     if (!container) {
         container = document.createElement('div');
         container.className = 'container';
         document.body.appendChild(container);
     }
-    
+
     createStatusBar();
 }
 
 // Creates the fixed status bar at the bottom
 function createStatusBar() {
     if (document.querySelector('.status-bar')) return;
-    
+
     const statusBar = document.createElement('div');
     statusBar.className = 'status-bar';
     statusBar.innerHTML = `
@@ -431,7 +416,7 @@ function createStatusBar() {
         </div>
     `;
     document.body.appendChild(statusBar);
-    
+
     setInterval(updateServerTime, 1000);
 }
 
@@ -449,32 +434,32 @@ function loadGameEvents() {
     const select = document.getElementById('gameSelect');
     const gameKey = select.value;
     const container = document.querySelector('.container');
-    
+
     if (countdownInterval) {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
-    
+
     container.innerHTML = '';
-    
+
     if (!gameKey || !eventDatabase[gameKey]) {
         container.innerHTML += `
             <div class="loading-message">
-                <span class="loading">▮ LOADING EVENT DATABASE... ▮</span>
+                <span class="loading">▮ DATABASE READY. SELECT A GAME. ▮</span>
             </div>
         `;
         return;
     }
-    
+
     const gameData = eventDatabase[gameKey];
-    
+
     // Game header (ONLY ONCE - no badge needed)
     const header = document.createElement('h1');
     header.setAttribute('data-text', gameData.name.toUpperCase());
     header.textContent = gameData.name.toUpperCase();
     header.className = 'game-header';
     container.appendChild(header);
-    
+
     // Stats overview
     const statsDiv = document.createElement('div');
     statsDiv.id = 'statsOverview';
@@ -490,21 +475,21 @@ function loadGameEvents() {
         </div>
     `;
     container.appendChild(statsDiv);
-    
+
     // Events grid container
     const eventsGrid = document.createElement('div');
     eventsGrid.className = 'events-grid';
     eventsGrid.id = 'eventsGrid';
-    
+
     gameData.events.forEach(event => {
         const card = createEventCard(event);
         eventsGrid.appendChild(card);
     });
-    
+
     container.appendChild(eventsGrid);
-    
+
     startCountdownTimers();
-    
+
     console.log(`[Matrix Tracker] ${gameData.name} loaded - ${gameData.events.length} events`);
 }
 
@@ -513,12 +498,12 @@ function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
     card.dataset.eventId = event.id;
-    
+
     const status = getEventStatus(event.endDate);
     const urgencyClass = status === 'urgent' ? 'urgent' : status === 'expired' ? 'expired' : '';
-    
+
     const formattedDate = formatDate(event.endDate);
-    
+
     card.innerHTML = `
         <h3 class="event-name">${event.name}</h3>
         <div class="event-meta">
@@ -551,7 +536,7 @@ function createEventCard(event) {
             </div>
         </div>
     `;
-    
+
     return card;
 }
 
@@ -562,7 +547,7 @@ function getEventStatus(endDateString) {
     const diffMs = end - now;
     const diffHours = diffMs / (1000 * 60 * 60);
     const diffDays = diffHours / 24;
-    
+
     if (diffMs <= 0) {
         return 'expired';
     } else if (diffDays <= 2) {
@@ -586,9 +571,9 @@ function translateStatus(status) {
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
     const date = new Date(dateString);
-    const options = { 
-        day: '2-digit', 
-        month: '2-digit', 
+    const options = {
+        day: '2-digit',
+        month: '2-digit',
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
@@ -602,25 +587,25 @@ function getTimeRemaining(endtime) {
     const now = new Date();
     const end = new Date(endtime);
     const totalSeconds = Math.floor((end - now) / 1000);
-    
+
     if (totalSeconds <= 0) {
         return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 };
     }
-    
+
     const days = Math.floor(totalSeconds / (3600 * 24));
     const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = Math.floor(totalSeconds % 60);
-    
+
     return { days, hours, minutes, seconds, total: totalSeconds };
 }
 
 // Starts countdown timers for all active events
 function startCountdownTimers() {
     console.log('[Matrix Tracker] Countdown system activated...');
-    
+
     updateAllCountdowns();
-    
+
     countdownInterval = setInterval(() => {
         updateAllCountdowns();
         updateUrgentCounts();
@@ -630,21 +615,21 @@ function startCountdownTimers() {
 // Updates all countdown displays
 function updateAllCountdowns() {
     const allCards = document.querySelectorAll('.event-card');
-    
+
     allCards.forEach(card => {
         const eventId = card.dataset.eventId;
         const eventObj = findEventById(eventId);
-        
+
         if (!eventObj) return;
-        
+
         const timeRemaining = getTimeRemaining(eventObj.endDate);
         const status = getEventStatus(eventObj.endDate);
-        
+
         const daysEl = document.getElementById(`${eventId}_days`);
         const hoursEl = document.getElementById(`${eventId}_hours`);
         const minutesEl = document.getElementById(`${eventId}_minutes`);
         const secondsEl = document.getElementById(`${eventId}_seconds`);
-        
+
         if (daysEl && timeRemaining.total > 0) {
             daysEl.textContent = String(timeRemaining.days).padStart(2, '0');
             hoursEl.textContent = String(timeRemaining.hours).padStart(2, '0');
@@ -658,7 +643,7 @@ function updateAllCountdowns() {
                 secondsEl.textContent = '00';
             }
         }
-        
+
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl) {
             countdownEl.classList.remove('urgent', 'expired');
@@ -669,7 +654,7 @@ function updateAllCountdowns() {
             }
         }
     });
-    
+
     updateUrgentCounts();
 }
 
@@ -677,19 +662,19 @@ function updateAllCountdowns() {
 function updateUrgentCounts() {
     const urgentEl = document.getElementById('urgentCount');
     if (!urgentEl) return;
-    
+
     const allCards = document.querySelectorAll('.event-card');
     let urgentCount = 0;
-    
+
     allCards.forEach(card => {
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl && countdownEl.classList.contains('urgent')) {
             urgentCount++;
         }
     });
-    
+
     urgentEl.textContent = urgentCount;
-    
+
     const statusText = document.querySelector('.status-bar .connection-status strong');
     if (statusText) {
         if (urgentCount > 0) {
