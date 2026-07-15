@@ -128,46 +128,7 @@ const eventDatabase = {
     arknights: {
         name: "Arknights Endfield",
         events: [
-            {
-                id: "ake_001",
-                name: "Contingency Contract: Re-Ignition Experimental Operation",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_002",
-                name: "Carly's Fairytale of Wuling",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_003",
-                name: "Trial Algorithmics",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_004",
-                name: "Monumental Etching: Dirge of Grief",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_005",
-                name: "Combat Drills",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_006",
-                name: "Sanity Supply",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_007",
-                name: "Danse Macabre",
-                endDate: "2026-07-15T21:00:00Z"
-            },
-            {
-                id: "ake_008",
-                name: "A Fistful of Reflections",
-                endDate: "2026-07-15T21:00:00Z"
-            }
+            
         ]
     },
     duet: {
