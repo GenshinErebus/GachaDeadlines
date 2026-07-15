@@ -19,9 +19,7 @@ jobs:
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->$CURRENT_DATE<!-- END_UPDATE -->|g" index.html
 
       - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@://github.com"
-          git add index.html
-          git commit -m "chore: update timestamp in index.html [skip ci]" || echo "No changes to commit"
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update timestamp in index.html"
+          file_pattern: 'index.html'
