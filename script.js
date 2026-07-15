@@ -247,6 +247,11 @@ const eventDatabase = {
                 id: "nte_005",
                 name: "Beyond the Rails",
                 endDate: "2026-07-15T21:00:00Z"
+            },
+            {
+                id: "nte_006",
+                name: "Stamina Recharge",
+                endDate: "2026-07-20T02:00:00Z"
             }
         ]
     },
