@@ -43,6 +43,16 @@ const eventDatabase = {
     hsr: {
         name: "Honkai Star Rail",
         events: [
+             {
+                id: "hsr_001",
+                name: "Antigraft Brickbuster",
+                endDate: "2026-08-25T19:00:00Z"
+            },
+            {
+                id: "hsr_002",
+                name: "Anomaly Arbitration",
+                endDate: "2026-08-25T21:00:00Z"
+            },
             {
                 id: "hsr_004",
                 name: "Memory of Chaos",
@@ -61,7 +71,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game",
-                endDate: "2026-07-14T21:00:00Z"
+                endDate: "2026-11-10T21:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -71,7 +81,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Aptitude Showcase",
-                endDate: "2026-07-14T14:00:00Z"
+                endDate: "2026-08-05T10:00:00Z"
             }
         ]
     },
@@ -316,7 +326,7 @@ const eventDatabase = {
             {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-07-15T22:00:00Z"
+                endDate: "2026-07-16T09:00:00Z"
             },
             {
                 id: "rev_006",
