@@ -226,7 +226,7 @@ const eventDatabase = {
             {
                 id: "nte_005",
                 name: "Beyond the Rails",
-                endDate: "2026-07-15T21:00:00Z"
+                endDate: "2026-07-29T21:00:00Z"
             },
             {
                 id: "nte_006",
@@ -352,6 +352,11 @@ const eventDatabase = {
                 id: "wuwa_007",
                 name: "Lament Recon: Tacet Crisis",
                 endDate: "2026-08-19T10:00:00Z"
+            },
+            {
+                id: "wuwa_008",
+                name: "Reacaptured: Action Highlights",
+                endDate: "2026-08-06T02:00:00Z"
             }
         ]
     }
