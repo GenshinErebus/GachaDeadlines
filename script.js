@@ -128,7 +128,21 @@ const eventDatabase = {
     arknights: {
         name: "Arknights Endfield",
         events: [
-            
+           {
+                id: "ark_001",
+                name: "Fortune Connect-and-Win",
+                endDate: "2026-07-31T08:00:00Z"
+            }, 
+             {
+                id: "ark_002",
+                name: "Gaze Towards the Northern Exclusion",
+                endDate: "2026-08-09T16:00:00Z"
+            }, 
+             {
+                id: "ark_003",
+                name: "Combat Drills",
+                endDate: "2026-08-09T16:00:00Z"
+            }, 
         ]
     },
     duet: {
