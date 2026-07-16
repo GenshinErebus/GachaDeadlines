@@ -249,11 +249,6 @@ const eventDatabase = {
                 endDate: "2026-07-28T23:00:00Z"
             },
             {
-                id: "msd_003",
-                name: "Embracing Even the Summer Heat",
-                endDate: "2026-07-28T23:00:00Z"
-            },
-            {
                 id: "msd_004",
                 name: "An Unforgettable First Summer Drive",
                 endDate: "2026-08-04T23:00:00Z"
@@ -277,6 +272,11 @@ const eventDatabase = {
                 id: "msd_008",
                 name: "Monsterling Trait Change Support",
                 endDate: "2026-08-18T23:00:00Z"
+            },
+            {
+                id: "msd_009",
+                name: "Gulgak",
+                endDate: "2026-07-28T23:00:00Z"
             }
         ]
     },
