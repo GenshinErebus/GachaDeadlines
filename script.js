@@ -37,6 +37,11 @@ const eventDatabase = {
                 id: "gi_007",
                 name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
                 endDate: "2026-08-10T02:00:00Z"
+            },
+            {
+                id: "gi_00",
+                name: "Spiral Abyss",
+                endDate: "2026-08-16T02:00:00Z"
             }
         ]
     },
