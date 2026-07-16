@@ -272,11 +272,6 @@ const eventDatabase = {
                 id: "msd_008",
                 name: "Monsterling Trait Change Support",
                 endDate: "2026-08-18T23:00:00Z"
-            },
-            {
-                id: "msd_009",
-                name: "All Those Who Do Not Revere Are Guilty",
-                endDate: "2026-07-14T24:00:00Z"
             }
         ]
     },
