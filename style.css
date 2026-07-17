@@ -506,10 +506,10 @@ h1 {
         mix-blend-mode: screen !important;
     }
 
- /* 3. Pin the update text perfectly underneath the server selector */
+    /* 3. Pin the update text perfectly underneath the server selector */
     #update-status {
         position: absolute !important;
-        top: 95px !important; /* Moved down from 70px to clear the server selection */
+        top: 97px !important; /* One tiny step up for the perfect alignment */
         right: 15px !important;
         left: auto !important;
         font-size: 0.75rem !important;
@@ -520,6 +520,7 @@ h1 {
         white-space: nowrap !important;
         z-index: 9999 !important;
     }
+
 
     /* 4. Keep spacing clean for the server selector on mobile */
     .region-selector {
