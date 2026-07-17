@@ -477,40 +477,52 @@ h1 {
     font-family: monospace;
 }
 
-/* Mobile Overlap Fix - Keeps Avatar and Update Text perfectly synchronized at the top */
 @media (max-width: 768px) {
-    /* Floating container at the very top of the mobile screen */
-    .main-header {
+    /* 1. Prevent the select menu from stretching into the avatar's space */
+    #gameSelect {
+        max-width: calc(100% - 75px) !important;
+        min-width: unset !important;
+        width: auto !important;
+    }
+
+    /* 2. Pin the avatar link strictly to the top right corner */
+    a[href*="youtube"] {
         position: absolute !important;
-        top: 15px !important;
+        top: 10px !important;
         right: 15px !important;
         left: auto !important;
-        display: flex !important;
-        flex-direction: row !important; /* Keeps them side-by-side like on desktop */
-        align-items: center !important;
-        gap: 10px !important;
-        width: auto !important;
-        height: auto !important;
-        padding: 0 !important;
-        z-index: 9999 !important; /* Layer protection against event cards */
-    }
-
-    /* Fixed avatar layout for the header icon on mobile */
-    .header-logo, 
-    a[href*="youtube"] img {
-        position: static !important;
-        display: block !important;
         margin: 0 !important;
-        transform: scale(0.9) !important; /* Slightly smaller for mobile layout balance */
-        mix-blend-mode: screen !important; /* Filters out the black background */
+        display: block !important;
+        width: 55px !important;
+        height: auto !important;
+        z-index: 9999 !important;
     }
 
-    /* Clean text styling directly next to the avatar */
+    /* Ensure the image rendering and blending stays correct */
+    a[href*="youtube"] img {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        mix-blend-mode: screen !important;
+    }
+
+ /* 3. Pin the update text perfectly underneath the server selector */
     #update-status {
-        position: static !important;
-        font-size: 0.8rem !important;
+        position: absolute !important;
+        top: 95px !important; /* Moved down from 70px to clear the server selection */
+        right: 15px !important;
+        left: auto !important;
+        font-size: 0.75rem !important;
         color: var(--matrix-light-green) !important;
         margin: 0 !important;
         display: block !important;
+        text-align: right !important;
+        white-space: nowrap !important;
+        z-index: 9999 !important;
+    }
+
+    /* 4. Keep spacing clean for the server selector on mobile */
+    .region-selector {
+        margin-top: 15px !important;
     }
 }
