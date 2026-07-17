@@ -64,9 +64,14 @@ const eventDatabase = {
                 endDate: "2026-08-10T02:00:00Z"
             },
             {
-                id: "gi_00",
+                id: "gi_008",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T02:00:00Z"
+            },
+            {
+                id: "gi_00",
+                name: "Final Long-Range Sightlines",
+                endDate: "2026-07-27T02:00:00Z"
             }
         ]
     },
