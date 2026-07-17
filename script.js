@@ -116,17 +116,12 @@ const eventDatabase = {
             {
                 id: "zzz_006",
                 name: "The Final Callback",
-                endDate: "2026-07-27T03:00:00Z"
+                endDate: "2026-07-28T03:00:00Z"
             },
             {
                 id: "zzz_007",
                 name: "Deadly Assault",
-                endDate: "2026-07-17T03:00:00Z"
-            },
-            {
-                id: "zzz_00",
-                name: "Return to Ridu: Together in a New Chapter",
-                endDate: "2026-07-17T03:00:00Z"
+                endDate: "2026-07-28T03:00:00Z"
             }
         ]
     },

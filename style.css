@@ -475,3 +475,22 @@ h1 {
     color: #00ff00;
     font-family: monospace;
 }
+
+/* Mobile Overlap Fix - Prevents elements from colliding on small viewports */
+@media (max-width: 600px) {
+    /* Target the update status text container */
+    #update-status {
+        position: absolute !important;
+        top: 65px !important;
+        right: 20px !important;
+        text-align: right !important;
+    }
+
+    /* Target the channel logo link container from the HTML flow */
+    .header-logo, 
+    a[style*="position: fixed"][href*="youtube"] {
+        position: absolute !important;
+        top: 5px !important;
+        right: 20px !important;
+    }
+}
