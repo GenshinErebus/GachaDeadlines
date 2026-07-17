@@ -185,8 +185,8 @@ const eventDatabase = {
             },
             {
                 id: "dna_007",
-                name: "Bountiful Day",
-                endDate: "2026-07-17T03:00:00Z"
+                name: "Phoxhunter Summit",
+                endDate: "2026-07-23T22:00:00Z"
             },
             {
                 id: "dna_008",
@@ -355,7 +355,7 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_008",
-                name: "Reacaptured: Action Highlights",
+                name: "Recaptured: Action Highlights",
                 endDate: "2026-08-06T02:00:00Z"
             }
         ]
