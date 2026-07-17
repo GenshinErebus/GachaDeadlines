@@ -257,6 +257,11 @@ const eventDatabase = {
                 id: "nte_006",
                 name: "Stamina Recharge",
                 endDate: "2026-07-20T02:00:00Z"
+            },
+            {
+                id: "nte_007",
+                name: "Shadow-n-Seek",
+                endDate: "2026-08-18T21:00:00Z"
             }
         ]
     },
