@@ -326,12 +326,12 @@ const eventDatabase = {
             {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-07-16T09:00:00Z"
+                endDate: "2026-08-15T03:00:00Z"
             },
             {
                 id: "rev_006",
                 name: "Lucidscape",
-                endDate: "2026-07-30T22:00:00Z"
+                endDate: "2026-07-31T03:00:00Z"
             }
         ]
     },
