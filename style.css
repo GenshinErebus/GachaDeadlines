@@ -466,6 +466,7 @@ h1 {
     clip-path: inset(50%);
 }
 
+/* Desktop configuration matching your exact original layout styles */
 #update-status {
     position: absolute;
     top: 20px;
@@ -476,21 +477,32 @@ h1 {
     font-family: monospace;
 }
 
-/* Mobile Overlap Fix - Prevents elements from colliding on small viewports */
-@media (max-width: 600px) {
-    /* Target the update status text container */
-    #update-status {
-        position: absolute !important;
-        top: 65px !important;
-        right: 20px !important;
-        text-align: right !important;
+/* Mobile Overlap Fix - Restructures layout components for smaller screen sizes */
+@media (max-width: 768px) {
+    /* Changes the container from floating to a normal layout block */
+    .main-header {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 15px 0 !important;
+        width: 100% !important;
+        height: auto !important;
     }
 
-    /* Target the channel logo link container from the HTML flow */
+    /* Centers the avatar logo and removes fixed right constraints */
     .header-logo, 
     a[style*="position: fixed"][href*="youtube"] {
-        position: absolute !important;
-        top: 5px !important;
-        right: 20px !important;
+        position: static !important;
+        margin: 0 auto !important;
+        display: inline-block !important;
+    }
+
+    /* Places the text nicely centered underneath the avatar */
+    #update-status {
+        position: static !important;
+        text-align: center !important;
+        margin: 0 auto !important;
     }
 }
