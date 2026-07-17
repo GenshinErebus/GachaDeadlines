@@ -1,3 +1,28 @@
+/* Global variable for the selected region (defaults to Europe) */
+let currentRegion = 'eu';
+
+/* Function to switch regions and update button styles */
+function setRegion(region) {
+    currentRegion = region;
+    
+    /* Update button glow styles based on selection */
+    ['asia', 'eu', 'na'].forEach(r => {
+        const btn = document.getElementById(`btn-${r}`);
+        if (btn) {
+            if (r === region) {
+                btn.style.color = 'var(--matrix-light-green)';
+                btn.style.fontWeight = 'bold';
+            } else {
+                btn.style.color = 'var(--matrix-dim-green)';
+                btn.style.fontWeight = 'normal';
+            }
+        }
+    });
+
+    /* Trigger a recalculation of the timers immediately */
+    loadGameEvents(); 
+}
+
 // Event database for all my games
 const eventDatabase = {
     genshin: {
@@ -530,10 +555,37 @@ function createEventCard(event) {
     return card;
 }
 
+/* Helper function to get the exact hour offset for each specific game and region */
+function getGameOffset() {
+    const select = document.getElementById('gameSelect');
+    if (!select) return 0;
+    const gameKey = select.value;
+
+    /* Group 1: Standard Regional Server Offset (Asia -7h / America +6h) */
+    if (gameKey === 'genshin' || gameKey === 'hsr' || gameKey === 'zzz' || gameKey === 'arknights' || gameKey === 'duet') {
+        if (currentRegion === 'asia') return -7;
+        if (currentRegion === 'na') return 6;
+    }
+
+    /* Group 2: Reverse 1999 (Specific Global Timezone Offset Rules) */
+    if (gameKey === 'reverse1999') {
+        if (currentRegion === 'asia') return -6;
+        if (currentRegion === 'na') return 7;
+    }
+
+    /* Group 3: Global Simultaneous Reset (Wuthering Waves, NTE, Mongil) */
+    /* These games end at the exact same second worldwide. Offset remains 0. */
+    return 0;
+}
+
 // Determines event status based on end time
 function getEventStatus(endDateString) {
     const now = new Date();
-    const end = new Date(endDateString);
+    let end = new Date(endDateString);
+    
+    /* Dynamically shift hours based on the specific game database rule */
+    end.setHours(end.getHours() + getGameOffset());
+    
     const diffMs = end - now;
     const diffHours = diffMs / (1000 * 60 * 60);
     const diffDays = diffHours / 24;
@@ -560,7 +612,11 @@ function translateStatus(status) {
 // Formats date into readable format
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
-    const date = new Date(dateString);
+    let date = new Date(dateString);
+    
+    /* Dynamically shift hours based on the specific game database rule */
+    date.setHours(date.getHours() + getGameOffset());
+    
     const options = {
         day: '2-digit',
         month: '2-digit',
@@ -575,7 +631,11 @@ function formatDate(dateString) {
 // Calculates remaining time
 function getTimeRemaining(endtime) {
     const now = new Date();
-    const end = new Date(endtime);
+    let end = new Date(endtime);
+    
+    /* Dynamically shift hours based on the specific game database rule */
+    end.setHours(end.getHours() + getGameOffset());
+    
     const totalSeconds = Math.floor((end - now) / 1000);
 
     if (totalSeconds <= 0) {

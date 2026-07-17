@@ -33,6 +33,13 @@
             <option value="reverse1999">⏳ Reverse 1999</option>
             <option value="wuwa">🌊 Wuthering Waves</option>
         </select>
+        <!-- Region Selector in Matrix Style -->
+<div class="region-selector" style="margin: 10px 0; font-family: monospace;">
+    <span style="color: var(--matrix-dim-green);">SERVER:</span>
+    <button onclick="setRegion('asia')" id="btn-asia" style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[ASIA]</button>
+    <button onclick="setRegion('eu')" id="btn-eu" style="background:none; border:none; color:var(--matrix-light-green); cursor:pointer; padding:0 5px; font-weight:bold;">[EUROPE]</button>
+    <button onclick="setRegion('na')" id="btn-na" style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[AMERICA]</button>
+</div>
     </nav>
     <!-- Main content container -->
     <div class="container">
@@ -44,13 +51,40 @@
     </div>
     <!-- Icon to get u to my channel -->
     <a href="https://www.youtube.com/@GenshinErebus/videos"
-        style="position: fixed; top: 5px; right: 170px; z-index: 9999;">
+        style="position: fixed; top: 5px; right: 180px; z-index: 9999;">
         <img src="avatar.png" alt="youtube channel" style="width: 100%; max-width: 63px; height: auto;">
     </a>
     <!-- Load JavaScript -->
     <script src="script.js"></script>
     <img src="https://genshinerebus.goatcounter.com/count?p=/" class="bg-layer-fix" alt="">
-    <p id="update-status"><!-- LAST_UPDATE_HERE -->Updated 16 July 2026<!-- END_UPDATE --></p>
+<p id="update-status"><!-- LAST_UPDATE_HERE --><!-- END_UPDATE --></p>
+
+<script>
+    (function() {
+        const statusEl = document.getElementById('update-status');
+        
+        /* Force the browser to get a live server response, bypassing the cache */
+        const cacheBuster = new Date().getTime();
+        
+        /* Fetch only the headers of script.js from your server */
+        fetch(`script.js?cb=${cacheBuster}`, { method: 'HEAD' })
+            .then(response => {
+                const lastModified = response.headers.get('Last-Modified');
+                if (lastModified) {
+                    const date = new Date(lastModified);
+                    
+                    /* Format the date to your style (e.g., "17 July 2026") */
+                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                    const formattedDate = date.toLocaleDateString('en-US', options);
+                    
+                    statusEl.textContent = `Updated ${formattedDate}`;
+                }
+            })
+            .catch(() => {
+                /* Silent fallback if server request fails */
+            });
+    })();
+</script>
 </body>
 
 </html>
