@@ -527,3 +527,29 @@ h1 {
         margin-top: 15px !important;
     }
 }
+
+/* 1. Desktop Style: Positioned neatly right underneath your date */
+.desktop-only-github {
+    position: absolute;
+    top: 42px; /* Placed exactly under the update text line */
+    right: 20px;
+    z-index: 9999;
+    color: var(--matrix-light-green);
+    font-family: monospace;
+    font-size: 0.8rem;
+    text-decoration: none; /* Removed underline for a cleaner terminal aesthetic */
+    opacity: 0.8;
+}
+
+/* Glowing effect when hovering on desktop */
+.desktop-only-github:hover {
+    opacity: 1;
+    text-shadow: 0 0 8px var(--matrix-light-green);
+}
+
+/* 2. Smartphone Protection: Completely erase the element from mobile screens */
+@media (max-width: 768px) {
+    .desktop-only-github {
+        display: none !important; /* It literally does not exist on mobile, protecting your layout */
+    }
+}
