@@ -478,6 +478,7 @@ h1 {
 }
 
 @media (max-width: 768px) {
+
     /* 1. Prevent the select menu from stretching into the avatar's space */
     #gameSelect {
         max-width: calc(100% - 75px) !important;
@@ -509,7 +510,8 @@ h1 {
     /* 3. Pin the update text perfectly underneath the server selector */
     #update-status {
         position: absolute !important;
-        top: 97px !important; /* One tiny step up for the perfect alignment */
+        top: 97px !important;
+        /* One tiny step up for the perfect alignment */
         right: 15px !important;
         left: auto !important;
         font-size: 0.75rem !important;
@@ -531,13 +533,15 @@ h1 {
 /* 1. Desktop Style: Positioned neatly right underneath your date */
 .desktop-only-github {
     position: absolute;
-    top: 42px; /* Placed exactly under the update text line */
+    top: 42px;
+    /* Placed exactly under the update text line */
     right: 20px;
     z-index: 9999;
     color: var(--matrix-light-green);
     font-family: monospace;
     font-size: 0.8rem;
-    text-decoration: none; /* Removed underline for a cleaner terminal aesthetic */
+    text-decoration: none;
+    /* Removed underline for a cleaner terminal aesthetic */
     opacity: 0.8;
 }
 
@@ -550,6 +554,14 @@ h1 {
 /* 2. Smartphone Protection: Completely erase the element from mobile screens */
 @media (max-width: 768px) {
     .desktop-only-github {
-        display: none !important; /* It literally does not exist on mobile, protecting your layout */
+        display: none !important;
+        /* It literally does not exist on mobile, protecting your layout */
     }
+
+    /* Fix text clipping by shrinking the game filter dropdown font size on mobile */
+    #game-filter {
+        font-size: 0.8rem !important;
+        /* Compact scale to fit long titles on small screens */
+    }
+
 }
