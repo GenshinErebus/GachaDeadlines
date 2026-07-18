@@ -1,94 +1,63 @@
-# ⚡ GachaDeadlines
+# GachaDeadlines ⏳
 
-[![GitHub License](https://shields.io)](LICENSE)
-[![GitHub Stars](https://shields.io)](https://github.com)
-
-A lightweight web dashboard with a clean Matrix-terminal aesthetic, designed to track live events, server resets, and active banners across a curated selection of gacha games.
+A clean, responsive, and matrix-themed countdown dashboard for tracking time-limited events. This project is strictly limited to 9 specific gacha games.
 
 ---
 
-## 📌 Table of Contents
-* [Features](#-features)
-* [Covered Games](#-covered-games)
-* [Tech Stack](#%EF%B8%8F-tech-stack)
-* [Live Demo](#-live-demo)
-* [Local Installation](#%EF%B8%8F-local-installation)
-* [Project Structure](#%EF%B8%8F-project-structure)
-* [Contributing](#-contributing)
-* [License](#-license)
+## Supported Games 🎮
 
----
-
-## ✨ Features
-* 🟢 **Matrix Terminal HUD:** A futuristic dark-mode user interface featuring high-contrast neon green glows, digital grids, and retro monospaced typography.
-* 🎯 **Focused Coverage:** Dedicated solely to the most anticipated and active titles in the gacha ecosystem.
-* ⏱️ **Parallel Event Multi-Timers:** Tracks multiple active count-downs simultaneously, breaking time remaining down into Days, Hours, Minutes, and Seconds.
-* 🌐 **Server-Time Precision:** Displays precise end-dates normalized with timezone baselines (e.g., GMT/UTC offsets).
-* ⚡ **Zero Dependencies:** Runs entirely client-side with optimal performance and instant loading states.
-
----
-
-## 🎮 Covered Games
-The application exclusively provides tracking data for the following games available in the selection menu:
-* **Genshin Impact**
-* **Honkai: Star Rail**
-* **Zenless Zone Zero**
-* **Arknights: Endfield**
-* **Duet Night Abyss**
-* **Neverness to Everness**
-* **Hwangan: Star Dive**
-* **Wuthering Waves**
-
----
-
-## 🛠️ Tech Stack
-Built natively for performance and easy deployment:
-* **HTML5:** Modular interface structure and game selection matrices.
-* **CSS3:** Custom Matrix-style glowing themes, terminal layouts, and responsive alignment.
-* **JavaScript (ES6):** Dynamic live countdown rendering and DOM updates.
-
----
-
-## 🌐 Live Demo
-Launch the terminal instantly via GitHub Pages:
-👉 `https://github.io` *(Make sure to enable GitHub Pages in your repository settings tab)*
-
----
-
-## ⚙️ Local Installation
-
-No node packages, compilers, or local server setups are required:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com
-   cd GachaDeadlines
-   ```
-
-2. **Launch:**
-   Simply open the `index.html` file in any modern web browser.
-
----
-
-## 🗂️ Project Structure
+The dashboard exclusively tracks countdowns for the following titles:
 ```text
-GachaDeadlines/
-├── index.html   # Matrix terminal layout and core markup
-├── style.css    # Neon styling, custom grids, and typography
-└── script.js    # Multi-timer logic and time calculation arrays
+Honkai: Star Rail
+Genshin Impact
+Zenless Zone Zero
+Wuthering Waves
+Reverse: 1999
+Duet Night Abyss
+Arknights: Endfield
+Neverness to Everness
+MONGIL: STAR DIVE
 ```
 
 ---
 
-## 🤝 Contributing
-Contributions to fix bugs, optimize the CSS theme, or update active event timelines are welcome:
-1. Fork the Project.
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+## Key Features 🚀
+
+*   **Real-Time Countdowns:** Live ticker tracking exactly how much time is left for every active event.
+*   **Visual Urgency Mode:** Timers automatically switch into a **warning mode** when an event has less than 2 days remaining, creating immediate visual awareness.
+*   **Server Selector:** Built-in regional server filtering to ensure countdowns align perfectly with your specific game account timezone.
+*   **Matrix Aesthetic:** A sleek, lightweight terminal-inspired user interface designed for maximum readability.
+*   **Responsive Layout:** Fully optimized for a seamless viewing experience on desktop monitors.
 
 ---
 
-## 📄 License
-Copyright © 2026 GenshinErebus. All rights reserved. This project and its code are proprietary and cannot be copied, modified, or redistributed without explicit permission.
+## Project Structure 📁
+
+*   `index.html` - The core structure and layout of the dashboard.
+*   `style.css` - Custom terminal styling including glowing hover elements and responsive layout rules.
+*   `script.js` - Core logic handling timezone management, countdown math, and the dynamic 2-day urgency warning state.
+*   `assets/` - Directory containing images, icons, and visual branding elements used across the site.
+*   `.github/workflows/` - Automated GitHub Actions tracking and updating project timestamps and deployment pipelines.
+*   `.nojekyll` - Configuration file preventing GitHub Pages from bypassing static files, ensuring proper asset loading.
+*   `CONTRIBUTING.md` - Technical guidelines and JSON schema structure instructions for community contributors.
+
+---
+
+## Contributing 🤝
+
+We welcome community contributions to keep event timers accurate and up-to-date! 
+
+⚠️ **Important Note:** This repository only accepts data updates for the **9 predefined games** listed above. Pull Requests trying to add new, unsupported games will not be merged.
+
+### Quick Workflow
+1. Fork the repository.
+2. Add your event data following the precise format rules in our guide.
+3. Open a Pull Request (PRs will be reviewed and squashed automatically).
+
+📜 **Contribution Guidelines:** Check out our [CONTRIBUTING.md](CONTRIBUTING.md) for data schemas and instructions.
+
+---
+
+## License 📄
+
+All rights reserved. The source code is publicly visible for community contributions and review, but hosting independent copies or distributing modified versions without explicit permission is strictly prohibited.
