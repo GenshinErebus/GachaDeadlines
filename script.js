@@ -4,7 +4,7 @@ let currentRegion = 'eu';
 /* Function to switch regions and update button styles */
 function setRegion(region) {
     currentRegion = region;
-    
+
     /* Update button glow styles based on selection */
     ['asia', 'eu', 'na'].forEach(r => {
         const btn = document.getElementById(`btn-${r}`);
@@ -20,7 +20,7 @@ function setRegion(region) {
     });
 
     /* Trigger a recalculation of the timers immediately */
-    loadGameEvents(); 
+    loadGameEvents();
 }
 
 // Event database for all my games
@@ -28,11 +28,6 @@ const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
         events: [
-            {
-                id: "gi_001",
-                name: "Stygian Onslaught",
-                endDate: "2026-07-18T02:00:00Z"
-            },
             {
                 id: "gi_002",
                 name: "Sunny Summer Fontinalia",
@@ -78,7 +73,7 @@ const eventDatabase = {
     hsr: {
         name: "Honkai Star Rail",
         events: [
-             {
+            {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",
                 endDate: "2026-08-25T19:00:00Z"
@@ -158,21 +153,21 @@ const eventDatabase = {
     arknights: {
         name: "Arknights Endfield",
         events: [
-           {
+            {
                 id: "ark_001",
                 name: "Fortune Connect-and-Win",
                 endDate: "2026-07-31T08:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "ark_002",
                 name: "Gaze Towards the Northern Exclusion",
                 endDate: "2026-08-09T16:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "ark_003",
                 name: "Combat Drills",
                 endDate: "2026-08-09T16:00:00Z"
-            }, 
+            },
         ]
     },
     duet: {
@@ -592,10 +587,10 @@ function getGameOffset() {
 function getEventStatus(endDateString) {
     const now = new Date();
     let end = new Date(endDateString);
-    
+
     /* Dynamically shift hours based on the specific game database rule */
     end.setHours(end.getHours() + getGameOffset());
-    
+
     const diffMs = end - now;
     const diffHours = diffMs / (1000 * 60 * 60);
     const diffDays = diffHours / 24;
@@ -623,10 +618,10 @@ function translateStatus(status) {
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
     let date = new Date(dateString);
-    
+
     /* Dynamically shift hours based on the specific game database rule */
     date.setHours(date.getHours() + getGameOffset());
-    
+
     const options = {
         day: '2-digit',
         month: '2-digit',
@@ -642,10 +637,10 @@ function formatDate(dateString) {
 function getTimeRemaining(endtime) {
     const now = new Date();
     let end = new Date(endtime);
-    
+
     /* Dynamically shift hours based on the specific game database rule */
     end.setHours(end.getHours() + getGameOffset());
-    
+
     const totalSeconds = Math.floor((end - now) / 1000);
 
     if (totalSeconds <= 0) {
