@@ -558,10 +558,12 @@ h1 {
         /* It literally does not exist on mobile, protecting your layout */
     }
 
-    /* Fix text clipping by shrinking the game filter dropdown font size on mobile */
-    #game-filter {
-        font-size: 0.8rem !important;
-        /* Compact scale to fit long titles on small screens */
+    /* Bulletproof scale to force smaller fonts on mobile select and options */
+    #game-filter,
+    #game-filter option,
+    .game-selector,
+    .game-selector select {
+        font-size: 0.75rem !important; /* Slightly smaller to guarantee fit */
     }
 
 }
