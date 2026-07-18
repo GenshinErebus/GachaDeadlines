@@ -1,6 +1,23 @@
 # GachaDeadlines ⏳
 
-A clean, responsive, and matrix-themed countdown dashboard for tracking time-limited events in popular gacha games.
+A clean, responsive, and matrix-themed countdown dashboard for tracking time-limited events. This project is strictly limited to 9 specific gacha games.
+
+---
+
+## Supported Games 🎮
+
+The dashboard exclusively tracks countdowns for the following titles:
+```text
+Honkai: Star Rail
+Genshin Impact
+Zenless Zone Zero
+Wuthering Waves
+Reverse: 1999
+Duet Night Abyss
+Arknights: Endfield
+Neverness to Everness
+MONGIL: STAR DIVE
+```
 
 ---
 
@@ -28,14 +45,16 @@ A clean, responsive, and matrix-themed countdown dashboard for tracking time-lim
 
 ## Contributing 🤝
 
-We welcome community contributions to keep event timers accurate and up-to-date! If you want to add new events or fix existing data, please read our official guidelines before making changes:
+We welcome community contributions to keep event timers accurate and up-to-date! 
 
-📜 **Contribution Guidelines:** Check out our [CONTRIBUTING.md](CONTRIBUTING.md) for data schemas and instructions.
+⚠️ **Important Note:** This repository only accepts data updates for the **9 predefined games** listed above. Pull Requests trying to add new, unsupported games will not be merged.
 
 ### Quick Workflow
 1. Fork the repository.
-2. Add your event data following the precise format rules.
+2. Add your event data following the precise format rules in our guide.
 3. Open a Pull Request (PRs will be reviewed and squashed automatically).
+
+📜 **Contribution Guidelines:** Check out our [CONTRIBUTING.md](CONTRIBUTING.md) for data schemas and instructions.
 
 ---
 
