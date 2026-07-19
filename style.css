@@ -511,7 +511,7 @@ h1 {
     /* 3. Pin the update text perfectly underneath the server selector */
     #update-status {
         position: absolute !important;
-        top: 97px !important;
+        top: 87px !important;
         /* One tiny step up for the perfect alignment */
         right: 15px !important;
         left: auto !important;
