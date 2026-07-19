@@ -73,6 +73,7 @@ const eventDatabase = {
                 name: "Genius Invokation TCG: Heated Battle Mode",
                 endDate: "2026-08-03T03:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "gi_010",
                 name: "Character Event Wish",
@@ -143,6 +144,7 @@ const eventDatabase = {
                 name: "Aptitude Showcase",
                 endDate: "2026-08-05T11:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "hsr_010",
                 name: "Character Event Warp",
@@ -203,6 +205,7 @@ const eventDatabase = {
                 name: "Journey Premiere",
                 endDate: "2026-07-22T04:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "zzz_008",
                 name: "Channel Exclusive",
@@ -243,6 +246,7 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-08-09T18:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "ark_004",
                 name: "North Yearns The Rift Vigile",
@@ -303,6 +307,7 @@ const eventDatabase = {
                 name: "Silver Torrent, Rising Star",
                 endDate: "2026-07-23T04:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "dna_010",
                 name: "Event-Exclusive",
@@ -363,6 +368,7 @@ const eventDatabase = {
                 name: "Shadow-n-Seek",
                 endDate: "2026-08-18T22:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "nte_010",
                 name: "Before the Dawn",
@@ -413,6 +419,7 @@ const eventDatabase = {
                 name: "Gulgak",
                 endDate: "2026-07-28T24:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "msd_008",
                 name: "The Girl More Fiery than the Summer Heat",
@@ -473,6 +480,7 @@ const eventDatabase = {
                 name: "Lucidscape",
                 endDate: "2026-08-01T03:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "rev_007",
                 name: "Event Banner",
@@ -528,6 +536,7 @@ const eventDatabase = {
                 name: "Recaptured: Action Highlights",
                 endDate: "2026-08-06T03:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "wuwa_009",
                 name: "Featured Resonator Convene",
