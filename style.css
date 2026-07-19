@@ -73,6 +73,7 @@ body::after {
     backdrop-filter: blur(5px);
 }
 
+
 #gameSelect {
     appearance: none;
     background: var(--matrix-black);
@@ -563,37 +564,54 @@ h1 {
     #game-filter option,
     .game-selector,
     .game-selector select {
-        font-size: 0.75rem !important; /* Slightly smaller to guarantee fit */
+        font-size: 0.75rem !important;
+        /* Slightly smaller to guarantee fit */
     }
 
 }
+
 /* --- GOLDEN GACHA BANNER STYLING --- */
 
 /* Golden border, glow, and subtle background for all specified banner IDs */
-[data-event-id*="_010"], [data-event-id*="_011"], [data-event-id*="_012"], [data-event-id*="_013"],
-[data-event-id*="_014"], [data-event-id*="_015"], [data-event-id*="_016"],
-[data-event-id*="zzz_008"], [data-event-id*="zzz_009"], 
-[data-event-id*="ark_004"], [data-event-id*="ark_005"],
-[data-event-id*="msd_008"], [data-event-id*="msd_009"],
-[data-event-id*="rev_007"], [data-event-id*="rev_008"],
+[data-event-id*="_010"],
+[data-event-id*="_011"],
+[data-event-id*="_012"],
+[data-event-id*="_013"],
+[data-event-id*="_014"],
+[data-event-id*="_015"],
+[data-event-id*="_016"],
+[data-event-id*="zzz_008"],
+[data-event-id*="zzz_009"],
+[data-event-id*="ark_004"],
+[data-event-id*="ark_005"],
+[data-event-id*="msd_008"],
+[data-event-id*="msd_009"],
+[data-event-id*="rev_007"],
+[data-event-id*="rev_008"],
 [data-event-id="wuwa_009"] {
-    border: 1px solid #f3ca40 !important; /* Gacha Gold */
+    border: 1px solid #f3ca40 !important;
+    /* Gacha Gold */
     box-shadow: 0 0 15px rgba(243, 202, 64, 0.25) !important;
     background: rgba(243, 202, 64, 0.03) !important;
 }
 
 /* Golden text color and glow for the event titles */
-[data-event-id*="_010"] .event-name, [data-event-id*="_011"] .event-name, [data-event-id*="_012"] .event-name, [data-event-id*="_013"] .event-name,
-[data-event-id*="_014"] .event-name, [data-event-id*="_015"] .event-name, [data-event-id*="_016"] .event-name,
-[data-event-id*="zzz_008"] .event-name, [data-event-id*="zzz_009"] .event-name, 
-[data-event-id*="ark_004"] .event-name, [data-event-id*="ark_005"] .event-name,
-[data-event-id*="msd_008"] .event-name, [data-event-id*="msd_009"] .event-name,
-[data-event-id*="rev_007"] .event-name, [data-event-id*="rev_008"] .event-name,
+[data-event-id*="_010"] .event-name,
+[data-event-id*="_011"] .event-name,
+[data-event-id*="_012"] .event-name,
+[data-event-id*="_013"] .event-name,
+[data-event-id*="_014"] .event-name,
+[data-event-id*="_015"] .event-name,
+[data-event-id*="_016"] .event-name,
+[data-event-id*="zzz_008"] .event-name,
+[data-event-id*="zzz_009"] .event-name,
+[data-event-id*="ark_004"] .event-name,
+[data-event-id*="ark_005"] .event-name,
+[data-event-id*="msd_008"] .event-name,
+[data-event-id*="msd_009"] .event-name,
+[data-event-id*="rev_007"] .event-name,
+[data-event-id*="rev_008"] .event-name,
 [data-event-id="wuwa_009"] .event-name {
     color: #f3ca40 !important;
     text-shadow: 0 0 5px rgba(243, 202, 64, 0.4);
 }
-
-
-
-
