@@ -4,21 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gacha Event, Character Trial &amp; Endgame Cycle Deadlines | Live Tracker</title>
+    <!-- SEO configuration for event deadlines, banner count downs, and covered games -->
+    <title>Event Deadlines & Banner Countdowns</title>
     <meta name="description"
-        content="Track live countdown timers for Gacha game events, character trial runs, and endgame content cycles. Never miss limited-time rewards.">
+        content="A simple site to keep track of event deadlines, banner end times, character trial runs, and endgame content cycles. Never miss limited-time rewards.">
+    <meta name="keywords"
+        content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
     <link rel="stylesheet" href="style.css">
     <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c" />
 </head>
 
 <body>
-    <!-- SEO Hidden Header Section -->
-    <!-- This hides the block from human users but keeps it fully indexable for search engines -->
-    <header style="display: none;">
-        <h1>Gacha Event, Character Trial &amp; Endgame Deadlines</h1>
-        <p>Real-time countdown timers for limited-time gameplay events, character trial stages, and endgame content
-            cycles. Alert System: Status transforms into an urgent warning when a reward deadline has less than 48 hours
-            remaining.</p>
     </header>
     <nav class="game-selector">
         <select id="gameSelect" onchange="loadGameEvents()">
@@ -34,12 +30,15 @@
             <option value="wuwa">🌊 Wuthering Waves</option>
         </select>
         <!-- Region Selector in Matrix Style -->
-<div class="region-selector" style="margin: 10px 0; font-family: monospace;">
-    <span style="color: var(--matrix-dim-green);">SERVER:</span>
-    <button onclick="setRegion('asia')" id="btn-asia" style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[ASIA]</button>
-    <button onclick="setRegion('eu')" id="btn-eu" style="background:none; border:none; color:var(--matrix-light-green); cursor:pointer; padding:0 5px; font-weight:bold;">[EUROPE]</button>
-    <button onclick="setRegion('na')" id="btn-na" style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[AMERICA]</button>
-</div>
+        <div class="region-selector" style="margin: 10px 0; font-family: monospace;">
+            <span style="color: var(--matrix-dim-green);">SERVER:</span>
+            <button onclick="setRegion('asia')" id="btn-asia"
+                style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[ASIA]</button>
+            <button onclick="setRegion('eu')" id="btn-eu"
+                style="background:none; border:none; color:var(--matrix-light-green); cursor:pointer; padding:0 5px; font-weight:bold;">[EUROPE]</button>
+            <button onclick="setRegion('na')" id="btn-na"
+                style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[AMERICA]</button>
+        </div>
     </nav>
     <!-- Main content container -->
     <div class="container">
@@ -57,35 +56,36 @@
     <!-- Load JavaScript -->
     <script src="script.js"></script>
     <img src="https://genshinerebus.goatcounter.com/count?p=/" class="bg-layer-fix" alt="">
-<p id="update-status"><!-- LAST_UPDATE_HERE --><!-- END_UPDATE --></p>
-<a href="https://github.com/GenshinErebus/GachaDeadlines" target="_blank" class="desktop-only-github">Source Code</a>
+    <p id="update-status"><!-- LAST_UPDATE_HERE --><!-- END_UPDATE --></p>
+    <a href="https://github.com/GenshinErebus/GachaDeadlines" target="_blank" class="desktop-only-github">Source
+        Code</a>
 
-<script>
-    (function() {
-        const statusEl = document.getElementById('update-status');
-        
-        /* Force the browser to get a live server response, bypassing the cache */
-        const cacheBuster = new Date().getTime();
-        
-        /* Fetch only the headers of script.js from your server */
-        fetch(`script.js?cb=${cacheBuster}`, { method: 'HEAD' })
-            .then(response => {
-                const lastModified = response.headers.get('Last-Modified');
-                if (lastModified) {
-                    const date = new Date(lastModified);
-                    
-                    /* Format the date to your style (e.g., "17 July 2026") */
-                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                    const formattedDate = date.toLocaleDateString('en-US', options);
-                    
-                    statusEl.textContent = `Updated ${formattedDate}`;
-                }
-            })
-            .catch(() => {
-                /* Silent fallback if server request fails */
-            });
-    })();
-</script>
+    <script>
+        (function () {
+            const statusEl = document.getElementById('update-status');
+
+            /* Force the browser to get a live server response, bypassing the cache */
+            const cacheBuster = new Date().getTime();
+
+            /* Fetch only the headers of script.js from your server */
+            fetch(`script.js?cb=${cacheBuster}`, { method: 'HEAD' })
+                .then(response => {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        const date = new Date(lastModified);
+
+                        /* Format the date to your style (e.g., "17 July 2026") */
+                        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                        const formattedDate = date.toLocaleDateString('en-US', options);
+
+                        statusEl.textContent = `Updated ${formattedDate}`;
+                    }
+                })
+                .catch(() => {
+                    /* Silent fallback if server request fails */
+                });
+        })();
+    </script>
 </body>
 
 </html>
