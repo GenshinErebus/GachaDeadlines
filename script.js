@@ -29,44 +29,64 @@ const eventDatabase = {
         name: "Genshin Impact",
         events: [
             {
-                id: "gi_002",
+                id: "gi_001",
                 name: "Sunny Summer Fontinalia",
                 endDate: "2026-08-11T02:00:00Z"
             },
             {
-                id: "gi_003",
+                id: "gi_002",
                 name: "To Temper Thyself and Journey Far",
                 endDate: "2026-08-10T02:00:00Z"
             },
             {
-                id: "gi_004",
+                id: "gi_003",
                 name: "When We Look Up at the Moon",
                 endDate: "2026-09-22T13:00:00Z"
             },
             {
-                id: "gi_005",
+                id: "gi_004",
                 name: "Test Run",
                 endDate: "2026-07-21T16:00:00Z"
             },
             {
-                id: "gi_006",
+                id: "gi_005",
                 name: "Nod-Krai: Where Roads Are Pledged to Cross",
                 endDate: "2026-08-11T13:00:00Z"
             },
             {
-                id: "gi_007",
+                id: "gi_006",
                 name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
                 endDate: "2026-08-10T02:00:00Z"
             },
             {
-                id: "gi_008",
+                id: "gi_007",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T02:00:00Z"
             },
             {
-                id: "gi_00",
+                id: "gi_008",
                 name: "Final Long-Range Sightlines",
                 endDate: "2026-07-27T02:00:00Z"
+            },
+            {
+                id: "gi_009",
+                name: "Character Event Wish",
+                endDate: "2026-07-21T17:00:00Z"
+            },
+            {
+                id: "gi_010",
+                name: "Character Event Wish-2",
+                endDate: "2026-07-21T17:00:00Z"
+            },
+            {
+                id: "gi_011",
+                name: "Weapon Event Wish",
+                endDate: "2026-07-21T17:00:00Z"
+            },
+            {
+                id: "gi_012",
+                name: "Lightrace Wish",
+                endDate: "2026-07-21T17:00:00Z"
             }
         ]
     },
@@ -84,33 +104,53 @@ const eventDatabase = {
                 endDate: "2026-08-25T21:00:00Z"
             },
             {
-                id: "hsr_004",
+                id: "hsr_003",
                 name: "Memory of Chaos",
                 endDate: "2026-08-17T02:00:00Z"
             },
             {
-                id: "hsr_005",
+                id: "hsr_004",
                 name: "Pure Fiction",
                 endDate: "2026-08-03T02:00:00Z"
             },
             {
-                id: "hsr_006",
+                id: "hsr_005",
                 name: "Apocalyptic Shadow",
                 endDate: "2026-07-20T02:00:00Z"
             },
             {
-                id: "hsr_007",
+                id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game",
                 endDate: "2026-11-10T21:00:00Z"
             },
             {
-                id: "hsr_008",
+                id: "hsr_00",
                 name: "Divergent Universe: Arcadian Chronicles",
                 endDate: "2026-08-25T21:00:00Z"
             },
             {
-                id: "hsr_009",
+                id: "hsr_008",
                 name: "Aptitude Showcase",
+                endDate: "2026-08-05T10:00:00Z"
+            },
+            {
+                id: "hsr_009",
+                name: "Character Event Warp",
+                endDate: "2026-08-25T13:00:00Z"
+            },
+            {
+                id: "hsr_010",
+                name: "Character Event Warp (Rerun)",
+                endDate: "2026-08-05T10:00:00Z"
+            },
+            {
+                id: "hsr_011",
+                name: "Light Cone Event Warp",
+                endDate: "2026-08-25T13:00:00Z"
+            },
+            {
+                id: "hsr_012",
+                name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-08-05T10:00:00Z"
             }
         ]
@@ -134,19 +174,39 @@ const eventDatabase = {
                 endDate: "2026-07-20T02:00:00Z"
             },
             {
-                id: "zzz_005",
+                id: "zzz_004",
                 name: "Celestial Nexus Intelligence Dossier",
                 endDate: "2026-07-28T03:00:00Z"
             },
             {
-                id: "zzz_006",
+                id: "zzz_005",
                 name: "The Final Callback",
                 endDate: "2026-07-28T03:00:00Z"
             },
             {
-                id: "zzz_007",
+                id: "zzz_006",
                 name: "Deadly Assault",
                 endDate: "2026-07-28T03:00:00Z"
+            },
+            {
+                id: "zzz_007",
+                name: "Channel Exclusive",
+                endDate: "2026-07-28T15:59:00Z"
+            },
+            {
+                id: "zzz_008",
+                name: "Channel Exclusive (Rerun)",
+                endDate: "2026-07-28T15:59:00Z"
+            },
+            {
+                id: "zzz_009",
+                name: "Channel W-Engine",
+                endDate: "2026-07-28T15:59:00Z"
+            },
+            {
+                id: "zzz_010",
+                name: "Channel W-Engine (Rerun)",
+                endDate: "2026-07-28T15:59:00Z"
             }
         ]
     },
@@ -168,6 +228,16 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-08-09T16:00:00Z"
             },
+            {
+                id: "ark_004",
+                name: "North Yearns The Rift Vigile",
+                endDate: "2026-08-09T17:00:00Z"
+            },
+            {
+                id: "ark_005",
+                name: "Scarlet Knot Issue",
+                endDate: "2026-08-09T17:00:00Z"
+            }
         ]
     },
     duet: {
@@ -214,9 +284,19 @@ const eventDatabase = {
                 endDate: "2026-07-27T15:00:00Z"
             },
             {
-                id: "dna_010",
+                id: "dna_009",
                 name: "Silver Torrent, Rising Star",
                 endDate: "2026-07-23T03:00:00Z"
+            },
+            {
+                id: "dna_010",
+                name: "Event-Exclusive",
+                endDate: "2026-07-27T16:00:00Z"
+            },
+            {
+                id: "dna_011",
+                name: "Limited-Time Rerun",
+                endDate: "2026-07-27T16:00:00Z"
             }
         ]
     },
@@ -257,6 +337,16 @@ const eventDatabase = {
                 id: "nte_007",
                 name: "Shadow-n-Seek",
                 endDate: "2026-08-18T21:00:00Z"
+            },
+            {
+                id: "nte_008",
+                name: "Before the Dawn",
+                endDate: "2026-07-28T22:00:00Z"
+            },
+            {
+                id: "nte_009",
+                name: "Resolve Special",
+                endDate: "2026-07-28T22:00:00Z"
             }
         ]
     },
@@ -274,34 +364,59 @@ const eventDatabase = {
                 endDate: "2026-07-28T23:00:00Z"
             },
             {
-                id: "msd_004",
+                id: "msd_003",
                 name: "An Unforgettable First Summer Drive",
                 endDate: "2026-08-04T23:00:00Z"
             },
             {
-                id: "msd_005",
+                id: "msd_004",
                 name: "Herald of Love, Festival Dreamer",
                 endDate: "2026-07-28T23:00:00Z"
             },
             {
-                id: "msd_006",
+                id: "msd_005",
                 name: "The Girl More Fiery than the Summer Heat",
                 endDate: "2026-07-28T23:00:00Z"
             },
             {
-                id: "msd_007",
+                id: "msd_006",
                 name: "Legendary Monster Reginula",
                 endDate: "2026-08-18T23:00:00Z"
             },
             {
-                id: "msd_008",
+                id: "msd_007",
                 name: "Monsterling Trait Change Support",
                 endDate: "2026-08-18T23:00:00Z"
             },
             {
-                id: "msd_009",
+                id: "msd_008",
                 name: "Gulgak",
                 endDate: "2026-07-28T23:00:00Z"
+            },
+            {
+                id: "msd_009",
+                name: "The Girl More Fiery than the Summer Heat",
+                endDate: "2026-07-29T00:00:00Z"
+            },
+            {
+                id: "msd_010",
+                name: "Herald of Love, Festival Dreamer",
+                endDate: "2026-07-29T00:00:00Z"
+            },
+            {
+                id: "msd_011",
+                name: "The Flame that Dreams of Justice",
+                endDate: "2026-07-29T00:00:00Z"
+            },
+            {
+                id: "msd_012",
+                name: "A Summer soaked in Love",
+                endDate: "2026-07-29T00:00:00Z"
+            },
+            {
+                id: "msd_013",
+                name: "Dokaebi of Reckless Heart",
+                endDate: "2026-07-29T00:00:00Z"
             }
         ]
     },
@@ -337,6 +452,16 @@ const eventDatabase = {
                 id: "rev_006",
                 name: "Lucidscape",
                 endDate: "2026-07-31T03:00:00Z"
+            },
+            {
+                id: "rev_007",
+                name: "Event Banner",
+                endDate: "2026-07-23T10:00:00Z"
+            },
+            {
+                id: "rev_008",
+                name: "Rerun Event Banner",
+                endDate: "2026-07-28T10:00:00Z"
             }
         ]
     },
@@ -382,6 +507,46 @@ const eventDatabase = {
                 id: "wuwa_008",
                 name: "Recaptured: Action Highlights",
                 endDate: "2026-08-06T02:00:00Z"
+            },
+            {
+                id: "wuwa_009",
+                name: "Featured Resonator Convene",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_010",
+                name: "Featured Resonator Convene Rerun-1",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_011",
+                name: "Featured Resonator Convene Rerun-2",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_012",
+                name: "Reverb Resonator Convene",
+                endDate: "2026-08-19T11:00:00Z"
+            },
+            {
+                id: "wuwa_013",
+                name: "Featured Weapon Convene",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_014",
+                name: "Featured Weapon Convene Rerun-1",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_015",
+                name: "Featured Weapon Convene Rerun-2",
+                endDate: "2026-07-30T09:00:00Z"
+            },
+            {
+                id: "wuwa_016",
+                name: "Reverb Weapon Convene",
+                endDate: "2026-08-19T11:00:00Z"
             }
         ]
     }
