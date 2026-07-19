@@ -31,60 +31,65 @@ const eventDatabase = {
             {
                 id: "gi_001",
                 name: "Sunny Summer Fontinalia",
-                endDate: "2026-08-11T02:00:00Z"
+                endDate: "2026-08-11T03:00:00Z"
             },
             {
                 id: "gi_002",
                 name: "To Temper Thyself and Journey Far",
-                endDate: "2026-08-10T02:00:00Z"
+                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "gi_003",
                 name: "When We Look Up at the Moon",
-                endDate: "2026-09-22T13:00:00Z"
+                endDate: "2026-09-22T14:00:00Z"
             },
             {
                 id: "gi_004",
                 name: "Test Run",
-                endDate: "2026-07-21T16:00:00Z"
+                endDate: "2026-07-21T17:00:00Z"
             },
             {
                 id: "gi_005",
                 name: "Nod-Krai: Where Roads Are Pledged to Cross",
-                endDate: "2026-08-11T13:00:00Z"
+                endDate: "2026-08-11T14:00:00Z"
             },
             {
                 id: "gi_006",
                 name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
-                endDate: "2026-08-10T02:00:00Z"
+                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "gi_007",
                 name: "Spiral Abyss",
-                endDate: "2026-08-16T02:00:00Z"
+                endDate: "2026-08-16T03:00:00Z"
             },
             {
                 id: "gi_008",
                 name: "Final Long-Range Sightlines",
-                endDate: "2026-07-27T02:00:00Z"
+                endDate: "2026-07-27T03:00:00Z"
             },
             {
                 id: "gi_009",
+                name: "Genius Invokation TCG: Heated Battle Mode",
+                endDate: "2026-08-03T03:00:00Z"
+            },
+            {
+                id: "gi_010",
                 name: "Character Event Wish",
                 endDate: "2026-07-21T17:00:00Z"
             },
             {
-                id: "gi_010",
+                id: "gi_011",
                 name: "Character Event Wish-2",
                 endDate: "2026-07-21T17:00:00Z"
             },
             {
-                id: "gi_011",
+                id: "gi_012",
                 name: "Weapon Event Wish",
                 endDate: "2026-07-21T17:00:00Z"
             },
             {
-                id: "gi_012",
+                id: "gi_013",
                 name: "Lightrace Wish",
                 endDate: "2026-07-21T17:00:00Z"
             }
@@ -96,60 +101,65 @@ const eventDatabase = {
             {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",
-                endDate: "2026-08-25T19:00:00Z"
+                endDate: "2026-08-25T20:00:00Z"
             },
             {
                 id: "hsr_002",
                 name: "Anomaly Arbitration",
-                endDate: "2026-08-25T21:00:00Z"
+                endDate: "2026-08-25T22:00:00Z"
             },
             {
                 id: "hsr_003",
                 name: "Memory of Chaos",
-                endDate: "2026-08-17T02:00:00Z"
+                endDate: "2026-08-17T03:00:00Z"
             },
             {
                 id: "hsr_004",
                 name: "Pure Fiction",
-                endDate: "2026-08-03T02:00:00Z"
+                endDate: "2026-08-03T03:00:00Z"
             },
             {
                 id: "hsr_005",
                 name: "Apocalyptic Shadow",
-                endDate: "2026-07-20T02:00:00Z"
+                endDate: "2026-07-20T03:00:00Z"
             },
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game",
-                endDate: "2026-11-10T21:00:00Z"
+                endDate: "2026-11-10T22:00:00Z"
             },
             {
-                id: "hsr_00",
+                id: "hsr_007",
                 name: "Divergent Universe: Arcadian Chronicles",
-                endDate: "2026-08-25T21:00:00Z"
+                endDate: "2026-08-25T22:00:00Z"
             },
             {
                 id: "hsr_008",
-                name: "Aptitude Showcase",
-                endDate: "2026-08-05T10:00:00Z"
+                name: "Imagenae: Holy Grail War",
+                endDate: "2026-07-24T11:00:00Z"
             },
             {
                 id: "hsr_009",
+                name: "Aptitude Showcase",
+                endDate: "2026-08-05T11:00:00Z"
+            },
+            {
+                id: "hsr_010",
                 name: "Character Event Warp",
                 endDate: "2026-08-25T13:00:00Z"
             },
             {
-                id: "hsr_010",
+                id: "hsr_011",
                 name: "Character Event Warp (Rerun)",
                 endDate: "2026-08-05T10:00:00Z"
             },
             {
-                id: "hsr_011",
+                id: "hsr_012",
                 name: "Light Cone Event Warp",
                 endDate: "2026-08-25T13:00:00Z"
             },
             {
-                id: "hsr_012",
+                id: "hsr_013",
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-08-05T10:00:00Z"
             }
@@ -161,50 +171,55 @@ const eventDatabase = {
             {
                 id: "zzz_001",
                 name: "Assemble Mock Exam Comeback Plan",
-                endDate: "2026-07-26T03:00:00Z"
+                endDate: "2026-07-27T01:59:00Z"
             },
             {
                 id: "zzz_002",
                 name: "Art is Bangboo!",
-                endDate: "2026-07-26T03:00:00Z"
+                endDate: "2026-07-27T01:59:00Z"
             },
             {
                 id: "zzz_003",
                 name: "Tales of the Hobbling Crow",
-                endDate: "2026-07-20T02:00:00Z"
+                endDate: "2026-07-20T03:00:00Z"
             },
             {
                 id: "zzz_004",
                 name: "Celestial Nexus Intelligence Dossier",
-                endDate: "2026-07-28T03:00:00Z"
+                endDate: "2026-07-29T02:00:00Z"
             },
             {
                 id: "zzz_005",
                 name: "The Final Callback",
-                endDate: "2026-07-28T03:00:00Z"
+                endDate: "2026-07-29T02:00:00Z"
             },
             {
                 id: "zzz_006",
                 name: "Deadly Assault",
-                endDate: "2026-07-28T03:00:00Z"
+                endDate: "2026-07-29T02:00:00Z"
             },
             {
                 id: "zzz_007",
+                name: "Journey Premiere",
+                endDate: "2026-07-22T04:00:00Z"
+            },
+            {
+                id: "zzz_008",
                 name: "Channel Exclusive",
                 endDate: "2026-07-28T15:59:00Z"
             },
             {
-                id: "zzz_008",
+                id: "zzz_009",
                 name: "Channel Exclusive (Rerun)",
                 endDate: "2026-07-28T15:59:00Z"
             },
             {
-                id: "zzz_009",
+                id: "zzz_010",
                 name: "Channel W-Engine",
                 endDate: "2026-07-28T15:59:00Z"
             },
             {
-                id: "zzz_010",
+                id: "zzz_011",
                 name: "Channel W-Engine (Rerun)",
                 endDate: "2026-07-28T15:59:00Z"
             }
@@ -216,17 +231,17 @@ const eventDatabase = {
             {
                 id: "ark_001",
                 name: "Fortune Connect-and-Win",
-                endDate: "2026-07-31T08:00:00Z"
+                endDate: "2026-07-31T09:00:00Z"
             },
             {
                 id: "ark_002",
                 name: "Gaze Towards the Northern Exclusion",
-                endDate: "2026-08-09T16:00:00Z"
+                endDate: "2026-08-09T17:00:00Z"
             },
             {
                 id: "ark_003",
                 name: "Combat Drills",
-                endDate: "2026-08-09T16:00:00Z"
+                endDate: "2026-08-09T18:00:00Z"
             },
             {
                 id: "ark_004",
@@ -246,47 +261,47 @@ const eventDatabase = {
             {
                 id: "dna_001",
                 name: "Atlasia Calling",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_002",
                 name: "Dance with the Sea",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_003",
                 name: "To the Distant Shore",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_004",
                 name: "Immersive Theatre",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_005",
                 name: "Traces in the Sand",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_006",
                 name: "Starry Sojourn",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_007",
                 name: "Phoxhunter Summit",
-                endDate: "2026-07-23T22:00:00Z"
+                endDate: "2026-07-31T04:00:00Z"
             },
             {
                 id: "dna_008",
                 name: "Pulse of the Empire",
-                endDate: "2026-07-27T15:00:00Z"
+                endDate: "2026-07-27T16:00:00Z"
             },
             {
                 id: "dna_009",
                 name: "Silver Torrent, Rising Star",
-                endDate: "2026-07-23T03:00:00Z"
+                endDate: "2026-07-23T04:00:00Z"
             },
             {
                 id: "dna_010",
@@ -305,46 +320,56 @@ const eventDatabase = {
         events: [
             {
                 id: "nte_001",
-                name: "Market Opening Rehearsal",
-                endDate: "2026-07-28T21:00:00Z"
+                name: "Resolve Perks",
+                endDate: "2026-07-28T22:00:00Z"
             },
             {
                 id: "nte_002",
-                name: "999 Nights",
-                endDate: "2026-08-18T21:00:00Z"
+                name: "Market Opening Rehearsal",
+                endDate: "2026-07-28T22:00:00Z"
             },
             {
                 id: "nte_003",
-                name: "Eibon Partner Program",
-                endDate: "2026-08-18T21:00:00Z"
+                name: "999 Nights",
+                endDate: "2026-08-18T22:00:00Z"
             },
             {
                 id: "nte_004",
-                name: "Mews Flash",
-                endDate: "2026-08-18T21:00:00Z"
+                name: "Neon Rift Mystery Box",
+                endDate: "2026-08-18T22:00:00Z"
             },
             {
                 id: "nte_005",
+                name: "Eibon Partner Program",
+                endDate: "2026-08-18T22:00:00Z"
+            },
+            {
+                id: "nte_006",
+                name: "Mews Flash",
+                endDate: "2026-08-18T22:00:00Z"
+            },
+            {
+                id: "nte_007",
                 name: "Beyond the Rails",
                 endDate: "2026-07-29T21:00:00Z"
             },
             {
-                id: "nte_006",
-                name: "Stamina Recharge",
-                endDate: "2026-07-20T02:00:00Z"
-            },
-            {
-                id: "nte_007",
-                name: "Shadow-n-Seek",
-                endDate: "2026-08-18T21:00:00Z"
-            },
-            {
                 id: "nte_008",
+                name: "Stamina Recharge",
+                endDate: "2026-07-20T03:00:52Z"
+            },
+            {
+                id: "nte_009",
+                name: "Shadow-n-Seek",
+                endDate: "2026-08-18T22:00:00Z"
+            },
+            {
+                id: "nte_010",
                 name: "Before the Dawn",
                 endDate: "2026-07-28T22:00:00Z"
             },
             {
-                id: "nte_009",
+                id: "nte_011",
                 name: "Resolve Special",
                 endDate: "2026-07-28T22:00:00Z"
             }
@@ -356,65 +381,60 @@ const eventDatabase = {
             {
                 id: "msd_001",
                 name: "Summer Lane",
-                endDate: "2026-07-28T23:00:00Z"
+                endDate: "2026-07-28T24:00:00Z"
             },
             {
                 id: "msd_002",
                 name: "Grand Summer Festival Missions",
-                endDate: "2026-07-28T23:00:00Z"
+                endDate: "2026-07-28T24:00:00Z"
             },
             {
                 id: "msd_003",
                 name: "An Unforgettable First Summer Drive",
-                endDate: "2026-08-04T23:00:00Z"
+                endDate: "2026-08-04T24:00:00Z"
             },
             {
                 id: "msd_004",
                 name: "Herald of Love, Festival Dreamer",
-                endDate: "2026-07-28T23:00:00Z"
+                endDate: "2026-07-28T24:00:00Z"
             },
             {
                 id: "msd_005",
                 name: "The Girl More Fiery than the Summer Heat",
-                endDate: "2026-07-28T23:00:00Z"
+                endDate: "2026-07-28T24:00:00Z"
             },
             {
                 id: "msd_006",
-                name: "Legendary Monster Reginula",
-                endDate: "2026-08-18T23:00:00Z"
+                name: "Monsterling Trait Change Support",
+                endDate: "2026-08-18T24:00:00Z"
             },
             {
                 id: "msd_007",
-                name: "Monsterling Trait Change Support",
-                endDate: "2026-08-18T23:00:00Z"
+                name: "Gulgak",
+                endDate: "2026-07-28T24:00:00Z"
             },
             {
                 id: "msd_008",
-                name: "Gulgak",
-                endDate: "2026-07-28T23:00:00Z"
-            },
-            {
-                id: "msd_009",
                 name: "The Girl More Fiery than the Summer Heat",
                 endDate: "2026-07-29T00:00:00Z"
             },
             {
-                id: "msd_010",
+                id: "msd_009",
                 name: "Herald of Love, Festival Dreamer",
                 endDate: "2026-07-29T00:00:00Z"
             },
             {
-                id: "msd_011",
+                id: "msd_010",
                 name: "The Flame that Dreams of Justice",
                 endDate: "2026-07-29T00:00:00Z"
             },
             {
-                id: "msd_012",
+                id: "msd_011",
                 name: "A Summer soaked in Love",
                 endDate: "2026-07-29T00:00:00Z"
             },
             {
-                id: "msd_013",
+                id: "msd_012",
                 name: "Dokaebi of Reckless Heart",
                 endDate: "2026-07-29T00:00:00Z"
             }
@@ -426,32 +446,32 @@ const eventDatabase = {
             {
                 id: "rev_001",
                 name: "Last and First Principles",
-                endDate: "2026-07-22T09:00:00Z"
+                endDate: "2026-07-22T10:00:00Z"
             },
             {
                 id: "rev_002",
                 name: "Focused Flashback",
-                endDate: "2026-07-23T09:00:00Z"
+                endDate: "2026-07-23T10:00:00Z"
             },
             {
                 id: "rev_003",
                 name: "Mane's Bulletin",
-                endDate: "2026-07-23T09:00:00Z"
+                endDate: "2026-07-23T10:00:00Z"
             },
             {
                 id: "rev_004",
                 name: "Complete Induction",
-                endDate: "2026-07-23T09:00:00Z"
+                endDate: "2026-07-23T10:00:00Z"
             },
             {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-08-15T03:00:00Z"
+                endDate: "2026-08-16T03:00:00Z"
             },
             {
                 id: "rev_006",
                 name: "Lucidscape",
-                endDate: "2026-07-31T03:00:00Z"
+                endDate: "2026-08-01T03:00:00Z"
             },
             {
                 id: "rev_007",
@@ -471,42 +491,42 @@ const eventDatabase = {
             {
                 id: "wuwa_001",
                 name: "Glamour Couture",
-                endDate: "2026-08-19T10:00:00Z"
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_002",
                 name: "Ascendant Aces",
-                endDate: "2026-07-30T08:00:00Z"
+                endDate: "2026-07-30T09:00:00Z"
             },
             {
                 id: "wuwa_003",
                 name: "Tactical Hologram: Simulation",
-                endDate: "2026-08-19T02:00:00Z"
+                endDate: "2026-08-19T03:00:00Z"
             },
             {
                 id: "wuwa_004",
                 name: "Endstate Matrix",
-                endDate: "2026-08-19T19:00:00Z"
+                endDate: "2026-08-19T20:00:00Z"
             },
             {
                 id: "wuwa_005",
                 name: "Whimpering Wastes",
-                endDate: "2026-08-03T02:00:00Z"
+                endDate: "2026-08-03T03:00:00Z"
             },
             {
                 id: "wuwa_006",
                 name: "Hazard Revisited",
-                endDate: "2026-07-20T02:00:00Z"
+                endDate: "2026-07-20T03:00:00Z"
             },
             {
                 id: "wuwa_007",
                 name: "Lament Recon: Tacet Crisis",
-                endDate: "2026-08-19T10:00:00Z"
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_008",
                 name: "Recaptured: Action Highlights",
-                endDate: "2026-08-06T02:00:00Z"
+                endDate: "2026-08-06T03:00:00Z"
             },
             {
                 id: "wuwa_009",
