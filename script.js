@@ -122,7 +122,7 @@ const eventDatabase = {
             {
                 id: "hsr_005",
                 name: "Apocalyptic Shadow",
-                endDate: "2026-07-20T03:00:00Z"
+                endDate: "2026-08-31T03:00:00Z"
             },
             {
                 id: "hsr_006",
@@ -179,11 +179,6 @@ const eventDatabase = {
                 id: "zzz_002",
                 name: "Art is Bangboo!",
                 endDate: "2026-07-27T01:59:00Z"
-            },
-            {
-                id: "zzz_003",
-                name: "Tales of the Hobbling Crow",
-                endDate: "2026-07-20T03:00:00Z"
             },
             {
                 id: "zzz_004",
@@ -360,8 +355,8 @@ const eventDatabase = {
             },
             {
                 id: "nte_008",
-                name: "Stamina Recharge",
-                endDate: "2026-07-20T03:00:52Z"
+                name: "Gold Clash",
+                endDate: "2026-08-03T03:00:00Z"
             },
             {
                 id: "nte_009",
@@ -524,7 +519,7 @@ const eventDatabase = {
             {
                 id: "wuwa_006",
                 name: "Hazard Revisited",
-                endDate: "2026-07-20T03:00:00Z"
+                endDate: "2026-08-17T03:00:00Z"
             },
             {
                 id: "wuwa_007",
