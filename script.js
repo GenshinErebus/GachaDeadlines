@@ -67,33 +67,28 @@ const eventDatabase = {
                 id: "gi_008",
                 name: "Genius Invokation TCG: Heated Battle Mode",
                 endDate: "2026-08-03T03:00:00Z"
-            } /* ,
+            },
             {
                 id: "gi_009",
                 name: "Test Run",
-                endDate: "2026-07-21T17:00:00Z"
+                endDate: "2026-08-11T14:00:00Z"
             }, 
             // Gacha Banners
             {
                 id: "gi_010",
                 name: "Character Event Wish",
-                endDate: "2026-07-21T17:00:00Z"
+                endDate: "2026-08-11T14:00:00Z"
             },
             {
                 id: "gi_011",
                 name: "Character Event Wish-2",
-                endDate: "2026-07-21T17:00:00Z"
+                endDate: "2026-08-11T14:00:00Z"
             },
             {
                 id: "gi_012",
                 name: "Weapon Event Wish",
-                endDate: "2026-07-21T17:00:00Z"
-            },
-            {
-                id: "gi_013",
-                name: "Lightrace Wish",
-                endDate: "2026-07-21T17:00:00Z"
-            } EXPRIED but soon reappear */
+                endDate: "2026-08-11T14:00:00Z"
+            }
         ]
     },
     hsr: {
