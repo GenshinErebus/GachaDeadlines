@@ -620,7 +620,7 @@ h1 {
 /* Prevents the YouTube icon and the update status text from overlapping on tablet screens */
 @media (min-width: 769px) and (max-width: 1100px) {
     a[href*="youtube"] {
-        right: 195px !important;
+        right: 200px !important;
         /* Shifts the icon further to the left to clear room for the text */
     }
 }
