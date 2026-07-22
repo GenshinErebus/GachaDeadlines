@@ -429,6 +429,16 @@ const eventDatabase = {
                 id: "msd_012",
                 name: "Dokaebi of Reckless Heart",
                 endDate: "2026-07-29T00:00:00Z"
+            },
+            {
+                id: "msd_000",
+                name: "An Invitation to break the Ice",
+                endDate: "2026-07-28T24:00:00Z"
+            },
+            {
+                id: "msd_013",
+                name: "Path Bonus Time",
+                endDate: "2026-07-28T24:00:00Z"
             }
         ]
     },
