@@ -615,3 +615,12 @@ h1 {
     color: #f3ca40 !important;
     text-shadow: 0 0 5px rgba(243, 202, 64, 0.4);
 }
+
+/* --- TABLET LAYOUT PROTECTION --- */
+/* Prevents the YouTube icon and the update status text from overlapping on tablet screens */
+@media (min-width: 769px) and (max-width: 1100px) {
+    a[href*="youtube"] {
+        right: 195px !important;
+        /* Shifts the icon further to the left to clear room for the text */
+    }
+}
