@@ -45,34 +45,34 @@ const eventDatabase = {
             },
             {
                 id: "gi_004",
-                name: "Test Run",
-                endDate: "2026-07-21T17:00:00Z"
-            },
-            {
-                id: "gi_005",
                 name: "Nod-Krai: Where Roads Are Pledged to Cross",
                 endDate: "2026-08-11T14:00:00Z"
             },
             {
-                id: "gi_006",
+                id: "gi_005",
                 name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
                 endDate: "2026-08-10T03:00:00Z"
             },
             {
-                id: "gi_007",
+                id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T03:00:00Z"
             },
             {
-                id: "gi_008",
+                id: "gi_007",
                 name: "Final Long-Range Sightlines",
                 endDate: "2026-07-27T03:00:00Z"
             },
             {
-                id: "gi_009",
+                id: "gi_008",
                 name: "Genius Invokation TCG: Heated Battle Mode",
                 endDate: "2026-08-03T03:00:00Z"
-            },
+            } /* ,
+            {
+                id: "gi_009",
+                name: "Test Run",
+                endDate: "2026-07-21T17:00:00Z"
+            }, 
             // Gacha Banners
             {
                 id: "gi_010",
@@ -93,7 +93,7 @@ const eventDatabase = {
                 id: "gi_013",
                 name: "Lightrace Wish",
                 endDate: "2026-07-21T17:00:00Z"
-            }
+            } EXPRIED but soon reappear */
         ]
     },
     hsr: {
@@ -194,11 +194,6 @@ const eventDatabase = {
                 id: "zzz_006",
                 name: "Deadly Assault",
                 endDate: "2026-07-29T02:00:00Z"
-            },
-            {
-                id: "zzz_007",
-                name: "Journey Premiere",
-                endDate: "2026-07-22T04:00:00Z"
             },
             // Gacha Banners
             {
