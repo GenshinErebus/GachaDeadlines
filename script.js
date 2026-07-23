@@ -566,6 +566,11 @@ const eventDatabase = {
                 id: "wuwa_016",
                 name: "Reverb Weapon Convene",
                 endDate: "2026-08-19T11:00:00Z"
+            },
+            {
+                id: "wuwa_017",
+                name: "Bountiful Crescendo",
+                endDate: "2026-07-30T03:00:00Z"
             }
         ]
     }
