@@ -279,22 +279,17 @@ const eventDatabase = {
             },
             {
                 id: "dna_007",
-                name: "Phoxhunter Summit",
-                endDate: "2026-07-31T04:00:00Z"
-            },
-            {
-                id: "dna_008",
                 name: "Pulse of the Empire",
                 endDate: "2026-07-27T16:00:00Z"
             },
             // Gacha Banners
             {
-                id: "dna_010",
+                id: "dna_008",
                 name: "Event-Exclusive",
                 endDate: "2026-07-27T16:00:00Z"
             },
             {
-                id: "dna_011",
+                id: "dna_009",
                 name: "Limited-Time Rerun",
                 endDate: "2026-07-27T16:00:00Z"
             }
