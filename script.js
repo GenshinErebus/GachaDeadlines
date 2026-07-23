@@ -287,11 +287,6 @@ const eventDatabase = {
                 name: "Pulse of the Empire",
                 endDate: "2026-07-27T16:00:00Z"
             },
-            {
-                id: "dna_009",
-                name: "Silver Torrent, Rising Star",
-                endDate: "2026-07-23T04:00:00Z"
-            },
             // Gacha Banners
             {
                 id: "dna_010",
@@ -447,23 +442,18 @@ const eventDatabase = {
         events: [
             {
                 id: "rev_001",
-                name: "Last and First Principles",
-                endDate: "2026-07-22T10:00:00Z"
+                name: "Polymerzed Dreams",
+                endDate: "2026-08-13T10:00:00Z"
             },
             {
                 id: "rev_002",
                 name: "Focused Flashback",
-                endDate: "2026-07-23T10:00:00Z"
+                endDate: "2026-08-13T10:00:00Z"
             },
             {
                 id: "rev_003",
                 name: "Mane's Bulletin",
-                endDate: "2026-07-23T10:00:00Z"
-            },
-            {
-                id: "rev_004",
-                name: "Complete Induction",
-                endDate: "2026-07-23T10:00:00Z"
+                endDate: "2026-08-13T10:00:00Z"
             },
             {
                 id: "rev_005",
@@ -479,12 +469,17 @@ const eventDatabase = {
             {
                 id: "rev_007",
                 name: "Event Banner",
-                endDate: "2026-07-23T10:00:00Z"
+                endDate: "2026-08-13T10:00:00Z"
             },
             {
                 id: "rev_008",
                 name: "Rerun Event Banner",
                 endDate: "2026-07-28T10:00:00Z"
+            },
+            {
+                id: "rev_009",
+                name: "Ripples on the Water",
+                endDate: "2026-08-13T10:00:00Z"
             }
         ]
     },
