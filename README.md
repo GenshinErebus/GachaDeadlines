@@ -34,7 +34,7 @@ MONGIL: STAR DIVE
 ## Project Structure 📁
 
 *   `index.html` - The core structure and layout of the dashboard.
-*   `style.css` - Custom terminal styling including glowing hover elements and responsive layout rules.
+*   `style.css` - Custom Matrix styling including glowing hover elements and responsive layout rules.
 *   `script.js` - Core logic handling timezone management, countdown math, and the dynamic 2-day urgency warning state.
 *   `assets/` - Directory containing images, icons, and visual branding elements used across the site.
 *   `.github/workflows/` - Automated GitHub Actions tracking and updating project timestamps and deployment pipelines.

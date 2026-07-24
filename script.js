@@ -132,7 +132,7 @@ const eventDatabase = {
             {
                 id: "hsr_008",
                 name: "Imagenae: Holy Grail War",
-                endDate: "2026-07-24T11:00:00Z"
+                endDate: "2026-08-25T20:00:00Z"
             },
             {
                 id: "hsr_009",
