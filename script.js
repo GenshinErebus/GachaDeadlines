@@ -248,6 +248,11 @@ const eventDatabase = {
         name: "Duet Night Abyss",
         events: [
             {
+                id: "dna_000",
+                name: "Paradise Prelude",
+                endDate : "2026-09-03T04:00:00Z"
+            },
+            {
                 id: "dna_001",
                 name: "Atlasia Calling",
                 endDate: "2026-07-27T16:00:00Z"
