@@ -29,6 +29,11 @@ const eventDatabase = {
         name: "Genshin Impact",
         events: [
             {
+                id: "gi_000",
+                name: "Dance Dance Easy - Breezy Disco",
+                endDate: "2026-08-03T03:00:00Z"
+            },
+            {
                 id: "gi_001",
                 name: "Sunny Summer Fontinalia",
                 endDate: "2026-08-11T03:00:00Z"
