@@ -173,12 +173,17 @@ const eventDatabase = {
             {
                 id: "zzz_001",
                 name: "Assemble Mock Exam Comeback Plan",
-                endDate: "2026-07-27T01:59:00Z"
+                endDate: "2026-07-27T03:00:00Z"
             },
             {
                 id: "zzz_002",
                 name: "Art is Bangboo!",
-                endDate: "2026-07-27T01:59:00Z"
+                endDate: "2026-07-27T03:00:00Z"
+            },
+            {
+                id: "zzz_003",
+                name: "Data Bounty: Combat Simulation",
+                endDate: "2026-07-27T03:00:00Z"
             },
             {
                 id: "zzz_004",
