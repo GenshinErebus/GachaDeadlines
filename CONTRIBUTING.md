@@ -9,8 +9,12 @@ All events must follow the exact JSON object schema structure. When submitting a
 ```json
 [
     {
-        id: "gi_002",
+        id: "gi_001",
         name: "Sunny Summer Fontinalia",
+        endDate: "2026-08-11T02:00:00Z"
+    },
+{        id: "gi_002",
+        name: "To Temper Thyself and Journey Far",
         endDate: "2026-08-11T02:00:00Z"
     }
 ]
