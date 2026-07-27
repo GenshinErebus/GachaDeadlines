@@ -65,16 +65,11 @@ const eventDatabase = {
             },
             {
                 id: "gi_007",
-                name: "Final Long-Range Sightlines",
-                endDate: "2026-07-27T03:00:00Z"
-            },
-            {
-                id: "gi_008",
                 name: "Genius Invokation TCG: Heated Battle Mode",
                 endDate: "2026-08-03T03:00:00Z"
             },
             {
-                id: "gi_009",
+                id: "gi_008",
                 name: "Test Run",
                 endDate: "2026-08-11T14:00:00Z"
             }, 
@@ -170,21 +165,6 @@ const eventDatabase = {
     zzz: {
         name: "Zenless Zone Zero",
         events: [
-            {
-                id: "zzz_001",
-                name: "Assemble Mock Exam Comeback Plan",
-                endDate: "2026-07-27T03:00:00Z"
-            },
-            {
-                id: "zzz_002",
-                name: "Art is Bangboo!",
-                endDate: "2026-07-27T03:00:00Z"
-            },
-            {
-                id: "zzz_003",
-                name: "Data Bounty: Combat Simulation",
-                endDate: "2026-07-27T03:00:00Z"
-            },
             {
                 id: "zzz_004",
                 name: "Celestial Nexus Intelligence Dossier",
