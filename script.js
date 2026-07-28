@@ -72,7 +72,7 @@ const eventDatabase = {
                 id: "gi_008",
                 name: "Test Run",
                 endDate: "2026-08-11T14:00:00Z"
-            }, 
+            },
             // Gacha Banners
             {
                 id: "gi_010",
@@ -94,6 +94,11 @@ const eventDatabase = {
     hsr: {
         name: "Honkai Star Rail",
         events: [
+            {
+                id: "hsr_000",
+                name: "Planar Fisure",
+                endDate: "2026-08-10T03:00:00Z"
+            },
             {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",
@@ -240,54 +245,9 @@ const eventDatabase = {
             {
                 id: "dna_000",
                 name: "Paradise Prelude",
-                endDate : "2026-09-03T04:00:00Z"
-            },
-            {
-                id: "dna_001",
-                name: "Atlasia Calling",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_002",
-                name: "Dance with the Sea",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_003",
-                name: "To the Distant Shore",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_004",
-                name: "Immersive Theatre",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_005",
-                name: "Traces in the Sand",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_006",
-                name: "Starry Sojourn",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_007",
-                name: "Pulse of the Empire",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            // Gacha Banners
-            {
-                id: "dna_008",
-                name: "Event-Exclusive",
-                endDate: "2026-07-27T16:00:00Z"
-            },
-            {
-                id: "dna_009",
-                name: "Limited-Time Rerun",
-                endDate: "2026-07-27T16:00:00Z"
+                endDate: "2026-09-03T04:00:00Z"
             }
+            // Gacha Banners
         ]
     },
     nte: {
