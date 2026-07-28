@@ -243,11 +243,46 @@ const eventDatabase = {
         name: "Duet Night Abyss",
         events: [
             {
-                id: "dna_000",
+                id: "dna_001",
                 name: "Paradise Prelude",
                 endDate: "2026-09-03T04:00:00Z"
-            }
+            },
+            {
+                id: "dna_002",
+                name: "Snowveil Fairytale",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+            {
+                id: "dna_003",
+                name: "Traces in the Sand",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+             {
+                id: "dna_004",
+                name: "Bloomfield Station: Tales Untold",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+             {
+                id: "dna_005",
+                name: "Treasure Hunt Trials",
+                endDate: "2026-09-08T04:00:00Z"
+            },
+             {
+                id: "dna_006",
+                name: "White Bunnies' Invitation",
+                endDate: "2026-09-07T16:00:00Z"
+            },
             // Gacha Banners
+             {
+                id: "dna_007",
+                name: "Event Esclusive",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+             {
+                id: "dna_008",
+                name: "Limited-Time Rerun",
+                endDate: "2026-09-07T16:00:00Z"
+            }
         ]
     },
     nte: {
@@ -533,13 +568,15 @@ let countdownInterval = null;
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[Matrix Tracker] Initializing...');
     initUI();
-
-    // Auto-load first game or default
+    
+    // Explicitly set the dropdown menu to the empty placeholder value
     const select = document.getElementById('gameSelect');
-    if (select && select.options.length > 1) {
-        select.selectedIndex = 1; // Genshin Impact as default
-        loadGameEvents();
+    if (select) {
+        select.value = ""; 
     }
+    
+    // Triggers the empty database visual notice on start instead of auto-loading Genshin
+    loadGameEvents();
 });
 
 // UI initialization
