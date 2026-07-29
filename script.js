@@ -126,42 +126,47 @@ const eventDatabase = {
             },
             {
                 id: "hsr_006",
-                name: "Currency Wars: Zero-Sum Game",
-                endDate: "2026-11-10T22:00:00Z"
+                name: "Currency Wars: Zero-Sum Game (Period)",
+                endDate: "2026-08-03T03:00:00Z"
             },
             {
                 id: "hsr_007",
-                name: "Divergent Universe: Arcadian Chronicles",
-                endDate: "2026-08-25T22:00:00Z"
+                name: "Currency Wars: Zero-Sum Game (Expansion)",
+                endDate: "2026-11-10T22:00:00Z"
             },
             {
                 id: "hsr_008",
+                name: "Divergent Universe: Arcadian Chronicles",
+                endDate: "2026-08-25T23:00:00Z"
+            },
+            {
+                id: "hsr_009",
                 name: "Imagenae: Holy Grail War",
                 endDate: "2026-08-25T20:00:00Z"
             },
             {
-                id: "hsr_009",
+                id: "hsr_010",
                 name: "Aptitude Showcase",
                 endDate: "2026-08-05T11:00:00Z"
             },
             // Gacha Banners
             {
-                id: "hsr_010",
+                id: "hsr_011",
                 name: "Character Event Warp",
                 endDate: "2026-08-25T13:00:00Z"
             },
             {
-                id: "hsr_011",
+                id: "hsr_012",
                 name: "Character Event Warp (Rerun)",
                 endDate: "2026-08-05T10:00:00Z"
             },
             {
-                id: "hsr_012",
+                id: "hsr_013",
                 name: "Light Cone Event Warp",
                 endDate: "2026-08-25T13:00:00Z"
             },
             {
-                id: "hsr_013",
+                id: "hsr_014",
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-08-05T10:00:00Z"
             }
