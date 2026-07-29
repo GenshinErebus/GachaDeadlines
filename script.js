@@ -190,24 +190,49 @@ const eventDatabase = {
                 name: "Deadly Assault",
                 endDate: "2026-08-14T03:00:00Z"
             },
+            {
+                id: "zzz_005",
+                name: "Marcel Anniversary Gifts",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+            {
+                id: "zzz_006",
+                name: "Anniversary Selects",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+            {
+                id: "zzz_007",
+                name: "Phaethon's Grand Reveal of the Year",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+                        {
+                id: "zzz_008",
+                name: "Gift From the Cloud",
+                endDate: "2026-09-08T03:00:00Z"
+            },
+             {
+                id: "zzz_009",
+                name: "Festival Special",
+                endDate: "2026-09-09T03:00:00Z"
+            },
             // Gacha Banners
             {
-                id: "zzz_008",
+                id: "zzz_010",
                 name: "Channel Exclusive",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_009",
+                id: "zzz_011",
                 name: "Channel Exclusive (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_010",
+                id: "zzz_012",
                 name: "Channel W-Engine",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_011",
+                id: "zzz_013",
                 name: "Channel W-Engine (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             }
