@@ -345,7 +345,7 @@ h1 {
 .loading {
     display: inline-block;
     color: var(--matrix-light-green);
-    font-size: 0.9rem;
+    font-size: 3.0rem;
     animation: loading-pulse 1.5s infinite;
 }
 
@@ -591,11 +591,8 @@ h1 {
 [data-event-id*="nte_010"],
 [data-event-id*="nte_011"],
 [data-event-id*="dna_011"],
-[data-event-id*="msd_008"],
-[data-event-id*="msd_009"],
 [data-event-id*="msd_010"],
 [data-event-id*="msd_011"],
-[data-event-id*="msd_012"],
 [data-event-id*="rev_007"],
 [data-event-id*="rev_008"],
 [data-event-id*="rev_009"],
@@ -631,11 +628,8 @@ h1 {
 [data-event-id*="ark_005"] .event-name,
 [data-event-id*="dna_007"] .event-name,
 [data-event-id*="dna_008"] .event-name,
-[data-event-id*="msd_008"] .event-name,
-[data-event-id*="msd_009"] .event-name,
 [data-event-id*="msd_010"] .event-name,
 [data-event-id*="msd_011"] .event-name,
-[data-event-id*="msd_012"] .event-name,
 [data-event-id*="rev_007"] .event-name,
 [data-event-id*="rev_008"] .event-name,
 [data-event-id*="rev_009"] .event-name,

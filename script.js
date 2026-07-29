@@ -171,40 +171,45 @@ const eventDatabase = {
         name: "Zenless Zone Zero",
         events: [
             {
+                id: "zzz_001",
+                name: "Summmer Waves Roll In",
+                endDate: "2026-09-07T03:00:00Z"
+            },
+            {
+                id: "zzz_002",
+                name: "Potential Hypothesis: Hunting Game",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+            {
+                id: "zzz_003",
+                name: "Return to Ridu: Feathers of Reunion",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+            {
                 id: "zzz_004",
-                name: "Celestial Nexus Intelligence Dossier",
-                endDate: "2026-07-29T02:00:00Z"
-            },
-            {
-                id: "zzz_005",
-                name: "The Final Callback",
-                endDate: "2026-07-29T02:00:00Z"
-            },
-            {
-                id: "zzz_006",
                 name: "Deadly Assault",
-                endDate: "2026-07-29T02:00:00Z"
+                endDate: "2026-08-14T03:00:00Z"
             },
             // Gacha Banners
             {
                 id: "zzz_008",
                 name: "Channel Exclusive",
-                endDate: "2026-07-28T15:59:00Z"
+                endDate: "2026-09-09T03:00:00Z"
             },
             {
                 id: "zzz_009",
                 name: "Channel Exclusive (Rerun)",
-                endDate: "2026-07-28T15:59:00Z"
+                endDate: "2026-09-09T03:00:00Z"
             },
             {
                 id: "zzz_010",
                 name: "Channel W-Engine",
-                endDate: "2026-07-28T15:59:00Z"
+                endDate: "2026-09-09T03:00:00Z"
             },
             {
                 id: "zzz_011",
                 name: "Channel W-Engine (Rerun)",
-                endDate: "2026-07-28T15:59:00Z"
+                endDate: "2026-09-09T03:00:00Z"
             }
         ]
     },
@@ -257,28 +262,28 @@ const eventDatabase = {
                 name: "Traces in the Sand",
                 endDate: "2026-09-07T16:00:00Z"
             },
-             {
+            {
                 id: "dna_004",
                 name: "Bloomfield Station: Tales Untold",
                 endDate: "2026-09-07T16:00:00Z"
             },
-             {
+            {
                 id: "dna_005",
                 name: "Treasure Hunt Trials",
                 endDate: "2026-09-08T04:00:00Z"
             },
-             {
+            {
                 id: "dna_006",
                 name: "White Bunnies' Invitation",
                 endDate: "2026-09-07T16:00:00Z"
             },
             // Gacha Banners
-             {
+            {
                 id: "dna_007",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
-             {
+            {
                 id: "dna_008",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
@@ -290,13 +295,8 @@ const eventDatabase = {
         events: [
             {
                 id: "nte_001",
-                name: "Resolve Perks",
-                endDate: "2026-07-28T22:00:00Z"
-            },
-            {
-                id: "nte_002",
-                name: "Market Opening Rehearsal",
-                endDate: "2026-07-28T22:00:00Z"
+                name: "Going, Going, Gone!",
+                endDate: "2026-08-18T22:00:00Z"
             },
             {
                 id: "nte_003",
@@ -336,13 +336,13 @@ const eventDatabase = {
             // Gacha Banners
             {
                 id: "nte_010",
-                name: "Before the Dawn",
-                endDate: "2026-07-28T22:00:00Z"
+                name: "The Lifeline",
+                endDate: "2026-08-18T22:00:00Z"
             },
             {
                 id: "nte_011",
-                name: "Resolve Special",
-                endDate: "2026-07-28T22:00:00Z"
+                name: "Dreamgate Special",
+                endDate: "2026-08-18T22:00:00Z"
             }
         ]
     },
@@ -351,74 +351,59 @@ const eventDatabase = {
         events: [
             {
                 id: "msd_001",
-                name: "Summer Lane",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "100 Day Launch Anniversary 14-Day-Check-In",
+                endDate: "2026-08-12T00:00:00Z"
             },
             {
                 id: "msd_002",
-                name: "Grand Summer Festival Missions",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "The Arbiter's Divine Indulgence",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_003",
-                name: "An Unforgettable First Summer Drive",
-                endDate: "2026-08-04T24:00:00Z"
+                name: "The Inquisitor's Day Off",
+                endDate: "2026-08-26T00:00:00Z"
             },
             {
                 id: "msd_004",
-                name: "Herald of Love, Festival Dreamer",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "An Unforgettable First Summer Dive!",
+                endDate: "2026-08-05T00:00:00Z"
             },
             {
                 id: "msd_005",
-                name: "The Girl More Fiery than the Summer Heat",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "Inquisitor, Recorder of Reality and Phenomena Therein",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_006",
-                name: "Monsterling Trait Change Support",
-                endDate: "2026-08-18T24:00:00Z"
+                name: "Special Missions with Mabel",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_007",
-                name: "Gulgak",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "Inqusitor Mabel's 7-Day Gifts",
+                endDate: "2026-08-19T00:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "msd_008",
-                name: "The Girl More Fiery than the Summer Heat",
-                endDate: "2026-07-29T00:00:00Z"
+                name: "Legandary Monster Reginula Power Up Support",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_009",
-                name: "Herald of Love, Festival Dreamer",
-                endDate: "2026-07-29T00:00:00Z"
+                name: "Monsterling Trait Change Support",
+                endDate: "2026-08-19T00:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "msd_010",
-                name: "The Flame that Dreams of Justice",
-                endDate: "2026-07-29T00:00:00Z"
+                name: "Inquisitor, Recorder of Reality and Phenomena Therein",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_011",
-                name: "A Summer soaked in Love",
-                endDate: "2026-07-29T00:00:00Z"
-            },
-            {
-                id: "msd_012",
-                name: "Dokaebi of Reckless Heart",
-                endDate: "2026-07-29T00:00:00Z"
-            },
-            {
-                id: "msd_000",
-                name: "An Invitation to break the Ice",
-                endDate: "2026-07-28T24:00:00Z"
-            },
-            {
-                id: "msd_013",
-                name: "Path Bonus Time",
-                endDate: "2026-07-28T24:00:00Z"
+                name: "Reward Virtue, Eliminate Evil",
+                endDate: "2026-08-19T00:00:00Z"
             }
         ]
     },
@@ -459,7 +444,7 @@ const eventDatabase = {
             {
                 id: "rev_008",
                 name: "Rerun Event Banner",
-                endDate: "2026-07-28T10:00:00Z"
+                endDate: "2026-08-11T10:00:00Z"
             },
             {
                 id: "rev_009",
@@ -568,13 +553,13 @@ let countdownInterval = null;
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[Matrix Tracker] Initializing...');
     initUI();
-    
+
     // Explicitly set the dropdown menu to the empty placeholder value
     const select = document.getElementById('gameSelect');
     if (select) {
-        select.value = ""; 
+        select.value = "";
     }
-    
+
     // Triggers the empty database visual notice on start instead of auto-loading Genshin
     loadGameEvents();
 });
