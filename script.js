@@ -266,14 +266,19 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-08-09T18:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "ark_004",
+                name: "HEAT RAGE! MEGA ARENA!",
+                endDate: "2026-08-13T09:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "ark_005",
                 name: "North Yearns The Rift Vigile",
                 endDate: "2026-08-09T17:00:00Z"
             },
             {
-                id: "ark_005",
+                id: "ark_006",
                 name: "Scarlet Knot Issue",
                 endDate: "2026-08-09T17:00:00Z"
             }
