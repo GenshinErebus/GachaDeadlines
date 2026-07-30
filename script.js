@@ -215,12 +215,12 @@ const eventDatabase = {
                 name: "Phaethon's Grand Reveal of the Year",
                 endDate: "2026-09-09T03:00:00Z"
             },
-                        {
+            {
                 id: "zzz_008",
                 name: "Gift From the Cloud",
                 endDate: "2026-09-08T03:00:00Z"
             },
-             {
+            {
                 id: "zzz_009",
                 name: "Festival Special",
                 endDate: "2026-09-09T03:00:00Z"
@@ -317,14 +317,19 @@ const eventDatabase = {
                 name: "Great Chaos of Mechapuppets",
                 endDate: "2026-09-07T16:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "dna_008",
+                name: "Bountiful Day",
+                endDate: "2026-08-06T04:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "dna_009",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_009",
+                id: "dna_010",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
@@ -504,7 +509,7 @@ const eventDatabase = {
             {
                 id: "wuwa_002",
                 name: "Ascendant Aces",
-                endDate: "2026-07-30T09:00:00Z"
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_003",
@@ -536,51 +541,46 @@ const eventDatabase = {
                 name: "Recaptured: Action Highlights",
                 endDate: "2026-08-06T03:00:00Z"
             },
+             {
+                id: "wuwa_009",
+                name: "Virtual Crisis: Quadrant Trials",
+                endDate: "2026-08-19T03:00:00Z"
+            },
+               {
+                id: "wuwa_010",
+                name: "In Search of Lost Jade",
+                endDate: "2026-08-13T02:00:00Z"
+            },
             // Gacha Banners
             {
-                id: "wuwa_009",
-                name: "Featured Resonator Convene",
-                endDate: "2026-07-30T09:00:00Z"
-            },
-            {
-                id: "wuwa_010",
-                name: "Featured Resonator Convene Rerun-1",
-                endDate: "2026-07-30T09:00:00Z"
-            },
-            {
                 id: "wuwa_011",
-                name: "Featured Resonator Convene Rerun-2",
-                endDate: "2026-07-30T09:00:00Z"
+                name: "Featured Resonator Convene",
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_012",
-                name: "Reverb Resonator Convene",
+                name: "Featured Resonator Convene Rerun",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_013",
-                name: "Featured Weapon Convene",
-                endDate: "2026-07-30T09:00:00Z"
+                name: "Reverb Resonator Convene",
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_014",
-                name: "Featured Weapon Convene Rerun-1",
-                endDate: "2026-07-30T09:00:00Z"
+                name: "Featured Weapon Convene",
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_015",
-                name: "Featured Weapon Convene Rerun-2",
-                endDate: "2026-07-30T09:00:00Z"
+                name: "Featured Weapon Convene Rerun",
+                endDate: "2026-08-19T11:00:00Z"
             },
             {
                 id: "wuwa_016",
                 name: "Reverb Weapon Convene",
                 endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_017",
-                name: "Bountiful Crescendo",
-                endDate: "2026-07-30T03:00:00Z"
             }
         ]
     }
