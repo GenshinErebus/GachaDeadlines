@@ -312,14 +312,19 @@ const eventDatabase = {
                 name: "White Bunnies' Invitation",
                 endDate: "2026-09-07T16:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "dna_007",
+                name: "Great Chaos of Mechapuppets",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "dna_008",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_008",
+                id: "dna_009",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
