@@ -252,11 +252,6 @@ const eventDatabase = {
         name: "Arknights Endfield",
         events: [
             {
-                id: "ark_001",
-                name: "Fortune Connect-and-Win",
-                endDate: "2026-07-31T09:00:00Z"
-            },
-            {
                 id: "ark_002",
                 name: "Gaze Towards the Northern Exclusion",
                 endDate: "2026-08-09T17:00:00Z"
@@ -546,12 +541,12 @@ const eventDatabase = {
                 name: "Recaptured: Action Highlights",
                 endDate: "2026-08-06T03:00:00Z"
             },
-             {
+            {
                 id: "wuwa_009",
                 name: "Virtual Crisis: Quadrant Trials",
                 endDate: "2026-08-19T03:00:00Z"
             },
-               {
+            {
                 id: "wuwa_010",
                 name: "In Search of Lost Jade",
                 endDate: "2026-08-13T02:00:00Z"
