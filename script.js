@@ -473,12 +473,12 @@ const eventDatabase = {
             {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-08-16T03:00:00Z"
+                endDate: "2026-08-16T10:00:00Z"
             },
             {
                 id: "rev_006",
                 name: "Lucidscape",
-                endDate: "2026-08-01T03:00:00Z"
+                endDate: "2026-09-01T10:00:00Z"
             },
             // Gacha Banners
             {
