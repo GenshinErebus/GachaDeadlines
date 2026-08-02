@@ -412,11 +412,11 @@ const eventDatabase = {
             {
                 id: "msd_003",
                 name: "The Inquisitor's Day Off",
-                endDate: "2026-08-26T00:00:00Z"
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_004",
-                name: "An Unforgettable First Summer Dive!",
+                name: "An Unforgettable First Summer Dive! (Rewards)",
                 endDate: "2026-08-05T00:00:00Z"
             },
             {
