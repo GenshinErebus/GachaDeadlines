@@ -252,6 +252,11 @@ const eventDatabase = {
         name: "Arknights Endfield",
         events: [
             {
+                id: "ark_001",
+                name: "Sanity Supply",
+                endDate: "2026-08-09T09:00:00Z"
+            },
+            {
                 id: "ark_002",
                 name: "Gaze Towards the Northern Exclusion",
                 endDate: "2026-08-09T17:00:00Z"
