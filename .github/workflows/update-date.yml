@@ -20,12 +20,12 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          # 1. Your original working timestamp update
+          # 1. Update the timestamp between HTML comments (Your original working logic)
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
           
-          # 2. Simplified cache version update without risky regex patterns
-          sed -i "s|script\.js|script.js?v=${COMMIT_HASH}|g" index.html
-          sed -i "s|style\.css|style.css?v=${COMMIT_HASH}|g" index.html
+          # 2. Update script and style lines using your existing comments as anchors
+          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
+          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
