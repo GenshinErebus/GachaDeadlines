@@ -2,6 +2,8 @@ name: Auto Update Timestamp
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 on:
   push:
@@ -20,7 +22,6 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          # Match lines containing SCRIPT_VERSION, STYLE_VERSION or LAST_UPDATE independent of exact spaces
           sed -i "/LAST_UPDATE_HERE/c\<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>" index.html
           sed -i "/SCRIPT_VERSION/c\<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->" index.html
           sed -i "/STYLE_VERSION/c\<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->" index.html
@@ -31,3 +32,7 @@ jobs:
           commit_message: "chore: update timestamp in index.html"
           file_pattern: 'index.html|sitemap.xml|.nojekyll'
           commit_options: '--allow-empty'
+
+      # Forces GitHub Pages to build the website with the updated index.html
+      - name: Trigger GitHub Pages deployment
+        uses: actions/deploy-pages@v4
