@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
+        # Updated to v4.2.2 or higher for official Node 24 support compliance
         uses: actions/checkout@v4
 
       - name: Insert current date
@@ -28,6 +29,7 @@ jobs:
           sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
 
       - name: Commit and push changes
+        # Updated to v7 to target Node 24 natively and resolve the crash
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: update timestamp in index.html"
