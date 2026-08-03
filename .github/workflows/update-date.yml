@@ -2,8 +2,6 @@ name: Auto Update Timestamp
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 on:
   push:
@@ -29,10 +27,6 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update timestamp in index.html"
+          commit_message: "chore: update timestamp in index.html [skip ci]"
           file_pattern: 'index.html|sitemap.xml|.nojekyll'
           commit_options: '--allow-empty'
-
-      # Forces GitHub Pages to build the website with the updated index.html
-      - name: Trigger GitHub Pages deployment
-        uses: actions/deploy-pages@v4
