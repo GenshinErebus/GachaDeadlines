@@ -20,8 +20,10 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
+          # Update the timestamp between HTML comments
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
           
+          # Wipe out everything between the anchors and insert clean tags with the hash
           sed -i 's|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src="script.js?v='${COMMIT_HASH}'"></script><!-- END_SCRIPT -->|g' index.html
           sed -i 's|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v='${COMMIT_HASH}'"><!-- END_STYLE -->|g' index.html
 
