@@ -1,6 +1,8 @@
-name: Auto Update Timestamp
+name: Auto Update Timestamp & Cache Version
+
 permissions:
   contents: write
+
 on:
   push:
     paths:
@@ -13,13 +15,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Insert current date
+      - name: Get Commit Hash
+        id: hash
+        run: echo "commit_hash=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Update timestamp
         run: |
-          CURRENT_DATE="Updated $(date -u +'%d %B %Y')"
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->$CURRENT_DATE<!-- END_UPDATE -->|g" index.html
+          CURRENT_DATE="Updated $(date -u +%d %B %Y)"
+          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
+
+      - name: Update cache version
+        run: |
+          # Setze v=Commit-Hash für beide Dateien
+          sed -i "s|script\.js?v=[^\"]*|script.js?v=${{ steps.hash.outputs.commit_hash }}|g" index.html
+          sed -i "s|style\.css?v=[^\"]*|style.css?v=${{ steps.hash.outputs.commit_hash }}|g" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update timestamp in index.html"
-          file_pattern: 'index.html|sitemap.xml|.nojekyll'
+          commit_message: "chore: update timestamp & cache version (${{ steps.hash.outputs.commit_hash }})"
+          file_pattern: 'index.html sitemap.xml .nojekyll'
