@@ -23,7 +23,7 @@ jobs:
           # 1. Update the timestamp between HTML comments (Your original working logic)
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
           
-          # 2. Update script and style tags safely without any escaping problems
+          # 2. Update script and style tags safely using separate quotes
           sed -i 's|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src="script.js?v='${COMMIT_HASH}'"></script><!-- END_SCRIPT -->|g' index.html
           sed -i 's|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v='${COMMIT_HASH}'"><!-- END_STYLE -->|g' index.html
 
@@ -32,4 +32,5 @@ jobs:
         with:
           commit_message: "chore: update timestamp in index.html"
           file_pattern: 'index.html|sitemap.xml|.nojekyll'
-          commit_options: '--allow-empty'
+          # Force the action to report a green checkmark, even if no files were changed
+          skip_dirty_check: true
