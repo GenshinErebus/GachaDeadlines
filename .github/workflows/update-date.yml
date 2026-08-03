@@ -20,9 +20,9 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          perl -0777 -pi -e "s|<!-- LAST_UPDATE_HERE -->.*?<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
-          perl -0777 -pi -e "s|<!-- SCRIPT_VERSION -->.*?<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION -->\n<script src=\x22script.js?v=${COMMIT_HASH}\x22></script>\n<!-- END_SCRIPT -->|gs" index.html
-          perl -0777 -pi -e "s|<!-- STYLE_VERSION -->.*?<!-- END_STYLE -->|<!-- STYLE_VERSION -->\n<link rel=\x22stylesheet\x22 href=\x22style.css?v=${COMMIT_HASH}\x22>\n<!-- END_STYLE -->|gs" index.html
+          perl -0777 -pi -e 's|<!-- LAST_UPDATE_HERE -->.*?<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->'"${CURRENT_DATE}"'<!-- END_UPDATE -->|g' index.html
+          perl -0777 -pi -e 's|<!-- SCRIPT_VERSION -->.*?<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION -->\n<script src="\x22"script.js?v='${COMMIT_HASH}'"\x22"></script>\n<!-- END_SCRIPT -->|gs' index.html
+          perl -0777 -pi -e 's|<!-- STYLE_VERSION -->.*?<!-- END_STYLE -->|<!-- STYLE_VERSION -->\n<link rel="\x22"stylesheet"\x22" href="\x22"style.css?v='${COMMIT_HASH}'"\x22">\n<!-- END_STYLE -->|gs' index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
