@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-        <!-- Cache-Busting: Forces the browser to always fetch the latest version from the server -->
+    <!-- Cache-Busting: Forces the browser to always fetch the latest version from the server -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -16,6 +16,11 @@
         content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
     <link rel="stylesheet" href="style.css">
     <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c" />
+    <!-- Favicons - Neon green stopwatch design optimized for small sizes -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -42,14 +47,12 @@
             <button onclick="setRegion('na')" id="btn-na"
                 style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[AMERICA]</button>
         </div>
-            <p id="update-status"><!-- LAST_UPDATE_HERE --><!-- END_UPDATE --></p>
-    <a href="https://github.com/GenshinErebus/GachaDeadlines" target="_blank" class="desktop-only-github">Source
-        Code</a>
-   <!-- Icon to get you to my channel -->
-    <a href="https://www.youtube.com/@GenshinErebus/videos"
-        style="position: fixed; top: 5px; right: 185px; z-index: 9999;">
-        <img src="avatar.png" alt="youtube channel" style="width: 100%; max-width: 63px; height: auto;">
-    </a>
+        <p id="update-status"><!-- LAST_UPDATE_HERE --><!-- END_UPDATE --></p>
+        <a href="https://github.com/GenshinErebus/GachaDeadlines" target="_blank" class="desktop-only-github" >Source Code</a>
+        <!-- Icon to get you to my channel -->
+        <a href="https://www.youtube.com/@GenshinErebus/videos" class="youtube-avatar">
+            <img src="avatar.png" alt="youtube channel">
+        </a>
     </nav>
     <!-- Main content container -->
     <div class="container">
@@ -59,7 +62,7 @@
             limited-time endgame cycle rewards.
         </p>
     </div>
- 
+
     <!-- Load JavaScript -->
     <script src="script.js"></script>
     <img src="https://genshinerebus.goatcounter.com/count?p=/" class="bg-layer-fix" alt="">

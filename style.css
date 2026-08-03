@@ -1,4 +1,6 @@
-/* Color Variables - Matrix Palette */
+/* ============================================
+   COLOR VARIABLES - MATRIX PALETTE
+   ============================================ */
 :root {
     --matrix-black: #000000;
     --matrix-dark-green: #0a0a0a;
@@ -9,7 +11,9 @@
     --crt-scanline: rgba(18, 16, 16, 0.5);
 }
 
-/* Global Reset & Base Styles */
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +29,7 @@ body {
     position: relative;
 }
 
-/* Matrix Digital Rain Background Effect */
+/* Matrix digital rain background effect */
 body::before {
     content: '';
     position: fixed;
@@ -45,7 +49,7 @@ body::before {
     z-index: -1;
 }
 
-/* CRT Scanline Effect Overlay */
+/* CRT scanline effect overlay */
 body::after {
     content: '';
     position: fixed;
@@ -61,7 +65,9 @@ body::after {
     opacity: 0.3;
 }
 
-/* Navigation Bar - Terminal Header Style */
+/* ============================================
+   NAVIGATION BAR - TERMINAL HEADER STYLE
+   ============================================ */
 .game-selector {
     position: sticky;
     top: 0;
@@ -72,7 +78,6 @@ body::after {
     z-index: 100;
     backdrop-filter: blur(5px);
 }
-
 
 #gameSelect {
     appearance: none;
@@ -105,10 +110,6 @@ body::after {
         0 0 25px rgba(0, 255, 0, 0.4);
 }
 
-/* REMOVED: Dropdown arrow custom styling */
-/* .game-selector::after { ... } - DELETED */
-
-/* Option Dropdown Styling */
 #gameSelect option {
     background: var(--matrix-black);
     color: var(--matrix-green);
@@ -120,17 +121,16 @@ body::after {
     background: var(--matrix-dim-green);
 }
 
-/* Main Content Container */
+/* ============================================
+   MAIN CONTENT CONTAINER
+   ============================================ */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Section Headers - Clean Terminal Style (NO GLITCH) */
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     color: var(--matrix-light-green);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -147,7 +147,9 @@ h1 {
     margin-bottom: 2rem;
 }
 
-/* Event Cards - Terminal Window Style */
+/* ============================================
+   EVENT CARDS - TERMINAL WINDOW STYLE
+   ============================================ */
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -190,18 +192,11 @@ h1 {
 }
 
 @keyframes pulse-border {
-
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
-/* Card Corner Decorations */
+/* Card corner decorations */
 .event-card::after {
     content: '■ ■ ■ ■';
     position: absolute;
@@ -212,7 +207,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* Event Info Typography */
 .event-name {
     font-size: 1.1rem;
     color: var(--matrix-light-green);
@@ -220,7 +214,9 @@ h1 {
     text-shadow: 0 0 5px rgba(0, 255, 51, 0.5);
 }
 
-/* Countdown Timer Styling */
+/* ============================================
+   COUNTDOWN TIMER STYLING
+   ============================================ */
 .countdown {
     display: flex;
     justify-content: space-around;
@@ -249,7 +245,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* Urgency States */
+/* Urgency states */
 .countdown.urgent {
     border-color: #ff0000;
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
@@ -262,27 +258,42 @@ h1 {
 }
 
 @keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
+/* Expired events - turquoise highlight */
 .countdown.expired {
-    border-color: var(--matrix-dim-green);
-    opacity: 0.6;
+    border-color: #00ced1 !important;
+    background: rgba(0, 206, 209, 0.1) !important;
+    box-shadow: 0 0 15px rgba(0, 206, 209, 0.4) !important;
 }
 
 .countdown.expired .countdown-value {
-    color: var(--matrix-dim-green);
+    color: #00ced1 !important;
+    text-shadow: 0 0 8px rgba(0, 206, 209, 0.6) !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
 }
 
-/* Footer Status Bar */
+.countdown.expired .countdown-label {
+    color: #00ced1 !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+}
+
+.event-card.has-expired-timer {
+    border-color: #00ced1 !important;
+    background: rgba(0, 206, 209, 0.05) !important;
+}
+
+.event-card.has-expired-timer .event-name {
+    color: #00ced1 !important;
+}
+
+/* ============================================
+   FOOTER STATUS BAR
+   ============================================ */
 .status-bar {
     position: fixed;
     bottom: 0;
@@ -313,55 +324,13 @@ h1 {
 }
 
 @keyframes pulse-dot {
-
-    0%,
-    100% {
-        box-shadow: 0 0 5px var(--matrix-light-green);
-    }
-
-    50% {
-        box-shadow: 0 0 15px var(--matrix-light-green);
-    }
+    0%, 100% { box-shadow: 0 0 5px var(--matrix-light-green); }
+    50% { box-shadow: 0 0 15px var(--matrix-light-green); }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .events-grid {
-        grid-template-columns: 1fr;
-    }
-
-    #gameSelect {
-        min-width: 200px;
-        width: 100%;
-    }
-
-    .container {
-        padding: 1rem;
-        padding-bottom: 4rem;
-    }
-}
-
-/* Loading Animation */
-.loading {
-    display: inline-block;
-    color: var(--matrix-light-green);
-    font-size: 3.0rem;
-    animation: loading-pulse 1.5s infinite;
-}
-
-@keyframes loading-pulse {
-
-    0%,
-    100% {
-        opacity: 0.3;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-/* Scrollbar Styling */
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -379,7 +348,9 @@ h1 {
     background: var(--matrix-light-green);
 }
 
-/* Stats Overview Styling */
+/* ============================================
+   STATS OVERVIEW STYLING
+   ============================================ */
 .stats-overview {
     display: flex;
     gap: 2rem;
@@ -410,7 +381,6 @@ h1 {
     font-weight: bold;
 }
 
-/* Meta Row Styling */
 .meta-row {
     display: flex;
     justify-content: space-between;
@@ -428,7 +398,6 @@ h1 {
     color: var(--matrix-green);
 }
 
-/* Status Indicators */
 .meta-value.status-active {
     color: var(--matrix-green);
 }
@@ -444,135 +413,154 @@ h1 {
 }
 
 .bg-layer-fix {
-    /* Position the tracking pixel outside the normal document flow */
     position: absolute;
-
-    /* Shrink the element down to prevent it from affecting the layout */
     width: 1px;
     height: 1px;
-
-    /* Make the element completely transparent */
     opacity: 0;
-
-    /* Hide any content that might overflow the 1px container */
     overflow: hidden;
-
-    /* Prevent the pixel from intercepting clicks or hover events */
     pointer-events: none;
-
-    /* Ensure no borders are rendered around the image */
     border: 0;
-
-    /* Modern standard to visually hide the element completely */
     clip-path: inset(50%);
 }
 
-/* Desktop configuration matching your exact original layout styles */
-#update-status {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    margin: 0;
-    color: #00ff00;
-    font-family: monospace;
-}
-
-@media (max-width: 768px) {
-
-    /* 1. Prevent the select menu from stretching into the avatar's space */
-    #gameSelect {
-        max-width: calc(100% - 75px) !important;
-        min-width: unset !important;
-        width: auto !important;
-    }
-
-    /* 2. Pin the avatar link strictly to the top right corner */
+/* ============================================
+   DESKTOP LAYOUT (Screens > 768px)
+   Avatar + Update + GitHub aligned on right with proper spacing
+   ============================================ */
+@media (min-width: 769px) {
+    /* YouTube Avatar */
     a[href*="youtube"] {
-        position: absolute !important;
-        top: 10px !important;
-        right: 15px !important;
-        left: auto !important;
-        margin: 0 !important;
-        display: block !important;
-        width: 55px !important;
-        height: auto !important;
+        position: fixed !important;
+        top: 5px !important;
+        right: 231px !important;
         z-index: 9999 !important;
+        display: block !important;
+        width: 63px !important;
+        height: 63px !important;
     }
 
-    /* Ensure the image rendering and blending stays correct */
     a[href*="youtube"] img {
         display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 63px !important;
+        height: 63px !important;
+        max-width: 63px !important;
         mix-blend-mode: screen !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
     }
 
-    /* 3. Pin the update text perfectly underneath the server selector */
+    /* Update status text - Top right corner */
     #update-status {
-        position: absolute !important;
-        top: 90px !important;
-        /* One tiny step up for the perfect alignment */
-        right: 15px !important;
-        left: auto !important;
-        font-size: 0.75rem !important;
-        color: var(--matrix-light-green) !important;
-        margin: 0 !important;
-        display: block !important;
-        text-align: right !important;
-        white-space: nowrap !important;
-        z-index: 9999 !important;
+        position: fixed !important;
+        top: 10px !important;
+        right: 20px !important;
     }
 
+    /* GitHub link - Below update status */
+    .desktop-only-github {
+        position: fixed !important;
+        top: 35px !important;
+        right: 20px !important;
+        z-index: 9999;
+        color: var(--matrix-light-green);
+        font-family: monospace;
+        font-size: 0.8rem;
+        text-decoration: none;
+        opacity: 0.8;
+    }
 
-    /* 4. Keep spacing clean for the server selector on mobile */
+    .desktop-only-github:hover {
+        opacity: 1;
+        text-shadow: 0 0 8px var(--matrix-light-green);
+    }
+
+    /* Region selector spacing */
     .region-selector {
         margin-top: 15px !important;
     }
 }
 
-/* 1. Desktop Style: Positioned neatly right underneath your date */
-.desktop-only-github {
-    position: absolute;
-    top: 42px;
-    /* Placed exactly under the update text line */
-    right: 20px;
-    z-index: 9999;
-    color: var(--matrix-light-green);
-    font-family: monospace;
-    font-size: 0.8rem;
-    text-decoration: none;
-    /* Removed underline for a cleaner terminal aesthetic */
-    opacity: 0.8;
-}
-
-/* Glowing effect when hovering on desktop */
-.desktop-only-github:hover {
-    opacity: 1;
-    text-shadow: 0 0 8px var(--matrix-light-green);
-}
-
-/* 2. Smartphone Protection: Completely erase the element from mobile screens */
+/* ============================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   Compact top-right arrangement
+   ============================================ */
 @media (max-width: 768px) {
+    /* YouTube Avatar - Fixed top right */
+    a[href*="youtube"] {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        margin: 0 !important;
+        display: block !important;
+        z-index: 9999 !important;
+    }
+
+    a[href*="youtube"] img {
+        display: block !important;
+        width: 63px !important;
+        height: 63px !important;
+        max-width: 63px !important;
+        mix-blend-mode: screen !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+    }
+
+    /* Update status - Below navigation bar, RIGHT aligned */
+    #update-status {
+        position: fixed !important;
+        top: 92px !important;
+        right: 20px !important;  /* CHANGED: Now on the right side */
+        left: auto !important;
+    }
+
+    /* Hide GitHub link on mobile */
     .desktop-only-github {
         display: none !important;
-        /* It literally does not exist on mobile, protecting your layout */
     }
 
-    /* Bulletproof scale to force smaller fonts on mobile select and options */
-    #game-filter,
-    #game-filter option,
-    .game-selector,
-    .game-selector select {
-        font-size: 0.75rem !important;
-        /* Slightly smaller to guarantee fit */
+    /* Adjust game select dropdown - leave room for avatar */
+    #gameSelect {
+        max-width: calc(100% - 90px) !important;
+        min-width: unset !important;
+        width: auto !important;
     }
 
+    .region-selector {
+        margin-top: 15px !important;
+    }
+
+    /* Events grid single column */
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Container padding adjustment */
+    .container {
+        padding: 1rem;
+        padding-bottom: 4rem;
+    }
 }
 
-/* --- GOLDEN GACHA BANNER STYLING --- */
+/* ============================================
+   LOADING ANIMATION
+   ============================================ */
+.loading {
+    display: inline-block;
+    color: var(--matrix-light-green);
+    font-size: 3.0rem;
+    animation: loading-pulse 1.5s infinite;
+}
 
-/* Golden border, glow, and subtle background for all specified banner IDs */
+@keyframes loading-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ============================================
+   GOLDEN GACHA BANNER STYLING
+   Special styling for all gacha banners
+   ============================================ */
 [data-event-id*="gi_010"],
 [data-event-id*="gi_011"],
 [data-event-id*="gi_012"],
@@ -602,12 +590,10 @@ h1 {
 [data-event-id*="wuwa_015"],
 [data-event-id="wuwa_016"] {
     border: 1px solid #f3ca40 !important;
-    /* Gacha Gold */
     box-shadow: 0 0 15px rgba(243, 202, 64, 0.25) !important;
     background: rgba(243, 202, 64, 0.03) !important;
 }
 
-/* Golden text color and glow for the event titles */
 [data-event-id*="gi_010"] .event-name,
 [data-event-id*="gi_011"] .event-name,
 [data-event-id*="gi_012"] .event-name,

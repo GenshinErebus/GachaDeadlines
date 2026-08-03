@@ -873,7 +873,7 @@ function startCountdownTimers() {
     }, 1000);
 }
 
-// Updates all countdown displays
+// UPDATED: Updates all countdown displays with turquoise expired highlighting
 function updateAllCountdowns() {
     const allCards = document.querySelectorAll('.event-card');
 
@@ -908,10 +908,15 @@ function updateAllCountdowns() {
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl) {
             countdownEl.classList.remove('urgent', 'expired');
+            
             if (status === 'urgent') {
                 countdownEl.classList.add('urgent');
+                card.classList.remove('has-expired-timer');
             } else if (status === 'expired') {
                 countdownEl.classList.add('expired');
+                card.classList.add('has-expired-timer');
+            } else {
+                card.classList.remove('has-expired-timer');
             }
         }
     });
