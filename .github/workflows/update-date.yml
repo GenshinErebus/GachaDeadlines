@@ -15,17 +15,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Insert current date
+      - name: Insert current date and update cache versions
         run: |
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          # Update the timestamp between HTML comments
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
+          python3 -c "
+          import re
           
-          # Update script and style tags across multiple lines using multi-line sed patterns
-          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION -->\n<script src=\"script.js?v=${COMMIT_HASH}\"></script>\n<!-- END_SCRIPT -->|g" index.html
-          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION -->\n<link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\">\n<!-- END_STYLE -->|g" index.html
+          with open('index.html', 'r', encoding='utf-8') as f:
+              content = f.read()
+          
+          # 1. Update timestamp
+          content = re.sub(r'<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->', f'<!-- LAST_UPDATE_HERE -->{CURRENT_DATE}<!-- END_UPDATE -->', content)
+          
+          # 2. Update script tag across lines
+          content = re.sub(r'<!-- SCRIPT_VERSION -->[\s\S]*?<!-- END_SCRIPT -->', f'<!-- SCRIPT_VERSION -->\n<script src=\"script.js?v={COMMIT_HASH}\"></script>\n<!-- END_SCRIPT -->', content)
+          
+          # 3. Update style tag across lines
+          content = re.sub(r'<!-- STYLE_VERSION -->[\s\S]*?<!-- END_STYLE -->', f'<!-- STYLE_VERSION -->\n<link rel=\"stylesheet\" href=\"style.css?v={COMMIT_HASH}\">\n<!-- END_STYLE -->', content)
+          
+          with open('index.html', 'w', encoding='utf-8') as f:
+              f.write(content)
+          "
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
