@@ -1,4 +1,4 @@
-name: Auto Update Timestamp & Cache Version
+name: Auto Update Timestamp
 
 permissions:
   contents: write
@@ -15,38 +15,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get Commit Hash
-        id: hash
-        run: echo "commit_hash=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Update files using Node.js
+      - name: Insert current date
         run: |
-          node -e '
-            const fs = require("fs");
-            
-            // 1. Update timestamp
-            if (fs.existsSync("index.html")) {
-              let html = fs.readFileSync("index.html", "utf8");
-              const dateStr = "Updated " + new Date().toUTCString().split(" ").slice(1, 4).join(" ");
-              
-              // Flexible regex to catch comments even if they are empty
-              html = html.replace(/<!-- LAST_UPDATE_HERE -->([\s\S]*?)<!-- END_UPDATE -->/g, `<!-- LAST_UPDATE_HERE -->${dateStr}<!-- END_UPDATE -->`);
-              
-              // 2. Update cache versions
-              const hash = "${{ steps.hash.outputs.commit_hash }}";
-              html = html.replace(/script\.js\?v=[^"]*/g, `script.js?v=${hash}`);
-              html = html.replace(/style\.css\?v=[^"]*/g, `style.css?v=${hash}`);
-              
-              fs.writeFileSync("index.html", html, "utf8");
-              console.log("Files successfully updated.");
-            } else {
-              console.log("index.html not found.");
-            }
-          '
+          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
+          COMMIT_HASH=$(git rev-parse --short=7 HEAD)
+          
+          # Update the timestamp between HTML comments
+          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
+          
+          # Update cache versions using hex codes for quotes to avoid syntax breaks
+          sed -i "s|script\.js?v=[x22]*|script.js?v=${COMMIT_HASH}|g" index.html
+          sed -i "s|style\.css?v=[x22]*|style.css?v=${COMMIT_HASH}|g" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update timestamp & cache version (${{ steps.hash.outputs.commit_hash }})"
-          file_pattern: 'index.html sitemap.xml'
+          commit_message: "chore: update timestamp in index.html"
+          file_pattern: 'index.html sitemap.xml .nojekyll'
           commit_options: '--allow-empty'
