@@ -20,8 +20,11 @@ jobs:
         run: echo "commit_hash=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
 
       - name: Update timestamp and cache versions
+        env:
+          # Safely generate the date string using an environment variable
+          DATE_FORMAT: '+%d %B %Y'
         run: |
-          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
+          CURRENT_DATE="Updated $(date -u "$DATE_FORMAT")"
           
           # Replace content between comments even if there is nothing between them
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html || true
@@ -35,4 +38,4 @@ jobs:
         with:
           commit_message: "chore: update timestamp & cache version (${{ steps.hash.outputs.commit_hash }})"
           file_pattern: 'index.html sitemap.xml'
-          commit_options: '--allow-empty' # Allows Git to proceed even if no files were changed
+          commit_options: '--allow-empty'
