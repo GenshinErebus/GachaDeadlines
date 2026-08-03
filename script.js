@@ -485,7 +485,7 @@ const eventDatabase = {
                 name: "Lucidscape",
                 endDate: "2026-09-01T10:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "rev_007",
                 name: "Event Banner",
