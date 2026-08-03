@@ -21,12 +21,11 @@ jobs:
 
       - name: Update timestamp
         run: |
-          CURRENT_DATE="Updated $(date -u +%d %B %Y)"
+          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
 
       - name: Update cache version
         run: |
-          # Setze v=Commit-Hash für beide Dateien
           sed -i "s|script\.js?v=[^\"]*|script.js?v=${{ steps.hash.outputs.commit_hash }}|g" index.html
           sed -i "s|style\.css?v=[^\"]*|style.css?v=${{ steps.hash.outputs.commit_hash }}|g" index.html
 
@@ -34,4 +33,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update timestamp & cache version (${{ steps.hash.outputs.commit_hash }})"
-          file_pattern: 'index.html sitemap.xml .nojekyll'
+          file_pattern: 'index.html sitemap.xml'
