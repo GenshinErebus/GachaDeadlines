@@ -23,10 +23,10 @@ jobs:
         run: |
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           
-          # Ersetzt den Inhalt, selbst wenn zwischen den Kommentaren absolut nichts steht
+          # Replace content between comments even if there is nothing between them
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html || true
           
-          # Aktualisiert die Cache-Versionen
+          # Update cache versions for scripts and styles
           sed -i "s|script\.js?v=[^\"]*|script.js?v=${{ steps.hash.outputs.commit_hash }}|g" index.html || true
           sed -i "s|style\.css?v=[^\"]*|style.css?v=${{ steps.hash.outputs.commit_hash }}|g" index.html || true
 
@@ -35,5 +35,4 @@ jobs:
         with:
           commit_message: "chore: update timestamp & cache version (${{ steps.hash.outputs.commit_hash }})"
           file_pattern: 'index.html sitemap.xml'
-          skip_dirty_check: true
-          skip_fetch: true
+          commit_options: '--allow-empty' # Allows Git to proceed even if no files were changed
