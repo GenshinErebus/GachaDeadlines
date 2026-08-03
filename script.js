@@ -343,6 +343,7 @@ const eventDatabase = {
     nte: {
         name: "Neverness To Everness",
         events: [
+            // General Events (9 total)
             {
                 id: "nte_001",
                 name: "Going, Going, Gone!",
