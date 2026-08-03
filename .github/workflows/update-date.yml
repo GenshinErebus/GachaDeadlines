@@ -20,9 +20,10 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
-          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
-          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
+          # Match lines containing SCRIPT_VERSION, STYLE_VERSION or LAST_UPDATE independent of exact spaces
+          sed -i "/LAST_UPDATE_HERE/c\<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>" index.html
+          sed -i "/SCRIPT_VERSION/c\<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->" index.html
+          sed -i "/STYLE_VERSION/c\<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
