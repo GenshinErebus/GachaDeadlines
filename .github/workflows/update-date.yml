@@ -27,8 +27,8 @@ jobs:
               content = f.read()
           
           content = re.sub(r'<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->', f'<!-- LAST_UPDATE_HERE -->{CURRENT_DATE}<!-- END_UPDATE -->', content)
-          content = re.sub(r'<!-- SCRIPT_VERSION -->[\s\S]*?<!-- END_SCRIPT -->', f'<!-- SCRIPT_VERSION -->\n<script src=\"script.js?v={COMMIT_HASH}\"></script>\n<!-- END_SCRIPT -->', content)
-          content = re.sub(r'<!-- STYLE_VERSION -->[\s\S]*?<!-- END_STYLE -->', f'<!-- STYLE_VERSION -->\n<link rel=\"stylesheet\" href=\"style.css?v={COMMIT_HASH}\">\n<!-- END_STYLE -->', content)
+          content = re.sub(r'<!-- SCRIPT_VERSION -->[\s\S]*?<!-- END_SCRIPT -->', f'<!-- SCRIPT_VERSION -->\n<script src=\'script.js?v={COMMIT_HASH}\'></script>\n<!-- END_SCRIPT -->', content)
+          content = re.sub(r'<!-- STYLE_VERSION -->[\s\S]*?<!-- END_STYLE -->', f'<!-- STYLE_VERSION -->\n<link rel=\'stylesheet\' href=\'style.css?v={COMMIT_HASH}\'>\n<!-- END_STYLE -->', content)
           
           with open('index.html', 'w', encoding='utf-8') as f:
               f.write(content)
