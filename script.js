@@ -28,6 +28,7 @@ const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
         events: [
+            // General Events (9 total)
             {
                 id: "gi_000",
                 name: "Ley Line Overflow",
