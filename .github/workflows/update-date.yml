@@ -19,19 +19,30 @@ jobs:
         id: hash
         run: echo "commit_hash=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Update timestamp and cache versions
-        env:
-          # Safely generate the date string using an environment variable
-          DATE_FORMAT: '+%d %B %Y'
+      - name: Update files using Node.js
         run: |
-          CURRENT_DATE="Updated $(date -u "$DATE_FORMAT")"
-          
-          # Replace content between comments even if there is nothing between them
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html || true
-          
-          # Update cache versions for scripts and styles
-          sed -i "s|script\.js?v=[^\"]*|script.js?v=${{ steps.hash.outputs.commit_hash }}|g" index.html || true
-          sed -i "s|style\.css?v=[^\"]*|style.css?v=${{ steps.hash.outputs.commit_hash }}|g" index.html || true
+          node -e '
+            const fs = require("fs");
+            
+            // 1. Update timestamp
+            if (fs.existsSync("index.html")) {
+              let html = fs.readFileSync("index.html", "utf8");
+              const dateStr = "Updated " + new Date().toUTCString().split(" ").slice(1, 4).join(" ");
+              
+              // Flexible regex to catch comments even if they are empty
+              html = html.replace(/<!-- LAST_UPDATE_HERE -->([\s\S]*?)<!-- END_UPDATE -->/g, `<!-- LAST_UPDATE_HERE -->${dateStr}<!-- END_UPDATE -->`);
+              
+              // 2. Update cache versions
+              const hash = "${{ steps.hash.outputs.commit_hash }}";
+              html = html.replace(/script\.js\?v=[^"]*/g, `script.js?v=${hash}`);
+              html = html.replace(/style\.css\?v=[^"]*/g, `style.css?v=${hash}`);
+              
+              fs.writeFileSync("index.html", html, "utf8");
+              console.log("Files successfully updated.");
+            } else {
+              console.log("index.html not found.");
+            }
+          '
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
