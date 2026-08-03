@@ -322,7 +322,7 @@ const eventDatabase = {
                 name: "Bountiful Day",
                 endDate: "2026-08-06T04:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "dna_009",
                 name: "Event Esclusive",
