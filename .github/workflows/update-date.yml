@@ -23,9 +23,9 @@ jobs:
           # 1. Update the timestamp between HTML comments (Your original working logic)
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
           
-          # 2. Update script and style lines using your existing comments as anchors
-          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
-          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
+          # 2. Update script and style tags safely without any escaping problems
+          sed -i 's|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src="script.js?v='${COMMIT_HASH}'"></script><!-- END_SCRIPT -->|g' index.html
+          sed -i 's|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v='${COMMIT_HASH}'"><!-- END_STYLE -->|g' index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
