@@ -68,7 +68,7 @@ const eventDatabase = {
                 name: "Test Run",
                 endDate: "2026-08-11T14:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "gi_010",
                 name: "Character Event Wish",
