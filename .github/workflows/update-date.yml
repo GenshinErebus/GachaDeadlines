@@ -14,15 +14,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BYPASS_TOKEN }}
 
       - name: Insert current date and update cache versions
         run: |
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           COMMIT_HASH=$(git rev-parse --short=7 HEAD)
           
-          perl -pi -e 's|.*LAST_UPDATE_HERE.*|<p id="update-status"><!-- LAST_UPDATE_HERE -->'"${CURRENT_DATE}"'<!-- END_UPDATE --></p>|g' index.html
-          perl -pi -e 's|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src="script.js?v='${COMMIT_HASH}'"></script><!-- END_SCRIPT -->|g' index.html
-          perl -pi -e 's|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v='${COMMIT_HASH}'"><!-- END_STYLE -->|g' index.html
+          sed -i "/LAST_UPDATE_HERE/c\<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>" index.html
+          sed -i "/SCRIPT_VERSION/c\<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->" index.html
+          sed -i "/STYLE_VERSION/c\<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
