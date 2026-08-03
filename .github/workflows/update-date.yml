@@ -23,9 +23,9 @@ jobs:
           # 1. Your original working timestamp update
           sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
           
-          # 2. Cache versions updated safely using hex code (\x22) for the quote character
-          sed -i "s|script\.js?v=[^\x22]*|script.js?v=${COMMIT_HASH}|g" index.html
-          sed -i "s|style\.css?v=[^\x22]*|style.css?v=${COMMIT_HASH}|g" index.html
+          # 2. Simplified cache version update without risky regex patterns
+          sed -i "s|script\.js|script.js?v=${COMMIT_HASH}|g" index.html
+          sed -i "s|style\.css|style.css?v=${COMMIT_HASH}|g" index.html
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
