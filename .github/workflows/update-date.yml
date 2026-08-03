@@ -29,6 +29,9 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
+          branch: main
           commit_message: "chore: update timestamp in index.html [skip ci]"
-          file_pattern: 'index.html|sitemap.xml|.nojekyll'
+          file_pattern: 'index.html sitemap.xml .nojekyll'
           commit_options: '--allow-empty'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BYPASS_TOKEN }}
