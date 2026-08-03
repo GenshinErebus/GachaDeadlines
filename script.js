@@ -383,7 +383,7 @@ const eventDatabase = {
                 name: "Shadow-n-Seek",
                 endDate: "2026-08-18T22:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "nte_010",
                 name: "The Lifeline",
