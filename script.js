@@ -266,7 +266,7 @@ const eventDatabase = {
                 name: "HEAT RAGE! MEGA ARENA!",
                 endDate: "2026-08-13T09:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "ark_005",
                 name: "North Yearns The Rift Vigile",
