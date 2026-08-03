@@ -30,8 +30,8 @@ const eventDatabase = {
         events: [
             {
                 id: "gi_000",
-                name: "Dance Dance Easy - Breezy Disco",
-                endDate: "2026-08-03T03:00:00Z"
+                name: "Ley Line Overflow",
+                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "gi_001",
@@ -62,11 +62,6 @@ const eventDatabase = {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T03:00:00Z"
-            },
-            {
-                id: "gi_007",
-                name: "Genius Invokation TCG: Heated Battle Mode",
-                endDate: "2026-08-03T03:00:00Z"
             },
             {
                 id: "gi_008",
@@ -117,7 +112,7 @@ const eventDatabase = {
             {
                 id: "hsr_004",
                 name: "Pure Fiction",
-                endDate: "2026-08-03T03:00:00Z"
+                endDate: "2026-09-14T03:00:00Z"
             },
             {
                 id: "hsr_005",
@@ -127,7 +122,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-08-03T03:00:00Z"
+                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -142,7 +137,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-08-03T03:00:00Z"
+                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "hsr_010",
@@ -349,6 +344,11 @@ const eventDatabase = {
                 endDate: "2026-08-18T22:00:00Z"
             },
             {
+                id: "nte_002",
+                name: "Pixel Surge",
+                endDate: "2026-08-10T03:00:00Z"
+            },
+            {
                 id: "nte_003",
                 name: "999 Nights",
                 endDate: "2026-08-18T22:00:00Z"
@@ -375,8 +375,8 @@ const eventDatabase = {
             },
             {
                 id: "nte_008",
-                name: "Gold Clash",
-                endDate: "2026-08-03T03:00:00Z"
+                name: "Fishing Frenzy",
+                endDate: "2026-08-19T04:00:00Z"
             },
             {
                 id: "nte_009",
@@ -529,7 +529,7 @@ const eventDatabase = {
             {
                 id: "wuwa_005",
                 name: "Whimpering Wastes",
-                endDate: "2026-08-03T03:00:00Z"
+                endDate: "2026-08-31T03:00:00Z"
             },
             {
                 id: "wuwa_006",
@@ -908,7 +908,7 @@ function updateAllCountdowns() {
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl) {
             countdownEl.classList.remove('urgent', 'expired');
-            
+
             if (status === 'urgent') {
                 countdownEl.classList.add('urgent');
                 card.classList.remove('has-expired-timer');
