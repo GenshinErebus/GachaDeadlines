@@ -540,6 +540,12 @@ h1 {
         padding: 1rem;
         padding-bottom: 4rem;
     }
+    /* Game Select shrink */
+        #gameSelect {
+        font-size: 0.6rem;                    
+        padding: 0.6rem 1.5rem 0.6rem 0.6rem; 
+        min-width: 100%;                      
+    }
 }
 
 /* ============================================
