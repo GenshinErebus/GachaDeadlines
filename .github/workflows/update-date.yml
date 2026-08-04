@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.BYPASS_TOKEN }}
+          persist-credentials: false
 
       - name: Insert current date and update cache versions
         run: |
@@ -26,12 +27,16 @@ jobs:
           sed -i "s|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${COMMIT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
           sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
 
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: main
-          commit_message: "chore: update timestamp in index.html [skip ci]"
-          file_pattern: 'index.html sitemap.xml .nojekyll'
-          commit_options: '--allow-empty'
-        env:
-          GITHUB_TOKEN: ${{ secrets.BYPASS_TOKEN }}
+      - name: Commit and push changes natively
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@://github.com"
+          
+          git add index.html
+          
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: update timestamp and cache versions [skip ci]"
+            git push https://x-access-token:${{ secrets.BYPASS_TOKEN }}@://github.com{{ github.repository }}.git HEAD:main
+          else
+            echo "No changes detected in index.html"
+          fi
