@@ -509,7 +509,7 @@ h1 {
     /* Update status - Below navigation bar, RIGHT aligned */
     #update-status {
         position: fixed !important;
-        top: 92px !important;
+        top: 83px !important;
         right: 20px !important;  /* CHANGED: Now on the right side */
         left: auto !important;
     }
