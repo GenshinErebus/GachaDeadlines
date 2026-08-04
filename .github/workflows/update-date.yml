@@ -40,3 +40,5 @@ jobs:
           else
             echo "No changes detected in index.html"
           fi
+        env:
+          BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
