@@ -28,6 +28,8 @@ jobs:
           sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${COMMIT_HASH}\"><!-- END_STYLE -->|g" index.html
 
       - name: Commit and push changes natively
+        env:
+          BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@://github.com"
@@ -36,9 +38,7 @@ jobs:
           
           if ! git diff-index --quiet HEAD; then
             git commit -m "chore: update timestamp and cache versions [skip ci]"
-            git push https://x-access-token:${{ secrets.BYPASS_TOKEN }}@://github.com{{ github.repository }}.git HEAD:main
+            git push "https://x-access-token:${BYPASS_TOKEN}@://github.com{GITHUB_REPOSITORY}.git" HEAD:main
           else
             echo "No changes detected in index.html"
           fi
-        env:
-          BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
