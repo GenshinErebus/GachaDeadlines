@@ -262,33 +262,33 @@ h1 {
     50% { opacity: 0.5; }
 }
 
-/* Expired events - turquoise highlight */
+/* Expired events - dark red archive look */
 .countdown.expired {
-    border-color: #00ced1 !important;
-    background: rgba(0, 206, 209, 0.1) !important;
-    box-shadow: 0 0 15px rgba(0, 206, 209, 0.4) !important;
+    border-color: #5a1a1a !important;
+    background: rgba(90, 26, 26, 0.2) !important;
+    box-shadow: 0 0 15px rgba(90, 26, 26, 0.4) !important;
 }
 
 .countdown.expired .countdown-value {
-    color: #00ced1 !important;
-    text-shadow: 0 0 8px rgba(0, 206, 209, 0.6) !important;
+    color: #5a1a1a !important;
+    text-shadow: 0 0 8px rgba(90, 26, 26, 0.6) !important;
     font-weight: bold !important;
     font-size: 1.2rem !important;
 }
 
 .countdown.expired .countdown-label {
-    color: #00ced1 !important;
+    color: #5a1a1a !important;
     font-size: 0.7rem !important;
     text-transform: uppercase !important;
 }
 
 .event-card.has-expired-timer {
-    border-color: #00ced1 !important;
-    background: rgba(0, 206, 209, 0.05) !important;
+    border-color: #5a1a1a !important;
+    background: rgba(90, 26, 26, 0.08) !important;
 }
 
 .event-card.has-expired-timer .event-name {
-    color: #00ced1 !important;
+    color: #5a1a1a !important;
 }
 
 /* ============================================
