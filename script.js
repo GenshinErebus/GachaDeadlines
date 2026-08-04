@@ -483,28 +483,43 @@ const eventDatabase = {
                 endDate: "2026-08-13T10:00:00Z"
             },
             {
-                id: "rev_005",
+                id: "rev_004",
                 name: "Limbo",
                 endDate: "2026-08-16T10:00:00Z"
             },
             {
-                id: "rev_006",
+                id: "rev_005",
                 name: "Lucidscape",
                 endDate: "2026-09-01T10:00:00Z"
             },
+             {
+                id: "rev_006",
+                name: "Laplace Employee Handbook",
+                endDate: "2026-08-08T17:00:00Z"
+            },
+               {
+                id: "rev_007",
+                name: "Laplace Aesthetics",
+                endDate: "2026-09-19T10:00:00Z"
+            },
+               {
+                id: "rev_008",
+                name: "Who's That Arcanist",
+                endDate: "2026-08-13T10:00:00Z"
+            },
             // Gacha Banners (3 total)
             {
-                id: "rev_007",
+                id: "rev_009",
                 name: "Event Banner",
                 endDate: "2026-08-13T10:00:00Z"
             },
             {
-                id: "rev_008",
+                id: "rev_010",
                 name: "Rerun Event Banner",
                 endDate: "2026-08-11T10:00:00Z"
             },
             {
-                id: "rev_009",
+                id: "rev_011",
                 name: "Ripples on the Water",
                 endDate: "2026-08-13T10:00:00Z"
             }
