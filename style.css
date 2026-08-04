@@ -507,12 +507,16 @@ h1 {
     }
 
     /* Update status - Below navigation bar, RIGHT aligned */
-    #update-status {
-        position: fixed !important;
-        top: 83px !important;
-        right: 20px !important;  /* CHANGED: Now on the right side */
-        left: auto !important;
-    }
+#update-status {
+    position: absolute !important;
+    right: 10px !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: 5px !important; 
+    text-align: right !important;
+    margin: 0 !important;
+}
+
 
     /* Hide GitHub link on mobile */
     .desktop-only-github {
@@ -589,6 +593,7 @@ h1 {
 [data-event-id*="rev_009"],
 [data-event-id*="rev_010"],
 [data-event-id*="rev_011"],
+[data-event-id*="rev_012"],
 [data-event-id*="wuwa_011"],
 [data-event-id*="wuwa_012"],
 [data-event-id*="wuwa_013"],
@@ -622,6 +627,7 @@ h1 {
 [data-event-id*="rev_009"] .event-name,
 [data-event-id*="rev_010"] .event-name,
 [data-event-id*="rev_011"] .event-name,
+[data-event-id*="rev_012"] .event-name,
 [data-event-id*="wuwa_011"] .event-name,
 [data-event-id*="wuwa_012"] .event-name,
 [data-event-id*="wuwa_013"] .event-name,

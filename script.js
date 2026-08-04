@@ -522,6 +522,11 @@ const eventDatabase = {
                 id: "rev_011",
                 name: "Ripples on the Water",
                 endDate: "2026-08-13T10:00:00Z"
+            },
+            {
+                id: "rev_012",
+                name: "Yearning of the Water",
+                endDate: "2026-08-15T05:00:00Z"
             }
         ]
     },
