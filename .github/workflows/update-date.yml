@@ -19,19 +19,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.BYPASS_TOKEN }}
-          persist-credentials: true
 
-      - name: Update HTML contents and write files
+      - name: Get Short Hash
+        id: vars
         run: |
-          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
-          FULL_HASH="${{ github.sha }}"
-          SHORT_HASH=$(echo "$FULL_HASH" | cut -c1-7)
-          
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
-          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
-          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
+          echo "CURRENT_DATE=Updated $(date -u '+%d %B %Y')" >> $GITHUB_ENV
+          echo "SHORT_HASH=$(echo '${{ github.sha }}' | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Replace Placeholders in HTML
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->"
+          replace: "<!-- LAST_UPDATE_HERE -->${{ env.CURRENT_DATE }}<!-- END_UPDATE -->"
+          include: "index.html"
+          regex: true
+
+      - name: Replace Script Version
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->"
+          replace: "<!-- SCRIPT_VERSION --><script src=\"script.js?v=${{ env.SHORT_HASH }}\"></script><!-- END_SCRIPT -->"
+          include: "index.html"
+          regex: true
+
+      - name: Replace Style Version
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "<!-- STYLE_VERSION -->.*<!-- END_STYLE -->"
+          replace: "<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${{ env.SHORT_HASH }}\"><!-- END_STYLE -->"
+          include: "index.html"
+          regex: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
