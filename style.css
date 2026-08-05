@@ -287,7 +287,7 @@ h1 {
     background: rgba(90, 26, 26, 0.08) !important;
 }
 
-.event-card.has-expired-timer .event-name {
+div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: #5a1a1a !important;
     text-shadow: 0 0 8px rgba(90, 26, 26, 0.6) !important;
 }
@@ -295,7 +295,7 @@ h1 {
 /* ============================================
    FOOTER STATUS BAR
    ============================================ */
-.status-bar {
+.status-bar {   
     position: fixed;
     bottom: 0;
     left: 0;
