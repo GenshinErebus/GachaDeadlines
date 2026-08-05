@@ -20,11 +20,10 @@ jobs:
           token: ${{ secrets.BYPASS_TOKEN }}
           persist-credentials: true
 
-      - name: Insert current date and update cache versions
+      - name: Update HTML contents and write files
         run: |
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
-          COMMIT_HASH="${{ github.sha }}"
-          SHORT_HASH=${COMMIT_HASH:0:7}
+          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
           
           sed "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html > temp.html && mv temp.html index.html
           sed "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html > temp.html && mv temp.html index.html
@@ -34,7 +33,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
