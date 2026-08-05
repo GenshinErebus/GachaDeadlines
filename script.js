@@ -405,7 +405,7 @@ const eventDatabase = {
     mongil: {
         name: "MONGIL STAR DIVE",
         events: [
-            // General Events (11 total)
+            // General Events
             {
                 id: "msd_001",
                 name: "100 Day Launch Anniversary 14-Day-Check-In",
