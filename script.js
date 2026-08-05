@@ -249,7 +249,7 @@ const eventDatabase = {
     arknights: {
         name: "Arknights Endfield",
         events: [
-            // General Events (9 total)
+            // General Events
             {
                 id: "ark_001",
                 name: "Sanity Supply",
