@@ -350,6 +350,11 @@ const eventDatabase = {
         events: [
             // General Events
             {
+                id: "nte_000",
+                name: "Warren Lucky Flip",
+                endDate: "2026-08-19T03:00:00Z"
+            },
+            {
                 id: "nte_001",
                 name: "Going, Going, Gone!",
                 endDate: "2026-08-18T22:00:00Z"
