@@ -406,6 +406,11 @@ const eventDatabase = {
         name: "MONGIL STAR DIVE",
         events: [
             // General Events
+              {
+                id: "msd_000",
+                name: "Blue Shadow",
+                endDate: "2026-08-19T00:00:00Z"
+            },
             {
                 id: "msd_001",
                 name: "100 Day Launch Anniversary 14-Day-Check-In",
@@ -423,8 +428,8 @@ const eventDatabase = {
             },
             {
                 id: "msd_004",
-                name: "An Unforgettable First Summer Dive! (Rewards)",
-                endDate: "2026-08-05T00:00:00Z"
+                name: "10-Day Check In Missions",
+                endDate: "2026-08-19T00:00:00Z"
             },
             {
                 id: "msd_005",
