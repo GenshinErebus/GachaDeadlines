@@ -25,12 +25,9 @@ jobs:
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
           SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
           
-          # Das Datum im Kommentar-Block ersetzen
-          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
-          
-          # Die Versionen direkt über den Dateinamen anspringen (sucht nach style.css?v=... oder script.js?v=...)
-          sed -i "s|style.css?v=[^\"']*|style.css?v=${SHORT_HASH}|g" index.html
-          sed -i "s|script.js?v=[^\"']*|script.js?v=${SHORT_HASH}|g" index.html
+          sed -i 's|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->'"${CURRENT_DATE}"'<!-- END_UPDATE -->|g' index.html
+          sed -i 's|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src="script.js?v='"${SHORT_HASH}"'"></script><!-- END_SCRIPT -->|g' index.html
+          sed -i 's|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v='"${SHORT_HASH}"'"><!-- END_STYLE -->|g' index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
