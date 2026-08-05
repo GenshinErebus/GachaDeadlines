@@ -151,7 +151,7 @@ const eventDatabase = {
                 name: "Aptitude Showcase",
                 endDate: "2026-08-25T14:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (4 total)
             {
                 id: "hsr_012",
                 name: "Character Event Warp",
