@@ -90,7 +90,7 @@ const eventDatabase = {
     hsr: {
         name: "Honkai Star Rail",
         events: [
-            // General Events (12 total)
+            // General Events
             {
                 id: "hsr_000",
                 name: "Planar Fisure",
