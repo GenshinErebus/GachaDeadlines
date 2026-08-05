@@ -467,6 +467,7 @@ const eventDatabase = {
     reverse1999: {
         name: "Reverse: 1999",
         events: [
+            // General Events
             {
                 id: "rev_001",
                 name: "Polymerzed Dreams",
