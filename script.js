@@ -223,7 +223,7 @@ const eventDatabase = {
                 name: "Festival Special",
                 endDate: "2026-09-09T03:00:00Z"
             },
-            // Gacha Banners (4 total)
+            // Gacha Banners
             {
                 id: "zzz_010",
                 name: "Channel Exclusive",
