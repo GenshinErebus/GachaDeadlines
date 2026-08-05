@@ -40,7 +40,7 @@ jobs:
           
           if ! git diff-index --quiet HEAD; then
             git commit -m "pushing timestamp updates [skip ci]"
-            git push "https://x-access-token:${BYPASS_TOKEN}@github.com/{REPO_PATH}.git" HEAD:main
+            git push origin HEAD:main
           else
             echo "No changes detected in index.html"
           fi
