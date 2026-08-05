@@ -451,7 +451,7 @@ const eventDatabase = {
                 name: "Monsterling Trait Change Support",
                 endDate: "2026-08-19T00:00:00Z"
             },
-            // Gacha Banners (2 total)
+            // Gacha Banners
             {
                 id: "msd_010",
                 name: "Inquisitor, Recorder of Reality and Phenomena Therein",
