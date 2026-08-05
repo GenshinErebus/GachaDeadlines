@@ -149,28 +149,28 @@ const eventDatabase = {
             {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
-                endDate: "2026-08-05T11:00:00Z"
+                endDate: "2026-08-25T14:00:00Z"
             },
             // Gacha Banners (4 total)
             {
                 id: "hsr_012",
                 name: "Character Event Warp",
-                endDate: "2026-08-25T13:00:00Z"
+                endDate: "2026-08-25T14:00:00Z"
             },
             {
                 id: "hsr_013",
                 name: "Character Event Warp (Rerun)",
-                endDate: "2026-08-05T10:00:00Z"
+                endDate: "2026-08-25T14:00:00Z"
             },
             {
                 id: "hsr_014",
                 name: "Light Cone Event Warp",
-                endDate: "2026-08-25T13:00:00Z"
+                endDate: "2026-08-25T14:00:00Z"
             },
             {
                 id: "hsr_015",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-08-05T10:00:00Z"
+                endDate: "2026-08-25T14:00:00Z"
             }
         ]
     },
