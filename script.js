@@ -223,24 +223,29 @@ const eventDatabase = {
                 name: "Festival Special",
                 endDate: "2026-09-09T03:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "zzz_010",
+                name: "Enigma of the Labyrinth: Operation Bagel",
+                endDate: "2026-09-09T03:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "zzz_011",
                 name: "Channel Exclusive",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_011",
+                id: "zzz_012",
                 name: "Channel Exclusive (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_012",
+                id: "zzz_013",
                 name: "Channel W-Engine",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_013",
+                id: "zzz_014",
                 name: "Channel W-Engine (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             }
@@ -844,6 +849,8 @@ function getEventStatus(endDateString) {
         return 'expired';
     } else if (diffDays <= 2) {
         return 'urgent';
+    } else if (diffDays <= 7) {
+        return 'warning';
     } else {
         return 'active';
     }
@@ -946,16 +953,21 @@ function updateAllCountdowns() {
 
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl) {
-            countdownEl.classList.remove('urgent', 'expired');
-
+            countdownEl.classList.remove('urgent', 'warning', 'expired');
+            
             if (status === 'urgent') {
                 countdownEl.classList.add('urgent');
+                card.classList.remove('has-expired-timer', 'has-warning-timer');
+            } else if (status === 'warning') {
+                countdownEl.classList.add('warning');
+                card.classList.add('has-warning-timer');
                 card.classList.remove('has-expired-timer');
             } else if (status === 'expired') {
                 countdownEl.classList.add('expired');
                 card.classList.add('has-expired-timer');
+                card.classList.remove('has-warning-timer');
             } else {
-                card.classList.remove('has-expired-timer');
+                card.classList.remove('has-expired-timer', 'has-warning-timer');
             }
         }
     });

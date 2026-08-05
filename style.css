@@ -261,6 +261,22 @@ h1 {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
+/* Warning events - blue archive look */
+.countdown.warning {
+    border-color: #00f0ff;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.countdown.warning .countdown-value,
+.countdown.warning .countdown-label {
+    color: #00f0ff;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+}
+/* Title in blue for warning events */
+.event-card.has-warning-timer .event-name {
+    color: #00f0ff !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important;
+}
 
 /* Expired events - dark red archive look */
 .countdown.expired {
@@ -291,6 +307,13 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: #5a1a1a !important;
     text-shadow: 0 0 8px rgba(90, 26, 26, 0.6) !important;
 }
+/* Title in Red */
+.countdown.urgent ~ .event-name,
+.event-card:has(.countdown.urgent) .event-name {
+    color: #ff3333 !important;
+    text-shadow: 0 0 8px rgba(255, 51, 51, 0.6) !important;
+}
+
 
 /* ============================================
    FOOTER STATUS BAR
@@ -579,10 +602,10 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 [data-event-id*="hsr_013"],
 [data-event-id*="hsr_014"],
 [data-event-id*="hsr_015"],
-[data-event-id*="zzz_010"],
 [data-event-id*="zzz_011"],
 [data-event-id*="zzz_012"],
 [data-event-id*="zzz_013"],
+[data-event-id*="zzz_014"],
 [data-event-id*="ark_005"],
 [data-event-id*="ark_006"],
 [data-event-id*="dna_009"],
@@ -615,10 +638,10 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 [data-event-id*="hsr_015"] .event-name,
 [data-event-id*="nte_010"] .event-name,
 [data-event-id*="nte_011"] .event-name,
-[data-event-id*="zzz_010"] .event-name,
 [data-event-id*="zzz_011"] .event-name,
 [data-event-id*="zzz_012"] .event-name,
 [data-event-id*="zzz_013"] .event-name,
+[data-event-id*="zzz_014"] .event-name,
 [data-event-id*="ark_005"] .event-name,
 [data-event-id*="ark_006"] .event-name,
 [data-event-id*="dna_009"] .event-name,
