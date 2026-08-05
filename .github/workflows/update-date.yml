@@ -20,35 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get Short Hash
-        id: vars
+      - name: Update HTML contents and write files
         run: |
-          echo "CURRENT_DATE=Updated $(date -u '+%d %B %Y')" >> $GITHUB_ENV
-          echo "SHORT_HASH=$(echo '${{ github.sha }}' | cut -c1-7)" >> $GITHUB_ENV
-
-      - name: Replace Placeholders in HTML
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->"
-          replace: "<!-- LAST_UPDATE_HERE -->${{ env.CURRENT_DATE }}<!-- END_UPDATE -->"
-          include: "index.html"
-          regex: true
-
-      - name: Replace Script Version
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->"
-          replace: "<!-- SCRIPT_VERSION --><script src=\"script.js?v=${{ env.SHORT_HASH }}\"></script><!-- END_SCRIPT -->"
-          include: "index.html"
-          regex: true
-
-      - name: Replace Style Version
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "<!-- STYLE_VERSION -->.*<!-- END_STYLE -->"
-          replace: "<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${{ env.SHORT_HASH }}\"><!-- END_STYLE -->"
-          include: "index.html"
-          regex: true
+          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
+          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
+          
+          # Das Datum im Kommentar-Block ersetzen
+          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
+          
+          # Die Versionen direkt über den Dateinamen anspringen (sucht nach style.css?v=... oder script.js?v=...)
+          sed -i "s|style.css?v=[^\"']*|style.css?v=${SHORT_HASH}|g" index.html
+          sed -i "s|script.js?v=[^\"']*|script.js?v=${SHORT_HASH}|g" index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
