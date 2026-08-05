@@ -31,6 +31,7 @@ jobs:
           sed "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html > temp.html && mv temp.html index.html
           sed "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html > temp.html && mv temp.html index.html
           sed "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html > temp.html && mv temp.html index.html
+          cat index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
