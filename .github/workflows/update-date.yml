@@ -2,8 +2,6 @@ name: Auto Update Timestamp
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 on:
   push:
@@ -13,9 +11,6 @@ on:
 jobs:
   update-html:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,21 +18,30 @@ jobs:
           token: ${{ secrets.BYPASS_TOKEN }}
           persist-credentials: true
 
-      - name: Update HTML contents and write files
+      - name: Insert current date and update cache versions
         run: |
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
-          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
+          COMMIT_HASH="${{ github.sha }}"
+          SHORT_HASH=${COMMIT_HASH:0:7}
           
-          sed "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html > temp.html && mv temp.html index.html
-          sed "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html > temp.html && mv temp.html index.html
-          sed "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html > temp.html && mv temp.html index.html
-          cat index.html
+          sed -i "s|.*LAST_UPDATE_HERE.*|<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>|g" index.html
+          sed -i "s|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
+          sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
+      - name: Commit and push changes natively
+        env:
+          BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
+          REPO_PATH: ${{ github.repository }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add index.html
+          
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "pushing timestamp updates [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No changes detected in index.html"
+          fi
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

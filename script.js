@@ -590,7 +590,7 @@ const eventDatabase = {
                 name: "In Search of Lost Jade",
                 endDate: "2026-08-13T02:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (6 total)
             {
                 id: "wuwa_011",
                 name: "Featured Resonator Convene",
