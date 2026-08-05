@@ -177,7 +177,7 @@ const eventDatabase = {
     zzz: {
         name: "Zenless Zone Zero",
         events: [
-            // General Events (13 total)
+            // General Events
             {
                 id: "zzz_001",
                 name: "Summmer Waves Roll In",
