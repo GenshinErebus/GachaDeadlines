@@ -20,29 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Update HTML via Node Script
+      - name: Update HTML contents and write files
         run: |
-          node -e '
-          const fs = require("fs");
-          let html = fs.readFileSync("index.html", "utf8");
+          CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
+          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
           
-          const currentDate = "Updated " + new Date().toUTCString().split(" ").slice(1, 4).join(" ");
-          const shortHash = "${{ github.sha }}".substring(0, 7);
-          
-          html = html.replace(/<p id="update-status">[\s\S]*?<\/p>/, `<p id="update-status"><!-- LAST_UPDATE_HERE -->\${currentDate}<!-- END_UPDATE --></p>`);
-          html = html.replace(/src="script\.js\?v=[^"]*"/, `src="script.js?v=\${shortHash}"`);
-          html = html.replace(/href="style\.css\?v=[^"]*"/, `href="style.css?v=\${shortHash}"`);
-          
-          fs.writeFileSync("index.html", html, "utf8");
-          '
+          sed -i "s|<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->|g" index.html
+          sed -i "s|<!-- SCRIPT_VERSION -->.*<!-- END_SCRIPT -->|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
+          sed -i "s|<!-- STYLE_VERSION -->.*<!-- END_STYLE -->|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: '.'
 
