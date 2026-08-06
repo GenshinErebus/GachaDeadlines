@@ -329,8 +329,8 @@ const eventDatabase = {
             },
             {
                 id: "dna_008",
-                name: "Bountiful Day",
-                endDate: "2026-08-06T04:00:00Z"
+                name: "Golden Journey: Geniemon Derby",
+                endDate: "2026-08-18T04:00:00Z"
             },
             // Gacha Banners
             {
@@ -592,8 +592,8 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_008",
-                name: "Recaptured: Action Highlights",
-                endDate: "2026-08-06T03:00:00Z"
+                name: "Lollo Campaign: New Journey",
+                endDate: "2026-08-19T03:00:00Z"
             },
             {
                 id: "wuwa_009",
