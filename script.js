@@ -256,6 +256,11 @@ const eventDatabase = {
         events: [
             // General Events
             {
+                id: "ark_000",
+                name: "Monumental Etching: Beastly Howl",
+                endDate: "2026-08-20T09:00:00Z"
+            },
+            {
                 id: "ark_001",
                 name: "Sanity Supply",
                 endDate: "2026-08-09T09:00:00Z"
@@ -510,7 +515,7 @@ const eventDatabase = {
             },
             {
                 id: "rev_006",
-                name: "Laplace Employee Handbook",
+                name: "Laplace Employee Handbook (next chapter)",
                 endDate: "2026-08-08T17:00:00Z"
             },
             {
