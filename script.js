@@ -177,7 +177,12 @@ const eventDatabase = {
     zzz: {
         name: "Zenless Zone Zero",
         events: [
-            // General Events (13 total)
+            // General Events
+            {
+                id: "zzz_000",
+                name: "Snap! Focus Showdown",
+                endDate: "2026-08-24T03:00:00Z"
+            },
             {
                 id: "zzz_001",
                 name: "Summmer Waves Roll In",
