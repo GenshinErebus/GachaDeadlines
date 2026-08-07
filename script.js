@@ -865,6 +865,7 @@ function getEventStatus(endDateString) {
 function translateStatus(status) {
     const translations = {
         active: 'ACTIVE',
+        warning: 'WARNING',
         urgent: 'URGENT',
         expired: 'EXPIRED'
     };

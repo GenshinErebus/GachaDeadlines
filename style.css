@@ -261,21 +261,23 @@ h1 {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
-/* Warning events - blue archive look */
+
+/* Warning events - Yellow/Gold cyberpunk look */
 .countdown.warning {
-    border-color: #00f0ff;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  border-color: #ffe600;
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.3);
 }
 
 .countdown.warning .countdown-value,
 .countdown.warning .countdown-label {
-    color: #00f0ff;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+  color: #ffe600;
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
 }
-/* Title in blue for warning events */
+
+/* Title in yellow for warning events */
 .event-card.has-warning-timer .event-name {
-    color: #00f0ff !important;
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important;
+  color: #ffe600 !important;
+  text-shadow: 0 0 8px rgba(255, 230, 0, 0.6) !important;
 }
 
 /* Expired events - dark red archive look */
@@ -624,40 +626,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 [data-event-id*="wuwa_014"],
 [data-event-id*="wuwa_015"],
 [data-event-id="wuwa_016"] {
-    border: 1px solid #f3ca40 !important;
-    box-shadow: 0 0 15px rgba(243, 202, 64, 0.25) !important;
-    background: rgba(243, 202, 64, 0.03) !important;
-}
-
-[data-event-id*="gi_010"] .event-name,
-[data-event-id*="gi_011"] .event-name,
-[data-event-id*="gi_012"] .event-name,
-[data-event-id*="hsr_012"] .event-name,
-[data-event-id*="hsr_013"] .event-name,
-[data-event-id*="hsr_014"] .event-name,
-[data-event-id*="hsr_015"] .event-name,
-[data-event-id*="nte_010"] .event-name,
-[data-event-id*="nte_011"] .event-name,
-[data-event-id*="zzz_011"] .event-name,
-[data-event-id*="zzz_012"] .event-name,
-[data-event-id*="zzz_013"] .event-name,
-[data-event-id*="zzz_014"] .event-name,
-[data-event-id*="ark_005"] .event-name,
-[data-event-id*="ark_006"] .event-name,
-[data-event-id*="dna_009"] .event-name,
-[data-event-id*="dna_010"] .event-name,
-[data-event-id*="msd_010"] .event-name,
-[data-event-id*="msd_011"] .event-name,
-[data-event-id*="rev_010"] .event-name,
-[data-event-id*="rev_011"] .event-name,
-[data-event-id*="rev_012"] .event-name,
-[data-event-id*="rev_013"] .event-name,
-[data-event-id*="wuwa_011"] .event-name,
-[data-event-id*="wuwa_012"] .event-name,
-[data-event-id*="wuwa_013"] .event-name,
-[data-event-id*="wuwa_014"] .event-name,
-[data-event-id*="wuwa_015"] .event-name,
-[data-event-id*="wuwa_016"] .event-name {
-    color: #f3ca40 !important;
-    text-shadow: 0 0 5px rgba(243, 202, 64, 0.4);
+border: 1px solid #ffffff !important;
+box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
+background: rgba(255, 255, 255, 0.05) !important;
 }
