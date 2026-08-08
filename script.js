@@ -303,6 +303,11 @@ const eventDatabase = {
         events: [
             // General Events
             {
+                id: "dna_000",
+                name: "Starry Sojourn",
+                endDate: "2026-08-24T04:00:00Z"
+            },
+            {
                 id: "dna_001",
                 name: "Paradise Prelude",
                 endDate: "2026-09-03T04:00:00Z"
@@ -521,7 +526,7 @@ const eventDatabase = {
             {
                 id: "rev_006",
                 name: "Laplace Employee Handbook (next chapter)",
-                endDate: "2026-08-08T17:00:00Z"
+                endDate: "2026-08-15T17:00:00Z"
             },
             {
                 id: "rev_007",
