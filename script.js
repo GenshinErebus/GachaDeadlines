@@ -267,34 +267,39 @@ const eventDatabase = {
             },
             {
                 id: "ark_001",
-                name: "Sanity Supply",
-                endDate: "2026-08-09T09:00:00Z"
+                name: "Bedazzling Dawnstar Sign-In",
+                endDate: "2026-09-01T22:00:00Z"
             },
             {
                 id: "ark_002",
-                name: "Gaze Towards the Northern Exclusion",
-                endDate: "2026-08-09T17:00:00Z"
+                name: "The Rooted Realm",
+                endDate: "2026-09-01T22:00:00Z"
             },
             {
                 id: "ark_003",
                 name: "Combat Drills",
-                endDate: "2026-08-09T18:00:00Z"
+                endDate: "2026-09-01T22:00:00Z"
             },
             {
                 id: "ark_004",
                 name: "HEAT RAGE! MEGA ARENA!",
                 endDate: "2026-08-13T09:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "ark_005",
-                name: "North Yearns The Rift Vigile",
-                endDate: "2026-08-09T17:00:00Z"
+                name: "Like a Star Streaking Through the Boundaries",
+                endDate: "2026-09-01T22:00:00Z"
             },
+            // Gacha Banners
             {
                 id: "ark_006",
-                name: "Scarlet Knot Issue",
-                endDate: "2026-08-09T17:00:00Z"
+                name: "GOOD MORNING from YOUR DAWNSTAR",
+                endDate: "2026-09-02T05:00:00Z"
+            },
+            {
+                id: "ark_007",
+                name: "Crimson Hued Issue",
+                endDate: "2026-09-02T05:00:00Z"
             }
         ]
     },
