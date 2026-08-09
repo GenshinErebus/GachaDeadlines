@@ -841,8 +841,8 @@ function getGameOffset() {
     if (!select) return 0;
     const gameKey = select.value;
 
-    /* Group 1: Standard Regional Server Offset (Asia -7h / America +6h) */
-    if (gameKey === 'genshin' || gameKey === 'hsr' || gameKey === 'zzz' || gameKey === 'arknights' || gameKey === 'duet') {
+    /* Group 1: Standard Regional Server Offset (Asia / Europe / America staggered) */
+    if (gameKey === 'genshin' || gameKey === 'hsr' || gameKey === 'zzz' || gameKey === 'nte' || gameKey === 'wuwa') {
         if (currentRegion === 'asia') return -7;
         if (currentRegion === 'na') return 6;
     }
@@ -853,10 +853,17 @@ function getGameOffset() {
         if (currentRegion === 'na') return 7;
     }
 
-    /* Group 3: Global Simultaneous Reset (Wuthering Waves, NTE, Mongil) */
+    /* Group 3: Arknights Endfield & Duet Night Abyss (Asia shifted / America and Europe are synchronous) */
+    if (gameKey === 'arknights' || gameKey === 'duet') {
+        if (currentRegion === 'asia') return -7;
+    }
+
+    /* Group 4: Global Simultaneous Reset (MONGIL STAR DIVE) */
     /* These games end at the exact same second worldwide. Offset remains 0. */
     return 0;
 }
+
+
 
 // Determines event status based on end time
 function getEventStatus(endDateString) {
