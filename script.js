@@ -358,6 +358,11 @@ const eventDatabase = {
                 id: "nte_001",
                 name: "Going, Going, Gone!",
                 endDate: "2026-08-18T22:00:00Z"
+            },
+            {
+                id: "nte_002",
+                name: "Fons Rush",
+                endDate: "2026-08-17T03:00:00Z"
             },           
             {
                 id: "nte_003",

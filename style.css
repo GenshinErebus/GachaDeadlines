@@ -458,7 +458,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a[href*="youtube"] {
         position: fixed !important;
         top: 5px !important;
-        right: 235px !important;
+        right: 240px !important;
         z-index: 9999 !important;
         display: block !important;
         width: 63px !important;
