@@ -30,19 +30,9 @@ const eventDatabase = {
         events: [
             // General Events (9 total)
             {
-                id: "gi_000",
-                name: "Ley Line Overflow",
-                endDate: "2026-08-10T03:00:00Z"
-            },
-            {
                 id: "gi_001",
                 name: "Sunny Summer Fontinalia",
                 endDate: "2026-08-11T03:00:00Z"
-            },
-            {
-                id: "gi_002",
-                name: "To Temper Thyself and Journey Far",
-                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "gi_003",
@@ -53,11 +43,6 @@ const eventDatabase = {
                 id: "gi_004",
                 name: "Nod-Krai: Where Roads Are Pledged to Cross",
                 endDate: "2026-08-11T14:00:00Z"
-            },
-            {
-                id: "gi_005",
-                name: "Wonderland Treasures: Breezes Meet the Fatebound Sea",
-                endDate: "2026-08-10T03:00:00Z"
             },
             {
                 id: "gi_006",
@@ -92,11 +77,6 @@ const eventDatabase = {
         events: [
             // General Events (16 total)
             {
-                id: "hsr_000",
-                name: "Planar Fisure",
-                endDate: "2026-08-10T03:00:00Z"
-            },
-            {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",
                 endDate: "2026-08-25T20:00:00Z"
@@ -124,7 +104,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-08-10T03:00:00Z"
+                endDate: "2026-08-17T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -139,7 +119,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-08-10T03:00:00Z"
+                endDate: "2026-08-17T03:00:00Z"
             },
             {
                 id: "hsr_010",
@@ -378,12 +358,7 @@ const eventDatabase = {
                 id: "nte_001",
                 name: "Going, Going, Gone!",
                 endDate: "2026-08-18T22:00:00Z"
-            },
-            {
-                id: "nte_002",
-                name: "Pixel Surge",
-                endDate: "2026-08-10T03:00:00Z"
-            },
+            },           
             {
                 id: "nte_003",
                 name: "999 Nights",
@@ -436,7 +411,7 @@ const eventDatabase = {
         name: "MONGIL STAR DIVE",
         events: [
             // General Events
-              {
+            {
                 id: "msd_000",
                 name: "Blue Shadow",
                 endDate: "2026-08-19T00:00:00Z"
@@ -987,7 +962,7 @@ function updateAllCountdowns() {
         const countdownEl = card.querySelector('.countdown');
         if (countdownEl) {
             countdownEl.classList.remove('urgent', 'warning', 'expired');
-            
+
             if (status === 'urgent') {
                 countdownEl.classList.add('urgent');
                 card.classList.remove('has-expired-timer', 'has-warning-timer');
