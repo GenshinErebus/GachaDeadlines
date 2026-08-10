@@ -24,7 +24,7 @@ MONGIL: STAR DIVE
 ## Key Features 🚀
 
 *   **Real-Time Countdowns:** Live ticker tracking exactly how much time is left for every active event.
-*   **Visual Urgency Mode:** Timers automatically switch into a **warning mode** when an event has less than 2 days remaining, creating immediate visual awareness.
+*   **Visual Urgency Mode:** Timers automatically switch into a **warning mode** when an event has less than 7 days remaining and into **urgent mode** when an event has less than 2 days, creating immediate visual awareness.
 *   **Server Selector:** Built-in regional server filtering to ensure countdowns align perfectly with your specific game account timezone.
 *   **Matrix Aesthetic:** A sleek, lightweight terminal-inspired user interface designed for maximum readability.
 *   **Responsive Layout:** Fully optimized for a seamless viewing experience on desktop monitors.
