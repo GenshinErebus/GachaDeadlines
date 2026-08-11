@@ -33,17 +33,12 @@ const eventDatabase = {
                 id: "gi_003",
                 name: "When We Look Up at the Moon",
                 endDate: "2026-09-22T14:00:00Z"
-            },
-            {
-                id: "gi_004",
-                name: "Nod-Krai: Where Roads Are Pledged to Cross",
-                endDate: "2026-08-11T14:00:00Z"
-            },
+            },          
             {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T03:00:00Z"
-            },
+            }/* ,            
             {
                 id: "gi_008",
                 name: "Test Run",
@@ -64,7 +59,7 @@ const eventDatabase = {
                 id: "gi_012",
                 name: "Weapon Event Wish",
                 endDate: "2026-08-11T14:00:00Z"
-            }
+            } */
         ]
     },
     hsr: {
@@ -78,22 +73,22 @@ const eventDatabase = {
             },
             {
                 id: "hsr_002",
-                name: "Anomaly Arbitration",
+                name: "Anomaly Arbitration (Period)",
                 endDate: "2026-08-25T22:00:00Z"
             },
             {
                 id: "hsr_003",
-                name: "Memory of Chaos",
+                name: "Memory of Chaos (Period)",
                 endDate: "2026-08-17T03:00:00Z"
             },
             {
                 id: "hsr_004",
-                name: "Pure Fiction",
+                name: "Pure Fiction (Period)",
                 endDate: "2026-09-14T03:00:00Z"
             },
             {
                 id: "hsr_005",
-                name: "Apocalyptic Shadow",
+                name: "Apocalyptic Shadow (Period)",
                 endDate: "2026-08-31T03:00:00Z"
             },
             {
