@@ -458,7 +458,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a[href*="youtube"] {
         position: fixed !important;
         top: 5px !important;
-        right: 240px !important;
+        right: 241px !important;
         z-index: 9999 !important;
         display: block !important;
         width: 63px !important;
@@ -544,10 +544,11 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 
-    /* Hide GitHub link on mobile */
-    .desktop-only-github {
-        display: none !important;
-    }
+/* Hide GitHub link and events button on mobile */
+.desktop-only-github,
+.stat-box.btn-box {
+    display: none !important;
+}
 
     /* Adjust game select dropdown - leave room for avatar */
     #gameSelect {
@@ -629,4 +630,37 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 border: 1px solid #ffffff !important;
 box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
 background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Container box wrapper for the dynamic button alignment */
+.stat-box.btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove default box padding for seamless button fit */
+}
+
+/* Dynamic game event navigation button link */
+.events-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1.5rem; /* Match spacing with existing stat boxes */
+    color: var(--matrix-light-green);
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/* White glowing cyberpunk feedback on hover */
+.events-btn:hover {
+    color: #ffffff;
+    background: rgba(0, 255, 0, 0.05); /* Subtle matrix glow tint */
+    box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
+    cursor: pointer;
 }

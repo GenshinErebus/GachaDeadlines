@@ -28,12 +28,7 @@ const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
         events: [
-            // General Events (9 total)
-            {
-                id: "gi_001",
-                name: "Sunny Summer Fontinalia",
-                endDate: "2026-08-11T03:00:00Z"
-            },
+            // General Events            
             {
                 id: "gi_003",
                 name: "When We Look Up at the Moon",
@@ -536,8 +531,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_011",
-                name: "Rerun Event Banner",
-                endDate: "2026-08-11T10:00:00Z"
+                name: "A Beating Heart Beneath the Stone",
+                endDate: "2026-08-25T10:00:00Z"
             },
             {
                 id: "rev_012",
@@ -750,6 +745,28 @@ function loadGameEvents() {
         </div>
     `;
     container.appendChild(statsDiv);
+
+// Dynamic link database for each game
+const gameLinks = {
+    genshin: "https://genshin-impact.fandom.com/wiki/Event#Upcoming",
+    hsr: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming",
+    zzz: "https://zenless-zone-zero.fandom.com/wiki/Event",
+    arknights: "https://endfield.wiki.gg/wiki/Event",
+    duet: "https://www.facebook.com/DNAbyss.Official/",
+    nte: "https://www.ntebuild.com/events",
+    mongil: "https://forum.netmarble.com/stardive_gl/list/6/1",
+    reverse1999: "https://reverse1999.fandom.com/wiki/Events",
+    wuwa: "https://wuwatracker.com/timeline"
+};
+
+// Append the button directly as a third container inside the stats row
+if (gameLinks[gameKey]) {
+    statsDiv.innerHTML += `
+        <div class="stat-box btn-box">
+            <a href="${gameLinks[gameKey]}" target="_blank" class="events-btn">MORE INFO ⧉</a>
+        </div>
+    `;
+}
 
     // Events grid container
     const eventsGrid = document.createElement('div');
