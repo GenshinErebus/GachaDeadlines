@@ -435,6 +435,11 @@ const eventDatabase = {
                 id: "msd_000",
                 name: "Blue Shadow",
                 endDate: "2026-08-19T00:00:00Z"
+            },
+             {
+                id: "msd_001",
+                name: "Path Bonus Time!",
+                endDate: "2026-08-19T00:00:00Z"
             },            
             {
                 id: "msd_002",
