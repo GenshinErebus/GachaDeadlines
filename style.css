@@ -621,12 +621,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 [data-event-id*="rev_011"],
 [data-event-id*="rev_012"],
 [data-event-id*="rev_013"],
-[data-event-id*="wuwa_011"],
 [data-event-id*="wuwa_012"],
 [data-event-id*="wuwa_013"],
 [data-event-id*="wuwa_014"],
 [data-event-id*="wuwa_015"],
-[data-event-id="wuwa_016"] {
+[data-event-id*="wuwa_016"],
+[data-event-id="wuwa_017"] {
 border: 1px solid #ffffff !important;
 box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
 background: rgba(255, 255, 255, 0.05) !important;

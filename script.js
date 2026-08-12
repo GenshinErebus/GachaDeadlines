@@ -620,34 +620,39 @@ const eventDatabase = {
                 name: "In Search of Lost Jade",
                 endDate: "2026-08-13T02:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "wuwa_011",
+                name: "Chord Cleansing",
+                endDate: "2026-08-19T03:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "wuwa_012",
                 name: "Featured Resonator Convene",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
-                id: "wuwa_012",
+                id: "wuwa_013",
                 name: "Featured Resonator Convene Rerun",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
-                id: "wuwa_013",
+                id: "wuwa_014",
                 name: "Reverb Resonator Convene",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
-                id: "wuwa_014",
+                id: "wuwa_015",
                 name: "Featured Weapon Convene",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
-                id: "wuwa_015",
+                id: "wuwa_016",
                 name: "Featured Weapon Convene Rerun",
                 endDate: "2026-08-19T11:00:00Z"
             },
             {
-                id: "wuwa_016",
+                id: "wuwa_017",
                 name: "Reverb Weapon Convene",
                 endDate: "2026-08-19T11:00:00Z"
             }
