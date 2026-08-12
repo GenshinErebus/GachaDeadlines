@@ -435,12 +435,7 @@ const eventDatabase = {
                 id: "msd_000",
                 name: "Blue Shadow",
                 endDate: "2026-08-19T00:00:00Z"
-            },
-            {
-                id: "msd_001",
-                name: "100 Day Launch Anniversary 14-Day-Check-In",
-                endDate: "2026-08-12T00:00:00Z"
-            },
+            },            
             {
                 id: "msd_002",
                 name: "The Arbiter's Divine Indulgence",
