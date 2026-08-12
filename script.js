@@ -28,38 +28,63 @@ const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
         events: [
-            // General Events            
+            // General Events
+            {
+                id: "gi_001",
+                name: "Mutual Aid in Bloom: Into the Frostlands",
+                endDate: "2026-08-24T03:00:00Z"
+            },
+            {
+                id: "gi_002",
+                name: "Everwinter Without Mercy",
+                endDate: "2026-09-22T14:00:00Z"
+            },            
             {
                 id: "gi_003",
                 name: "When We Look Up at the Moon",
                 endDate: "2026-09-22T14:00:00Z"
-            },          
+            },
+            {
+                id: "gi_004",
+                name: "The Godforsaken Frostlands",
+                endDate: "2026-11-03T14:00:00Z"
+            },
+            {
+                id: "gi_005",
+                name: "To Temper Thyself and Journey Far",
+                endDate: "2026-11-02T03:00:00Z"
+            },            
             {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-08-16T03:00:00Z"
-            }/* ,            
+            },
+            {
+                id: "gi_007",
+                name: "Wonderland Treasures: Phantasmagoric Discourse",
+                endDate: "2026-09-21T03:00:00Z"
+            },            
             {
                 id: "gi_008",
                 name: "Test Run",
-                endDate: "2026-08-11T14:00:00Z"
+                endDate: "2026-09-01T17:00:00Z"
             },
             // Gacha Banners (3 total)
             {
                 id: "gi_010",
                 name: "Character Event Wish",
-                endDate: "2026-08-11T14:00:00Z"
+                endDate: "2026-09-01T17:00:00Z"
             },
             {
                 id: "gi_011",
                 name: "Character Event Wish-2",
-                endDate: "2026-08-11T14:00:00Z"
+                endDate: "2026-09-01T17:00:00Z"
             },
             {
                 id: "gi_012",
                 name: "Weapon Event Wish",
-                endDate: "2026-08-11T14:00:00Z"
-            } */
+                endDate: "2026-09-01T17:00:00Z"
+            }
         ]
     },
     hsr: {
