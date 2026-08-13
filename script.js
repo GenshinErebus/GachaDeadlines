@@ -228,24 +228,29 @@ const eventDatabase = {
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "zzz_011",
+                name: "Extensive Patrol: Triple Bounty",
+                endDate: "2026-08-17T03:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "zzz_012",
                 name: "Channel Exclusive",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_012",
+                id: "zzz_013",
                 name: "Channel Exclusive (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_013",
+                id: "zzz_014",
                 name: "Channel W-Engine",
                 endDate: "2026-09-09T03:00:00Z"
             },
             {
-                id: "zzz_014",
+                id: "zzz_015",
                 name: "Channel W-Engine (Rerun)",
                 endDate: "2026-09-09T03:00:00Z"
             }
