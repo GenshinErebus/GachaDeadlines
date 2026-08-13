@@ -274,12 +274,7 @@ const eventDatabase = {
                 id: "ark_003",
                 name: "Combat Drills",
                 endDate: "2026-09-01T22:00:00Z"
-            },
-            {
-                id: "ark_004",
-                name: "HEAT RAGE! MEGA ARENA!",
-                endDate: "2026-08-13T09:00:00Z"
-            },
+            },            
             {
                 id: "ark_005",
                 name: "Like a Star Streaking Through the Boundaries",
@@ -401,8 +396,8 @@ const eventDatabase = {
             },
             {
                 id: "nte_007",
-                name: "Beyond the Rails",
-                endDate: "2026-08-12T21:00:00Z"
+                name: "Beyond the Rails (Period)",
+                endDate: "2026-08-26T21:00:00Z"
             },
             {
                 id: "nte_008",
@@ -499,19 +494,24 @@ const eventDatabase = {
         events: [
             // General Events
             {
+                id: "rev_000",
+                name: "Return of a Special Guest",
+                endDate: "2026-09-24T10:00:00Z"
+            },
+            {
                 id: "rev_001",
-                name: "Polymerzed Dreams",
-                endDate: "2026-08-13T10:00:00Z"
+                name: "On Another's Sorrow",
+                endDate: "2026-09-21T10:00:00Z"
             },
             {
                 id: "rev_002",
-                name: "Focused Flashback",
-                endDate: "2026-08-13T10:00:00Z"
+                name: "The You That's Meant to Be",
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_003",
                 name: "Mane's Bulletin",
-                endDate: "2026-08-13T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_004",
@@ -535,19 +535,19 @@ const eventDatabase = {
             },
             {
                 id: "rev_008",
-                name: "Who's That Arcanist",
-                endDate: "2026-08-13T10:00:00Z"
+                name: "8-Bit Arcade Remix",
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_009",
-                name: "BACK TO CHELOMEY",
-                endDate: "2026-08-13T10:00:00Z"
+                name: "The Syndrone of Silence",
+                endDate: "2026-09-24T10:00:00Z"
             },
             // Gacha Banners
             {
                 id: "rev_010",
                 name: "Event Banner",
-                endDate: "2026-08-13T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_011",
@@ -557,7 +557,7 @@ const eventDatabase = {
             {
                 id: "rev_012",
                 name: "Ripples on the Water",
-                endDate: "2026-08-13T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_013",
