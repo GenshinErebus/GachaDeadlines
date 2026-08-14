@@ -264,7 +264,7 @@ const eventDatabase = {
     arknights: {
         name: "Arknights Endfield",
         events: [
-            // General Events
+            // General Events (10 total)
             {
                 id: "ark_000",
                 name: "Monumental Etching: Beastly Howl",
