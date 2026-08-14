@@ -619,12 +619,7 @@ const eventDatabase = {
                 id: "wuwa_009",
                 name: "Virtual Crisis: Quadrant Trials",
                 endDate: "2026-08-19T03:00:00Z"
-            },
-            {
-                id: "wuwa_010",
-                name: "In Search of Lost Jade",
-                endDate: "2026-08-13T02:00:00Z"
-            },
+            },            
             {
                 id: "wuwa_011",
                 name: "Chord Cleansing",
