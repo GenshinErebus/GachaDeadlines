@@ -368,7 +368,7 @@ const eventDatabase = {
     nte: {
         name: "Neverness To Everness",
         events: [
-            // General Events
+            // General Events (12 total)
             {
                 id: "nte_000",
                 name: "Warren Lucky Flip",
