@@ -1,4 +1,4 @@
-name: Auto Update Timestamp & Cache Bust
+name: Auto Update Timestamp
 
 permissions:
   contents: write
@@ -18,40 +18,30 @@ jobs:
           token: ${{ secrets.BYPASS_TOKEN }}
           persist-credentials: true
 
-      - name: Set variables
-        id: vars
+      - name: Insert current date and update cache versions
         run: |
-          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
-          echo "SHORT_HASH=$SHORT_HASH" >> $GITHUB_ENV
-          echo "CURRENT_DATE=$CURRENT_DATE" >> $GITHUB_ENV
-
-      - name: Update assets and HTML
-        run: |
-          # Create versioned assets
-          cp style.css "style.${SHORT_HASH}.css"
-          cp script.js "script.${SHORT_HASH}.js"
+          COMMIT_HASH="${{ github.sha }}"
+          SHORT_HASH=${COMMIT_HASH:0:7}
           
-          # Update index.html with perl (robust escaping)
-          perl -i -pe '
-            s|<!-- STYLE_VERSION --><link rel="stylesheet" href="style\.css\?v=[^"]*"><!-- END_STYLE -->|
-              <!-- STYLE_VERSION --><link rel="stylesheet" href="style.'"${SHORT_HASH}".css"><!-- END_STYLE -->|x;
-            s|<!-- SCRIPT_VERSION --><script src="script\.js\?v=[^"]*"></script><!-- END_SCRIPT -->|
-              <!-- SCRIPT_VERSION --><script src="script.'"${SHORT_HASH}".js"></script><!-- END_SCRIPT -->|x;
-            s|(<!-- LAST_UPDATE_HERE -->).*?(<!-- END_UPDATE -->)|
-              ${1}'"${CURRENT_DATE}"'${2}|x;
-          ' index.html
+          sed -i "s|.*LAST_UPDATE_HERE.*|<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>|g" index.html
+          sed -i "s|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
+          sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
 
-      - name: Commit and push
+      - name: Commit and push changes natively
         env:
           BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
+          REPO_PATH: ${{ github.repository }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html "style.${SHORT_HASH}.css" "script.${SHORT_HASH}.js"
+          
+          git add index.html
+          
           if ! git diff-index --quiet HEAD; then
-            git commit -m "chore: cache bust [skip ci]"
+            git commit -m "pushing timestamp updates [skip ci]"
             git push origin HEAD:main
           else
-            echo "No changes detected"
+            echo "No changes detected in index.html"
           fi
+
