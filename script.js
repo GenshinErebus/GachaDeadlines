@@ -352,7 +352,7 @@ const eventDatabase = {
                 name: "Golden Journey: Geniemon Derby",
                 endDate: "2026-08-18T04:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "dna_009",
                 name: "Event Esclusive",
