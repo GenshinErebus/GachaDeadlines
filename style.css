@@ -689,6 +689,18 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         padding: 0.4rem 0.8rem !important;
     }
 
+        /* Loading Message - Much smaller on mobile */
+    .loading-message {
+        padding: 1rem !important;
+        text-align: center !important;
+    }
+
+    .loading {
+        font-size: 1.2rem !important;
+        line-height: 1.4 !important;
+        word-wrap: break-word !important;
+        padding: 0.5rem !important;
+    }
 }
 
 /* ============================================
