@@ -1,4 +1,4 @@
-name: Auto Update Timestamp
+name: Auto Update Timestamp & Cache Bust
 
 permissions:
   contents: write
@@ -18,30 +18,34 @@ jobs:
           token: ${{ secrets.BYPASS_TOKEN }}
           persist-credentials: true
 
-      - name: Insert current date and update cache versions
+      - name: Set variables
         run: |
+          SHORT_HASH=$(echo "${{ github.sha }}" | cut -c1-7)
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
-          COMMIT_HASH="${{ github.sha }}"
-          SHORT_HASH=${COMMIT_HASH:0:7}
-          
-          sed -i "s|.*LAST_UPDATE_HERE.*|<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>|g" index.html
-          sed -i "s|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
-          sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
+          echo "SHORT_HASH=$SHORT_HASH" >> $GITHUB_ENV
+          echo "CURRENT_DATE=$CURRENT_DATE" >> $GITHUB_ENV
 
-      - name: Commit and push changes natively
+      - name: Create versioned assets
+        run: |
+          cp style.css "style.${SHORT_HASH}.css"
+          cp script.js "script.${SHORT_HASH}.js"
+
+      - name: Update index.html
+        run: |
+          sed -i "s/style\.css?v=[a-f0-9]*/style.${SHORT_HASH}.css/" index.html
+          sed -i "s/script\.js?v=[a-f0-9]*/script.${SHORT_HASH}.js/" index.html
+          sed -i "s/<!-- LAST_UPDATE_HERE -->.*<!-- END_UPDATE -->/<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE -->/" index.html
+
+      - name: Commit and push
         env:
           BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
-          REPO_PATH: ${{ github.repository }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          git add index.html
-          
+          git add index.html "style.${SHORT_HASH}.css" "script.${SHORT_HASH}.js"
           if ! git diff-index --quiet HEAD; then
-            git commit -m "pushing timestamp updates [skip ci]"
+            git commit -m "chore: cache bust [skip ci]"
             git push origin HEAD:main
           else
-            echo "No changes detected in index.html"
+            echo "No changes detected"
           fi
-
