@@ -435,7 +435,7 @@ const eventDatabase = {
     mongil: {
         name: "MONGIL STAR DIVE",
         events: [
-            // General Events
+            // General Events (12 total)
             {
                 id: "msd_000",
                 name: "Blue Shadow",

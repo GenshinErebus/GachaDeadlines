@@ -583,7 +583,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         min-width: unset !important;
         width: auto !important;
         /* Keep slightly larger for readability */
-        font-size: 0.8rem !important;
+        font-size: 0.85rem !important;
         padding: 0.5rem 1rem !important;
     }
 
@@ -689,7 +689,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         padding: 0.4rem 0.8rem !important;
     }
 
-        /* Loading Message - Much smaller on mobile */
+    /* Loading Message - Much smaller on mobile */
     .loading-message {
         padding: 1rem !important;
         text-align: center !important;
@@ -701,6 +701,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         word-wrap: break-word !important;
         padding: 0.5rem !important;
     }
+
+    /* Game Select Dropdown more width */
+    #gameSelect {
+        width: 300px !important;
+    }
+
 }
 
 /* ============================================
