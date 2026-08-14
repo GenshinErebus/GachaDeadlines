@@ -701,7 +701,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         padding: 0.5rem !important;
     }
         #gameSelect {
-        min-width: 280px !important;
+        min-width: 270px !important;
+        margin-left: -20px !important;
     }
 }
 

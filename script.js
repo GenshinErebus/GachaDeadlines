@@ -579,7 +579,7 @@ const eventDatabase = {
     wuwa: {
         name: "Wuthering Waves",
         events: [
-            // General Events (17 total)
+            // General Events
             {
                 id: "wuwa_001",
                 name: "Glamour Couture",
