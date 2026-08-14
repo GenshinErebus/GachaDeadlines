@@ -306,7 +306,7 @@ const eventDatabase = {
     duet: {
         name: "Duet Night Abyss",
         events: [
-            // General Events
+            // General Events (11 total)
             {
                 id: "dna_000",
                 name: "Starry Sojourn",
