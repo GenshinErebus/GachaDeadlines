@@ -696,7 +696,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     }
 
     .loading {
-        font-size: 1.3rem !important;
+        font-size: 1.6rem !important;
         line-height: 1.4 !important;
         word-wrap: break-word !important;
         padding: 0.5rem !important;
