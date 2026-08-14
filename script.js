@@ -502,7 +502,7 @@ const eventDatabase = {
     reverse1999: {
         name: "Reverse: 1999",
         events: [
-            // General Events
+            // General Events (14 total)
             {
                 id: "rev_000",
                 name: "Return of a Special Guest",
