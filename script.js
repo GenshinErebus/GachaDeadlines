@@ -630,7 +630,7 @@ const eventDatabase = {
                 name: "Chord Cleansing",
                 endDate: "2026-08-19T03:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (6 total)
             {
                 id: "wuwa_012",
                 name: "Featured Resonator Convene",
