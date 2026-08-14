@@ -177,7 +177,7 @@ const eventDatabase = {
     zzz: {
         name: "Zenless Zone Zero",
         events: [
-            // General Events
+            // General Events (16 total)
             {
                 id: "zzz_000",
                 name: "Snap! Focus Showdown",
