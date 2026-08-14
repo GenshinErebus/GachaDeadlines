@@ -290,7 +290,7 @@ const eventDatabase = {
                 name: "Like a Star Streaking Through the Boundaries",
                 endDate: "2026-09-01T22:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (3 total)
             {
                 id: "ark_006",
                 name: "GOOD MORNING from YOUR DAWNSTAR",
