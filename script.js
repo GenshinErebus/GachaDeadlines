@@ -553,7 +553,7 @@ const eventDatabase = {
                 name: "The Syndrone of Silence",
                 endDate: "2026-09-24T10:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (4 total)
             {
                 id: "rev_010",
                 name: "Event Banner",
