@@ -238,7 +238,7 @@ const eventDatabase = {
                 name: "Extensive Patrol: Triple Bounty",
                 endDate: "2026-08-17T03:00:00Z"
             },
-            // Gacha Banners
+            // Gacha Banners (4 total)
             {
                 id: "zzz_012",
                 name: "Channel Exclusive",
