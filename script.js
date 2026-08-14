@@ -146,24 +146,29 @@ const eventDatabase = {
                 name: "Aptitude Showcase",
                 endDate: "2026-08-25T14:00:00Z"
             },
-            // Gacha Banners (4 total)
             {
                 id: "hsr_012",
+                name: "Garden of Plenty",
+                endDate: "2026-08-24T03:00:00Z"
+            },
+            // Gacha Banners (4 total)
+            {
+                id: "hsr_013",
                 name: "Character Event Warp",
                 endDate: "2026-08-25T14:00:00Z"
             },
             {
-                id: "hsr_013",
+                id: "hsr_014",
                 name: "Character Event Warp (Rerun)",
                 endDate: "2026-08-25T14:00:00Z"
             },
             {
-                id: "hsr_014",
+                id: "hsr_015",
                 name: "Light Cone Event Warp",
                 endDate: "2026-08-25T14:00:00Z"
             },
             {
-                id: "hsr_015",
+                id: "hsr_016",
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-08-25T14:00:00Z"
             }
@@ -195,8 +200,8 @@ const eventDatabase = {
             },
             {
                 id: "zzz_004",
-                name: "Deadly Assault",
-                endDate: "2026-08-14T03:00:00Z"
+                name: "Deadly Assault (Period)",
+                endDate: "2026-08-28T03:00:00Z"
             },
             {
                 id: "zzz_005",
