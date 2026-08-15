@@ -556,7 +556,7 @@ const eventDatabase = {
             // Gacha Banners (4 total)
             {
                 id: "rev_010",
-                name: "Event Banner",
+                name: "Limited Banner",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
@@ -571,8 +571,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_013",
-                name: "Yearning of the Water",
-                endDate: "2026-08-15T05:00:00Z"
+                name: "Rerun Banner",
+                endDate: "2026-09-03T10:00:00Z"
             }
         ]
     },
