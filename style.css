@@ -529,275 +529,272 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin-top: 15px !important;
     }
 }
-
-/* ============================================
+    /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
    COMPACT 2-COLUMN ARRANGEMENT WITH PROPERLY SIZED STATS
    ============================================ */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    /* YouTube Avatar - Fixed top right */
-    a[href*="youtube"] {
-        position: fixed !important;
-        top: 10px !important;
-        right: 10px !important;
-        left: auto !important;
-        margin: 0 !important;
-        display: block !important;
-        z-index: 9999 !important;
+        /* YouTube Avatar - Fixed top right */
+        a[href*="youtube"] {
+            position: fixed !important;
+            top: 10px !important;
+            right: 10px !important;
+            left: auto !important;
+            margin: 0 !important;
+            display: block !important;
+            z-index: 9999 !important;
+        }
+
+        /* YouTube Avatar Image Styling */
+        a[href*="youtube"] img {
+            display: block !important;
+            width: 63px !important;
+            height: 63px !important;
+            max-width: 63px !important;
+            mix-blend-mode: screen !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+        }
+
+        /* Update status - Below navigation bar, RIGHT aligned */
+        #update-status {
+            position: absolute !important;
+            right: 10px !important;
+            left: auto !important;
+            top: auto !important;
+            bottom: 5px !important;
+            text-align: right !important;
+            margin: 0 !important;
+            /* Make smaller */
+            font-size: 0.7rem !important;
+        }
+
+        /* Hide GitHub link on mobile */
+        .desktop-only-github {
+            display: none !important;
+        }
+
+        /* Adjust game select dropdown - leave room for avatar */
+        #gameSelect {
+            max-width: calc(100% - 80px) !important;
+            width: auto !important;
+            min-width: 260px !important;
+            margin-left: -20px !important;
+            /* Keep slightly larger for readability */
+            font-size: 0.85rem !important;
+            padding: 0.5rem 1rem !important;
+        }
+
+        /* Region selector spacing */
+        .region-selector {
+            margin-top: 10px !important;
+        }
+
+        /* STATS OVERVIEW ON MOBILE - 3 COLUMNS, MUCH SMALLER */
+        .stats-overview {
+            display: flex !important;
+            gap: 0.5rem !important;
+            margin-bottom: 1rem !important;
+            flex-wrap: nowrap !important;
+            flex-shrink: 1 !important;
+        }
+
+        .stat-box {
+            flex: 1 !important;
+            padding: 0.5rem 0.6rem !important;
+            min-width: 0 !important;
+            /* Force 3 equal columns */
+            max-width: calc(33.33% - 0.35rem) !important;
+            margin-bottom: 0 !important;
+        }
+
+        .stat-label {
+            font-size: 0.5rem !important;
+            margin-bottom: 0.25rem !important;
+        }
+
+        .stat-value {
+            font-size: 1.1rem !important;
+            line-height: 1.2 !important;
+        }
+
+        /* Button box special case for MORE INFO */
+        .stat-box.btn-box {
+            padding: 0.5rem !important;
+        }
+
+        /* Dynamic game event navigation button link */
+        .events-btn {
+            padding: 0.5rem 0.4rem !important;
+            font-size: 0.75rem !important;
+        }
+
+        /* EVENTS GRID - 2 COLUMNS ON MOBILE */
+        .events-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 0.75rem !important;
+            margin-top: 1rem !important;
+        }
+
+        /* Event Cards more compact on mobile */
+        .event-card {
+            padding: 0.75rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        .event-name {
+            font-size: 0.85rem !important;
+            margin-bottom: 0.4rem !important;
+            line-height: 1.2 !important;
+        }
+
+        /* Countdown more compact on mobile */
+        .countdown {
+            padding: 0.4rem !important;
+            margin-top: 0.5rem !important;
+        }
+
+        .countdown-value {
+            font-size: 1rem !important;
+        }
+
+        .countdown-label {
+            font-size: 0.55rem !important;
+        }
+
+        /* Meta rows more compact on mobile */
+        .meta-row {
+            font-size: 0.65rem !important;
+            margin-bottom: 0.3rem !important;
+        }
+
+        /* H1 title smaller on mobile */
+        h1 {
+            font-size: 1.3rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+
+        /* Container padding adjustment */
+        .container {
+            padding: 1rem !important;
+            /* Space for status bar */
+            padding-bottom: 3.5rem !important;
+        }
+
+        /* Status bar smaller */
+        .status-bar {
+            font-size: 0.65rem !important;
+            padding: 0.4rem 0.8rem !important;
+        }
+
+        /* Loading Message - Much smaller on mobile */
+        .loading-message {
+            padding: 1rem !important;
+            text-align: center !important;
+        }
+
+        .loading {
+            font-size: 1.6rem !important;
+            line-height: 1.4 !important;
+            word-wrap: break-word !important;
+            padding: 0.5rem !important;
+        }
+
     }
 
-    /* YouTube Avatar Image Styling */
-    a[href*="youtube"] img {
-        display: block !important;
-        width: 63px !important;
-        height: 63px !important;
-        max-width: 63px !important;
-        mix-blend-mode: screen !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
+    /* ============================================
+   LOADING ANIMATION
+   ============================================ */
+    .loading {
+        display: inline-block;
+        color: var(--matrix-light-green);
+        font-size: 3.0rem;
+        animation: loading-pulse 1.5s infinite;
     }
 
-    /* Update status - Below navigation bar, RIGHT aligned */
-    #update-status {
-        position: absolute !important;
-        right: 10px !important;
-        left: auto !important;
-        top: auto !important;
-        bottom: 5px !important;
-        text-align: right !important;
-        margin: 0 !important;
-        /* Make smaller */
-        font-size: 0.7rem !important;
+    @keyframes loading-pulse {
+
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 1;
+        }
     }
 
-    /* Hide GitHub link on mobile */
-    .desktop-only-github {
-        display: none !important;
+    /* ============================================
+   GOLDEN GACHA BANNER STYLING
+   Special styling for all gacha banners
+   ============================================ */
+    [data-event-id*="gi_010"],
+    [data-event-id*="gi_011"],
+    [data-event-id*="gi_012"],
+    [data-event-id*="hsr_013"],
+    [data-event-id*="hsr_014"],
+    [data-event-id*="hsr_015"],
+    [data-event-id*="hsr_016"],
+    [data-event-id*="zzz_012"],
+    [data-event-id*="zzz_013"],
+    [data-event-id*="zzz_014"],
+    [data-event-id*="zzz_015"],
+    [data-event-id*="ark_006"],
+    [data-event-id*="ark_007"],
+    [data-event-id*="dna_009"],
+    [data-event-id*="dna_010"],
+    [data-event-id*="nte_010"],
+    [data-event-id*="nte_011"],
+    [data-event-id*="msd_010"],
+    [data-event-id*="msd_011"],
+    [data-event-id*="rev_010"],
+    [data-event-id*="rev_011"],
+    [data-event-id*="rev_012"],
+    [data-event-id*="rev_013"],
+    [data-event-id*="wuwa_012"],
+    [data-event-id*="wuwa_013"],
+    [data-event-id*="wuwa_014"],
+    [data-event-id*="wuwa_015"],
+    [data-event-id*="wuwa_016"],
+    [data-event-id="wuwa_017"] {
+        border: 1px solid #ffffff !important;
+        box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* Adjust game select dropdown - leave room for avatar */
-    #gameSelect {
-        max-width: calc(100% - 80px) !important;
-        min-width: unset !important;
-        width: auto !important;
-        /* Keep slightly larger for readability */
-        font-size: 0.85rem !important;
-        padding: 0.5rem 1rem !important;
-    }
-
-    /* Region selector spacing */
-    .region-selector {
-        margin-top: 10px !important;
-    }
-
-    /* STATS OVERVIEW ON MOBILE - 3 COLUMNS, MUCH SMALLER */
-    .stats-overview {
-        display: flex !important;
-        gap: 0.5rem !important;
-        margin-bottom: 1rem !important;
-        flex-wrap: nowrap !important;
-        flex-shrink: 1 !important;
-    }
-
-    .stat-box {
-        flex: 1 !important;
-        padding: 0.5rem 0.6rem !important;
-        min-width: 0 !important;
-        /* Force 3 equal columns */
-        max-width: calc(33.33% - 0.35rem) !important;
-        margin-bottom: 0 !important;
-    }
-
-    .stat-label {
-        font-size: 0.5rem !important;
-        margin-bottom: 0.25rem !important;
-    }
-
-    .stat-value {
-        font-size: 1.1rem !important;
-        line-height: 1.2 !important;
-    }
-
-    /* Button box special case for MORE INFO */
+    /* Container box wrapper for the dynamic button alignment */
     .stat-box.btn-box {
-        padding: 0.5rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        /* Remove default box padding for seamless button fit */
     }
 
     /* Dynamic game event navigation button link */
     .events-btn {
-        padding: 0.5rem 0.4rem !important;
-        font-size: 0.75rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 1rem 1.5rem;
+        /* Match spacing with existing stat boxes */
+        color: var(--matrix-light-green);
+        text-decoration: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: transparent;
+        transition: all 0.3s ease;
     }
 
-    /* EVENTS GRID - 2 COLUMNS ON MOBILE */
-    .events-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 0.75rem !important;
-        margin-top: 1rem !important;
+    /* White glowing cyberpunk feedback on hover */
+    .events-btn:hover {
+        color: #ffffff;
+        background: rgba(0, 255, 0, 0.05);
+        /* Subtle matrix glow tint */
+        box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
+        cursor: pointer;
     }
-
-    /* Event Cards more compact on mobile */
-    .event-card {
-        padding: 0.75rem !important;
-        margin-bottom: 0 !important;
-    }
-
-    .event-name {
-        font-size: 0.85rem !important;
-        margin-bottom: 0.4rem !important;
-        line-height: 1.2 !important;
-    }
-
-    /* Countdown more compact on mobile */
-    .countdown {
-        padding: 0.4rem !important;
-        margin-top: 0.5rem !important;
-    }
-
-    .countdown-value {
-        font-size: 1rem !important;
-    }
-
-    .countdown-label {
-        font-size: 0.55rem !important;
-    }
-
-    /* Meta rows more compact on mobile */
-    .meta-row {
-        font-size: 0.65rem !important;
-        margin-bottom: 0.3rem !important;
-    }
-
-    /* H1 title smaller on mobile */
-    h1 {
-        font-size: 1.3rem !important;
-        margin-bottom: 0.8rem !important;
-    }
-
-    /* Container padding adjustment */
-    .container {
-        padding: 1rem !important;
-        /* Space for status bar */
-        padding-bottom: 3.5rem !important;
-    }
-
-    /* Status bar smaller */
-    .status-bar {
-        font-size: 0.65rem !important;
-        padding: 0.4rem 0.8rem !important;
-    }
-
-    /* Loading Message - Much smaller on mobile */
-    .loading-message {
-        padding: 1rem !important;
-        text-align: center !important;
-    }
-
-    .loading {
-        font-size: 1.6rem !important;
-        line-height: 1.4 !important;
-        word-wrap: break-word !important;
-        padding: 0.5rem !important;
-    }
-        #gameSelect {
-        min-width: 260px !important;
-        margin-left: -20px !important;
-    }
-}
-
-/* ============================================
-   LOADING ANIMATION
-   ============================================ */
-.loading {
-    display: inline-block;
-    color: var(--matrix-light-green);
-    font-size: 3.0rem;
-    animation: loading-pulse 1.5s infinite;
-}
-
-@keyframes loading-pulse {
-
-    0%,
-    100% {
-        opacity: 0.3;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-/* ============================================
-   GOLDEN GACHA BANNER STYLING
-   Special styling for all gacha banners
-   ============================================ */
-[data-event-id*="gi_010"],
-[data-event-id*="gi_011"],
-[data-event-id*="gi_012"],
-[data-event-id*="hsr_013"],
-[data-event-id*="hsr_014"],
-[data-event-id*="hsr_015"],
-[data-event-id*="hsr_016"],
-[data-event-id*="zzz_012"],
-[data-event-id*="zzz_013"],
-[data-event-id*="zzz_014"],
-[data-event-id*="zzz_015"],
-[data-event-id*="ark_006"],
-[data-event-id*="ark_007"],
-[data-event-id*="dna_009"],
-[data-event-id*="dna_010"],
-[data-event-id*="nte_010"],
-[data-event-id*="nte_011"],
-[data-event-id*="msd_010"],
-[data-event-id*="msd_011"],
-[data-event-id*="rev_010"],
-[data-event-id*="rev_011"],
-[data-event-id*="rev_012"],
-[data-event-id*="rev_013"],
-[data-event-id*="wuwa_012"],
-[data-event-id*="wuwa_013"],
-[data-event-id*="wuwa_014"],
-[data-event-id*="wuwa_015"],
-[data-event-id*="wuwa_016"],
-[data-event-id="wuwa_017"] {
-    border: 1px solid #ffffff !important;
-    box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Container box wrapper for the dynamic button alignment */
-.stat-box.btn-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    /* Remove default box padding for seamless button fit */
-}
-
-/* Dynamic game event navigation button link */
-.events-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem 1.5rem;
-    /* Match spacing with existing stat boxes */
-    color: var(--matrix-light-green);
-    text-decoration: none;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: transparent;
-    transition: all 0.3s ease;
-}
-
-/* White glowing cyberpunk feedback on hover */
-.events-btn:hover {
-    color: #ffffff;
-    background: rgba(0, 255, 0, 0.05);
-    /* Subtle matrix glow tint */
-    box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
-    cursor: pointer;
-}
