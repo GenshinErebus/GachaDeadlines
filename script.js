@@ -57,7 +57,7 @@ const eventDatabase = {
             {
                 id: "gi_006",
                 name: "Spiral Abyss",
-                endDate: "2026-08-16T03:00:00Z"
+                endDate: "2026-09-16T03:00:00Z"
             },
             {
                 id: "gi_007",
@@ -526,7 +526,7 @@ const eventDatabase = {
             {
                 id: "rev_004",
                 name: "Limbo",
-                endDate: "2026-08-16T10:00:00Z"
+                endDate: "2026-09-16T10:00:00Z"
             },
             {
                 id: "rev_005",
