@@ -528,6 +528,10 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     .region-selector {
         margin-top: 15px !important;
     }
+ #gameSelect {
+ min-width: 310px !important;
+}
+
 }
     /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)

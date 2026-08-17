@@ -104,7 +104,7 @@ const eventDatabase = {
             {
                 id: "hsr_003",
                 name: "Memory of Chaos (Period)",
-                endDate: "2026-08-17T03:00:00Z"
+                endDate: "2026-09-28T03:00:00Z"
             },
             {
                 id: "hsr_004",
@@ -119,7 +119,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-08-17T03:00:00Z"
+                endDate: "2026-08-24T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -134,7 +134,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-08-17T03:00:00Z"
+                endDate: "2026-08-24T03:00:00Z"
             },
             {
                 id: "hsr_010",
@@ -232,12 +232,7 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
-            },
-            {
-                id: "zzz_011",
-                name: "Extensive Patrol: Triple Bounty",
-                endDate: "2026-08-17T03:00:00Z"
-            },
+            },           
             // Gacha Banners (4 total)
             {
                 id: "zzz_012",
@@ -378,12 +373,7 @@ const eventDatabase = {
                 id: "nte_001",
                 name: "Going, Going, Gone!",
                 endDate: "2026-08-18T22:00:00Z"
-            },
-            {
-                id: "nte_002",
-                name: "Fons Rush",
-                endDate: "2026-08-17T03:00:00Z"
-            },           
+            },            
             {
                 id: "nte_003",
                 name: "999 Nights",
@@ -607,8 +597,8 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_006",
-                name: "Hazard Revisited",
-                endDate: "2026-08-17T03:00:00Z"
+                name: "Hazard Revisited (Period)",
+                endDate: "2026-09-14T03:00:00Z"
             },
             {
                 id: "wuwa_007",
