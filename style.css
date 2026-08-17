@@ -482,7 +482,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a[href*="youtube"] {
         position: fixed !important;
         top: 5px !important;
-        right: 244px !important;
+        right: 260px !important;
         z-index: 9999 !important;
         display: block !important;
         width: 63px !important;
@@ -503,14 +503,14 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     #update-status {
         position: fixed !important;
         top: 10px !important;
-        right: 20px !important;
+        right: 40px !important;
     }
 
     /* GitHub link - Below update status */
     .desktop-only-github {
         position: fixed !important;
         top: 35px !important;
-        right: 20px !important;
+        right: 40px !important;
         z-index: 9999;
         color: var(--matrix-light-green);
         font-family: monospace;
@@ -593,6 +593,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         /* Region selector spacing */
         .region-selector {
             margin-top: 10px !important;
+            margin-left: -20px !important;
         }
 
         /* STATS OVERVIEW ON MOBILE - 3 COLUMNS, MUCH SMALLER */
