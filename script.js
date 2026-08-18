@@ -5,17 +5,11 @@ let currentRegion = 'eu';
 function setRegion(region) {
     currentRegion = region;
 
-    /* Update button glow styles based on selection */
+    /* Update button classes instead of inline styles */
     ['asia', 'eu', 'na'].forEach(r => {
         const btn = document.getElementById(`btn-${r}`);
         if (btn) {
-            if (r === region) {
-                btn.style.color = 'var(--matrix-light-green)';
-                btn.style.fontWeight = 'bold';
-            } else {
-                btn.style.color = 'var(--matrix-dim-green)';
-                btn.style.fontWeight = 'normal';
-            }
+            btn.classList.toggle('active', r === region);
         }
     });
 
@@ -69,7 +63,7 @@ const eventDatabase = {
                 name: "Test Run",
                 endDate: "2026-09-01T17:00:00Z"
             },
-            // Gacha Banners (3 total)
+            // Gacha Banners
             {
                 id: "gi_010",
                 name: "Character Event Wish",

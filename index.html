@@ -38,15 +38,12 @@
             <option value="wuwa">🌊 Wuthering Waves</option>
         </select>
         <!-- Region Selector in Matrix Style -->
-        <div class="region-selector" style="margin: 10px 0; font-family: monospace;">
-            <span style="color: var(--matrix-dim-green);">SERVER:</span>
-            <button onclick="setRegion('asia')" id="btn-asia"
-                style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[ASIA]</button>
-            <button onclick="setRegion('eu')" id="btn-eu"
-                style="background:none; border:none; color:var(--matrix-light-green); cursor:pointer; padding:0 5px; font-weight:bold;">[EUROPE]</button>
-            <button onclick="setRegion('na')" id="btn-na"
-                style="background:none; border:none; color:var(--matrix-dim-green); cursor:pointer; padding:0 5px;">[AMERICA]</button>
-        </div>
+<div class="region-selector">
+    <span>SERVER:</span>
+    <button onclick="setRegion('asia')" id="btn-asia">[ASIA]</button>
+    <button onclick="setRegion('eu')" id="btn-eu" class="active">[EUROPE]</button>
+    <button onclick="setRegion('na')" id="btn-na">[AMERICA]</button>
+</div>
 <p id="update-status"><!-- LAST_UPDATE_HERE -->Updated 18 August 2026<!-- END_UPDATE --></p>
         <a href="https://github.com/GenshinErebus/GachaDeadlines" target="_blank" class="desktop-only-github" >Source Code</a>
         <!-- Icon to get you to my channel -->
