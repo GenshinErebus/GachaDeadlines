@@ -341,6 +341,11 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Great Chaos of Mechapuppets",
                 endDate: "2026-09-07T16:00:00Z"
+            },
+            {
+                id: "dna_008",
+                name: "Crimson Mirage",
+                endDate: "2026-09-29T04:00:00Z"
             },            
             // Gacha Banners
             {

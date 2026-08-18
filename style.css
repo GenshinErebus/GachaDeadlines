@@ -291,45 +291,45 @@ h1 {
 
 /* Title in yellow for warning events */
 .event-card.has-warning-timer .event-name {
-    color: #ffe600 !important;
-    text-shadow: 0 0 8px rgba(255, 230, 0, 0.6) !important;
+    color: #ffe600;
+    text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
 }
 
 /* Expired events - dark red archive look */
 .countdown.expired {
     border-color: #5a1a1a !important;
-    background: rgba(90, 26, 26, 0.2) !important;
-    box-shadow: 0 0 15px rgba(90, 26, 26, 0.4) !important;
+    background: rgba(90, 26, 26, 0.2);
+    box-shadow: 0 0 15px rgba(90, 26, 26, 0.4);
 }
 
 .countdown.expired .countdown-value {
-    color: #5a1a1a !important;
-    text-shadow: 0 0 8px rgba(90, 26, 26, 0.6) !important;
-    font-weight: bold !important;
-    font-size: 1.2rem !important;
+    color: #5a1a1a;
+    text-shadow: 0 0 8px rgba(90, 26, 26, 0.6);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .countdown.expired .countdown-label {
-    color: #5a1a1a !important;
-    font-size: 0.7rem !important;
-    text-transform: uppercase !important;
+    color: #5a1a1a;
+    font-size: 0.7rem;
+    text-transform: uppercase;
 }
 
 .event-card.has-expired-timer {
-    border-color: #5a1a1a !important;
-    background: rgba(90, 26, 26, 0.08) !important;
+    border-color: #5a1a1a;
+    background: rgba(90, 26, 26, 0.08);
 }
 
 div.event-card.has-expired-timer[class*="event-card"] .event-name {
-    color: #5a1a1a !important;
-    text-shadow: 0 0 8px rgba(90, 26, 26, 0.6) !important;
+    color: #5a1a1a;
+    text-shadow: 0 0 8px rgba(90, 26, 26, 0.6);
 }
 
 /* Title in Red */
 .countdown.urgent~.event-name,
 .event-card:has(.countdown.urgent) .event-name {
-    color: #ff3333 !important;
-    text-shadow: 0 0 8px rgba(255, 51, 51, 0.6) !important;
+    color: #ff3333;
+    text-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
 }
 
 
@@ -480,37 +480,37 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* YouTube Avatar */
     a[href*="youtube"] {
-        position: fixed !important;
-        top: 5px !important;
-        right: 265px !important;
-        z-index: 9999 !important;
-        display: block !important;
-        width: 63px !important;
-        height: 63px !important;
+        position: fixed;
+        top: 5px;
+        right: 265px;
+        z-index: 9999;
+        display: block;
+        width: 63px;
+        height: 63px;
     }
 
     a[href*="youtube"] img {
-        display: block !important;
-        width: 63px !important;
-        height: 63px !important;
-        max-width: 63px !important;
-        mix-blend-mode: screen !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
+        display: block;
+        width: 63px;
+        height: 63px;
+        max-width: 63px;
+        mix-blend-mode: screen;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     /* Update status text - Top right corner */
     #update-status {
-        position: fixed !important;
-        top: 10px !important;
-        right: 40px !important;
+        position: fixed;
+        top: 10px;
+        right: 40px;
     }
 
     /* GitHub link - Below update status */
     .desktop-only-github {
-        position: fixed !important;
-        top: 35px !important;
-        right: 40px !important;
+        position: fixed;
+        top: 35px;
+        right: 40px;
         z-index: 9999;
         color: var(--matrix-light-green);
         font-family: monospace;
@@ -526,10 +526,10 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Region selector spacing */
     .region-selector {
-        margin-top: 15px !important;
+        margin-top: 15px;
     }
  #gameSelect {
- min-width: 320px !important;
+ min-width: 320px;
 }
 
 }
@@ -541,169 +541,169 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
         /* YouTube Avatar - Fixed top right */
         a[href*="youtube"] {
-            position: fixed !important;
-            top: 10px !important;
-            right: 10px !important;
-            left: auto !important;
-            margin: 0 !important;
-            display: block !important;
-            z-index: 9999 !important;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            left: auto;
+            margin: 0;
+            display: block;
+            z-index: 9999;
         }
 
         /* YouTube Avatar Image Styling */
         a[href*="youtube"] img {
-            display: block !important;
-            width: 63px !important;
-            height: 63px !important;
-            max-width: 63px !important;
-            mix-blend-mode: screen !important;
-            border-radius: 50% !important;
-            object-fit: cover !important;
+            display: block;
+            width: 63px;
+            height: 63px;
+            max-width: 63px;
+            mix-blend-mode: screen;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         /* Update status - Below navigation bar, RIGHT aligned */
         #update-status {
-            position: absolute !important;
-            right: 10px !important;
-            left: auto !important;
-            top: auto !important;
-            bottom: 5px !important;
-            text-align: right !important;
-            margin: 0 !important;
+            position: absolute;
+            right: 10px;
+            left: auto;
+            top: auto;
+            bottom: 5px;
+            text-align: right;
+            margin: 0;
             /* Make smaller */
-            font-size: 0.7rem !important;
+            font-size: 0.7rem;
         }
 
         /* Hide GitHub link on mobile */
         .desktop-only-github {
-            display: none !important;
+            display: none;
         }
 
         /* Adjust game select dropdown - leave room for avatar */
         #gameSelect {
-            max-width: calc(100% - 80px) !important;
-            width: auto !important;
-            min-width: 260px !important;
-            margin-left: -20px !important;
+            max-width: calc(100% - 80px);
+            width: auto;
+            min-width: 260px;
+            margin-left: -20px;
             /* Keep slightly larger for readability */
-            font-size: 0.85rem !important;
-            padding: 0.5rem 1rem !important;
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
         }
 
         /* Region selector spacing */
         .region-selector {
-            margin-top: 10px !important;
-            margin-left: -20px !important;
+            margin-top: 10px;
+            margin-left: -20px;
         }
 
         /* STATS OVERVIEW ON MOBILE - 3 COLUMNS, MUCH SMALLER */
         .stats-overview {
-            display: flex !important;
-            gap: 0.5rem !important;
-            margin-bottom: 1rem !important;
-            flex-wrap: nowrap !important;
-            flex-shrink: 1 !important;
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: nowrap;
+            flex-shrink: 1;
         }
 
         .stat-box {
-            flex: 1 !important;
-            padding: 0.5rem 0.6rem !important;
-            min-width: 0 !important;
+            flex: 1;
+            padding: 0.5rem 0.6rem;
+            min-width: 0;
             /* Force 3 equal columns */
-            max-width: calc(33.33% - 0.35rem) !important;
-            margin-bottom: 0 !important;
+            max-width: calc(33.33% - 0.35rem);
+            margin-bottom: 0;
         }
 
         .stat-label {
-            font-size: 0.5rem !important;
-            margin-bottom: 0.25rem !important;
+            font-size: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .stat-value {
-            font-size: 1.1rem !important;
-            line-height: 1.2 !important;
+            font-size: 1.1rem;
+            line-height: 1.2;
         }
 
         /* Button box special case for MORE INFO */
         .stat-box.btn-box {
-            padding: 0.5rem !important;
+            padding: 0.5rem;
         }
 
         /* Dynamic game event navigation button link */
         .events-btn {
-            padding: 0.5rem 0.4rem !important;
-            font-size: 0.75rem !important;
+            padding: 0.5rem 0.4rem;
+            font-size: 0.75rem;
         }
 
         /* EVENTS GRID - 2 COLUMNS ON MOBILE */
         .events-grid {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 0.75rem !important;
-            margin-top: 1rem !important;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
         }
 
         /* Event Cards more compact on mobile */
         .event-card {
-            padding: 0.75rem !important;
-            margin-bottom: 0 !important;
+            padding: 0.75rem;
+            margin-bottom: 0;
         }
 
         .event-name {
-            font-size: 0.85rem !important;
-            margin-bottom: 0.4rem !important;
-            line-height: 1.2 !important;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
         }
 
         /* Countdown more compact on mobile */
         .countdown {
-            padding: 0.4rem !important;
-            margin-top: 0.5rem !important;
+            padding: 0.4rem;
+            margin-top: 0.5rem;
         }
 
         .countdown-value {
-            font-size: 1rem !important;
+            font-size: 1rem;
         }
 
         .countdown-label {
-            font-size: 0.55rem !important;
+            font-size: 0.55rem;
         }
 
         /* Meta rows more compact on mobile */
         .meta-row {
-            font-size: 0.65rem !important;
-            margin-bottom: 0.3rem !important;
+            font-size: 0.65rem;
+            margin-bottom: 0.3rem;
         }
 
         /* H1 title smaller on mobile */
         h1 {
-            font-size: 1.3rem !important;
-            margin-bottom: 0.8rem !important;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
         }
 
         /* Container padding adjustment */
         .container {
-            padding: 1rem !important;
+            padding: 1rem;
             /* Space for status bar */
-            padding-bottom: 3.5rem !important;
+            padding-bottom: 3.5rem;
         }
 
         /* Status bar smaller */
         .status-bar {
-            font-size: 0.65rem !important;
-            padding: 0.4rem 0.8rem !important;
+            font-size: 0.65rem;
+            padding: 0.4rem 0.8rem;
         }
 
         /* Loading Message - Much smaller on mobile */
         .loading-message {
-            padding: 1rem !important;
-            text-align: center !important;
+            padding: 1rem;
+            text-align: center;
         }
 
         .loading {
-            font-size: 1.6rem !important;
-            line-height: 1.4 !important;
-            word-wrap: break-word !important;
-            padding: 0.5rem !important;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            padding: 0.5rem;
         }
 
     }
@@ -763,9 +763,9 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     [data-event-id*="wuwa_015"],
     [data-event-id*="wuwa_016"],
     [data-event-id="wuwa_017"] {
-        border: 1px solid #ffffff !important;
-        box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6) !important;
-        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid #ffffff;
+        box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.05);
     }
 
     /* Container box wrapper for the dynamic button alignment */
