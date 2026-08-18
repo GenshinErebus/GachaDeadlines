@@ -341,13 +341,8 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Great Chaos of Mechapuppets",
                 endDate: "2026-09-07T16:00:00Z"
-            },
-            {
-                id: "dna_008",
-                name: "Golden Journey: Geniemon Derby",
-                endDate: "2026-08-18T04:00:00Z"
-            },
-            // Gacha Banners (3 total)
+            },            
+            // Gacha Banners
             {
                 id: "dna_009",
                 name: "Event Esclusive",

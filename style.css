@@ -482,7 +482,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a[href*="youtube"] {
         position: fixed !important;
         top: 5px !important;
-        right: 260px !important;
+        right: 265px !important;
         z-index: 9999 !important;
         display: block !important;
         width: 63px !important;
@@ -529,7 +529,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin-top: 15px !important;
     }
  #gameSelect {
- min-width: 310px !important;
+ min-width: 320px !important;
 }
 
 }
