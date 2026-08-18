@@ -84,7 +84,7 @@ const eventDatabase = {
     hsr: {
         name: "Honkai Star Rail",
         events: [
-            // General Events (16 total)
+            // General Events
             {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",

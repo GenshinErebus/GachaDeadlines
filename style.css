@@ -560,7 +560,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     /* YouTube Avatar - Fixed top right */
     a[href*="youtube"] {
         position: fixed;
-        top: 10px;
+        top: 4px;
         right: 10px;
         left: auto;
         margin: 0;
