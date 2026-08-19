@@ -231,27 +231,42 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
-            },           
+            }, 
+             {
+                id: "zzz_011",
+                name: "Crispy Meal Deployment Plan",
+                endDate: "2026-09-07T03:00:00Z"
+            },              
             // Gacha Banners (4 total)
             {
                 id: "zzz_012",
                 name: "Channel Exclusive",
-                endDate: "2026-09-09T03:00:00Z"
+                endDate: "2026-09-08T03:00:00Z"
             },
             {
                 id: "zzz_013",
-                name: "Channel Exclusive (Rerun)",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "Channel Exclusive 2",
+                endDate: "2026-09-08T03:00:00Z"
             },
             {
                 id: "zzz_014",
-                name: "Channel W-Engine",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "Exclusive Rescreaning",
+                endDate: "2026-09-08T03:00:00Z"
             },
             {
                 id: "zzz_015",
-                name: "Channel W-Engine (Rerun)",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "Channel W-Engine",
+                endDate: "2026-09-08T03:00:00Z"
+            },
+            {
+                id: "zzz_016",
+                name: "Channel W-Engine 2",
+                endDate: "2026-09-08T03:00:00Z"
+            },
+            {
+                id: "zzz_017",
+                name: "W-Engine Reverberation",
+                endDate: "2026-09-08T03:00:00Z"
             }
         ]
     },
