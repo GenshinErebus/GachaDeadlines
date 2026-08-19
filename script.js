@@ -396,13 +396,13 @@ const eventDatabase = {
             // Gacha Banners (3 total)
             {
                 id: "nte_010",
-                name: "The Lifeline",
-                endDate: "2026-08-18T22:00:00Z"
+                name: "Alluring Shadows",
+                endDate: "2026-09-08T22:00:00Z"
             },
             {
                 id: "nte_011",
-                name: "Dreamgate Special",
-                endDate: "2026-08-18T22:00:00Z"
+                name: "Specialbound Special",
+                endDate: "2026-09-08T22:00:00Z"
             }
         ]
     },
