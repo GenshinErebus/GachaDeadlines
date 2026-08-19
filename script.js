@@ -359,50 +359,10 @@ const eventDatabase = {
         events: [
             // General Events (12 total)
             {
-                id: "nte_000",
-                name: "Warren Lucky Flip",
-                endDate: "2026-08-19T03:00:00Z"
-            },
-            {
-                id: "nte_001",
-                name: "Going, Going, Gone!",
-                endDate: "2026-08-18T22:00:00Z"
-            },            
-            {
-                id: "nte_003",
-                name: "999 Nights",
-                endDate: "2026-08-18T22:00:00Z"
-            },
-            {
-                id: "nte_004",
-                name: "Neon Rift Mystery Box",
-                endDate: "2026-08-18T22:00:00Z"
-            },
-            {
-                id: "nte_005",
-                name: "Eibon Partner Program",
-                endDate: "2026-08-18T22:00:00Z"
-            },
-            {
-                id: "nte_006",
-                name: "Mews Flash",
-                endDate: "2026-08-18T22:00:00Z"
-            },
-            {
                 id: "nte_007",
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-08-26T21:00:00Z"
-            },
-            {
-                id: "nte_008",
-                name: "Fishing Frenzy",
-                endDate: "2026-08-19T04:00:00Z"
-            },
-            {
-                id: "nte_009",
-                name: "Shadow-n-Seek",
-                endDate: "2026-08-18T22:00:00Z"
-            },
+            } /*  ,            
             // Gacha Banners (3 total)
             {
                 id: "nte_010",
@@ -413,73 +373,72 @@ const eventDatabase = {
                 id: "nte_011",
                 name: "Dreamgate Special",
                 endDate: "2026-08-18T22:00:00Z"
-            }
+            } */
         ]
     },
     mongil: {
         name: "MONGIL STAR DIVE",
         events: [
-            // General Events (12 total)
             {
                 id: "msd_000",
-                name: "Blue Shadow",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
+                endDate: "2026-08-20T00:00:00Z"
             },
-             {
+            {
                 id: "msd_001",
-                name: "Path Bonus Time!",
-                endDate: "2026-08-19T00:00:00Z"
-            },            
+                name: "The Girl",
+                endDate: "2026-09-16T00:00:00Z"
+            },
             {
                 id: "msd_002",
-                name: "The Arbiter's Divine Indulgence",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Th-this for beeing my friend...",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_003",
-                name: "The Inquisitor's Day Off",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Brishshell's 7-Day Gifts",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_004",
-                name: "10-Day Check In Missions",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Special Missions with Brishshell",
+                endDate: "2026-09-09T00:00:00Z"
             },
-            {
+             {
                 id: "msd_005",
-                name: "Inquisitor, Recorder of Reality and Phenomena Therein",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Doom's Lonely Herald",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_006",
-                name: "Special Missions with Mabel",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Equipment Crafting Missions",
+                endDate: "2026-08-26T00:00:00Z"
             },
-            {
+             {
                 id: "msd_007",
-                name: "Inqusitor Mabel's 7-Day Gifts",
-                endDate: "2026-08-19T00:00:00Z"
-            },
-            {
-                id: "msd_008",
-                name: "Legandary Monster Reginula Power Up Support",
-                endDate: "2026-08-19T00:00:00Z"
-            },
-            {
-                id: "msd_009",
-                name: "Monsterling Trait Change Support",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "The Inquisitor's Day Off (rewards use)",
+                endDate: "2026-08-26T00:00:00Z"
             },
             // Gacha Banners (3 total)
             {
                 id: "msd_010",
-                name: "Inquisitor, Recorder of Reality and Phenomena Therein",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Doom's Lonely Herald",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_011",
-                name: "Reward Virtue, Eliminate Evil",
-                endDate: "2026-08-19T00:00:00Z"
+                name: "Monstrous Longing",
+                endDate: "2026-09-09T00:00:00Z"
+            }, 
+             {
+                id: "msd_012",
+                name: "Heir to the Amethyst Eye",
+                endDate: "2026-09-09T00:00:00Z"
+            },
+              {
+                id: "msd_013",
+                name: "Creator of Warm Melodies",
+                endDate: "2026-09-09T00:00:00Z"
             }
         ]
     },
