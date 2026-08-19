@@ -359,10 +359,40 @@ const eventDatabase = {
         events: [
             // General Events (12 total)
             {
+                id: "nte_001",
+                name: "Summertime",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
+                id: "nte_002",
+                name: "Circle Gift",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
+                id: "nte_003",
+                name: "Market Opening Rehearsal",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
+                id: "nte_004",
+                name: "Hunter's Crucible",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
+                id: "nte_005",
+                name: "Volley Star",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
+                id: "nte_006",
+                name: "Surf Breaker",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
                 id: "nte_007",
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-08-26T21:00:00Z"
-            } /*  ,            
+            },            
             // Gacha Banners (3 total)
             {
                 id: "nte_010",
@@ -373,7 +403,7 @@ const eventDatabase = {
                 id: "nte_011",
                 name: "Dreamgate Special",
                 endDate: "2026-08-18T22:00:00Z"
-            } */
+            }
         ]
     },
     mongil: {
