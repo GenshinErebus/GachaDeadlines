@@ -63,6 +63,11 @@ const eventDatabase = {
                 name: "Test Run",
                 endDate: "2026-09-01T17:00:00Z"
             },
+            {
+                id: "gi_009",
+                name: "Stygan Onslaught",
+                endDate: "2026-09-22T03:00:00Z"
+            },
             // Gacha Banners
             {
                 id: "gi_010",
