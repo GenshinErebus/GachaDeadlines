@@ -557,22 +557,7 @@ const eventDatabase = {
     wuwa: {
         name: "Wuthering Waves",
         events: [
-            // General Events
-            {
-                id: "wuwa_001",
-                name: "Glamour Couture",
-                endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_002",
-                name: "Ascendant Aces",
-                endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_003",
-                name: "Tactical Hologram: Simulation",
-                endDate: "2026-08-19T03:00:00Z"
-            },
+            // General Events            
             {
                 id: "wuwa_004",
                 name: "Endstate Matrix",
@@ -587,27 +572,7 @@ const eventDatabase = {
                 id: "wuwa_006",
                 name: "Hazard Revisited (Period)",
                 endDate: "2026-09-14T03:00:00Z"
-            },
-            {
-                id: "wuwa_007",
-                name: "Lament Recon: Tacet Crisis",
-                endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_008",
-                name: "Lollo Campaign: New Journey",
-                endDate: "2026-08-19T03:00:00Z"
-            },
-            {
-                id: "wuwa_009",
-                name: "Virtual Crisis: Quadrant Trials",
-                endDate: "2026-08-19T03:00:00Z"
-            },            
-            {
-                id: "wuwa_011",
-                name: "Chord Cleansing",
-                endDate: "2026-08-19T03:00:00Z"
-            },
+            } /* ,           
             // Gacha Banners (6 total)
             {
                 id: "wuwa_012",
@@ -638,7 +603,7 @@ const eventDatabase = {
                 id: "wuwa_017",
                 name: "Reverb Weapon Convene",
                 endDate: "2026-08-19T11:00:00Z"
-            }
+            } */
         ]
     }
 };
