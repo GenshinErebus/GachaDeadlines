@@ -401,6 +401,11 @@ const eventDatabase = {
             },
             {
                 id: "nte_011",
+                name: "The Ichi-daime",
+                endDate: "2026-09-08T22:00:00Z"
+            },
+            {
+                id: "nte_012",
                 name: "Specialbound Special",
                 endDate: "2026-09-08T22:00:00Z"
             }
