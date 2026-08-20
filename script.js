@@ -32,7 +32,7 @@ const eventDatabase = {
                 id: "gi_002",
                 name: "Everwinter Without Mercy",
                 endDate: "2026-09-22T14:00:00Z"
-            },            
+            },
             {
                 id: "gi_003",
                 name: "When We Look Up at the Moon",
@@ -47,7 +47,7 @@ const eventDatabase = {
                 id: "gi_005",
                 name: "To Temper Thyself and Journey Far",
                 endDate: "2026-11-02T03:00:00Z"
-            },            
+            },
             {
                 id: "gi_006",
                 name: "Spiral Abyss",
@@ -57,7 +57,7 @@ const eventDatabase = {
                 id: "gi_007",
                 name: "Wonderland Treasures: Phantasmagoric Discourse",
                 endDate: "2026-09-21T03:00:00Z"
-            },            
+            },
             {
                 id: "gi_008",
                 name: "Test Run",
@@ -231,12 +231,12 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "zzz_011",
                 name: "Crispy Meal Deployment Plan",
                 endDate: "2026-09-07T03:00:00Z"
-            },              
+            },
             // Gacha Banners (4 total)
             {
                 id: "zzz_012",
@@ -275,11 +275,6 @@ const eventDatabase = {
         events: [
             // General Events (10 total)
             {
-                id: "ark_000",
-                name: "Monumental Etching: Beastly Howl",
-                endDate: "2026-08-20T09:00:00Z"
-            },
-            {
                 id: "ark_001",
                 name: "Bedazzling Dawnstar Sign-In",
                 endDate: "2026-09-01T22:00:00Z"
@@ -293,7 +288,7 @@ const eventDatabase = {
                 id: "ark_003",
                 name: "Combat Drills",
                 endDate: "2026-09-01T22:00:00Z"
-            },            
+            },
             {
                 id: "ark_005",
                 name: "Like a Star Streaking Through the Boundaries",
@@ -360,7 +355,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
-            },            
+            },
             // Gacha Banners
             {
                 id: "dna_009",
@@ -412,7 +407,7 @@ const eventDatabase = {
                 id: "nte_007",
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-08-26T21:00:00Z"
-            },            
+            },
             // Gacha Banners (3 total)
             {
                 id: "nte_010",
@@ -437,7 +432,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-20T00:00:00Z"
+                endDate: "2026-08-21T00:00:00Z"
             },
             {
                 id: "msd_001",
@@ -459,7 +454,7 @@ const eventDatabase = {
                 name: "Special Missions with Brishshell",
                 endDate: "2026-09-09T00:00:00Z"
             },
-             {
+            {
                 id: "msd_005",
                 name: "Doom's Lonely Herald",
                 endDate: "2026-09-09T00:00:00Z"
@@ -469,7 +464,7 @@ const eventDatabase = {
                 name: "Equipment Crafting Missions",
                 endDate: "2026-08-26T00:00:00Z"
             },
-             {
+            {
                 id: "msd_007",
                 name: "The Inquisitor's Day Off (rewards use)",
                 endDate: "2026-08-26T00:00:00Z"
@@ -484,13 +479,13 @@ const eventDatabase = {
                 id: "msd_011",
                 name: "Monstrous Longing",
                 endDate: "2026-09-09T00:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "msd_012",
                 name: "Heir to the Amethyst Eye",
                 endDate: "2026-09-09T00:00:00Z"
             },
-              {
+            {
                 id: "msd_013",
                 name: "Creator of Warm Melodies",
                 endDate: "2026-09-09T00:00:00Z"
@@ -579,9 +574,24 @@ const eventDatabase = {
         events: [
             // General Events            
             {
+                id: "wuwa_001",
+                name: "Gifts of Drifting Mist",
+                endDate: "2026-09-29T03:00:00Z"
+            },
+            {
+                id: "wuwa_002",
+                name: "Ascedant Aces",
+                endDate: "2026-09-10T09:00:00Z"
+            },
+             {
+                id: "wuwa_003",
+                name: "Tactical Hologram: Simulation",
+                endDate: "2026-09-29T03:00:00Z"
+            },
+            {
                 id: "wuwa_004",
-                name: "Endstate Matrix",
-                endDate: "2026-08-19T20:00:00Z"
+                name: "Endstate Matrix (Period)",
+                endDate: "2026-09-29T20:00:00Z"
             },
             {
                 id: "wuwa_005",
@@ -592,38 +602,28 @@ const eventDatabase = {
                 id: "wuwa_006",
                 name: "Hazard Revisited (Period)",
                 endDate: "2026-09-14T03:00:00Z"
-            } /* ,           
+            },           
             // Gacha Banners (6 total)
             {
                 id: "wuwa_012",
                 name: "Featured Resonator Convene",
-                endDate: "2026-08-19T11:00:00Z"
+                endDate: "2026-09-10T09:00:00Z"
             },
             {
                 id: "wuwa_013",
                 name: "Featured Resonator Convene Rerun",
-                endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_014",
-                name: "Reverb Resonator Convene",
-                endDate: "2026-08-19T11:00:00Z"
-            },
+                endDate: "2026-09-10T09:00:00Z"
+            },            
             {
                 id: "wuwa_015",
                 name: "Featured Weapon Convene",
-                endDate: "2026-08-19T11:00:00Z"
+                endDate: "2026-09-10T09:00:00Z"
             },
             {
                 id: "wuwa_016",
                 name: "Featured Weapon Convene Rerun",
-                endDate: "2026-08-19T11:00:00Z"
-            },
-            {
-                id: "wuwa_017",
-                name: "Reverb Weapon Convene",
-                endDate: "2026-08-19T11:00:00Z"
-            } */
+                endDate: "2026-09-10T09:00:00Z"
+            }
         ]
     }
 };
@@ -739,27 +739,27 @@ function loadGameEvents() {
     `;
     container.appendChild(statsDiv);
 
-// Dynamic link database for each game
-const gameLinks = {
-    genshin: "https://genshin-impact.fandom.com/wiki/Event#Upcoming",
-    hsr: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming",
-    zzz: "https://zenless-zone-zero.fandom.com/wiki/Event",
-    arknights: "https://endfield.wiki.gg/wiki/Event",
-    duet: "https://www.facebook.com/DNAbyss.Official/",
-    nte: "https://www.ntebuild.com/events",
-    mongil: "https://forum.netmarble.com/stardive_gl/list/6/1",
-    reverse1999: "https://reverse1999.fandom.com/wiki/Events",
-    wuwa: "https://wuwatracker.com/timeline"
-};
+    // Dynamic link database for each game
+    const gameLinks = {
+        genshin: "https://genshin-impact.fandom.com/wiki/Event#Upcoming",
+        hsr: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming",
+        zzz: "https://zenless-zone-zero.fandom.com/wiki/Event",
+        arknights: "https://endfield.wiki.gg/wiki/Event",
+        duet: "https://www.facebook.com/DNAbyss.Official/",
+        nte: "https://www.ntebuild.com/events",
+        mongil: "https://forum.netmarble.com/stardive_gl/list/6/1",
+        reverse1999: "https://reverse1999.fandom.com/wiki/Events",
+        wuwa: "https://wuwatracker.com/timeline"
+    };
 
-// Append the button directly as a third container inside the stats row
-if (gameLinks[gameKey]) {
-    statsDiv.innerHTML += `
+    // Append the button directly as a third container inside the stats row
+    if (gameLinks[gameKey]) {
+        statsDiv.innerHTML += `
         <div class="stat-box btn-box">
             <a href="${gameLinks[gameKey]}" target="_blank" class="events-btn">MORE INFO ⧉</a>
         </div>
     `;
-}
+    }
 
     // Events grid container
     const eventsGrid = document.createElement('div');
