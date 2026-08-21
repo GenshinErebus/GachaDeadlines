@@ -356,14 +356,19 @@ const eventDatabase = {
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "dna_009",
+                name: "Starry Gleanings II",
+                endDate: "2026-09-01T04:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "dna_010",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_010",
+                id: "dna_011",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
@@ -432,7 +437,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-21T00:00:00Z"
+                endDate: "2026-08-22T00:00:00Z"
             },
             {
                 id: "msd_001",
