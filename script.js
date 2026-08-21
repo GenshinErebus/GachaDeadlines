@@ -361,14 +361,19 @@ const eventDatabase = {
                 name: "Starry Gleanings II",
                 endDate: "2026-09-01T04:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "dna_010",
+                name: "Bountiful Day",
+                endDate: "2026-08-27T04:00:00Z"
+            },
+            // Gacha Banners
+            {
+                id: "dna_011",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_011",
+                id: "dna_012",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
