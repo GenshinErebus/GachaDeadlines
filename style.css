@@ -639,36 +639,45 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin-bottom: 1rem;
         flex-wrap: nowrap;
         flex-shrink: 1;
+        width: 100%;
     }
 
     .stat-box {
         flex: 1;
         padding: 0.5rem 0.6rem;
-        min-width: 0;
+        min-width: 55px;
         /* Force 3 equal columns */
         max-width: calc(33.33% - 0.35rem);
         margin-bottom: 0;
     }
 
     .stat-label {
-        font-size: 0.5rem;
+        font-size: 0.45rem;
         margin-bottom: 0.25rem;
     }
 
     .stat-value {
-        font-size: 1.1rem;
+        font-size: 1rem;
         line-height: 1.2;
     }
 
     /* Button box special case for MORE INFO */
     .stat-box.btn-box {
-        padding: 0.5rem;
+        max-width: calc(25% - 0.375rem);
+        min-width: 0;
+        padding: 0.5rem 0.4rem;
     }
 
     /* Dynamic game event navigation button link */
     .events-btn {
-        padding: 0.5rem 0.4rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 0.3rem;
+        font-size: 0.65rem;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        word-wrap: break-word;
     }
 
     /* EVENTS GRID - 2 COLUMNS ON MOBILE */
@@ -740,6 +749,23 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         line-height: 1.4;
         word-wrap: break-word;
         padding: 0.5rem;
+    }
+    
+    .youtube-link {
+        position: fixed;
+        top: 55px;
+        right: 40px;
+        z-index: 9999;
+        color: #ff3333;
+        font-family: monospace;
+        font-size: 0.8rem;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    .youtube-link:hover {
+        opacity: 1;
+        text-shadow: 0 0 8px #ff3333;
     }
 
 }
