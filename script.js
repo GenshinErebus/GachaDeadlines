@@ -442,7 +442,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-22T00:00:00Z"
+                endDate: "2026-08-23T00:00:00Z"
             },
             {
                 id: "msd_001",
@@ -750,26 +750,24 @@ function loadGameEvents() {
     container.appendChild(statsDiv);
 
     // Dynamic link database for each game
-    const gameLinks = {
-        genshin: "https://genshin-impact.fandom.com/wiki/Event#Upcoming",
-        hsr: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming",
-        zzz: "https://zenless-zone-zero.fandom.com/wiki/Event",
-        arknights: "https://endfield.wiki.gg/wiki/Event",
-        duet: "https://www.facebook.com/DNAbyss.Official/",
-        nte: "https://www.ntebuild.com/events",
-        mongil: "https://forum.netmarble.com/stardive_gl/list/6/1",
-        reverse1999: "https://reverse1999.fandom.com/wiki/Events",
-        wuwa: "https://wuwatracker.com/timeline"
-    };
+const gameLinks = {
+    genshin: { wiki: "https://genshin-impact.fandom.com/wiki/Event#Upcoming", videos: "https://www.youtube.com/watch?v=W67SGl5f-pQ&list=PLaIcRoqjRStY_M0Z5nZKoSdJDBB24vptc" },
+    hsr: { wiki: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
+    zzz: { wiki: "https://zenless-zone-zero.fandom.com/wiki/Event", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
+    arknights: { wiki: "https://endfield.wiki.gg/wiki/Event", videos: "https://www.youtube.com/watch?v=rmROLmiIbxw&list=PLaIcRoqjRStZlRec3E-rBI1FrkNG4hKqu" },
+    duet: { wiki: "https://www.facebook.com/DNAbyss.Official/", videos: "https://www.youtube.com/watch?v=OZjV2_BfKPQ&list=PLaIcRoqjRStblGWClhd6beCNPpDNL89R5" },
+    nte: { wiki: "https://www.ntebuild.com/events", videos: "https://www.youtube.com/watch?v=WgKBf6WFQ-M&list=PLaIcRoqjRStagdMPEuG_tKQFm6mfHyESW" },
+    mongil: { wiki: "https://forum.netmarble.com/stardive_gl/list/6/1", videos: "https://www.youtube.com/watch?v=UTB4I4pR0s8&list=PLaIcRoqjRStZpkKZNn8FkHcnZyM1PK34p" },
+    reverse1999: { wiki: "https://reverse1999.fandom.com/wiki/Events", videos: "https://www.youtube.com/watch?v=VJ3LrUzv1fM&list=PLaIcRoqjRStal3cgomG7Hf3aP6tDllaBA" },
+    wuwa: { wiki: "https://wuwatracker.com/timeline", videos: "https://www.youtube.com/watch?v=B-zJc2W4acU&list=PLaIcRoqjRStaGFEb_oMvIc-SCrXgCg4Fx" }
+};
 
-    // Append the button directly as a third container inside the stats row
-    if (gameLinks[gameKey]) {
-        statsDiv.innerHTML += `
-        <div class="stat-box btn-box">
-            <a href="${gameLinks[gameKey]}" target="_blank" class="events-btn">MORE INFO ⧉</a>
-        </div>
-    `;
-    }
+if (gameLinks[gameKey]) {
+    statsDiv.innerHTML += `
+    <div class="stat-box btn-box"><a href="${gameLinks[gameKey].wiki}" target="_blank" class="events-btn">MORE INFO ⧉</a></div>
+    <div class="stat-box btn-box"><a href="${gameLinks[gameKey].videos}" target="_blank" class="events-btn youtube-btn">CODE VIDEOS ▶</a></div>
+`;
+}
 
     // Events grid container
     const eventsGrid = document.createElement('div');
