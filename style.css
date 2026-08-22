@@ -402,7 +402,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    ============================================ */
 .stats-overview {
     display: flex;
-    gap: 2rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
 }
@@ -635,25 +634,30 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     /* STATS OVERVIEW ON MOBILE - CLEAN 2x2 GRID */
     .stats-overview {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 equal columns */
-        gap: 0.5rem;                    /* Space between boxes */
+        grid-template-columns: 1fr 1fr;
+        /* 2 equal columns */
+        gap: 0.5rem;
+        /* Space between boxes */
         margin-bottom: 1rem;
     }
 
     .stat-box {
         width: 100%;
-        max-width: none;               /* Remove 25% width restriction */
-        min-width: 0;          
+        max-width: none;
+        /* Remove 25% width restriction */
+        min-width: 0;
         padding: 0.6rem 0.5rem;
         margin-bottom: 0;
-        box-sizing: border-box;        /* Prevent elements from overflowing */
-        
+        box-sizing: border-box;
+        /* Prevent elements from overflowing */
+
         /* Center content both vertically and horizontally */
         display: flex;
-        flex-direction: column;        /* Stack label and value vertically */
-        justify-content: center;       
-        align-items: center;           
-        text-align: center;            
+        flex-direction: column;
+        /* Stack label and value vertically */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     /* Button box adjustment for mobile */
@@ -853,4 +857,69 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     min-width: 150px;
     padding: 0;
     height: auto;
+}
+
+/* ===== SERVER RESET CARD - RED/ORANGE ===== */
+.container .event-card.server-reset-card {
+    background-color: #0d0a0a;
+    border: 2px solid red;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Remove green top border line / change to red */
+.container .event-card.server-reset-card::before {
+    background: linear-gradient(90deg, transparent, red, transparent);
+}
+
+/* Hover effect - red instead of green */
+.container .event-card.server-reset-card:hover {
+    border-color: red;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.container .event-card.server-reset-card .event-name {
+    color: red;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.container .event-card.server-reset-card .meta-label {
+    color: red;
+}
+
+.container .event-card.server-reset-card .meta-value {
+    color: red;
+}
+
+.container .event-card.server-reset-card .reset-time {
+    color: #000000;
+    font-weight: bold;
+    background-color: red;
+    padding: 2px 6px;
+    display: inline-block;
+}
+
+.container .event-card.server-reset-card .countdown {
+    background-color: #1a1515;
+    border: 1px dashed red;
+}
+
+.container .event-card.server-reset-card .countdown-value {
+    color: red;
+    text-shadow: 0 0 12px rgba(255, 0, 0, 0.9);
+}
+
+.container .event-card.server-reset-card .countdown-label {
+    color: red;
+}
+
+.container .event-card.server-reset-card .indicator-dots {
+    color: red;
+    background-color: red;
+}
+
+.container .event-card.server-reset-card::after,
+.container .event-card.server-reset-card > div:last-child {
+    color: red;
 }

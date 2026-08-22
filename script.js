@@ -1,6 +1,24 @@
 /* Global variable for the selected region (defaults to Europe) */
 let currentRegion = 'eu';
 
+/* daily server reset for each game (UTC) */
+const serverResets = {
+    /* 4:00 AM server-local time → UTC conversion */
+    genshin:     { asia: "20:00", eu: "03:00", na: "09:00" },
+    hsr:         { asia: "20:00", eu: "03:00", na: "09:00" },
+    zzz:         { asia: "20:00", eu: "03:00", na: "09:00" },
+    arknights:   { asia: "20:00", eu: "03:00", na: "09:00" },
+    /* 5:00 AM server-local time → UTC conversion */
+    duet:        { asia: "21:00", eu: "04:00", na: "10:00" },
+    nte:         { asia: "21:00", eu: "04:00", na: "10:00" },
+    /* Global simultaneous reset at midnight UTC */
+    mongil:      { asia: "00:00", eu: "00:00", na: "00:00" },
+    /* Global server, primary daily reset at 10:00 UTC */
+    reverse1999: { asia: "10:00", eu: "10:00", na: "10:00" },
+    /* 4:00 AM server-local time → UTC conversion */
+    wuwa:        { asia: "20:00", eu: "03:00", na: "09:00" }
+};
+
 /* Function to switch regions and update button styles */
 function setRegion(region) {
     currentRegion = region;
@@ -390,7 +408,7 @@ const eventDatabase = {
             },
             {
                 id: "nte_002",
-                name: "Circle Gift",
+                name: "Circle gift",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
@@ -640,6 +658,7 @@ const eventDatabase = {
 
 // Global timer intervals
 let countdownInterval = null;
+let resetInterval = null;
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
@@ -712,6 +731,11 @@ function loadGameEvents() {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
+    
+    if (resetInterval) {
+        clearInterval(resetInterval);
+        resetInterval = null;
+    }
 
     container.innerHTML = '';
 
@@ -750,30 +774,35 @@ function loadGameEvents() {
     container.appendChild(statsDiv);
 
     // Dynamic link database for each game
-const gameLinks = {
-    genshin: { wiki: "https://genshin-impact.fandom.com/wiki/Event#Upcoming", videos: "https://www.youtube.com/watch?v=W67SGl5f-pQ&list=PLaIcRoqjRStY_M0Z5nZKoSdJDBB24vptc" },
-    hsr: { wiki: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
-    zzz: { wiki: "https://zenless-zone-zero.fandom.com/wiki/Event", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
-    arknights: { wiki: "https://endfield.wiki.gg/wiki/Event", videos: "https://www.youtube.com/watch?v=rmROLmiIbxw&list=PLaIcRoqjRStZlRec3E-rBI1FrkNG4hKqu" },
-    duet: { wiki: "https://www.facebook.com/DNAbyss.Official/", videos: "https://www.youtube.com/watch?v=OZjV2_BfKPQ&list=PLaIcRoqjRStblGWClhd6beCNPpDNL89R5" },
-    nte: { wiki: "https://www.ntebuild.com/events", videos: "https://www.youtube.com/watch?v=WgKBf6WFQ-M&list=PLaIcRoqjRStagdMPEuG_tKQFm6mfHyESW" },
-    mongil: { wiki: "https://forum.netmarble.com/stardive_gl/list/6/1", videos: "https://www.youtube.com/watch?v=UTB4I4pR0s8&list=PLaIcRoqjRStZpkKZNn8FkHcnZyM1PK34p" },
-    reverse1999: { wiki: "https://reverse1999.fandom.com/wiki/Events", videos: "https://www.youtube.com/watch?v=VJ3LrUzv1fM&list=PLaIcRoqjRStal3cgomG7Hf3aP6tDllaBA" },
-    wuwa: { wiki: "https://wuwatracker.com/timeline", videos: "https://www.youtube.com/watch?v=B-zJc2W4acU&list=PLaIcRoqjRStaGFEb_oMvIc-SCrXgCg4Fx" }
-};
+    const gameLinks = {
+        genshin: { wiki: "https://genshin-impact.fandom.com/wiki/Event#Upcoming", videos: "https://www.youtube.com/watch?v=W67SGl5f-pQ&list=PLaIcRoqjRStY_M0Z5nZKoSdJDBB24vptc" },
+        hsr: { wiki: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
+        zzz: { wiki: "https://zenless-zone-zero.fandom.com/wiki/Event", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
+        arknights: { wiki: "https://endfield.wiki.gg/wiki/Event", videos: "https://www.youtube.com/watch?v=rmROLmiIbxw&list=PLaIcRoqjRStZlRec3E-rBI1FrkNG4hKqu" },
+        duet: { wiki: "https://www.facebook.com/DNAbyss.Official/", videos: "https://www.youtube.com/watch?v=OZjV2_BfKPQ&list=PLaIcRoqjRStblGWClhd6beCNPpDNL89R5" },
+        nte: { wiki: "https://www.ntebuild.com/events", videos: "https://www.youtube.com/watch?v=WgKBf6WFQ-M&list=PLaIcRoqjRStagdMPEuG_tKQFm6mfHyESW" },
+        mongil: { wiki: "https://forum.netmarble.com/stardive_gl/list/6/1", videos: "https://www.youtube.com/watch?v=UTB4I4pR0s8&list=PLaIcRoqjRStZpkKZNn8FkHcnZyM1PK34p" },
+        reverse1999: { wiki: "https://reverse1999.fandom.com/wiki/Events", videos: "https://www.youtube.com/watch?v=VJ3LrUzv1fM&list=PLaIcRoqjRStal3cgomG7Hf3aP6tDllaBA" },
+        wuwa: { wiki: "https://wuwatracker.com/timeline", videos: "https://www.youtube.com/watch?v=B-zJc2W4acU&list=PLaIcRoqjRStaGFEb_oMvIc-SCrXgCg4Fx" }
+    };
 
-if (gameLinks[gameKey]) {
-    statsDiv.innerHTML += `
-    <div class="stat-box btn-box"><a href="${gameLinks[gameKey].wiki}" target="_blank" class="events-btn">MORE INFO ⧉</a></div>
-    <div class="stat-box btn-box"><a href="${gameLinks[gameKey].videos}" target="_blank" class="events-btn youtube-btn">CODE VIDEOS ▶</a></div>
-`;
-}
+    if (gameLinks[gameKey]) {
+        statsDiv.innerHTML += `
+        <div class="stat-box btn-box"><a href="${gameLinks[gameKey].wiki}" target="_blank" class="events-btn">MORE INFO ⧉</a></div>
+        <div class="stat-box btn-box"><a href="${gameLinks[gameKey].videos}" target="_blank" class="events-btn youtube-btn">CODE VIDEOS ▶</a></div>
+    `;
+    }
 
     // Events grid container
     const eventsGrid = document.createElement('div');
     eventsGrid.className = 'events-grid';
     eventsGrid.id = 'eventsGrid';
 
+    // First: Create the Server Reset card (as FIRST event)
+    const resetCard = createServerResetCard(gameKey);
+    eventsGrid.appendChild(resetCard);
+
+    // Then: Create regular event cards
     gameData.events.forEach(event => {
         const card = createEventCard(event);
         eventsGrid.appendChild(card);
@@ -781,9 +810,87 @@ if (gameLinks[gameKey]) {
 
     container.appendChild(eventsGrid);
 
+    // Start all timers (both regular events AND reset timer)
     startCountdownTimers();
+    startResetCountdown(gameKey);
 
-    console.log(`[Matrix Tracker] ${gameData.name} loaded - ${gameData.events.length} events`);
+    console.log(`[Matrix Tracker] ${gameData.name} loaded - ${gameData.events.length} events + server reset`);
+}
+
+/* Creates the daily server reset card (FIRST in list, loops forever) */
+function createServerResetCard(gameKey) {
+    const card = document.createElement('div');
+    card.className = 'event-card server-reset-card';
+    card.dataset.eventId = `reset_${gameKey}`;
+    card.dataset.isReset = "true";
+
+    const region = currentRegion || 'eu';
+    const resetTime = serverResets[gameKey]?.[region] || "04:00";
+    const nextReset = getNextResetTime(gameKey, region);
+    const formattedDate = formatDateServerReset(nextReset);
+
+    card.innerHTML = `
+        <h3 class="event-name">🔄 DAILY SERVER RESET - ${region.toUpperCase()}</h3>
+        <div class="event-meta">
+            <div class="meta-row">
+                <span class="meta-label">NEXT:</span>
+                <span class="meta-value">${formattedDate}</span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">TIME:</span>
+                <span class="meta-value reset-time">${resetTime} UTC</span>
+            </div>
+        </div>
+        <div class="countdown reset-countdown" id="countdown_reset_${gameKey}">
+            <div class="countdown-item">
+                <span class="countdown-value" id="reset_days">00</span>
+                <span class="countdown-label">DAYS</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="reset_hours">00</span>
+                <span class="countdown-label">HRS</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="reset_minutes">00</span>
+                <span class="countdown-label">MIN</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="reset_seconds">00</span>
+                <span class="countdown-label">SEC</span>
+            </div>
+        </div>
+    `;
+
+    return card;
+}
+
+/* Calculates next reset datetime based on current time */
+function getNextResetTime(gameKey, region) {
+    const now = new Date();
+    const resetTime = serverResets[gameKey]?.[region] || "04:00";
+    const [hours, minutes] = resetTime.split(':').map(Number);
+    
+    let nextReset = new Date(now);
+    nextReset.setHours(hours, minutes, 0, 0);
+    
+    // If reset already passed today, move to tomorrow
+    if (nextReset <= now) {
+        nextReset.setDate(nextReset.getDate() + 1);
+    }
+    
+    return nextReset;
+}
+
+/* Formats server reset date without timezone name (cleaner display) */
+function formatDateServerReset(date) {
+    const options = {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    return date.toLocaleDateString('en-US', options);
 }
 
 // Creates a single event card as HTML (KEIN STARTDATUM - NUR ENDDATUM)
@@ -916,7 +1023,7 @@ function formatDate(dateString) {
     return date.toLocaleDateString('en-US', options);
 }
 
-// Calculates remaining time
+// Calculates remaining time for regular events
 function getTimeRemaining(endtime) {
     const now = new Date();
     let end = new Date(endtime);
@@ -925,6 +1032,26 @@ function getTimeRemaining(endtime) {
     end.setHours(end.getHours() + getGameOffset());
 
     const totalSeconds = Math.floor((end - now) / 1000);
+
+    if (totalSeconds <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 };
+    }
+
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = Math.floor(totalSeconds % 60);
+
+    return { days, hours, minutes, seconds, total: totalSeconds };
+}
+
+/* Calculates remaining time for server reset (loops automatically) */
+function getTimeRemainingForReset(gameKey) {
+    const region = currentRegion || 'eu';
+    const nextReset = getNextResetTime(gameKey, region);
+    const now = new Date();
+
+    const totalSeconds = Math.floor((nextReset - now) / 1000);
 
     if (totalSeconds <= 0) {
         return { days: 0, hours: 0, minutes: 0, seconds: 0, total: 0 };
@@ -956,6 +1083,10 @@ function updateAllCountdowns() {
 
     allCards.forEach(card => {
         const eventId = card.dataset.eventId;
+        
+        // Skip the server reset card here - it has its own updater
+        if (card.dataset.isReset === "true") return;
+
         const eventObj = findEventById(eventId);
 
         if (!eventObj) return;
@@ -1006,12 +1137,51 @@ function updateAllCountdowns() {
     updateUrgentCounts();
 }
 
+/* Updates the server reset countdown (separate from regular events) */
+function updateResetCountdown(gameKey) {
+    const timeRemaining = getTimeRemainingForReset(gameKey);
+    
+    const daysEl = document.getElementById('reset_days');
+    const hoursEl = document.getElementById('reset_hours');
+    const minutesEl = document.getElementById('reset_minutes');
+    const secondsEl = document.getElementById('reset_seconds');
+
+    if (daysEl && timeRemaining.total > 0) {
+        daysEl.textContent = String(timeRemaining.days).padStart(2, '0');
+        hoursEl.textContent = String(timeRemaining.hours).padStart(2, '0');
+        minutesEl.textContent = String(timeRemaining.minutes).padStart(2, '0');
+        secondsEl.textContent = String(timeRemaining.seconds).padStart(2, '0');
+    } else if (timeRemaining.total <= 0) {
+        // Reset reached - will loop automatically on next tick
+        if (daysEl) {
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+        }
+    }
+}
+
+/* Starts the daily server reset countdown */
+function startResetCountdown(gameKey) {
+    if (resetInterval) {
+        clearInterval(resetInterval);
+        resetInterval = null;
+    }
+
+    updateResetCountdown(gameKey);
+    
+    resetInterval = setInterval(() => {
+        updateResetCountdown(gameKey);
+    }, 1000);
+}
+
 // Updates urgent event count in statistics
 function updateUrgentCounts() {
     const urgentEl = document.getElementById('urgentCount');
     if (!urgentEl) return;
 
-    const allCards = document.querySelectorAll('.event-card');
+    const allCards = document.querySelectorAll('.event-card:not([data-is-reset="true"])');
     let urgentCount = 0;
 
     allCards.forEach(card => {
