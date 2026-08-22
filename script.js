@@ -556,8 +556,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_006",
-                name: "Laplace Employee Handbook (next chapter)",
-                endDate: "2026-08-22T17:00:00Z"
+                name: "Laplace Employee Handbook (EP. 06)",
+                endDate: "2026-08-29T17:00:00Z"
             },
             {
                 id: "rev_007",
@@ -830,7 +830,7 @@ function createServerResetCard(gameKey) {
     const formattedDate = formatDateServerReset(nextReset);
 
     card.innerHTML = `
-        <h3 class="event-name">🔄 DAILY SERVER RESET - ${region.toUpperCase()}</h3>
+        <h3 class="event-name">🔄 DAILY RESET - ${region.toUpperCase()}</h3>
         <div class="event-meta">
             <div class="meta-row">
                 <span class="meta-label">NEXT:</span>
