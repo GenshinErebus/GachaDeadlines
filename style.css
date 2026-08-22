@@ -632,27 +632,33 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin-left: -20px;
     }
 
-    /* STATS OVERVIEW ON MOBILE - 4 COLUMNS EQUAL WIDTH */
+    /* STATS OVERVIEW ON MOBILE - CLEAN 2x2 GRID */
     .stats-overview {
-        display: flex;
-        gap: 0.25rem;          
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 equal columns */
+        gap: 0.5rem;                    /* Space between boxes */
         margin-bottom: 1rem;
-        flex-wrap: nowrap;
-        flex-shrink: 1;
     }
 
     .stat-box {
-        flex: 1;
-        padding: 0.5rem 0.3rem;
+        width: 100%;
+        max-width: none;               /* Remove 25% width restriction */
         min-width: 0;          
-        max-width: calc(25% - 0.1875rem);
+        padding: 0.6rem 0.5rem;
         margin-bottom: 0;
+        box-sizing: border-box;        /* Prevent elements from overflowing */
+        
+        /* Center content both vertically and horizontally */
+        display: flex;
+        flex-direction: column;        /* Stack label and value vertically */
+        justify-content: center;       
+        align-items: center;           
+        text-align: center;            
     }
 
-    /* Button box special case for MORE INFO */
+    /* Button box adjustment for mobile */
     .stat-box.btn-box {
-        padding: 0.5rem 0.6rem;
-        max-width: none;       
+        padding: 0.6rem 0.5rem;
     }
 
     /* Dynamic game event navigation button link */
