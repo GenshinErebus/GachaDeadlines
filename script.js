@@ -574,24 +574,39 @@ const eventDatabase = {
                 name: "The Syndrone of Silence",
                 endDate: "2026-09-24T10:00:00Z"
             },
-            // Gacha Banners (4 total)
             {
                 id: "rev_010",
-                name: "Limited Banner",
+                name: "Truth a Posteriori",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_011",
+                name: "Focused Flashback",
+                endDate: "2026-09-24T10:00:00Z"
+            },
+            {
+                id: "rev_012",
+                name: "Break Time Activity",
+                endDate: "2026-09-24T10:00:00Z"
+            },
+            // Gacha Banners (4 total)
+            {
+                id: "rev_013",
+                name: "Limited Banner",
+                endDate: "2026-09-24T10:00:00Z"
+            },
+            {
+                id: "rev_014",
                 name: "A Beating Heart Beneath the Stone",
                 endDate: "2026-08-25T10:00:00Z"
             },
             {
-                id: "rev_012",
+                id: "rev_015",
                 name: "Ripples on the Water",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_013",
+                id: "rev_016",
                 name: "Rerun Banner",
                 endDate: "2026-09-03T10:00:00Z"
             }
