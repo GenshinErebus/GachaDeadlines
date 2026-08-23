@@ -29,7 +29,6 @@ body {
     position: relative;
 }
 
-/* Matrix digital rain background effect */
 body::before {
     content: '';
     position: fixed;
@@ -49,7 +48,6 @@ body::before {
     z-index: -1;
 }
 
-/* CRT scanline effect overlay */
 body::after {
     content: '';
     position: fixed;
@@ -193,18 +191,10 @@ h1 {
 }
 
 @keyframes pulse-border {
-
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
-/* Card corner decorations */
 .event-card::after {
     content: '■ ■ ■ ■';
     position: absolute;
@@ -266,18 +256,10 @@ h1 {
 }
 
 @keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
-/* Warning events - Yellow/Gold cyberpunk look */
 .countdown.warning {
     border-color: #ffe600;
     box-shadow: 0 0 10px rgba(255, 230, 0, 0.3);
@@ -289,13 +271,11 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
 }
 
-/* Title in yellow for warning events */
 .event-card.has-warning-timer .event-name {
     color: #ffe600;
     text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
 }
 
-/* Expired events - dark red archive look */
 .countdown.expired {
     border-color: #5a1a1a;
     background: rgba(90, 26, 26, 0.2);
@@ -325,13 +305,11 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     text-shadow: 0 0 8px rgba(90, 26, 26, 0.6);
 }
 
-/* Title in Red */
 .countdown.urgent~.event-name,
 .event-card:has(.countdown.urgent) .event-name {
     color: #ff3333;
     text-shadow: 0 0 8px rgba(255, 51, 51, 0.6);
 }
-
 
 /* ============================================
    FOOTER STATUS BAR
@@ -366,15 +344,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes pulse-dot {
-
-    0%,
-    100% {
-        box-shadow: 0 0 5px var(--matrix-light-green);
-    }
-
-    50% {
-        box-shadow: 0 0 15px var(--matrix-light-green);
-    }
+    0%, 100% { box-shadow: 0 0 5px var(--matrix-light-green); }
+    50% { box-shadow: 0 0 15px var(--matrix-light-green); }
 }
 
 /* ============================================
@@ -490,11 +461,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
 /* ============================================
    DESKTOP LAYOUT (Screens > 768px)
-   Avatar + Update + GitHub aligned on right with proper spacing
    ============================================ */
 @media (min-width: 769px) {
-
-    /* YouTube Avatar */
     a[href*="youtube"] {
         position: fixed;
         top: 5px;
@@ -515,14 +483,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         object-fit: cover;
     }
 
-    /* Update status text - Top right corner */
     #update-status {
         position: fixed;
         top: 10px;
         right: 40px;
     }
 
-    /* GitHub link - Below update status */
     .desktop-only-github {
         position: fixed;
         top: 35px;
@@ -540,25 +506,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         text-shadow: 0 0 8px var(--matrix-light-green);
     }
 
-    /* YouTube Link underneath */
-    .youtube-link {
-        position: fixed;
-        top: 55px;
-        right: 40px;
-        z-index: 9999;
-        color: #ff3333;
-        font-family: monospace;
-        font-size: 0.8rem;
-        text-decoration: none;
-        opacity: 0.8;
-    }
-
-    .youtube-link:hover {
-        opacity: 1;
-        text-shadow: 0 0 8px #ff3333;
-    }
-
-    /* Region selector spacing */
     .region-selector {
         margin-top: 10px;
     }
@@ -566,16 +513,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     #gameSelect {
         min-width: 320px;
     }
-
 }
 
 /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
-   COMPACT 2-COLUMN ARRANGEMENT WITH PROPERLY SIZED STATS
    ============================================ */
 @media (max-width: 768px) {
-
-    /* YouTube Avatar - Fixed top right */
     a[href*="youtube"] {
         position: fixed;
         top: 4px;
@@ -586,7 +529,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         z-index: 9999;
     }
 
-    /* YouTube Avatar Image Styling */
     a[href*="youtube"] img {
         display: block;
         width: 63px;
@@ -597,7 +539,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         object-fit: cover;
     }
 
-    /* Update status - Below navigation bar, RIGHT aligned */
     #update-status {
         position: absolute;
         right: 10px;
@@ -606,80 +547,63 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         bottom: 5px;
         text-align: right;
         margin: 0;
-        /* Make smaller */
         font-size: 0.7rem;
     }
 
-    /* Hide GitHub link on mobile */
     .desktop-only-github {
         display: none;
     }
 
-    /* Adjust game select dropdown - leave room for avatar */
     #gameSelect {
         max-width: calc(100% - 80px);
         width: auto;
         min-width: 260px;
         margin-left: -20px;
-        /* Keep slightly larger for readability */
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }
 
-    /* Region selector spacing */
     .region-selector {
         margin-top: 5px;
         margin-left: -20px;
     }
 
-    /* STATS OVERVIEW ON MOBILE - CLEAN 2x2 GRID */
     .stats-overview {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* 2 equal columns */
         gap: 0.5rem;
-        /* Space between boxes */
         margin-bottom: 1rem;
     }
 
     .stat-box {
         width: 100%;
         max-width: none;
-        /* Remove 25% width restriction */
         min-width: 0;
         padding: 0.6rem 0.5rem;
         margin-bottom: 0;
         box-sizing: border-box;
-        /* Prevent elements from overflowing */
-
-        /* Center content both vertically and horizontally */
         display: flex;
         flex-direction: column;
-        /* Stack label and value vertically */
         justify-content: center;
         align-items: center;
         text-align: center;
     }
 
-    /* Button box adjustment for mobile */
     .stat-box.btn-box {
         padding: 0.6rem 0.5rem;
     }
 
-    /* Dynamic game event navigation button link */
     .events-btn {
         padding: 0.5rem 0.4rem;
         font-size: 0.75rem;
     }
 
-    /* EVENTS GRID - 2 COLUMNS ON MOBILE */
     .events-grid {
         grid-template-columns: 1fr 1fr;
         gap: 0.75rem;
         margin-top: 1rem;
     }
 
-    /* Event Cards more compact on mobile */
     .event-card {
         padding: 0.75rem;
         margin-bottom: 0;
@@ -691,7 +615,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         line-height: 1.2;
     }
 
-    /* Countdown more compact on mobile */
     .countdown {
         padding: 0.4rem;
         margin-top: 0.5rem;
@@ -705,32 +628,26 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         font-size: 0.55rem;
     }
 
-    /* Meta rows more compact on mobile */
     .meta-row {
         font-size: 0.65rem;
         margin-bottom: 0.3rem;
     }
 
-    /* H1 title smaller on mobile */
     h1 {
         font-size: 1.3rem;
         margin-bottom: 0.8rem;
     }
 
-    /* Container padding adjustment */
     .container {
         padding: 1rem;
-        /* Space for status bar */
         padding-bottom: 3.5rem;
     }
 
-    /* Status bar smaller */
     .status-bar {
         font-size: 0.65rem;
         padding: 0.4rem 0.8rem;
     }
 
-    /* Loading Message - Much smaller on mobile */
     .loading-message {
         padding: 1rem;
         text-align: center;
@@ -742,7 +659,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         word-wrap: break-word;
         padding: 0.5rem;
     }
-
 }
 
 /* ============================================
@@ -756,20 +672,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes loading-pulse {
-
-    0%,
-    100% {
-        opacity: 0.3;
-    }
-
-    50% {
-        opacity: 1;
-    }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
 /* ============================================
    GOLDEN GACHA BANNER STYLING
-   Special styling for all gacha banners
    ============================================ */
 [data-event-id*="gi_010"],
 [data-event-id*="gi_011"],
@@ -810,7 +718,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Dynamic game event navigation button link */
 .events-btn {
     display: flex;
     align-items: center;
@@ -818,7 +725,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     width: 100%;
     height: 100%;
     padding: 1rem 1.5rem;
-    /* Match spacing with existing stat boxes */
     color: var(--matrix-light-green);
     text-decoration: none;
     font-family: 'Courier New', monospace;
@@ -828,16 +734,13 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     transition: all 0.3s ease;
 }
 
-/* White glowing cyberpunk feedback on hover */
 .events-btn:hover {
     color: #ffffff;
     background: rgba(0, 255, 0, 0.05);
-    /* Subtle matrix glow tint */
     box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.2);
     cursor: pointer;
 }
 
-/* YOUTUBE BUTTON FIX - !important entfernt, Klasse kombiniert */
 .events-btn.youtube-btn {
     position: static;
     display: flex;
@@ -849,7 +752,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     line-height: 1.4;
 }
 
-/* Container box wrapper for the dynamic button alignment - !important entfernt, Spezifität erhöht */
 .stats-overview .stat-box.btn-box {
     display: flex;
     align-items: center;
@@ -860,67 +762,186 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     height: auto;
 }
 
-/* ===== SERVER RESET CARD - RED/ORANGE ===== */
+/* ============================================
+   SERVER RESET CARD - CYAN/TURQUOISE THEME
+   ============================================ */
 .container .event-card.server-reset-card {
-    background-color: #0d0a0a;
-    border: 2px solid red;
+    background-color: #050a0a;
+    border: 2px solid #00ffff;
     box-shadow: none;
     outline: none;
 }
 
-/* Remove green top border line / change to red */
 .container .event-card.server-reset-card::before {
-    background: linear-gradient(90deg, transparent, red, transparent);
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
 }
 
-/* Hover effect - red instead of green */
 .container .event-card.server-reset-card:hover {
-    border-color: red;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    border-color: #66ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
     transform: translateY(-5px);
 }
 
 .container .event-card.server-reset-card .event-name {
-    color: red;
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
 }
 
 .container .event-card.server-reset-card .meta-label {
-    color: red;
+    color: #00ffff;
 }
 
 .container .event-card.server-reset-card .meta-value {
-    color: red;
+    color: #66ffff;
 }
 
 .container .event-card.server-reset-card .reset-time {
     color: #000000;
     font-weight: bold;
-    background-color: red;
+    background-color: #00ffff;
     padding: 2px 6px;
     display: inline-block;
 }
 
 .container .event-card.server-reset-card .countdown {
-    background-color: #1a1515;
-    border: 1px dashed red;
+    background-color: #0a1515;
+    border: 1px dashed #00ffff;
 }
 
 .container .event-card.server-reset-card .countdown-value {
-    color: red;
-    text-shadow: 0 0 12px rgba(255, 0, 0, 0.9);
+    color: #00ffff;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.9);
 }
 
 .container .event-card.server-reset-card .countdown-label {
-    color: red;
+    color: #00ffff;
 }
 
 .container .event-card.server-reset-card .indicator-dots {
-    color: red;
-    background-color: red;
+    color: #00ffff;
+    background-color: #00ffff;
 }
 
 .container .event-card.server-reset-card::after,
 .container .event-card.server-reset-card > div:last-child {
-    color: red;
+    color: #00ffff;
+}
+
+/* ============================================
+   MAINTENANCE CARD STYLING - CYAN/TURQUOISE THEME
+   ============================================ */
+.container .event-card.maintenance-card {
+    background-color: #050a0a;
+    border: 2px solid #00ffff;
+    box-shadow: none;
+    outline: none;
+}
+
+.container .event-card.maintenance-card::before {
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+.container .event-card.maintenance-card:hover {
+    border-color: #66ffff;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    transform: translateY(-5px);
+}
+
+.container .event-card.maintenance-card .event-name {
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
+
+.container .event-card.maintenance-card .event-name.maintenance-active {
+    color: #00cccc;
+    text-shadow: 0 0 12px rgba(0, 204, 204, 0.8);
+    animation: blink 1s infinite;
+}
+
+.container .event-card.maintenance-card .meta-label {
+    color: #00ffff;
+}
+
+.container .event-card.maintenance-card .meta-value {
+    color: #66ffff;
+}
+
+.container .event-card.maintenance-card .countdown {
+    background-color: #0a1515;
+    border: 1px dashed #00ffff;
+}
+
+.container .event-card.maintenance-card .countdown-value {
+    color: #00ffff;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.9);
+}
+
+.container .event-card.maintenance-card .countdown-label {
+    color: #00ffff;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-no-data {
+    background-color: #0a1515;
+    border: 1px dashed #00aaaa;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-no-data .countdown-value {
+    color: #00aaaa;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-upcoming {
+    border-color: #00ffff;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-active {
+    border-color: #00cccc;
+    background-color: #0a1a1a;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-active .countdown-value {
+    color: #00cccc;
+    text-shadow: 0 0 15px rgba(0, 204, 204, 1);
+    animation: blink 0.5s infinite;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-active .countdown-label {
+    color: #00cccc;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-complete {
+    border-color: #00ff88;
+    background-color: #051a10;
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-complete .countdown-value {
+    color: #00ff88;
+    text-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+}
+
+.container .event-card.maintenance-card .countdown.maintenance-complete .countdown-label {
+    color: #00ff88;
+}
+
+.container .event-card.maintenance-card.maintenance-active {
+    border-color: #00cccc;
+    background-color: #051010;
+}
+
+.container .event-card.maintenance-card.maintenance-active .event-name {
+    color: #00cccc;
+    text-shadow: 0 0 15px rgba(0, 204, 204, 1);
+    animation: pulse-cyan 2s infinite;
+}
+
+.container .event-card.maintenance-card.maintenance-active .meta-label {
+    color: #00cccc;
+}
+
+.container .event-card.maintenance-card.maintenance-active .meta-value {
+    color: #00eeee;
+}
+
+@keyframes pulse-cyan {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }

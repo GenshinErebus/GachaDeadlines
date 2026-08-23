@@ -3,44 +3,34 @@ let currentRegion = 'eu';
 
 /* daily server reset for each game (UTC) */
 const serverResets = {
-    /* 4:00 AM server-local time → UTC conversion */
-    genshin:     { asia: "20:00", eu: "03:00", na: "09:00" },
-    hsr:         { asia: "20:00", eu: "03:00", na: "09:00" },
-    zzz:         { asia: "20:00", eu: "03:00", na: "09:00" },
-    arknights:   { asia: "20:00", eu: "03:00", na: "09:00" },
-    /* 5:00 AM server-local time → UTC conversion */
-    duet:        { asia: "21:00", eu: "04:00", na: "10:00" },
-    nte:         { asia: "21:00", eu: "04:00", na: "10:00" },
-    /* Global simultaneous reset at midnight UTC */
-    mongil:      { asia: "00:00", eu: "00:00", na: "00:00" },
-    /* Global server, primary daily reset at 10:00 UTC */
+    genshin: { asia: "20:00", eu: "03:00", na: "09:00" },
+    hsr: { asia: "20:00", eu: "03:00", na: "09:00" },
+    zzz: { asia: "20:00", eu: "03:00", na: "09:00" },
+    arknights: { asia: "20:00", eu: "03:00", na: "09:00" },
+    duet: { asia: "21:00", eu: "04:00", na: "10:00" },
+    nte: { asia: "21:00", eu: "04:00", na: "10:00" },
+    mongil: { asia: "00:00", eu: "00:00", na: "00:00" },
     reverse1999: { asia: "10:00", eu: "10:00", na: "10:00" },
-    /* 4:00 AM server-local time → UTC conversion */
-    wuwa:        { asia: "20:00", eu: "03:00", na: "09:00" }
+    wuwa: { asia: "20:00", eu: "03:00", na: "09:00" }
 };
 
-/* Function to switch regions and update button styles */
-function setRegion(region) {
-    currentRegion = region;
+/* Global timer intervals */
+let countdownInterval = null;
+let resetInterval = null;
+let maintenanceInterval = null;
 
-    /* Update button classes instead of inline styles */
-    ['asia', 'eu', 'na'].forEach(r => {
-        const btn = document.getElementById(`btn-${r}`);
-        if (btn) {
-            btn.classList.toggle('active', r === region);
-        }
-    });
-
-    /* Trigger a recalculation of the timers immediately */
-    loadGameEvents();
-}
-
-// Event database for all my games
+// Event database for all games
 const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
+        maintenance: [
+            {
+                id: "gi_maint_001",
+                startDate: "2026-09-22T22:00:00Z",
+                endDate: "2026-09-23T03:00:00Z"
+            }
+        ],
         events: [
-            // General Events
             {
                 id: "gi_001",
                 name: "Mutual Aid in Bloom: Into the Frostlands",
@@ -86,7 +76,6 @@ const eventDatabase = {
                 name: "Stygan Onslaught",
                 endDate: "2026-09-22T03:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "gi_010",
                 name: "Character Event Wish",
@@ -106,8 +95,14 @@ const eventDatabase = {
     },
     hsr: {
         name: "Honkai Star Rail",
+        maintenance: [
+            {
+                id: "hsr_maint_001",
+                startDate: "2026-09-23T22:00:00Z",
+                endDate: "2026-09-24T05:00:00Z"
+            }
+        ],
         events: [
-            // General Events
             {
                 id: "hsr_001",
                 name: "Antigraft Brickbuster",
@@ -168,7 +163,6 @@ const eventDatabase = {
                 name: "Garden of Plenty",
                 endDate: "2026-08-24T03:00:00Z"
             },
-            // Gacha Banners (4 total)
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
@@ -193,8 +187,14 @@ const eventDatabase = {
     },
     zzz: {
         name: "Zenless Zone Zero",
+        maintenance: [
+            {
+                id: "zzz_maint_001",
+                startDate: "2026-09-08T22:00:00Z",
+                endDate: "2026-09-09T03:00:00Z"
+            }
+        ],
         events: [
-            // General Events (16 total)
             {
                 id: "zzz_000",
                 name: "Snap! Focus Showdown",
@@ -255,7 +255,6 @@ const eventDatabase = {
                 name: "Crispy Meal Deployment Plan",
                 endDate: "2026-09-07T03:00:00Z"
             },
-            // Gacha Banners (4 total)
             {
                 id: "zzz_012",
                 name: "Channel Exclusive",
@@ -290,8 +289,21 @@ const eventDatabase = {
     },
     arknights: {
         name: "Arknights Endfield",
+        maintenance: [
+            {
+                id: "ark_maint_001_asia",
+                region: "asia",
+                startDate: "2026-09-02T06:00:00Z",
+                endDate: "2026-09-02T12:00:00Z"
+            },
+            {
+                id: "ark_maint_001_euna",
+                region: "eu",
+                startDate: "2026-09-01T23:00:00Z",
+                endDate: "2026-09-02T05:00:00Z"
+            }
+        ],
         events: [
-            // General Events (10 total)
             {
                 id: "ark_001",
                 name: "Bedazzling Dawnstar Sign-In",
@@ -312,7 +324,6 @@ const eventDatabase = {
                 name: "Like a Star Streaking Through the Boundaries",
                 endDate: "2026-09-01T22:00:00Z"
             },
-            // Gacha Banners (3 total)
             {
                 id: "ark_006",
                 name: "GOOD MORNING from YOUR DAWNSTAR",
@@ -327,8 +338,14 @@ const eventDatabase = {
     },
     duet: {
         name: "Duet Night Abyss",
+        maintenance: [
+            {
+                id: "dna_maint_001",
+                startDate: "2026-09-29T06:00:00Z",
+                endDate: "2026-09-29T11:00:00Z"
+            }
+        ],
         events: [
-            // General Events (11 total)
             {
                 id: "dna_000",
                 name: "Starry Sojourn",
@@ -389,7 +406,6 @@ const eventDatabase = {
                 name: "Edge of Trial",
                 endDate: "2026-09-01T04:00:00Z"
             },
-            // Gacha Banners
             {
                 id: "dna_012",
                 name: "Event Esclusive",
@@ -404,8 +420,14 @@ const eventDatabase = {
     },
     nte: {
         name: "Neverness To Everness",
+        maintenance: [
+            {
+                id: "nte_maint_001",
+                startDate: "2026-09-30T05:00:00Z",
+                endDate: "2026-09-30T10:00:00Z"
+            }
+        ],
         events: [
-            // General Events (12 total)
             {
                 id: "nte_001",
                 name: "Summertime",
@@ -441,7 +463,6 @@ const eventDatabase = {
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-08-26T21:00:00Z"
             },
-            // Gacha Banners (3 total)
             {
                 id: "nte_010",
                 name: "Alluring Shadows",
@@ -461,6 +482,13 @@ const eventDatabase = {
     },
     mongil: {
         name: "MONGIL STAR DIVE",
+        maintenance: [
+            {
+                id: "msd_maint_001",
+                startDate: "2026-09-09T02:00:00Z",
+                endDate: "2026-09-09T07:00:00Z"
+            }
+        ],
         events: [
             {
                 id: "msd_000",
@@ -502,7 +530,6 @@ const eventDatabase = {
                 name: "The Inquisitor's Day Off (rewards use)",
                 endDate: "2026-08-26T00:00:00Z"
             },
-            // Gacha Banners (3 total)
             {
                 id: "msd_010",
                 name: "Doom's Lonely Herald",
@@ -527,8 +554,14 @@ const eventDatabase = {
     },
     reverse1999: {
         name: "Reverse: 1999",
+        maintenance: [
+            {
+                id: "rev_maint_001",
+                startDate: "2026-09-24T10:00:00Z",
+                endDate: "2026-09-24T15:00:00Z"
+            }
+        ],
         events: [
-            // General Events (14 total)
             {
                 id: "rev_000",
                 name: "Return of a Special Guest",
@@ -594,7 +627,6 @@ const eventDatabase = {
                 name: "Break Time Activity",
                 endDate: "2026-09-24T10:00:00Z"
             },
-            // Gacha Banners (4 total)
             {
                 id: "rev_013",
                 name: "Limited Banner",
@@ -619,8 +651,14 @@ const eventDatabase = {
     },
     wuwa: {
         name: "Wuthering Waves",
+        maintenance: [
+            {
+                id: "wuwa_maint_001",
+                startDate: "2026-09-30T04:00:00Z",
+                endDate: "2026-09-30T11:00:00Z"
+            }
+        ],
         events: [
-            // General Events            
             {
                 id: "wuwa_001",
                 name: "Gifts of Drifting Mist",
@@ -631,7 +669,7 @@ const eventDatabase = {
                 name: "Ascedant Aces",
                 endDate: "2026-09-10T09:00:00Z"
             },
-             {
+            {
                 id: "wuwa_003",
                 name: "Tactical Hologram: Simulation",
                 endDate: "2026-09-29T03:00:00Z"
@@ -655,8 +693,7 @@ const eventDatabase = {
                 id: "wuwa_007",
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
-            },           
-            // Gacha Banners (6 total)
+            },
             {
                 id: "wuwa_012",
                 name: "Featured Resonator Convene",
@@ -666,7 +703,7 @@ const eventDatabase = {
                 id: "wuwa_013",
                 name: "Featured Resonator Convene Rerun",
                 endDate: "2026-09-10T09:00:00Z"
-            },            
+            },
             {
                 id: "wuwa_015",
                 name: "Featured Weapon Convene",
@@ -681,26 +718,27 @@ const eventDatabase = {
     }
 };
 
-// Global timer intervals
-let countdownInterval = null;
-let resetInterval = null;
-
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[Matrix Tracker] Initializing...');
+
+    // Load saved region from localStorage
+    const savedRegion = localStorage.getItem('selectedRegion');
+    if (savedRegion && ['asia', 'eu', 'na'].includes(savedRegion)) {
+        currentRegion = savedRegion;
+        updateRegionButtons();
+    }
+
     initUI();
 
-    // Explicitly set the dropdown menu to the empty placeholder value
     const select = document.getElementById('gameSelect');
     if (select) {
         select.value = "";
     }
 
-    // Triggers the empty database visual notice on start instead of auto-loading Genshin
     loadGameEvents();
 });
 
-// UI initialization
 function initUI() {
     console.log('[Matrix Tracker] Setting up UI...');
 
@@ -714,7 +752,6 @@ function initUI() {
     createStatusBar();
 }
 
-// Creates the fixed status bar at the bottom
 function createStatusBar() {
     if (document.querySelector('.status-bar')) return;
 
@@ -737,7 +774,6 @@ function createStatusBar() {
     setInterval(updateServerTime, 1000);
 }
 
-// Updates server time in status bar
 function updateServerTime() {
     const timeElement = document.getElementById('serverTime');
     if (timeElement) {
@@ -746,7 +782,45 @@ function updateServerTime() {
     }
 }
 
-// Main function: loads events for selected game
+// ============================================================
+// NEW FUNCTION: Region Switching Logic (MISSING CODE ADDED HERE)
+// ============================================================
+function setRegion(region) {
+    console.log(`[Matrix Tracker] Changing region to: ${region.toUpperCase()}`);
+
+    // Validate region
+    if (!['asia', 'eu', 'na'].includes(region)) {
+        console.error(`[Matrix Tracker] Invalid region: ${region}`);
+        return;
+    }
+
+    // Update global variable
+    currentRegion = region;
+
+    // Save to localStorage
+    localStorage.setItem('selectedRegion', region);
+
+    // Update button styles
+    updateRegionButtons();
+
+    // Reload current game events to reflect new timezone offsets
+    loadGameEvents();
+}
+
+function updateRegionButtons() {
+    const buttons = ['asia', 'eu', 'na'];
+    buttons.forEach(btn => {
+        const el = document.getElementById(`btn-${btn}`);
+        if (el) {
+            if (btn === currentRegion) {
+                el.classList.add('active');
+            } else {
+                el.classList.remove('active');
+            }
+        }
+    });
+}
+
 function loadGameEvents() {
     const select = document.getElementById('gameSelect');
     const gameKey = select.value;
@@ -756,7 +830,7 @@ function loadGameEvents() {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
-    
+
     if (resetInterval) {
         clearInterval(resetInterval);
         resetInterval = null;
@@ -775,14 +849,12 @@ function loadGameEvents() {
 
     const gameData = eventDatabase[gameKey];
 
-    // Game header (ONLY ONCE - no badge needed)
     const header = document.createElement('h1');
     header.setAttribute('data-text', gameData.name.toUpperCase());
     header.textContent = gameData.name.toUpperCase();
     header.className = 'game-header';
     container.appendChild(header);
 
-    // Stats overview
     const statsDiv = document.createElement('div');
     statsDiv.id = 'statsOverview';
     statsDiv.className = 'stats-overview';
@@ -798,7 +870,6 @@ function loadGameEvents() {
     `;
     container.appendChild(statsDiv);
 
-    // Dynamic link database for each game
     const gameLinks = {
         genshin: { wiki: "https://genshin-impact.fandom.com/wiki/Event#Upcoming", videos: "https://www.youtube.com/watch?v=W67SGl5f-pQ&list=PLaIcRoqjRStY_M0Z5nZKoSdJDBB24vptc" },
         hsr: { wiki: "https://honkai-star-rail.fandom.com/wiki/Events#Upcoming", videos: "https://www.youtube.com/watch?v=km1GiY0bL-0&list=PLaIcRoqjRStZ0kJBnQ5n_eIJwWqOFPCzF" },
@@ -818,16 +889,16 @@ function loadGameEvents() {
     `;
     }
 
-    // Events grid container
     const eventsGrid = document.createElement('div');
     eventsGrid.className = 'events-grid';
     eventsGrid.id = 'eventsGrid';
 
-    // First: Create the Server Reset card (as FIRST event)
     const resetCard = createServerResetCard(gameKey);
     eventsGrid.appendChild(resetCard);
 
-    // Then: Create regular event cards
+    const maintCard = createMaintenanceCard(gameKey);
+    eventsGrid.appendChild(maintCard);
+
     gameData.events.forEach(event => {
         const card = createEventCard(event);
         eventsGrid.appendChild(card);
@@ -835,19 +906,19 @@ function loadGameEvents() {
 
     container.appendChild(eventsGrid);
 
-    // Start all timers (both regular events AND reset timer)
     startCountdownTimers();
     startResetCountdown(gameKey);
+    startMaintenanceCountdown(gameKey);
 
-    console.log(`[Matrix Tracker] ${gameData.name} loaded - ${gameData.events.length} events + server reset`);
+    console.log(`[Matrix Tracker] ${gameData.name} loaded - ${gameData.events.length} events + maintenance`);
 }
 
-/* Creates the daily server reset card (FIRST in list, loops forever) */
 function createServerResetCard(gameKey) {
     const card = document.createElement('div');
     card.className = 'event-card server-reset-card';
     card.dataset.eventId = `reset_${gameKey}`;
     card.dataset.isReset = "true";
+    card.dataset.gameKey = gameKey;
 
     const region = currentRegion || 'eu';
     const resetTime = serverResets[gameKey]?.[region] || "04:00";
@@ -889,24 +960,21 @@ function createServerResetCard(gameKey) {
     return card;
 }
 
-/* Calculates next reset datetime based on current time */
 function getNextResetTime(gameKey, region) {
     const now = new Date();
     const resetTime = serverResets[gameKey]?.[region] || "04:00";
     const [hours, minutes] = resetTime.split(':').map(Number);
-    
+
     let nextReset = new Date(now);
     nextReset.setHours(hours, minutes, 0, 0);
-    
-    // If reset already passed today, move to tomorrow
+
     if (nextReset <= now) {
         nextReset.setDate(nextReset.getDate() + 1);
     }
-    
+
     return nextReset;
 }
 
-/* Formats server reset date without timezone name (cleaner display) */
 function formatDateServerReset(date) {
     const options = {
         day: '2-digit',
@@ -918,7 +986,133 @@ function formatDateServerReset(date) {
     return date.toLocaleDateString('en-US', options);
 }
 
-// Creates a single event card as HTML (KEIN STARTDATUM - NUR ENDDATUM)
+function createMaintenanceCard(gameKey) {
+    const card = document.createElement('div');
+    card.className = 'event-card maintenance-card';
+    card.dataset.eventId = `maint_${gameKey}`;
+    card.dataset.isMaintenance = "true";
+    card.dataset.gameKey = gameKey;
+
+    const maintenance = getCurrentMaintenance(gameKey);
+    let contentHtml = '';
+
+    if (!maintenance) {
+        contentHtml = `
+            <h3 class="event-name">🔧 MAINTENANCE OVER</h3>
+            <div class="event-meta">
+                <div class="meta-row">
+                    <span class="meta-label">STATUS:</span>
+                    <span class="meta-value" style="color: #666;">NEXT MAINTENANCE TIME UNKNOWN</span>
+                </div>
+            </div>
+            <div class="countdown maintenance-no-data">
+                <div class="countdown-item">
+                    <span class="countdown-value">--</span>
+                    <span class="countdown-label">NO DATA</span>
+                </div>
+            </div>
+        `;
+    } else if (maintenance.state === 'upcoming') {
+        contentHtml = `
+            <h3 class="event-name">🔧 NEXT MAINTENANCE</h3>
+            <div class="event-meta">
+                <div class="meta-row">
+                    <span class="meta-label">STATUS:</span>
+                    <span class="meta-value status-active">ONLINE</span>
+                </div>
+            </div>
+            <div class="countdown maintenance-upcoming" id="countdown_maint_${gameKey}">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_days">00</span>
+                    <span class="countdown-label">DAYS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_hours">00</span>
+                    <span class="countdown-label">HRS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_minutes">00</span>
+                    <span class="countdown-label">MIN</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_seconds">00</span>
+                    <span class="countdown-label">SEC</span>
+                </div>
+            </div>
+        `;
+    } else {
+        contentHtml = `
+            <h3 class="event-name maintenance-active">⚠️ MAINTENANCE ACTIVE</h3>
+            <div class="event-meta">
+                <div class="meta-row">
+                    <span class="meta-label">STATUS:</span>
+                    <span class="meta-value status-urgent">SERVER OFFLINE</span>
+                </div>
+            </div>
+            <div class="countdown maintenance-active" id="countdown_maint_${gameKey}">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_days">00</span>
+                    <span class="countdown-label">DAYS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_hours">00</span>
+                    <span class="countdown-label">HRS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_minutes">00</span>
+                    <span class="countdown-label">MIN</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="maint_seconds">00</span>
+                    <span class="countdown-label">SEC</span>
+                </div>
+            </div>
+        `;
+    }
+
+    card.innerHTML = contentHtml;
+    return card;
+}
+
+function getCurrentMaintenance(gameKey) {
+    const now = new Date();
+    const gameData = eventDatabase[gameKey];
+    const region = currentRegion || 'eu';
+
+    if (!gameData.maintenance || gameData.maintenance.length === 0) {
+        return null;
+    }
+
+    // Specialcase: Arknights Endfield EU und NA share Server
+    const effectiveRegion = (gameKey === 'arknights' && region === 'na') ? 'eu' : region;
+
+    // sort by Starttime, first earliest
+    const sorted = [...gameData.maintenance].sort((a, b) =>
+        new Date(a.startDate) - new Date(b.startDate)
+    );
+
+    for (const maint of sorted) {
+        // Filter after Region - if none then all
+        if (maint.region && maint.region !== effectiveRegion) {
+            continue;
+        }
+
+        const start = new Date(maint.startDate);
+        const end = new Date(maint.endDate);
+
+        if (now >= start && now <= end) {
+            // right now in Maintenance
+            return { ...maint, state: 'active' };
+        } else if (now < start) {
+            // next maintence
+            return { ...maint, state: 'upcoming' };
+        }
+    }
+
+    // all maintence are over
+    return null;
+}
+
 function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
@@ -932,7 +1126,6 @@ function createEventCard(event) {
     card.innerHTML = `
         <h3 class="event-name">${event.name}</h3>
         <div class="event-meta">
-            <!-- STARTDATUM ENTFERNT -->
             <div class="meta-row">
                 <span class="meta-label">END:</span>
                 <span class="meta-value">${formattedDate}</span>
@@ -965,42 +1158,32 @@ function createEventCard(event) {
     return card;
 }
 
-/* Helper function to get the exact hour offset for each specific game and region */
 function getGameOffset() {
     const select = document.getElementById('gameSelect');
     if (!select) return 0;
     const gameKey = select.value;
 
-    /* Group 1: Standard Regional Server Offset (Asia / Europe / America staggered) */
     if (gameKey === 'genshin' || gameKey === 'hsr' || gameKey === 'zzz' || gameKey === 'nte' || gameKey === 'wuwa') {
         if (currentRegion === 'asia') return -7;
         if (currentRegion === 'na') return 6;
     }
 
-    /* Group 2: Reverse 1999 (Specific Global Timezone Offset Rules) */
     if (gameKey === 'reverse1999') {
         if (currentRegion === 'asia') return -6;
         if (currentRegion === 'na') return 7;
     }
 
-    /* Group 3: Arknights Endfield & Duet Night Abyss (Asia shifted / America and Europe are synchronous) */
     if (gameKey === 'arknights' || gameKey === 'duet') {
         if (currentRegion === 'asia') return -7;
     }
 
-    /* Group 4: Global Simultaneous Reset (MONGIL STAR DIVE) */
-    /* These games end at the exact same second worldwide. Offset remains 0. */
     return 0;
 }
 
-
-
-// Determines event status based on end time
 function getEventStatus(endDateString) {
     const now = new Date();
     let end = new Date(endDateString);
 
-    /* Dynamically shift hours based on the specific game database rule */
     end.setHours(end.getHours() + getGameOffset());
 
     const diffMs = end - now;
@@ -1018,7 +1201,6 @@ function getEventStatus(endDateString) {
     }
 }
 
-// Translates status terms to English
 function translateStatus(status) {
     const translations = {
         active: 'ACTIVE',
@@ -1029,12 +1211,10 @@ function translateStatus(status) {
     return translations[status] || status;
 }
 
-// Formats date into readable format
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
     let date = new Date(dateString);
 
-    /* Dynamically shift hours based on the specific game database rule */
     date.setHours(date.getHours() + getGameOffset());
 
     const options = {
@@ -1048,12 +1228,10 @@ function formatDate(dateString) {
     return date.toLocaleDateString('en-US', options);
 }
 
-// Calculates remaining time for regular events
 function getTimeRemaining(endtime) {
     const now = new Date();
     let end = new Date(endtime);
 
-    /* Dynamically shift hours based on the specific game database rule */
     end.setHours(end.getHours() + getGameOffset());
 
     const totalSeconds = Math.floor((end - now) / 1000);
@@ -1070,7 +1248,6 @@ function getTimeRemaining(endtime) {
     return { days, hours, minutes, seconds, total: totalSeconds };
 }
 
-/* Calculates remaining time for server reset (loops automatically) */
 function getTimeRemainingForReset(gameKey) {
     const region = currentRegion || 'eu';
     const nextReset = getNextResetTime(gameKey, region);
@@ -1090,7 +1267,6 @@ function getTimeRemainingForReset(gameKey) {
     return { days, hours, minutes, seconds, total: totalSeconds };
 }
 
-// Starts countdown timers for all active events
 function startCountdownTimers() {
     console.log('[Matrix Tracker] Countdown system activated...');
 
@@ -1102,15 +1278,13 @@ function startCountdownTimers() {
     }, 1000);
 }
 
-// UPDATED: Updates all countdown displays with turquoise expired highlighting
 function updateAllCountdowns() {
     const allCards = document.querySelectorAll('.event-card');
 
     allCards.forEach(card => {
         const eventId = card.dataset.eventId;
-        
-        // Skip the server reset card here - it has its own updater
-        if (card.dataset.isReset === "true") return;
+
+        if (card.dataset.isReset === "true" || card.dataset.isMaintenance === "true") return;
 
         const eventObj = findEventById(eventId);
 
@@ -1162,10 +1336,9 @@ function updateAllCountdowns() {
     updateUrgentCounts();
 }
 
-/* Updates the server reset countdown (separate from regular events) */
 function updateResetCountdown(gameKey) {
     const timeRemaining = getTimeRemainingForReset(gameKey);
-    
+
     const daysEl = document.getElementById('reset_days');
     const hoursEl = document.getElementById('reset_hours');
     const minutesEl = document.getElementById('reset_minutes');
@@ -1177,7 +1350,6 @@ function updateResetCountdown(gameKey) {
         minutesEl.textContent = String(timeRemaining.minutes).padStart(2, '0');
         secondsEl.textContent = String(timeRemaining.seconds).padStart(2, '0');
     } else if (timeRemaining.total <= 0) {
-        // Reset reached - will loop automatically on next tick
         if (daysEl) {
             daysEl.textContent = '00';
             hoursEl.textContent = '00';
@@ -1187,7 +1359,6 @@ function updateResetCountdown(gameKey) {
     }
 }
 
-/* Starts the daily server reset countdown */
 function startResetCountdown(gameKey) {
     if (resetInterval) {
         clearInterval(resetInterval);
@@ -1195,18 +1366,91 @@ function startResetCountdown(gameKey) {
     }
 
     updateResetCountdown(gameKey);
-    
+
     resetInterval = setInterval(() => {
         updateResetCountdown(gameKey);
     }, 1000);
 }
 
-// Updates urgent event count in statistics
+function updateMaintenanceCountdown(gameKey) {
+    const maintenance = getCurrentMaintenance(gameKey);
+
+    const card = document.querySelector(`[data-game-key="${gameKey}"][data-is-maintenance="true"]`);
+    if (!card) {
+        console.warn(`[Matrix Tracker] Maintenance card not found for ${gameKey}`);
+        return;
+    }
+
+    const daysEl = card.querySelector('#maint_days');
+    const hoursEl = card.querySelector('#maint_hours');
+    const minutesEl = card.querySelector('#maint_minutes');
+    const secondsEl = card.querySelector('#maint_seconds');
+    const titleEl = card.querySelector('.event-name');
+    const statusEl = card.querySelector('.meta-value');
+
+    if (!maintenance) {
+        if (titleEl) titleEl.textContent = '🔧 MAINTENANCE OVER';
+        if (statusEl) statusEl.textContent = 'NEXT MAINTENANCE TIME UNKNOWN';
+        if (daysEl) daysEl.textContent = '--';
+        if (hoursEl) hoursEl.textContent = '--';
+        if (minutesEl) minutesEl.textContent = '--';
+        if (secondsEl) secondsEl.textContent = '--';
+        card.classList.remove('maintenance-active');
+        return;
+    }
+
+    let targetDate;
+
+    if (maintenance.state === 'upcoming') {
+        targetDate = new Date(maintenance.startDate);
+        if (titleEl) titleEl.textContent = '🔧 NEXT MAINTENANCE';
+        if (statusEl) statusEl.textContent = 'ONLINE';
+        card.classList.remove('maintenance-active');
+    } else {
+        targetDate = new Date(maintenance.endDate);
+        if (titleEl) titleEl.textContent = '⚠️ MAINTENANCE ACTIVE';
+        if (statusEl) statusEl.textContent = 'SERVER OFFLINE';
+        card.classList.add('maintenance-active');
+    }
+
+    const now = new Date();
+    const diffMs = targetDate - now;
+
+    if (diffMs <= 0) {
+        if (titleEl) titleEl.textContent = '🔧 MAINTENANCE OVER';
+        if (statusEl) statusEl.textContent = 'NEXT MAINTENANCE TIME UNKNOWN';
+        if (daysEl) daysEl.textContent = '--';
+        if (hoursEl) hoursEl.textContent = '--';
+        if (minutesEl) minutesEl.textContent = '--';
+        if (secondsEl) secondsEl.textContent = '--';
+        card.classList.remove('maintenance-active');
+    } else {
+        const totalSeconds = Math.floor(diffMs / 1000);
+        const days = Math.floor(totalSeconds / (3600 * 24));
+        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = Math.floor(totalSeconds % 60);
+
+        if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+}
+
+function startMaintenanceCountdown(gameKey) {
+    updateMaintenanceCountdown(gameKey);
+
+    maintenanceInterval = setInterval(() => {
+        updateMaintenanceCountdown(gameKey);
+    }, 1000);
+}
+
 function updateUrgentCounts() {
     const urgentEl = document.getElementById('urgentCount');
     if (!urgentEl) return;
 
-    const allCards = document.querySelectorAll('.event-card:not([data-is-reset="true"])');
+    const allCards = document.querySelectorAll('.event-card:not([data-is-reset="true"]):not([data-is-maintenance="true"])');
     let urgentCount = 0;
 
     allCards.forEach(card => {
@@ -1230,7 +1474,6 @@ function updateUrgentCounts() {
     }
 }
 
-// Helper function: finds event object from database
 function findEventById(eventId) {
     for (const gameKey in eventDatabase) {
         const event = eventDatabase[gameKey].events.find(e => e.id === eventId);
@@ -1239,18 +1482,15 @@ function findEventById(eventId) {
     return null;
 }
 
-// Utility: Log message with Matrix aesthetic
 function log(message) {
     const timestamp = new Date().toISOString();
     console.log(`[${timestamp}] [MATRIX] ${message}`);
 }
 
-// Fallback for older browsers without Custom Elements
 if (!window.customElements) {
     window.alert('[Matrix Tracker] Browser not supported. Please update.');
 }
 
-// Event listeners for additional interaction
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'r') {
         e.preventDefault();
@@ -1262,7 +1502,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Exports event data as JSON (for debugging)
 function exportEventData() {
     const dataStr = JSON.stringify(eventDatabase, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
