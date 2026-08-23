@@ -650,6 +650,11 @@ const eventDatabase = {
                 id: "wuwa_006",
                 name: "Hazard Revisited (Period)",
                 endDate: "2026-09-14T03:00:00Z"
+            },
+            {
+                id: "wuwa_007",
+                name: "Resonance Sim Realm",
+                endDate: "2026-09-29T11:00:00Z"
             },           
             // Gacha Banners (6 total)
             {
