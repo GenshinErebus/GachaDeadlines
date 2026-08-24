@@ -1507,4 +1507,176 @@ function exportEventData() {
     log('Data export successful!');
 }
 
+/* ============================================
+   REPORT MISSING EVENTS - MODAL LOGIC
+   ============================================ */
+
+const REPORT_EMAIL = 'genshinerebus@web.de';
+
+function initReportModal() {
+    const reportBtn = document.getElementById('reportBtn');
+    const modal = document.getElementById('reportModal');
+    const closeBtn = document.getElementById('closeModal');
+    const form = document.getElementById('missingEventForm');
+    const btnMailto = document.getElementById('btnMailto');
+    const btnDirect = document.getElementById('btnDirectSend');
+
+    if (!reportBtn || !modal || !form) return;
+
+    /* ============================================
+       OPEN MODAL
+       ============================================ */
+    reportBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Pre-fill current game and region if available
+        const currentGame = document.getElementById('gameSelect')?.value;
+        if (currentGame) {
+            document.getElementById('reportGame').value = currentGame;
+        }
+        document.getElementById('reportRegion').value = currentRegion;
+    });
+
+    /* ============================================
+       CLOSE MODAL
+       ============================================ */
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        form.reset();
+        setFeedback('', '');
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    /* ============================================
+       VALIDATE FORM INPUT
+       ============================================ */
+    function validateForm() {
+        const game = document.getElementById('reportGame').value;
+        const name = document.getElementById('reportEventName').value.trim();
+        if (!game || !name) {
+            return false;
+        }
+        return true;
+    }
+
+    /* ============================================
+       OPTION A: MAILTO - Sends via Local Email Client
+       ============================================ */
+    btnMailto.addEventListener('click', () => {
+        if (!validateForm()) {
+            setFeedback('Please select a game and enter an event name.', 'error');
+            return;
+        }
+
+        const game = document.getElementById('reportGame').value;
+        const gameName = eventDatabase[game]?.name || game;
+        const eventName = document.getElementById('reportEventName').value.trim();
+        const region = document.getElementById('reportRegion').value || 'Any';
+        const notes = document.getElementById('reportNotes').value.trim();
+
+        const subject = encodeURIComponent(`[Missing Event] ${gameName}: ${eventName}`);
+        const body = encodeURIComponent(
+            `Game: ${gameName}\n` +
+            `Missing Event: ${eventName}\n` +
+            `Region: ${region}\n` +
+            `Notes: ${notes || 'None'}\n\n` +
+            `---\n` +
+            `Reported via GachaDeadlines.com\n` +
+            `${new Date().toISOString()}`
+        );
+
+        window.location.href = `mailto:${REPORT_EMAIL}?subject=${subject}&body=${body}`;
+        setFeedback('Email client opened. Please remember to send the email.', 'success');
+        setTimeout(closeModal, 3000);
+    });
+
+    /* ============================================
+       OPTION B: FORMSUBMIT.DIRECT - Sends via API
+       ============================================ */
+    btnDirect.addEventListener('click', async () => {
+        if (!validateForm()) {
+            setFeedback('Please select a game and enter an event name.', 'error');
+            return;
+        }
+
+        const game = document.getElementById('reportGame').value;
+        const gameName = eventDatabase[game]?.name || game;
+        const eventName = document.getElementById('reportEventName').value.trim();
+        const region = document.getElementById('reportRegion').value || 'Any';
+        const notes = document.getElementById('reportNotes').value.trim();
+
+        btnDirect.disabled = true;
+        btnDirect.textContent = 'SENDING...';
+
+        const formData = new FormData();
+        formData.append('_to', REPORT_EMAIL);
+        formData.append('_subject', `[Missing Event] ${gameName}: ${eventName}`);
+        formData.append('game', gameName);
+        formData.append('game_key', game);
+        formData.append('event_name', eventName);
+        formData.append('region', region);
+        formData.append('notes', notes || '');
+
+        try {
+            const response = await fetch(`https://formsubmit.co/ajax/${REPORT_EMAIL}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(Object.fromEntries(formData))
+            });
+
+            if (response.ok) {
+                setFeedback('Report submitted successfully! Thank you.', 'success');
+                setTimeout(closeModal, 3000);
+            } else {
+                const err = await response.json().catch(() => ({}));
+                setFeedback(`Error: ${err.error || 'Submission failed'}`, 'error');
+            }
+        } catch (error) {
+            setFeedback('Network error. Please try again.', 'error');
+            console.error('[Report Modal]', error);
+        }
+
+        btnDirect.disabled = false;
+        btnDirect.textContent = '> SEND DIRECTLY';
+    });
+
+    /* ============================================
+       PREVENT DEFAULT FORM SUBMISSION
+       ============================================ */
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        btnMailto.click();
+    });
+}
+
+/* ============================================
+   HELPER FUNCTION - SET FEEDBACK MESSAGE
+   ============================================ */
+function setFeedback(message, type) {
+    const el = document.getElementById('formFeedback');
+    if (!el) return;
+    el.textContent = message;
+    el.className = 'form-feedback' + (type ? ` ${type}` : '');
+}
+
+/* ============================================
+   HOOK INTO EXISTING DOMContentLoaded
+   ============================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    initReportModal();
+});
+
 log('Script loaded and ready...');
