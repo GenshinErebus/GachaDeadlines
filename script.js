@@ -30,12 +30,7 @@ const eventDatabase = {
                 endDate: "2026-09-23T03:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "gi_001",
-                name: "Mutual Aid in Bloom: Into the Frostlands",
-                endDate: "2026-08-24T03:00:00Z"
-            },
+        events: [            
             {
                 id: "gi_002",
                 name: "Everwinter Without Mercy",
@@ -131,7 +126,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-08-24T03:00:00Z"
+                endDate: "2026-08-31T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -146,7 +141,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-08-24T03:00:00Z"
+                endDate: "2026-08-31T03:00:00Z"
             },
             {
                 id: "hsr_010",
@@ -157,12 +152,7 @@ const eventDatabase = {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
                 endDate: "2026-08-25T14:00:00Z"
-            },
-            {
-                id: "hsr_012",
-                name: "Garden of Plenty",
-                endDate: "2026-08-24T03:00:00Z"
-            },
+            },            
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
@@ -194,12 +184,7 @@ const eventDatabase = {
                 endDate: "2026-09-09T03:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "zzz_000",
-                name: "Snap! Focus Showdown",
-                endDate: "2026-08-24T03:00:00Z"
-            },
+        events: [            
             {
                 id: "zzz_001",
                 name: "Summmer Waves Roll In",
@@ -345,12 +330,7 @@ const eventDatabase = {
                 endDate: "2026-09-29T11:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "dna_000",
-                name: "Starry Sojourn",
-                endDate: "2026-08-24T04:00:00Z"
-            },
+        events: [            
             {
                 id: "dna_001",
                 name: "Paradise Prelude",
@@ -493,7 +473,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-24T00:00:00Z"
+                endDate: "2026-08-25T00:00:00Z"
             },
             {
                 id: "msd_001",

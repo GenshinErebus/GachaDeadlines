@@ -463,7 +463,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
 @media (min-width: 769px) {
-    a[href*="youtube"] {
+    a.youtube-avatar {
         position: fixed;
         top: 5px;
         right: 265px;
@@ -473,7 +473,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         height: 63px;
     }
 
-    a[href*="youtube"] img {
+    a.youtube-avatar img {
         display: block;
         width: 63px;
         height: 63px;
@@ -519,7 +519,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    MOBILE LAYOUT (Screens ≤ 768px)
    ============================================ */
 @media (max-width: 768px) {
-    a[href*="youtube"] {
+    a.youtube-avatar {
         position: fixed;
         top: 4px;
         right: 10px;
@@ -529,7 +529,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         z-index: 9999;
     }
 
-    a[href*="youtube"] img {
+    a.youtube-avatar img {
         display: block;
         width: 63px;
         height: 63px;
