@@ -184,7 +184,12 @@ const eventDatabase = {
                 endDate: "2026-09-09T03:00:00Z"
             }
         ],
-        events: [            
+        events: [    
+             {
+                id: "zzz_000",
+                name: "The Great En-Nah Giveaway!",
+                endDate: "2026-09-08T03:00:00Z"
+            },        
             {
                 id: "zzz_001",
                 name: "Summmer Waves Roll In",
@@ -242,31 +247,37 @@ const eventDatabase = {
             },
             {
                 id: "zzz_012",
+                name: "Dangerous Fugitive's Leisurely Vacation",
+                endDate: "2026-09-07T03:00:00Z"
+            },
+            // Banner
+            {
+                id: "zzz_013",
                 name: "Channel Exclusive",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_013",
+                id: "zzz_014",
                 name: "Channel Exclusive 2",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_014",
+                id: "zzz_015",
                 name: "Exclusive Rescreaning",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_015",
+                id: "zzz_016",
                 name: "Channel W-Engine",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_016",
+                id: "zzz_017",
                 name: "Channel W-Engine 2",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_017",
+                id: "zzz_018",
                 name: "W-Engine Reverberation",
                 endDate: "2026-09-08T03:00:00Z"
             }

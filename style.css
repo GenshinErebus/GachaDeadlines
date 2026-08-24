@@ -466,7 +466,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a.youtube-avatar {
         position: fixed;
         top: 5px;
-        right: 265px;
+        right: 270px;
         z-index: 9999;
         display: block;
         width: 63px;
@@ -686,12 +686,12 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 [data-event-id*="hsr_014"],
 [data-event-id*="hsr_015"],
 [data-event-id*="hsr_016"],
-[data-event-id*="zzz_012"],
 [data-event-id*="zzz_013"],
 [data-event-id*="zzz_014"],
 [data-event-id*="zzz_015"],
 [data-event-id*="zzz_016"],
 [data-event-id*="zzz_017"],
+[data-event-id*="zzz_018"],
 [data-event-id*="ark_006"],
 [data-event-id*="ark_007"],
 [data-event-id*="dna_012"],
