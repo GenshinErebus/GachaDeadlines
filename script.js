@@ -1679,4 +1679,24 @@ document.addEventListener('DOMContentLoaded', () => {
     initReportModal();
 });
 
+/* ============================================
+   CLICK ON TIMESTAMP - NAVIGATE TO OTHER PAGE
+   ============================================ */
+function initTimestampClick() {
+    const timestampEl = document.querySelector('.timestamp');
+    if (timestampEl) {
+        timestampEl.style.cursor = 'pointer';
+        timestampEl.title = 'Click to view timeline';
+        
+        timestampEl.addEventListener('click', () => {
+            window.location.href = 'calculator.html';
+        });
+    }
+}
+
+/* HOOK INTO EXISTING DOMContentLoaded */
+document.addEventListener('DOMContentLoaded', () => {
+    initTimestampClick();
+});
+
 log('Script loaded and ready...');

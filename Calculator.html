@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gacha Deadline Converter (Europe Base)</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff33;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #000000;
+            padding: 30px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 15px rgba(0, 255, 51, 0.3);
+            border: 1px solid #00ff33;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px dashed #00ff33;
+            padding-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #00ff33;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #0a0a0a;
+            border: 1px solid #00ff33;
+            color: #00ff33;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        select option {
+            background-color: #000000;
+            color: #00ff33;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #00ff33;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #00ff33;
+            border: none;
+            color: black;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #00cc2c;
+        }
+
+        .output-box {
+            margin-top: 20px;
+            background-color: #050505;
+            border-left: 4px solid #00ff33;
+            padding: 15px;
+            border-radius: 4px;
+            min-height: 50px;
+            font-family: inherit;
+            white-space: pre;
+            word-break: break-all;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            color: #00ff33;
+        }
+
+    .back-container {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    color: #00ff33;
+    background-color: rgba(0, 255, 51, 0.05);
+    border: 1px solid #00ff33;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background-color: rgba(0, 255, 51, 0.15);
+    box-shadow: 0 0 10px rgba(0, 255, 51, 0.3);
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>-- Gacha Deadline Converter --</h2>
+
+        <label for="gameLogic">Select a Game:</label>
+        <select id="gameLogic">
+            <option value="" disabled selected>-- Select a Game --</option>
+            <option value="3">✨ Genshin Impact (EU)</option>
+            <option value="3">🚂 Honkai Star Rail (EU)</option>
+            <option value="3">📟 Zenless Zone Zero (EU)</option>
+            <option value="3">🏗️ Arknights Endfield (EU)</option>
+            <option value="21">🌗 Duet Night Abyss</option>
+            <option value="4">🏙️ Neverness To Everness (EU)</option>
+            <option value="0">⭐ MONGIL STAR DIVE</option>
+            <option value="10">⏳ Reverse 1999</option>
+            <option value="3">🌊 Wuthering Waves (EU)</option>
+        </select>
+
+        <label for="remainingTime">Input (Remaining Time OR ISO-Timestamp):</label>
+        <input type="text" id="remainingTime" placeholder="e.g., 6d 14h, 30d, 12h OR ISO-String">
+
+        <label class="checkbox-label">
+            <input type="checkbox" id="winterTimeOffset">
+            Apply winter time offset (-1 hour)
+        </label>
+
+        <button onclick="calculateDeadline()">Generate & Copy Code</button>
+
+        <div class="output-box" id="output">Code will appear here...</div>
+<a href="index.html" class="back-link">← Back to Main Page</a>
+    </div>
+
+    <script>
+        function calculateDeadline() {
+            const gameSelect = document.getElementById('gameLogic');
+
+            if (gameSelect.selectedIndex === 0) {
+                alert("Bitte wähle zuerst ein Spiel aus!");
+                return;
+            }
+
+            const bannerEndUtcHour = parseInt(gameSelect.value);
+            const inputStr = document.getElementById('remainingTime').value.trim();
+            const outputDiv = document.getElementById('output');
+
+            if (!inputStr) {
+                outputDiv.innerText = "Bitte gib Daten ein!";
+                return;
+            }
+
+            let targetDate = new Date();
+
+            // CASE 1: Input is already an ISO string
+            if (inputStr.includes('T')) {
+                const match = inputStr.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
+                if (!match) {
+                    outputDiv.innerText = "Ungültiges ISO-Datumsformat!";
+                    return;
+                }
+                const utcDate = Date.UTC(
+                    parseInt(match[1]),
+                    parseInt(match[2]) - 1,
+                    parseInt(match[3]),
+                    parseInt(match[4]),
+                    parseInt(match[5]),
+                    parseInt(match[6])
+                );
+                targetDate = new Date(utcDate);
+            }
+            // CASE 2: Process relative time indications
+            else {
+                const daysMatch = inputStr.match(/(\d+)\s*d/i);
+                const hoursMatch = inputStr.match(/(\d+)\s*h/i);
+
+                const days = daysMatch ? parseInt(daysMatch[1]) : 0;
+                const hours = hoursMatch ? parseInt(hoursMatch[1]) : 0;
+
+                if (daysMatch && !hoursMatch) {
+                    // DAYS ONLY — Hours/minutes unknown
+                    // 1. Find next server reset from NOW
+                    targetDate.setUTCHours(bannerEndUtcHour, 0, 0, 0);
+                    if (targetDate.getTime() <= Date.now()) {
+                        // Reset today already passed → take tomorrow
+                        targetDate.setUTCDate(targetDate.getUTCDate() + 1);
+                    }
+                    // 2. Add built-in days ON TOP
+                    targetDate.setUTCDate(targetDate.getUTCDate() + days);
+                }
+                else if (hoursMatch) {
+                    // HOURS specified — maintain existing logic
+                    const minutesToFullHour = 60 - targetDate.getUTCMinutes();
+                    const totalHoursToAdd = (days * 24) + hours;
+                    targetDate.setUTCHours(targetDate.getUTCHours() + totalHoursToAdd);
+                    targetDate.setUTCMinutes(targetDate.getUTCMinutes() + minutesToFullHour);
+                    targetDate.setUTCSeconds(0);
+                    targetDate.setUTCMilliseconds(0);
+                }
+                else if (/^\d+$/.test(inputStr)) {
+                    // Number only without 'd' — same logic as "Xd"
+                    targetDate.setUTCHours(bannerEndUtcHour, 59, 0, 0);
+                    if (targetDate.getTime() <= Date.now()) {
+                        targetDate.setUTCDate(targetDate.getUTCDate() + 1);
+                    }
+                    targetDate.setUTCDate(targetDate.getUTCDate() + parseInt(inputStr));
+                } else {
+                    outputDiv.innerText = "Format nicht erkannt!";
+                    return;
+                }
+            }
+
+            // APPLY WINTER TIME OFFSET (if checkbox checked)
+            const winterOffsetEnabled = document.getElementById('winterTimeOffset').checked;
+            if (winterOffsetEnabled) {
+                targetDate.setUTCHours(targetDate.getUTCHours() - 1);
+            }
+
+            // MANUAL FORMATTING IN UTC
+            const pad = (num) => String(num).padStart(2, '0');
+
+            const year = targetDate.getUTCFullYear();
+            const month = pad(targetDate.getUTCMonth() + 1);
+            const day = pad(targetDate.getUTCDate());
+            const hour = pad(targetDate.getUTCHours());
+            const minute = pad(targetDate.getUTCMinutes());
+            const second = pad(targetDate.getUTCSeconds());
+
+            const cleanIsoOutput = `${year}-${month}-${day}T${hour}:${minute}:${second}Z`;
+            const formattedLineOutput = `endDate: "${cleanIsoOutput}"`;
+
+            outputDiv.innerText = formattedLineOutput;
+
+            navigator.clipboard.writeText(formattedLineOutput).then(() => {
+                console.log("Zeile kopiert: " + formattedLineOutput);
+            }).catch(err => {
+                console.error('Fehler beim Kopieren: ', err);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

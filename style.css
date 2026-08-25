@@ -459,6 +459,13 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     font-weight: bold;
 }
 
+/* Remove hyperlink underline and change cursor */
+#update-status {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--matrix-light-green);
+}
+
 /* ============================================
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
@@ -487,23 +494,6 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         position: fixed;
         top: 10px;
         right: 40px;
-    }
-
-    .desktop-only-github {
-        position: fixed;
-        top: 35px;
-        right: 40px;
-        z-index: 9999;
-        color: var(--matrix-light-green);
-        font-family: monospace;
-        font-size: 0.8rem;
-        text-decoration: none;
-        opacity: 0.8;
-    }
-
-    .desktop-only-github:hover {
-        opacity: 1;
-        text-shadow: 0 0 8px var(--matrix-light-green);
     }
 
     .region-selector {
@@ -550,15 +540,11 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         font-size: 0.7rem;
     }
 
-    .desktop-only-github {
-        display: none;
-    }
-
     #gameSelect {
         max-width: calc(100% - 80px);
         width: auto;
         min-width: 260px;
-        margin-left: -20px;
+        marqn-left: -20px;
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }
@@ -987,7 +973,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    ============================================ */
 .report-btn {
     position: fixed;
-    top: 55px;
+    top: 35px;
     right: 40px;
     z-index: 9999;
     display: flex;
