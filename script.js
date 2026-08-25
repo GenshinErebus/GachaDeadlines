@@ -484,7 +484,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-25T00:00:00Z"
+                endDate: "2026-08-26T00:00:00Z"
             },
             {
                 id: "msd_001",
