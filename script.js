@@ -93,16 +93,11 @@ const eventDatabase = {
         maintenance: [
             {
                 id: "hsr_maint_001",
-                startDate: "2026-09-23T22:00:00Z",
-                endDate: "2026-09-24T05:00:00Z"
+                startDate: "2026-08-25T22:00:00Z",
+                endDate: "2026-08-26T03:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "hsr_001",
-                name: "Antigraft Brickbuster",
-                endDate: "2026-08-25T20:00:00Z"
-            },
+        events: [            
             {
                 id: "hsr_002",
                 name: "Anomaly Arbitration (Period)",
@@ -142,12 +137,7 @@ const eventDatabase = {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-08-31T03:00:00Z"
-            },
-            {
-                id: "hsr_010",
-                name: "Imagenae: Holy Grail War",
-                endDate: "2026-08-25T20:00:00Z"
-            },
+            } /* ,            
             {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
@@ -172,7 +162,7 @@ const eventDatabase = {
                 id: "hsr_016",
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-08-25T14:00:00Z"
-            }
+            } */
         ]
     },
     zzz: {
