@@ -316,6 +316,11 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-09-01T22:00:00Z"
             },
+             {
+                id: "ark_004",
+                name: "A Forest Mantled in Snow",
+                endDate: "2026-09-01T22:00:00Z"
+            },
             {
                 id: "ark_005",
                 name: "Like a Star Streaking Through the Boundaries",
