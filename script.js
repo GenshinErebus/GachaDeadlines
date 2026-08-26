@@ -24,12 +24,13 @@ const eventDatabase = {
     genshin: {
         name: "Genshin Impact",
         maintenance: [
+            /*
             {
                 id: "gi_maint_001",
                 startDate: "2026-09-22T22:00:00Z",
                 endDate: "2026-09-23T03:00:00Z"
             }
-        ],
+       */ ],
         events: [            
             {
                 id: "gi_002",
@@ -90,12 +91,12 @@ const eventDatabase = {
     },
     hsr: {
         name: "Honkai Star Rail",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "hsr_maint_001",
                 startDate: "2026-08-25T22:00:00Z",
                 endDate: "2026-08-26T03:00:00Z"
-            }
+            } */
         ],
         events: [    
             {
@@ -177,12 +178,12 @@ const eventDatabase = {
     },
     zzz: {
         name: "Zenless Zone Zero",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "zzz_maint_001",
                 startDate: "2026-09-08T22:00:00Z",
                 endDate: "2026-09-09T03:00:00Z"
-            }
+            } */
         ],
         events: [    
              {
@@ -285,7 +286,7 @@ const eventDatabase = {
     },
     arknights: {
         name: "Arknights Endfield",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "ark_maint_001_asia",
                 region: "asia",
@@ -297,7 +298,7 @@ const eventDatabase = {
                 region: "eu",
                 startDate: "2026-09-01T23:00:00Z",
                 endDate: "2026-09-02T05:00:00Z"
-            }
+            } */
         ],
         events: [
             {
@@ -334,12 +335,12 @@ const eventDatabase = {
     },
     duet: {
         name: "Duet Night Abyss",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "dna_maint_001",
                 startDate: "2026-09-29T06:00:00Z",
                 endDate: "2026-09-29T11:00:00Z"
-            }
+            } */
         ],
         events: [            
             {
@@ -411,12 +412,12 @@ const eventDatabase = {
     },
     nte: {
         name: "Neverness To Everness",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "nte_maint_001",
                 startDate: "2026-09-30T05:00:00Z",
                 endDate: "2026-09-30T10:00:00Z"
-            }
+            } */
         ],
         events: [
             {
@@ -473,12 +474,12 @@ const eventDatabase = {
     },
     mongil: {
         name: "MONGIL STAR DIVE",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "msd_maint_001",
                 startDate: "2026-09-09T02:00:00Z",
                 endDate: "2026-09-09T07:00:00Z"
-            }
+            } */
         ],
         events: [
             {
@@ -550,12 +551,12 @@ const eventDatabase = {
     },
     reverse1999: {
         name: "Reverse: 1999",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "rev_maint_001",
                 startDate: "2026-09-24T10:00:00Z",
                 endDate: "2026-09-24T15:00:00Z"
-            }
+            } */
         ],
         events: [
             {
@@ -630,8 +631,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_014",
-                name: "A Beating Heart Beneath the Stone",
-                endDate: "2026-08-25T10:00:00Z"
+                name: "A Shell on the Waves",
+                endDate: "2026-09-08T10:00:00Z"
             },
             {
                 id: "rev_015",
@@ -647,12 +648,12 @@ const eventDatabase = {
     },
     wuwa: {
         name: "Wuthering Waves",
-        maintenance: [
+        maintenance: [ /*
             {
                 id: "wuwa_maint_001",
                 startDate: "2026-09-30T04:00:00Z",
                 endDate: "2026-09-30T11:00:00Z"
-            }
+            } */
         ],
         events: [
             {
