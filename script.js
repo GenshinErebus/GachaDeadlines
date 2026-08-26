@@ -472,6 +472,7 @@ const eventDatabase = {
                 name: "Alluring Shadows",
                 endDate: "2026-09-08T22:00:00Z"
             },
+            // Banner
             {
                 id: "nte_011",
                 name: "The Ichi-daime",
