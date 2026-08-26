@@ -395,16 +395,28 @@ const eventDatabase = {
             },
             {
                 id: "dna_011",
+                name: "Phoxhunter Summit",
+                endDate: "2026-09-12T04:00:00Z"
+            },
+             {
+                id: "dna_012",
+                name: "Phoxhunter Summit (Stage)",
+                endDate: "2026-08-28T23:00:00Z"
+            },
+            // Trial
+            {
+                id: "dna_013",
                 name: "Edge of Trial",
                 endDate: "2026-09-01T04:00:00Z"
             },
+            // Banner
             {
-                id: "dna_012",
+                id: "dna_014",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_013",
+                id: "dna_015",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
@@ -1692,7 +1704,7 @@ function initTimestampClick() {
     const timestampEl = document.querySelector('.timestamp');
     if (timestampEl) {
         timestampEl.style.cursor = 'pointer';
-        timestampEl.title = 'Click to view timeline';
+        timestampEl.title = 'Click to view calculator';
         
         timestampEl.addEventListener('click', () => {
             window.location.href = 'Calculator.html';

@@ -15,7 +15,8 @@
     <meta name="keywords"
         content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
     <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c" />
-<!-- STYLE_VERSION --><link rel="stylesheet" href="style.css?v=33f23cf"><!-- END_STYLE -->
+    <!-- STYLE_VERSION -->
+    <link rel="stylesheet" href="style.css?v=33f23cf"><!-- END_STYLE -->
     <!-- Favicons - Neon green stopwatch design optimized for small sizes -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -38,15 +39,16 @@
             <option value="wuwa">🌊 Wuthering Waves</option>
         </select>
         <!-- Region Selector in Matrix Style -->
-<div class="region-selector">
-    <span>SERVER:</span>
-    <button onclick="setRegion('asia')" id="btn-asia">[ASIA]</button>
-    <button onclick="setRegion('eu')" id="btn-eu" class="active">[EUROPE]</button>
-    <button onclick="setRegion('na')" id="btn-na">[AMERICA]</button>
-</div>
-<a id="update-status" href="https://github.com/GenshinErebus/GachaDeadlines" style="display: block; text-decoration: none; color: inherit;">
-<p id="update-status"><!-- LAST_UPDATE_HERE -->Updated 26 August 2026<!-- END_UPDATE --></p>
-</a>
+        <div class="region-selector">
+            <span>SERVER:</span>
+            <button onclick="setRegion('asia')" id="btn-asia">[ASIA]</button>
+            <button onclick="setRegion('eu')" id="btn-eu" class="active">[EUROPE]</button>
+            <button onclick="setRegion('na')" id="btn-na">[AMERICA]</button>
+        </div>
+        <a id="update-status" href="https://github.com/GenshinErebus/GachaDeadlines"
+            style="display: block; text-decoration: none; color: inherit;">
+            <p id="update-status"><!-- LAST_UPDATE_HERE -->Updated 26 August 2026<!-- END_UPDATE --></p>
+        </a>
 
         <!-- Icon to get you to my channel -->
         <a href="https://www.youtube.com/@GenshinErebus/videos" class="youtube-avatar" target="_blank">
@@ -63,81 +65,80 @@
     </div>
 
     <!-- Load JavaScript -->
-<!-- SCRIPT_VERSION --><script src="script.js?v=33f23cf"></script><!-- END_SCRIPT -->
- <!-- ============================================
+    <!-- SCRIPT_VERSION -->
+    <script src="script.js?v=33f23cf"></script><!-- END_SCRIPT -->
+    <!-- ============================================
      REPORT MISSING EVENTS - MODAL
      ============================================ -->
-<button id="reportBtn" class="report-btn" title="Report a missing event?">
-    <span class="report-btn-icon">⚠</span>
-    <span class="report-btn-text">REPORT</span>
-</button>
+    <button id="reportBtn" class="report-btn" title="Report a missing event?">
+        <span class="report-btn-icon">⚠</span>
+        <span class="report-btn-text">REPORT</span>
+    </button>
 
-<div id="reportModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
-    <div class="modal-content">
-        <span id="closeModal" class="modal-close" role="button" aria-label="Close">&times;</span>
+    <div id="reportModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+        <div class="modal-content">
+            <span id="closeModal" class="modal-close" role="button" aria-label="Close">&times;</span>
 
-        <h2 id="reportTitle">MISSING EVENT REPORT</h2>
-        <p class="modal-subtitle">Missing an event or banner? Let me know.</p>
+            <h2 id="reportTitle">FEEDBACK & REPORT CENTER</h2>
+            <p class="modal-subtitle">Found a bug, want a feature, or missing an event? Let me know.</p>
 
-        <form id="missingEventForm" novalidate>
-            <div class="form-group">
-                <label for="reportGame">GAME:</label>
-                <select id="reportGame" name="game" required>
-                    <option value="">- Select a Game -</option>
-                    <option value="genshin">Genshin Impact</option>
-                    <option value="hsr">Honkai Star Rail</option>
-                    <option value="zzz">Zenless Zone Zero</option>
-                    <option value="arknights">Arknights Endfield</option>
-                    <option value="duet">Duet Night Abyss</option>
-                    <option value="nte">Neverness To Everness</option>
-                    <option value="mongil">MONGIL STAR DIVE</option>
-                    <option value="reverse1999">Reverse 1999</option>
-                    <option value="wuwa">Wuthering Waves</option>
-                </select>
-            </div>
+            <form id="missingEventForm" novalidate>
+                <div class="form-group">
+                    <label for="reportGame">Topic:</label>
+                    <select id="reportGame" name="game" required>
+                        <option value="">- Select a Topic -</option>
+                        <option value="genshin">Genshin Impact</option>
+                        <option value="hsr">Honkai Star Rail</option>
+                        <option value="zzz">Zenless Zone Zero</option>
+                        <option value="arknights">Arknights Endfield</option>
+                        <option value="duet">Duet Night Abyss</option>
+                        <option value="nte">Neverness To Everness</option>
+                        <option value="mongil">MONGIL STAR DIVE</option>
+                        <option value="reverse1999">Reverse 1999</option>
+                        <option value="wuwa">Wuthering Waves</option>
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label for="reportEventName">EVENT NAME:</label>
-                <input type="text" id="reportEventName" name="event_name"
-                       placeholder="e.g., Character Event Wish Phase 2"
-                       autocomplete="off" maxlength="200" required>
-            </div>
+                <div class="form-group">
+                    <label for="reportEventName">EVENT NAME:</label>
+                    <input type="text" id="reportEventName" name="event_name"
+                        placeholder="e.g., Character Event Wish Phase 2" autocomplete="off" maxlength="200" required>
+                </div>
 
-            <div class="form-group">
-                <label for="reportNotes">NOTES (optional):</label>
-                <textarea id="reportNotes" name="notes" rows="3"
-                          placeholder="Server, region, approximate timeframe..."
-                          maxlength="500"></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="reportNotes">NOTES (optional):</label>
+                    <textarea id="reportNotes" name="notes" rows="3"
+                        placeholder="Server, region, approximate timeframe..." maxlength="500"></textarea>
+                </div>
 
-            <div class="form-group">
-                <label for="reportRegion">SERVER REGION (optional):</label>
-                <select id="reportRegion" name="region">
-                    <option value="">- Any -</option>
-                    <option value="asia">ASIA</option>
-                    <option value="eu">EUROPE</option>
-                    <option value="na">AMERICA</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="reportRegion">SERVER REGION (optional):</label>
+                    <select id="reportRegion" name="region">
+                        <option value="">- Any -</option>
+                        <option value="asia">ASIA</option>
+                        <option value="eu">EUROPE</option>
+                        <option value="na">AMERICA</option>
+                    </select>
+                </div>
 
-            <div class="form-actions">
-                <button type="submit" class="submit-btn primary" id="btnMailto">
-                    &lt; SEND VIA E-MAIL CLIENT
-                </button>
-                <button type="button" class="submit-btn secondary" id="btnDirectSend">
-                    &gt; SEND DIRECTLY
-                </button>
-            </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn primary" id="btnMailto">
+                        &lt; SEND VIA E-MAIL CLIENT
+                    </button>
+                    <button type="button" class="submit-btn secondary" id="btnDirectSend">
+                        &gt; SEND DIRECTLY
+                    </button>
+                </div>
 
-            <p class="form-privacy">
-                      <span class="privacy-dot"></span> "Send Via E-Mail Client" = uses your E-Mail <br>
-                    <span class="privacy-dot"></span> "Send Directly" = dont need your E-Mail 
-            </p>
+                <p class="form-privacy">
+                    <span class="privacy-dot"></span> "Send Via E-Mail Client" = uses your E-Mail <br>
+                    <span class="privacy-dot"></span> "Send Directly" = dont need your E-Mail
+                </p>
 
-            <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
-        </form>
+                <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+            </form>
+        </div>
     </div>
-</div>
     <img src="https://genshinerebus.goatcounter.com/count?p=/" class="bg-layer-fix" alt="">
 
     <script>
