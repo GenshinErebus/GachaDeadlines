@@ -484,7 +484,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-26T00:00:00Z"
+                endDate: "2026-08-27T00:00:00Z"
             },
             {
                 id: "msd_001",
@@ -511,16 +511,21 @@ const eventDatabase = {
                 name: "Doom's Lonely Herald",
                 endDate: "2026-09-09T00:00:00Z"
             },
-            {
+             {
                 id: "msd_006",
-                name: "Equipment Crafting Missions",
-                endDate: "2026-08-26T00:00:00Z"
+                name: "El Dorado Guardian",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_007",
-                name: "The Inquisitor's Day Off (rewards use)",
-                endDate: "2026-08-26T00:00:00Z"
-            },
+                name: "10-Day Check-In Missions",
+                endDate: "2026-09-09T00:00:00Z"
+            },    
+            {
+                id: "msd_008",
+                name: "Monsterling Combining Missions",
+                endDate: "2026-09-02T00:00:00Z"
+            },                       
             {
                 id: "msd_010",
                 name: "Doom's Lonely Herald",
