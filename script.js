@@ -31,7 +31,7 @@ const eventDatabase = {
                 endDate: "2026-09-23T03:00:00Z"
             }
        */ ],
-        events: [            
+        events: [
             {
                 id: "gi_002",
                 name: "Everwinter Without Mercy",
@@ -98,17 +98,17 @@ const eventDatabase = {
                 endDate: "2026-08-26T03:00:00Z"
             } */
         ],
-        events: [    
+        events: [
             {
                 id: "hsr_000",
                 name: "Overdrive: Whirlwind Grand Prix",
                 endDate: "2026-09-27T20:00:00Z"
-            },    
+            },
             {
                 id: "hsr_001",
                 name: "Gift of Odyssey",
                 endDate: "2026-09-27T20:00:00Z"
-            },        
+            },
             {
                 id: "hsr_002",
                 name: "Anomaly Arbitration (Period)",
@@ -148,12 +148,12 @@ const eventDatabase = {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-08-31T03:00:00Z"
-            },            
+            },
             {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
                 endDate: "2026-09-12T11:00:00Z"
-            },            
+            },
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
@@ -185,12 +185,12 @@ const eventDatabase = {
                 endDate: "2026-09-09T03:00:00Z"
             } */
         ],
-        events: [    
-             {
+        events: [
+            {
                 id: "zzz_000",
                 name: "The Great En-Nah Giveaway!",
                 endDate: "2026-09-08T03:00:00Z"
-            },        
+            },
             {
                 id: "zzz_001",
                 name: "Summmer Waves Roll In",
@@ -342,7 +342,7 @@ const eventDatabase = {
                 endDate: "2026-09-29T11:00:00Z"
             } */
         ],
-        events: [            
+        events: [
             {
                 id: "dna_001",
                 name: "Paradise Prelude",
@@ -398,7 +398,7 @@ const eventDatabase = {
                 name: "Phoxhunter Summit",
                 endDate: "2026-09-12T04:00:00Z"
             },
-             {
+            {
                 id: "dna_012",
                 name: "Phoxhunter Summit (Stage)",
                 endDate: "2026-08-28T23:00:00Z"
@@ -525,7 +525,7 @@ const eventDatabase = {
                 name: "Doom's Lonely Herald",
                 endDate: "2026-09-09T00:00:00Z"
             },
-             {
+            {
                 id: "msd_006",
                 name: "El Dorado Guardian",
                 endDate: "2026-09-09T00:00:00Z"
@@ -534,12 +534,12 @@ const eventDatabase = {
                 id: "msd_007",
                 name: "10-Day Check-In Missions",
                 endDate: "2026-09-09T00:00:00Z"
-            },    
+            },
             {
                 id: "msd_008",
                 name: "Monsterling Combining Missions",
                 endDate: "2026-09-02T00:00:00Z"
-            },                       
+            },
             {
                 id: "msd_010",
                 name: "Doom's Lonely Herald",
@@ -1581,13 +1581,25 @@ function initReportModal() {
 
     /* ============================================
        VALIDATE FORM INPUT
-       ============================================ */
+   ============================================ */
     function validateForm() {
-        const game = document.getElementById('reportGame').value;
-        const name = document.getElementById('reportEventName').value.trim();
-        if (!game || !name) {
+        const topic = document.getElementById('reportGame').value;
+        const title = document.getElementById('reportEventName').value.trim();
+
+        if (!topic) {
             return false;
         }
+
+        // For Bug Reports and Feature Requests: Title is required, Notes optional
+        if (topic === 'bug_report' || topic === 'feature_request') {
+            return title.length > 0;
+        }
+
+        // For Game Events: Both topic and title are required
+        if (!title || !eventDatabase[topic]) {
+            return false;
+        }
+
         return true;
     }
 
@@ -1596,26 +1608,53 @@ function initReportModal() {
        ============================================ */
     btnMailto.addEventListener('click', () => {
         if (!validateForm()) {
-            setFeedback('Please select a game and enter an event name.', 'error');
+            setFeedback('Please select a topic and enter details.', 'error');
             return;
         }
 
-        const game = document.getElementById('reportGame').value;
-        const gameName = eventDatabase[game]?.name || game;
-        const eventName = document.getElementById('reportEventName').value.trim();
+        const topic = document.getElementById('reportGame').value;
+        const title = document.getElementById('reportEventName').value.trim();
         const region = document.getElementById('reportRegion').value || 'Any';
         const notes = document.getElementById('reportNotes').value.trim();
+        const timestamp = new Date().toISOString();
 
-        const subject = encodeURIComponent(`[Missing Event] ${gameName}: ${eventName}`);
-        const body = encodeURIComponent(
-            `Game: ${gameName}\n` +
-            `Missing Event: ${eventName}\n` +
-            `Region: ${region}\n` +
-            `Notes: ${notes || 'None'}\n\n` +
-            `---\n` +
-            `Reported via GachaDeadlines.com\n` +
-            `${new Date().toISOString()}`
-        );
+        let subject, body;
+
+        if (topic === 'bug_report') {
+            subject = encodeURIComponent('[BUG REPORT] ' + title);
+            body = encodeURIComponent(
+                `Type: Bug Report\n` +
+                `Title: ${title}\n` +
+                `Region: ${region}\n` +
+                `Description: ${notes || 'No description provided'}\n\n` +
+                `---\n` +
+                `Reported via GachaDeadlines.com\n` +
+                `${timestamp}`
+            );
+        } else if (topic === 'feature_request') {
+            subject = encodeURIComponent('[FEATURE REQUEST] ' + title);
+            body = encodeURIComponent(
+                `Type: Feature Request\n` +
+                `Title: ${title}\n` +
+                `Details: ${notes || 'No additional details'}\n\n` +
+                `---\n` +
+                `Reported via GachaDeadlines.com\n` +
+                `${timestamp}`
+            );
+        } else {
+            // Existing game event logic
+            const gameName = eventDatabase[topic]?.name || topic;
+            subject = encodeURIComponent(`[Missing Event] ${gameName}: ${title}`);
+            body = encodeURIComponent(
+                `Game: ${gameName}\n` +
+                `Missing Event: ${title}\n` +
+                `Region: ${region}\n` +
+                `Notes: ${notes || 'None'}\n\n` +
+                `---\n` +
+                `Reported via GachaDeadlines.com\n` +
+                `${timestamp}`
+            );
+        }
 
         window.location.href = `mailto:${REPORT_EMAIL}?subject=${subject}&body=${body}`;
         setFeedback('Email client opened. Please remember to send the email.', 'success');
@@ -1627,13 +1666,12 @@ function initReportModal() {
        ============================================ */
     btnDirect.addEventListener('click', async () => {
         if (!validateForm()) {
-            setFeedback('Please select a game and enter an event name.', 'error');
+            setFeedback('Please select a topic and enter details.', 'error');
             return;
         }
 
-        const game = document.getElementById('reportGame').value;
-        const gameName = eventDatabase[game]?.name || game;
-        const eventName = document.getElementById('reportEventName').value.trim();
+        const topic = document.getElementById('reportGame').value;
+        const title = document.getElementById('reportEventName').value.trim();
         const region = document.getElementById('reportRegion').value || 'Any';
         const notes = document.getElementById('reportNotes').value.trim();
 
@@ -1642,12 +1680,26 @@ function initReportModal() {
 
         const formData = new FormData();
         formData.append('_to', REPORT_EMAIL);
-        formData.append('_subject', `[Missing Event] ${gameName}: ${eventName}`);
-        formData.append('game', gameName);
-        formData.append('game_key', game);
-        formData.append('event_name', eventName);
+
+        // Set dynamic subject based on report type
+        if (topic === 'bug_report') {
+            formData.append('_subject', '[BUG REPORT] ' + title);
+            formData.append('type', 'Bug Report');
+        } else if (topic === 'feature_request') {
+            formData.append('_subject', '[FEATURE REQUEST] ' + title);
+            formData.append('type', 'Feature Request');
+        } else {
+            const gameName = eventDatabase[topic]?.name || topic;
+            formData.append('_subject', `[Missing Event] ${gameName}: ${title}`);
+            formData.append('type', 'Missing Event');
+            formData.append('game_key', topic);
+        }
+
+        // Common fields
+        formData.append('title', title);
         formData.append('region', region);
-        formData.append('notes', notes || '');
+        formData.append('description', notes || '');
+        formData.append('timestamp', new Date().toISOString());
 
         try {
             const response = await fetch(`https://formsubmit.co/ajax/${REPORT_EMAIL}`, {
@@ -1699,14 +1751,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================
-   CLICK ON TIMESTAMP - NAVIGATE TO OTHER PAGE
+   CLICK ON TIMESTAMP - NAVIGATE TO CALCULATOR
    ============================================ */
 function initTimestampClick() {
     const timestampEl = document.querySelector('.timestamp');
     if (timestampEl) {
         timestampEl.style.cursor = 'pointer';
         timestampEl.title = 'Click to view calculator';
-        
+
         timestampEl.addEventListener('click', () => {
             window.location.href = 'Calculator.html';
         });
