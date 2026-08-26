@@ -97,11 +97,21 @@ const eventDatabase = {
                 endDate: "2026-08-26T03:00:00Z"
             }
         ],
-        events: [            
+        events: [    
+            {
+                id: "hsr_000",
+                name: "Overdrive: Whirlwind Grand Prix",
+                endDate: "2026-09-27T20:00:00Z"
+            },    
+            {
+                id: "hsr_001",
+                name: "Gift of Odyssey",
+                endDate: "2026-09-27T20:00:00Z"
+            },        
             {
                 id: "hsr_002",
                 name: "Anomaly Arbitration (Period)",
-                endDate: "2026-08-25T22:00:00Z"
+                endDate: "2026-09-27T22:00:00Z"
             },
             {
                 id: "hsr_003",
@@ -131,38 +141,38 @@ const eventDatabase = {
             {
                 id: "hsr_008",
                 name: "Divergent Universe: Arcadian Chronicles (Expansion)",
-                endDate: "2026-08-25T23:00:00Z"
+                endDate: "2027-03-16T22:00:00Z"
             },
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-08-31T03:00:00Z"
-            } /* ,            
+            },            
             {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
-                endDate: "2026-08-25T14:00:00Z"
+                endDate: "2026-09-12T11:00:00Z"
             },            
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
-                endDate: "2026-08-25T14:00:00Z"
+                endDate: "2026-09-12T11:00:00Z"
             },
             {
                 id: "hsr_014",
                 name: "Character Event Warp (Rerun)",
-                endDate: "2026-08-25T14:00:00Z"
+                endDate: "2026-09-12T11:00:00Z"
             },
             {
                 id: "hsr_015",
                 name: "Light Cone Event Warp",
-                endDate: "2026-08-25T14:00:00Z"
+                endDate: "2026-09-12T11:00:00Z"
             },
             {
                 id: "hsr_016",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-08-25T14:00:00Z"
-            } */
+                endDate: "2026-09-12T11:00:00Z"
+            }
         ]
     },
     zzz: {
@@ -1679,7 +1689,7 @@ function initTimestampClick() {
         timestampEl.title = 'Click to view timeline';
         
         timestampEl.addEventListener('click', () => {
-            window.location.href = 'calculator.html';
+            window.location.href = 'Calculator.html';
         });
     }
 }
