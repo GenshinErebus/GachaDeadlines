@@ -548,7 +548,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }
-
+/* Region selector */
     .region-selector {
         margin-top: 5px;
         margin-left: -20px;

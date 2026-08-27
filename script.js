@@ -551,6 +551,7 @@ const eventDatabase = {
                 name: "Monstrous Longing",
                 endDate: "2026-09-09T00:00:00Z"
             },
+            // Banner
             {
                 id: "msd_012",
                 name: "Heir to the Amethyst Eye",
