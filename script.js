@@ -72,6 +72,7 @@ const eventDatabase = {
                 name: "Stygan Onslaught",
                 endDate: "2026-09-22T03:00:00Z"
             },
+            // Banner
             {
                 id: "gi_010",
                 name: "Character Event Wish",

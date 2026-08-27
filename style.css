@@ -1043,7 +1043,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 .modal-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     text-align: center;
     margin-bottom: 0.5rem;
 }
@@ -1051,7 +1051,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 .modal-subtitle {
     text-align: center;
     color: var(--matrix-dim-green);
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     margin-bottom: 1.5rem;
     font-style: italic;
 }
@@ -1084,7 +1084,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 .form-group label {
     display: block;
     color: var(--matrix-dim-green);
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 0.4rem;
@@ -1099,7 +1099,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: var(--matrix-green);
     padding: 0.65rem 0.75rem;
     font-family: 'Courier New', 'Consolas', 'monospace';
-    font-size: 0.85rem;
+    font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     border-radius: 0;
     -webkit-appearance: none;
@@ -1146,7 +1146,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     width: 100%;
     padding: 0.85rem 1rem;
     font-family: 'Courier New', 'Consolas', 'monospace';
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1183,7 +1183,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    ============================================ */
 .form-privacy {
     margin-top: 1rem;
-    font-size: 0.65rem;
+    font-size: 0.9rem;
     color: var(--matrix-dim-green);
     line-height: 1.5;
     padding-left: 0.75rem;
@@ -1235,7 +1235,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     }
 
     .modal-content h2 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 
     .form-actions {
@@ -1244,7 +1244,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     .submit-btn {
         padding: 0.7rem;
-        font-size: 0.75rem;
+        font-size: 1.45rem;
     }
 }
 
