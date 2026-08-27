@@ -62,6 +62,7 @@ const eventDatabase = {
                 name: "Wonderland Treasures: Phantasmagoric Discourse",
                 endDate: "2026-09-21T03:00:00Z"
             },
+            // Trial
             {
                 id: "gi_008",
                 name: "Test Run",
