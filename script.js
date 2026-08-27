@@ -706,6 +706,7 @@ const eventDatabase = {
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
             },
+            // Banner
             {
                 id: "wuwa_012",
                 name: "Featured Resonator Convene",

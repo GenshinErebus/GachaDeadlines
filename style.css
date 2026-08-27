@@ -539,7 +539,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin: 0;
         font-size: 0.7rem;
     }
-
+ /* Game selector */
     #gameSelect {
         max-width: calc(100% - 80px);
         width: auto;
