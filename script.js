@@ -1540,7 +1540,7 @@ function exportEventData() {
 }
 
 /* ============================================
-   REPORT MISSING EVENTS - MODAL LOGIC
+   REPORT MISSING EVENTS/FEATURES - MODAL LOGIC
    ============================================ */
 
 const REPORT_EMAIL = 'genshinerebus@web.de';
