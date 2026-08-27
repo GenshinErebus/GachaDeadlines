@@ -157,6 +157,7 @@ const eventDatabase = {
                 name: "Aptitude Showcase",
                 endDate: "2026-09-12T11:00:00Z"
             },
+            // Banner
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
