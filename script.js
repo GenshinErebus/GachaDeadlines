@@ -707,6 +707,11 @@ const eventDatabase = {
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
             },
+            {
+                id: "wuwa_008",
+                name: "Second Coming of Solaris: Coded Deception",
+                endDate: "2026-09-14T03:00:00Z"
+            },
             // Banner
             {
                 id: "wuwa_012",
