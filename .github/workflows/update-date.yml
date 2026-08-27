@@ -27,14 +27,8 @@ jobs:
           
           sed -i "s|<p id=\"update-status\">.*|<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>|g" index.html
           
-          # Delete everything between the markers (including markers)
-          sed -i '/<!-- CACHE_BUSTER_START -->/,/<!-- CACHE_BUSTER_END -->/d' index.html
-          
-          # Insert fresh tags between new markers before </head>
-          sed -i "/<\/head>/i <!-- CACHE_BUSTER_END -->" index.html
-          sed -i "/<link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\">/i <script src=\"script.js?v=${SHORT_HASH}\"></script>" index.html
-          sed -i "/<link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\">/i <!-- CACHE_BUSTER_START -->" index.html
-          sed -i "/<link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\">/i <link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\">" index.html
+          sed -i "s|style\.css\?v=[^\"]*|style.css?v=${SHORT_HASH}|g" index.html
+          sed -i "s|script\.js\?v=[^\"]*|script.js?v=${SHORT_HASH}|g" index.html
 
       - name: Commit and push changes
         run: |
