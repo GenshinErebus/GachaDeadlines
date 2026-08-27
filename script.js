@@ -392,12 +392,7 @@ const eventDatabase = {
                 id: "dna_009",
                 name: "Starry Gleanings II",
                 endDate: "2026-09-01T04:00:00Z"
-            },
-            {
-                id: "dna_010",
-                name: "Bountiful Day",
-                endDate: "2026-08-27T04:00:00Z"
-            },
+            },            
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit",
@@ -470,7 +465,7 @@ const eventDatabase = {
             {
                 id: "nte_007",
                 name: "Beyond the Rails (Period)",
-                endDate: "2026-08-26T21:00:00Z"
+                endDate: "2026-09-09T21:00:00Z"
             },
             {
                 id: "nte_010",
@@ -503,7 +498,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-27T00:00:00Z"
+                endDate: "2026-08-28T00:00:00Z"
             },
             {
                 id: "msd_001",
