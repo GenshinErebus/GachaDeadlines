@@ -151,6 +151,7 @@ const eventDatabase = {
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-08-31T03:00:00Z"
             },
+            // Trial
             {
                 id: "hsr_011",
                 name: "Aptitude Showcase",
