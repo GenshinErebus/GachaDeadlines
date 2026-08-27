@@ -662,14 +662,14 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         /* Make region selector smaller */
         .region-selector {
             margin-left: -20px;
-            transform: scale(0.85);
+            transform: scale(0.7);
             transform-origin: left center;
         }
         
         /* Reduce game selector width and font size */
         #gameSelect {
             min-width: 200px;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
             padding: 0.4rem 0.75rem;
         }
     }
