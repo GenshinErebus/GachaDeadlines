@@ -1,12 +1,13 @@
 name: Auto Update Timestamp
 
-permissions:
-  contents: write
-
 on:
   push:
     paths:
       - 'script.js'
+      - 'style.css'
+
+permissions:
+  contents: write
 
 jobs:
   update-html:
@@ -18,30 +19,129 @@ jobs:
           token: ${{ secrets.BYPASS_TOKEN }}
           persist-credentials: true
 
-      - name: Insert current date and update cache versions
+      - name: Update timestamp and cache busting hashes
         run: |
+          # Set current UTC date for timestamp
           CURRENT_DATE="Updated $(date -u '+%d %B %Y')"
+          
+          # Get commit hash for versioning
           COMMIT_HASH="${{ github.sha }}"
           SHORT_HASH=${COMMIT_HASH:0:7}
           
-          sed -i "s|.*LAST_UPDATE_HERE.*|<p id=\"update-status\"><!-- LAST_UPDATE_HERE -->${CURRENT_DATE}<!-- END_UPDATE --></p>|g" index.html
-          sed -i "s|.*SCRIPT_VERSION.*|<!-- SCRIPT_VERSION --><script src=\"script.js?v=${SHORT_HASH}\"></script><!-- END_SCRIPT -->|g" index.html
-          sed -i "s|.*STYLE_VERSION.*|<!-- STYLE_VERSION --><link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\"><!-- END_STYLE -->|g" index.html
+          echo "Processing updates..."
+          echo "Date: ${CURRENT_DATE}"
+          echo "Version: ${SHORT_HASH}"
+          
+          # ============================================
+          # STEP 1: REMOVE ALL EXISTING VERSIONED TAGS
+          # ============================================
+          echo "Removing old script tags with version params..."
+          grep -n "script\.js\?v=" index.html || true
+          sed -i '/script\.js\?v\=[^"]*"/d' index.html
+          
+          echo "Removing old style tags with version params..."
+          grep -n "style\.css\?v=" index.html || true
+          sed -i '/style\.css\?v\=[^"]*"/d' index.html
+          
+          # ============================================
+          # STEP 2: UPDATE TIMESTAMP
+          # ============================================
+          echo "Updating timestamp..."
+          
+          # Check if timestamp placeholder exists
+          if grep -q "LAST_UPDATE_HERE" index.html; then
+            # Replace only the date portion, preserve placeholders
+            sed -i "s|<!-- LAST_UPDATE_HERE -->.*|<!-- LAST_UPDATE_HERE -->${CURRENT_DATE}|g" index.html
+            sed -i "s|<!-- END_UPDATE -->.*|<!-- END_UPDATE -->|g" index.html
+            echo "Timestamp updated successfully"
+          else
+            echo "WARNING: No timestamp placeholder found. Checking if it needs insertion..."
+            # Optionally: Insert timestamp before closing body if not present
+          fi
+          
+          # ============================================
+          # STEP 3: INSERT SINGLE SCRIPT TAG
+          # ============================================
+          echo "Checking if script tag already exists..."
+          
+          if grep -q "script\.js\?v=${SHORT_HASH}\"" index.html; then
+            echo "Current version already present, skipping script injection"
+          else
+            # Count existing plain script.js (without version)
+            PLAIN_SCRIPT_COUNT=$(grep -c "<script src=\"script.js\">" index.html || echo "0")
+            
+            if [ "${PLAIN_SCRIPT_COUNT}" -gt 0 ]; then
+              echo "Found ${PLAIN_SCRIPT_COUNT} plain script tag(s) - removing them"
+              sed -i '/<script src="script.js">/d' index.html
+            fi
+            
+            # Insert single new tag before </head>
+            sed -i "/<\/head>/i <script src=\"script.js?v=${SHORT_HASH}\"></script>" index.html
+            echo "New script tag inserted"
+          fi
+          
+          # ============================================
+          # STEP 4: INSERT SINGLE STYLE TAG
+          # ============================================
+          echo "Checking if style tag already exists..."
+          
+          if grep -q "style\.css\?v=${SHORT_HASH}\"" index.html; then
+            echo "Current version already present, skipping style injection"
+          else
+            # Count existing plain style.css link (without version)
+            PLAIN_STYLE_COUNT=$(grep -c "<link rel=\"stylesheet\" href=\"style.css\">" index.html || echo "0")
+            
+            if [ "${PLAIN_STYLE_COUNT}" -gt 0 ]; then
+              echo "Found ${PLAIN_STYLE_COUNT} plain style tag(s) - removing them"
+              sed -i '/<link rel="stylesheet" href="style.css">/d' index.html
+            fi
+            
+            # Insert single new tag before </head>
+            sed -i "/<\/head>/i <link rel=\"stylesheet\" href=\"style.css?v=${SHORT_HASH}\">" index.html
+            echo "New style tag inserted"
+          fi
+          
+          # ============================================
+          # STEP 5: VERIFICATION
+          # ============================================
+          echo ""
+          echo "============================================"
+          echo "VERIFICATION - Final counts:"
+          echo "============================================"
+          
+          SCRIPT_COUNT=$(grep -c "script\.js\?v=" index.html || echo "0")
+          STYLE_COUNT=$(grep -c "style\.css\?v=" index.html || echo "0")
+          
+          echo "Script tags with version: ${SCRIPT_COUNT}"
+          echo "Style tags with version: ${STYLE_COUNT}"
+          
+          if [ "${SCRIPT_COUNT}" -eq 1 ] && [ "${STYLE_COUNT}" -eq 1 ]; then
+            echo "✓ Verification passed - exactly 1 of each tag present"
+          else
+            echo "⚠ WARNING: Expected 1 script and 1 style tag, got ${SCRIPT_COUNT} scripts and ${STYLE_COUNT} styles"
+          fi
+          
+          echo ""
+          echo "Final tag content:"
+          grep -n "script\.js\?v=" index.html || echo "No script tags found"
+          grep -n "style\.css\?v=" index.html || echo "No style tags found"
 
-      - name: Commit and push changes natively
-        env:
-          BYPASS_TOKEN: ${{ secrets.BYPASS_TOKEN }}
-          REPO_PATH: ${{ github.repository }}
+      - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           git add index.html
           
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "pushing timestamp updates [skip ci]"
+          # Show what changed before committing
+          echo "Changes detected:"
+          git diff --stat HEAD
+          
+          # Only commit if there are actual changes
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Auto-update: timestamp and version bump [skip ci]"
             git push origin HEAD:main
+            echo "Successfully committed and pushed changes"
           else
-            echo "No changes detected in index.html"
+            echo "No changes detected in index.html - skipping commit"
           fi
-
