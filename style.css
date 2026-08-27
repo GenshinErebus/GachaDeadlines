@@ -335,6 +335,24 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     gap: 0.5rem;
 }
 
+.system-online-link {
+    color: var(--matrix-light-green);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.system-online-link:hover {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    text-decoration: none;
+}
+
+.system-online-link:focus {
+    outline: 2px solid var(--matrix-dim-green);
+    outline-offset: 2px;
+}
+
 .status-dot {
     width: 8px;
     height: 8px;

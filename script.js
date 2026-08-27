@@ -771,6 +771,7 @@ function initUI() {
     createStatusBar();
 }
 
+// Stats page through server online text
 function createStatusBar() {
     if (document.querySelector('.status-bar')) return;
 
@@ -779,7 +780,10 @@ function createStatusBar() {
     statusBar.innerHTML = `
         <div class="status-indicator">
             <span class="status-dot"></span>
-            <span>SYSTEM ONLINE</span>
+            <a href="https://gachatracker.critic1985.workers.dev/stats" 
+               class="system-online-link">
+                SYSTEM ONLINE
+            </a>
         </div>
         <div class="timestamp">
             <span id="serverTime">LOADING...</span>
