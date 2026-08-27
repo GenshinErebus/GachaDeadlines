@@ -544,7 +544,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         max-width: calc(100% - 80px);
         width: auto;
         min-width: 260px;
-        marqn-left: -20px;
+        margin-left: -20px;
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }

@@ -638,6 +638,7 @@ const eventDatabase = {
                 name: "Break Time Activity",
                 endDate: "2026-09-24T10:00:00Z"
             },
+            // Banner
             {
                 id: "rev_013",
                 name: "Limited Banner",
