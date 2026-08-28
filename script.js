@@ -213,7 +213,7 @@ const eventDatabase = {
             {
                 id: "zzz_004",
                 name: "Deadly Assault (Period)",
-                endDate: "2026-08-28T03:00:00Z"
+                endDate: "2026-09-11T03:00:00Z"
             },
             {
                 id: "zzz_005",
@@ -502,7 +502,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-28T00:00:00Z"
+                endDate: "2026-08-29T00:00:00Z"
             },
             {
                 id: "msd_001",
