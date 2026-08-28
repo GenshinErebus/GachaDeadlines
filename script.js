@@ -477,6 +477,11 @@ const eventDatabase = {
                 endDate: "2026-09-09T21:00:00Z"
             },
             {
+                id: "nte_008",
+                name: "Shipwreck Salvage",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
                 id: "nte_010",
                 name: "Alluring Shadows",
                 endDate: "2026-09-08T22:00:00Z"
