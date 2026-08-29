@@ -635,8 +635,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_006",
-                name: "Laplace Employee Handbook (EP. 06)",
-                endDate: "2026-08-29T17:00:00Z"
+                name: "Laplace Employee Handbook (EP. 07)",
+                endDate: "2026-09-05T17:00:00Z"
             },
             {
                 id: "rev_007",
