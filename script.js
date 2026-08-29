@@ -342,11 +342,17 @@ const eventDatabase = {
             },
             {
                 id: "ark_006",
+                name: "Sanity Supply",
+                endDate: "2026-09-01T22:00:00Z"
+            },
+            // Banner
+            {
+                id: "ark_007",
                 name: "GOOD MORNING from YOUR DAWNSTAR",
                 endDate: "2026-09-02T05:00:00Z"
             },
             {
-                id: "ark_007",
+                id: "ark_008",
                 name: "Crimson Hued Issue",
                 endDate: "2026-09-02T05:00:00Z"
             }
