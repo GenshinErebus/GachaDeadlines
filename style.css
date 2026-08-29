@@ -191,8 +191,15 @@ h1 {
 }
 
 @keyframes pulse-border {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .event-card::after {
@@ -256,8 +263,15 @@ h1 {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .countdown.warning {
@@ -362,8 +376,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 5px var(--matrix-light-green); }
-    50% { box-shadow: 0 0 15px var(--matrix-light-green); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--matrix-light-green);
+    }
+
+    50% {
+        box-shadow: 0 0 15px var(--matrix-light-green);
+    }
 }
 
 /* ============================================
@@ -557,7 +578,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         margin: 0;
         font-size: 0.7rem;
     }
- /* Game selector */
+
+    /* Game selector */
     #gameSelect {
         max-width: calc(100% - 80px);
         width: auto;
@@ -566,7 +588,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }
-/* Region selector */
+
+    /* Region selector */
     .region-selector {
         margin-top: 5px;
         margin-left: -20px;
@@ -669,37 +692,40 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
        ULTRA-MOBILE RESOLUTIONS (Nested inside max-width: 768px)
        ========================================================================== */
 
-    /* Case 1 & 3: Widths from 320px to 349px (Covers 320x480 & 346x346) */
-    @media (max-width: 349px) {
-        /* Downscale profile picture */
-        a.youtube-avatar img {
-            width: 42px;
-            height: 42px;
-        }
-        
-        /* Make region selector smaller */
-        .region-selector {
-            margin-left: -20px;
-            transform: scale(0.7);
-            transform-origin: left center;
-        }
-        
-        /* Reduce game selector width and font size */
-        #gameSelect {
-            min-width: 200px;
-            font-size: 0.6rem;
-            padding: 0.4rem 0.75rem;
-        }
+/* Case 1 & 3: Widths from 320px to 349px (Covers 320x480 & 346x346) */
+@media (max-width: 349px) {
+
+    /* Downscale profile picture */
+    a.youtube-avatar img {
+        width: 42px;
+        height: 42px;
     }
 
-    /* Case 2: Widths around 360px (Covers 360x480) */
-    @media (min-width: 350px) and (max-width: 375px) {
-        /* Only downscale profile picture here */
-        a.youtube-avatar img {
-            width: 48px;
-            height: 48px;
-        }
+    /* Make region selector smaller */
+    .region-selector {
+        margin-left: -20px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
     }
+
+    /* Reduce game selector width and font size */
+    #gameSelect {
+        min-width: 200px;
+        font-size: 0.6rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+/* Case 2: Widths around 360px (Covers 360x480) */
+@media (min-width: 350px) and (max-width: 375px) {
+
+    /* Only downscale profile picture here */
+    a.youtube-avatar img {
+        width: 48px;
+        height: 48px;
+    }
+}
 
 /* ============================================
    LOADING ANIMATION
@@ -712,8 +738,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes loading-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* ============================================
@@ -863,7 +896,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 .container .event-card.server-reset-card::after,
-.container .event-card.server-reset-card > div:last-child {
+.container .event-card.server-reset-card>div:last-child {
     color: #00ffff;
 }
 
@@ -982,8 +1015,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes pulse-cyan {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
 }
 
 /* ============================================
@@ -1056,8 +1096,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 }
 
 @keyframes modal-in {
-    from { opacity: 0; transform: translateY(-20px) scale(0.98); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .modal-content h2 {
@@ -1241,11 +1288,11 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    ============================================ */
 @media (max-width: 768px) {
     .report-btn {
-        position: absolute !important;
-        top: 95px;   
+        position: absolute;
+        top: 95px;
         right: 15px;
-        left: auto !important;
-        bottom: auto !important;
+        left: auto;
+        bottom: auto;
 
         padding: 0.6rem 0.75rem;
         font-size: 0.5rem;
@@ -1254,13 +1301,21 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
 @media (max-width: 349px) {
     .report-btn {
-        position: absolute !important;
-        top: 10px;
-        right: 10px;
-        left: auto !important;
-        bottom: auto !important;
+        position: absolute;
+        top: 5px;
+        right: 60px;
+        left: auto;
+        bottom: auto;
 
         padding: 0.5rem 0.6rem;
         font-size: 0.4rem;
+    }
+
+    .loading {
+        font-size: 2.3rem;
+    }
+
+    .report-btn-text {
+        display: none;
     }
 }

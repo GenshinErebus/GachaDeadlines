@@ -410,7 +410,7 @@ const eventDatabase = {
             {
                 id: "dna_012",
                 name: "Phoxhunter Summit (Stage)",
-                endDate: "2026-08-28T23:00:00Z"
+                endDate: "2026-09-04T23:00:00Z"
             },
             // Trial
             {
@@ -512,7 +512,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-29T00:00:00Z"
+                endDate: "2026-08-30T00:00:00Z"
             },
             {
                 id: "msd_001",
