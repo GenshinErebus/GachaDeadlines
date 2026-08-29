@@ -663,24 +663,29 @@ const eventDatabase = {
                 name: "Break Time Activity",
                 endDate: "2026-09-24T10:00:00Z"
             },
-            // Banner
             {
                 id: "rev_013",
+                name: "The Eaglet Takes Wing",
+                endDate: "2026-09-05T10:00:00Z"
+            },
+            // Banner
+            {
+                id: "rev_014",
                 name: "Limited Banner",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_014",
+                id: "rev_015",
                 name: "A Shell on the Waves",
                 endDate: "2026-09-08T10:00:00Z"
             },
             {
-                id: "rev_015",
+                id: "rev_016",
                 name: "Ripples on the Water",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_016",
+                id: "rev_017",
                 name: "Rerun Banner",
                 endDate: "2026-09-03T10:00:00Z"
             }
