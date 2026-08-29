@@ -3,18 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- Cache-Busting: Forces the browser to always fetch the latest version from the server -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO configuration for event deadlines, banner count downs, and covered games -->
     <title>Event Deadlines & Banner Countdowns</title>
     <meta name="description"
         content="A simple site to keep track of event deadlines, banner end times, character trial runs, and endgame content cycles. Never miss limited-time rewards.">
-    <meta name="keywords"
-        content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
-    <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c" />
+    <meta name="keywords" content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
+    <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c">
     <!-- STYLE_VERSION -->
     <link rel="stylesheet" href="style.css?v=25a54c6"><!-- END_STYLE -->
     <!-- Favicons - Neon green stopwatch design optimized for small sizes -->
@@ -25,6 +20,7 @@
 </head>
 
 <body>
+    <h1 class="visually-hidden">Event Deadlines & Banner Countdowns</h1>
     <nav class="game-selector">
         <select id="gameSelect" onchange="loadGameEvents()">
             <option value="">- Select a Game -</option>
