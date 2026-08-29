@@ -428,20 +428,25 @@ const eventDatabase = {
                 name: "Phoxhunter Summit (Stage)",
                 endDate: "2026-09-04T23:00:00Z"
             },
-            // Trial
             {
                 id: "dna_013",
+                name: "Immersive Theatre",
+                endDate: "2026-09-07T16:00:00Z"
+            },
+            // Trial
+            {
+                id: "dna_014",
                 name: "Edge of Trial",
                 endDate: "2026-09-01T04:00:00Z"
             },
             // Banner
             {
-                id: "dna_014",
+                id: "dna_015",
                 name: "Event Esclusive",
                 endDate: "2026-09-07T16:00:00Z"
             },
             {
-                id: "dna_015",
+                id: "dna_016",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
             }
