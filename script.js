@@ -33,6 +33,11 @@ const eventDatabase = {
        */ ],
         events: [
             {
+                id: "gi_001",
+                name: "Heated Battle Mode: Tactical Formation",
+                endDate: "2026-09-14T03:00:00Z"
+            },
+            {
                 id: "gi_002",
                 name: "Everwinter Without Mercy",
                 endDate: "2026-09-22T14:00:00Z"
