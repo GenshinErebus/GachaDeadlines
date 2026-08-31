@@ -501,13 +501,18 @@ const eventDatabase = {
                 id: "nte_008",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
+            },            
+             {
+                id: "nte_009",
+                name: "Gold Clash",
+                endDate: "2026-09-14T03:00:00Z"
             },
+            // Banner
             {
                 id: "nte_010",
                 name: "Alluring Shadows",
                 endDate: "2026-09-08T22:00:00Z"
             },
-            // Banner
             {
                 id: "nte_011",
                 name: "The Ichi-daime",
