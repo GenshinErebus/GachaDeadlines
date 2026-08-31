@@ -521,12 +521,12 @@ const eventDatabase = {
     },
     mongil: {
         name: "MONGIL STAR DIVE",
-        maintenance: [ /*
+        maintenance: [
             {
                 id: "msd_maint_001",
-                startDate: "2026-09-09T02:00:00Z",
-                endDate: "2026-09-09T07:00:00Z"
-            } */
+                startDate: "2026-09-08T23:30:00Z",
+                endDate: "2026-09-09T02:00:00Z"
+            }
         ],
         events: [
             {
