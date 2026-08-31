@@ -67,7 +67,7 @@ const eventDatabase = {
                 name: "Wonderland Treasures: Phantasmagoric Discourse",
                 endDate: "2026-09-21T03:00:00Z"
             },
-             {
+            {
                 id: "gi_008",
                 name: "Great Expeditionist Challenge",
                 endDate: "2026-09-14T03:00:00Z"
@@ -192,12 +192,13 @@ const eventDatabase = {
     },
     zzz: {
         name: "Zenless Zone Zero",
-        maintenance: [ /*
+        maintenance: [
             {
                 id: "zzz_maint_001",
                 startDate: "2026-09-08T22:00:00Z",
                 endDate: "2026-09-09T03:00:00Z"
-            } */
+
+            }
         ],
         events: [
             {
@@ -305,19 +306,12 @@ const eventDatabase = {
     },
     arknights: {
         name: "Arknights Endfield",
-        maintenance: [ /*
+        maintenance: [
             {
-                id: "ark_maint_001_asia",
-                region: "asia",
-                startDate: "2026-09-02T06:00:00Z",
-                endDate: "2026-09-02T12:00:00Z"
-            },
-            {
-                id: "ark_maint_001_euna",
-                region: "eu",
-                startDate: "2026-09-01T23:00:00Z",
-                endDate: "2026-09-02T05:00:00Z"
-            } */
+                id: "ark_maint_001",
+                startDate: "2026-09-01T22:00:00Z",
+                endDate: "2026-09-02T04:00:00Z"
+            }
         ],
         events: [
             {
@@ -335,7 +329,7 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-09-01T22:00:00Z"
             },
-             {
+            {
                 id: "ark_004",
                 name: "A Forest Mantled in Snow",
                 endDate: "2026-09-01T22:00:00Z"
@@ -417,7 +411,7 @@ const eventDatabase = {
                 id: "dna_009",
                 name: "Starry Gleanings II",
                 endDate: "2026-09-01T04:00:00Z"
-            },            
+            },
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit",
@@ -501,8 +495,8 @@ const eventDatabase = {
                 id: "nte_008",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
-            },            
-             {
+            },
+            {
                 id: "nte_009",
                 name: "Gold Clash",
                 endDate: "2026-09-14T03:00:00Z"
