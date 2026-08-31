@@ -139,12 +139,12 @@ const eventDatabase = {
             {
                 id: "hsr_005",
                 name: "Apocalyptic Shadow (Period)",
-                endDate: "2026-08-31T03:00:00Z"
+                endDate: "2026-10-05T03:00:00Z"
             },
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-08-31T03:00:00Z"
+                endDate: "2026-09-07T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -159,7 +159,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-08-31T03:00:00Z"
+                endDate: "2026-09-07T03:00:00Z"
             },
             // Trial
             {
@@ -533,7 +533,7 @@ const eventDatabase = {
             {
                 id: "msd_000",
                 name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-08-31T00:00:00Z"
+                endDate: "2026-09-01T00:00:00Z"
             },
             {
                 id: "msd_001",
@@ -733,8 +733,8 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_005",
-                name: "Whimpering Wastes",
-                endDate: "2026-08-31T03:00:00Z"
+                name: "Whimpering Wastes (Period)",
+                endDate: "2026-09-28T03:00:00Z"
             },
             {
                 id: "wuwa_006",
