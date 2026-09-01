@@ -77,32 +77,32 @@ const eventDatabase = {
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-10-01T03:00:00Z"
             },
-            // Trial
-            {
-                id: "gi_010",
-                name: "Test Run",
-                endDate: "2026-09-01T17:00:00Z"
-            },
             {
                 id: "gi_011",
                 name: "Stygan Onslaught",
                 endDate: "2026-09-22T03:00:00Z"
             },
+            // Trial
+            {
+                id: "gi_010",
+                name: "Test Run",
+                endDate: "2026-09-22T14:00:00Z"
+            },
             // Banner
             {
                 id: "gi_012",
                 name: "Character Event Wish",
-                endDate: "2026-09-01T17:00:00Z"
+                endDate: "2026-09-22T14:00:00Z"
             },
             {
                 id: "gi_013",
                 name: "Character Event Wish-2",
-                endDate: "2026-09-01T17:00:00Z"
+                endDate: "2026-09-22T14:00:00Z"
             },
             {
                 id: "gi_014",
                 name: "Weapon Event Wish",
-                endDate: "2026-09-01T17:00:00Z"
+                endDate: "2026-09-22T14:00:00Z"
             }
         ]
     },
@@ -411,7 +411,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
-            },            
+            },
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit",
@@ -426,7 +426,7 @@ const eventDatabase = {
                 id: "dna_013",
                 name: "Immersive Theatre",
                 endDate: "2026-09-07T16:00:00Z"
-            },            
+            },
             // Banner
             {
                 id: "dna_015",
@@ -522,7 +522,7 @@ const eventDatabase = {
                 endDate: "2026-09-09T02:00:00Z"
             }
         ],
-        events: [           
+        events: [
             {
                 id: "msd_001",
                 name: "The Girl from the Void",
