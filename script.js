@@ -413,6 +413,11 @@ const eventDatabase = {
                 endDate: "2026-09-29T04:00:00Z"
             },
             {
+                id: "dna_009",
+                name: "Immersive Theatre - Ensemble Act",
+                endDate: "2026-09-06T16:00:00Z"
+            },
+            {
                 id: "dna_011",
                 name: "Phoxhunter Summit",
                 endDate: "2026-09-12T04:00:00Z"
@@ -424,7 +429,7 @@ const eventDatabase = {
             },
             {
                 id: "dna_013",
-                name: "Immersive Theatre",
+                name: "Immersive Theatre - Legends of the Brave",
                 endDate: "2026-09-07T16:00:00Z"
             },
             // Banner
