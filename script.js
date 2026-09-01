@@ -624,7 +624,7 @@ const eventDatabase = {
             {
                 id: "rev_005",
                 name: "Lucidscape",
-                endDate: "2026-09-01T10:00:00Z"
+                endDate: "2026-10-01T10:00:00Z"
             },
             {
                 id: "rev_006",
@@ -686,6 +686,11 @@ const eventDatabase = {
                 id: "rev_017",
                 name: "Rerun Banner",
                 endDate: "2026-09-03T10:00:00Z"
+            },
+            {
+                id: "rev_018",
+                name: "Rerun Banner 2",
+                endDate: "2026-09-24T10:00:00Z"
             }
         ]
     },
