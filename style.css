@@ -512,7 +512,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a.youtube-avatar {
         position: fixed;
         top: 5px;
-        right: 270px;
+        right: 290px;
         z-index: 9999;
         display: block;
         width: 63px;

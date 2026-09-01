@@ -517,12 +517,7 @@ const eventDatabase = {
                 endDate: "2026-09-09T02:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "msd_000",
-                name: "(Next) Tons of Recruitment Tickets! Check-In Streak Gift",
-                endDate: "2026-09-01T00:00:00Z"
-            },
+        events: [           
             {
                 id: "msd_001",
                 name: "The Girl from the Void",
