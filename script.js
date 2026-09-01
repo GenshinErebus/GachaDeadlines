@@ -811,7 +811,8 @@ function createStatusBar() {
             <span id="serverTime">LOADING...</span>
         </div>
         <div class="connection-status">
-            <span>CONNECTION: <strong>ENCRYPTED</strong></span>
+            <span>CONNECTION: </span>
+            <a href="research.html" class="encrypted-link">ENCRYPTED</a>
         </div>
     `;
     document.body.appendChild(statusBar);

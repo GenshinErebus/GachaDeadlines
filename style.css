@@ -505,6 +505,25 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: var(--matrix-light-green);
 }
 
+/* Make encrypted text clickable but not look like a link */
+.encrypted-link {
+    color: var(--matrix-green);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.encrypted-link:hover {
+    color: var(--matrix-light-green);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+.encrypted-link:focus {
+    outline: 2px solid var(--matrix-dim-green);
+    outline-offset: 2px;
+}
+
 /* ============================================
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
