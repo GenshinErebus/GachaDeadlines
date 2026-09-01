@@ -72,30 +72,35 @@ const eventDatabase = {
                 name: "Great Expeditionist Challenge",
                 endDate: "2026-09-14T03:00:00Z"
             },
-            // Trial
             {
                 id: "gi_009",
+                name: "Imaginarium Theater (Period)",
+                endDate: "2026-10-01T03:00:00Z"
+            },
+            // Trial
+            {
+                id: "gi_010",
                 name: "Test Run",
                 endDate: "2026-09-01T17:00:00Z"
             },
             {
-                id: "gi_010",
+                id: "gi_011",
                 name: "Stygan Onslaught",
                 endDate: "2026-09-22T03:00:00Z"
             },
             // Banner
             {
-                id: "gi_011",
+                id: "gi_012",
                 name: "Character Event Wish",
                 endDate: "2026-09-01T17:00:00Z"
             },
             {
-                id: "gi_012",
+                id: "gi_013",
                 name: "Character Event Wish-2",
                 endDate: "2026-09-01T17:00:00Z"
             },
             {
-                id: "gi_013",
+                id: "gi_014",
                 name: "Weapon Event Wish",
                 endDate: "2026-09-01T17:00:00Z"
             }

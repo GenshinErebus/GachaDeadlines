@@ -771,9 +771,9 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 /* ============================================
    GOLDEN GACHA BANNER STYLING
    ============================================ */
-[data-event-id*="gi_011"],
 [data-event-id*="gi_012"],
 [data-event-id*="gi_013"],
+[data-event-id*="gi_014"],
 [data-event-id*="hsr_013"],
 [data-event-id*="hsr_014"],
 [data-event-id*="hsr_015"],
