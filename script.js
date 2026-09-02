@@ -321,44 +321,34 @@ const eventDatabase = {
         events: [
             {
                 id: "ark_001",
-                name: "Bedazzling Dawnstar Sign-In",
-                endDate: "2026-09-01T22:00:00Z"
+                name: "Fletched Irontip Sign-In",
+                endDate: "2026-09-30T17:00:00Z"
             },
             {
                 id: "ark_002",
-                name: "The Rooted Realm",
-                endDate: "2026-09-01T22:00:00Z"
+                name: "Snow Over Deep Woods",
+                endDate: "2026-09-30T17:00:00Z"
             },
             {
                 id: "ark_003",
                 name: "Combat Drills",
-                endDate: "2026-09-01T22:00:00Z"
+                endDate: "2026-09-30T17:00:00Z"
             },
             {
                 id: "ark_004",
-                name: "A Forest Mantled in Snow",
-                endDate: "2026-09-01T22:00:00Z"
-            },
-            {
-                id: "ark_005",
-                name: "Like a Star Streaking Through the Boundaries",
-                endDate: "2026-09-01T22:00:00Z"
-            },
-            {
-                id: "ark_006",
-                name: "Sanity Supply",
-                endDate: "2026-09-01T22:00:00Z"
-            },
+                name: "A Winter Dream Fogged Deep in the Woods",
+                endDate: "2026-10-14T22:00:00Z"
+            },            
             // Banner
             {
                 id: "ark_007",
-                name: "GOOD MORNING from YOUR DAWNSTAR",
-                endDate: "2026-09-02T05:00:00Z"
+                name: "WINTER HUNT",
+                endDate: "2026-10-01T03:00:00Z"
             },
             {
                 id: "ark_008",
-                name: "Crimson Hued Issue",
-                endDate: "2026-09-02T05:00:00Z"
+                name: "Military Grade Issue",
+                endDate: "2026-10-01T03:00:00Z"
             }
         ]
     },
@@ -565,8 +555,8 @@ const eventDatabase = {
             },
             {
                 id: "msd_008",
-                name: "Monsterling Combining Missions",
-                endDate: "2026-09-02T00:00:00Z"
+                name: "An Invitation to Break the Ice",
+                endDate: "2026-09-09T00:00:00Z"
             },
             {
                 id: "msd_010",
