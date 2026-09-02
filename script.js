@@ -276,34 +276,39 @@ const eventDatabase = {
                 name: "Ding-Dong! Delivery Training in Progress",
                 endDate: "2026-09-14T03:00:00Z"
             },
+             {
+                id: "zzz_014",
+                name: "Combat Training: Triple Bounty",
+                endDate: "2026-09-07T03:00:00Z"
+            },
             // Banner
             {
-                id: "zzz_014",
+                id: "zzz_015",
                 name: "Channel Exclusive",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_015",
+                id: "zzz_016",
                 name: "Channel Exclusive 2",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_016",
+                id: "zzz_017",
                 name: "Exclusive Rescreaning",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_017",
+                id: "zzz_018",
                 name: "Channel W-Engine",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_018",
+                id: "zzz_019",
                 name: "Channel W-Engine 2",
                 endDate: "2026-09-08T03:00:00Z"
             },
             {
-                id: "zzz_019",
+                id: "zzz_020",
                 name: "W-Engine Reverberation",
                 endDate: "2026-09-08T03:00:00Z"
             }
