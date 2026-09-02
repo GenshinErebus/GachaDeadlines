@@ -559,6 +559,11 @@ const eventDatabase = {
                 endDate: "2026-09-09T00:00:00Z"
             },
             {
+                id: "msd_009",
+                name: "Path Bonus Time",
+                endDate: "2026-09-09T00:00:00Z"
+            },
+            {
                 id: "msd_010",
                 name: "Doom's Lonely Herald",
                 endDate: "2026-09-09T00:00:00Z"
