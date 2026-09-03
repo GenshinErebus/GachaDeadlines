@@ -4,70 +4,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research</title>
+  <title>Research Links</title>
   <style>
     body {
       background-color: #050505;
       color: #00ff33;
-      font-family: "Courier New", Courier, monospace;
-      margin-left: 10px;
+      font-family: "Courier New", Courier, monospace;     
     }
 
     h1 {
       color: white;
+      font-size: 25px;
     }
 
-    a {
-      margin-left: 5px;
-      margin-right: 5px;
-    }
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;  /* everything starts on the left */
+  gap: 10px;
+  margin: 15px 0;
+  font-size: 12px;
+}
 
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: green;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-    }
+.games h2 {
+  margin: 0;
+  flex: 0 0 259px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 16px;                    /* similiar to buttons */
+}
 
-    .button:hover {
-      background-color: #0056b3;
-    }
+.button {
+  display: inline-block;
+  padding: 10px 10px;
+  background-color: transparent;      /* using the back of the background */
+  color: #00ff33;
+  border: 2px solid #00ff33;          /* thin green border */
+  border-radius: 0;                   /* not round */
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;                /* matrix look */
+  transition: background-color 0.2s, color 0.2s;
+}
 
-    p {
-      margin-top: 30px;
-    }
-
-    .games {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 5px;
-      padding: 5px;
-      font-size: 12px;
-    }
-
-
+.button:hover {
+  background-color: #00ff33;          /* invert look */
+  color: #050505;
+}
+  
+  
     /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
    ============================================ */
-    @media (max-width: 768px) {
-      a {
-        font-size: 14px;
-        margin-left: 5px;
-        margin-right: 10px;
-      }
+@media (max-width: 768px) {
+  .games h2 {
+    font-size: 10px;
+  }
 
-      h1 {
-        display: none;
-      }
-    }
+  h1 {
+    display: none;
+  }
+}
   </style>
 </head>
 
 <body>
-  <h1>Research</h1>
+  <h1>Research Links</h1>
   <div class="games">
     <h2>Genshin Impact</h2>
     <a href="https://www.crimsonwitch.com/codes/Genshin_Impact" class="button" target="_blank"
@@ -154,7 +159,7 @@
       rel="noopener noreferrer">Tierlist</a>
     <a href="https://x.com/DNAbyss_EN" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
   </div>
-  
+
   <div class="games">
     <h2>Neverness to Everness</h2>
     <a href="https://www.eurogamer.net/neverness-to-everness-nte-codes" class="button" target="_blank"
@@ -175,58 +180,59 @@
   </div>
 
   <div class="games">
-  <h2>MONGIL STAR DIVE</h2>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/591774" class="button" target="_blank"
-    rel="noopener noreferrer">Codes</a>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/596305" class="button" target="_blank"
-    rel="noopener noreferrer">Builds</a>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/592050" class="button" target="_blank"
-    rel="noopener noreferrer">Artificats</a>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/591844" class="button" target="_blank"
-    rel="noopener noreferrer">Monster Codex</a>
-  <a href="https://www.facebook.com/p/Mongil-STAR-DIVE-61574474293883/" class="button" target="_blank"
-    rel="noopener noreferrer">News</a>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/595246" class="button" target="_blank"
-    rel="noopener noreferrer">Maps</a>
-  <a href="https://game8.co/games/Mongil-Star-Dive/archives/593943" class="button" target="_blank"
-    rel="noopener noreferrer">Tierlist</a>
-  <a href="https://x.com/Stardive_EN" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
-</div>
+    <h2>MONGIL STAR DIVE</h2>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/591774" class="button" target="_blank"
+      rel="noopener noreferrer">Codes</a>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/596305" class="button" target="_blank"
+      rel="noopener noreferrer">Builds</a>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/592050" class="button" target="_blank"
+      rel="noopener noreferrer">Artificats</a>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/591844" class="button" target="_blank"
+      rel="noopener noreferrer">Monster Codex</a>
+    <a href="https://www.facebook.com/p/Mongil-STAR-DIVE-61574474293883/" class="button" target="_blank"
+      rel="noopener noreferrer">News</a>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/595246" class="button" target="_blank"
+      rel="noopener noreferrer">Maps</a>
+    <a href="https://game8.co/games/Mongil-Star-Dive/archives/593943" class="button" target="_blank"
+      rel="noopener noreferrer">Tierlist</a>
+    <a href="https://x.com/Stardive_EN" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
+  </div>
 
-<div class="games">
-  <h2>Reverse 1999</h2>
-  <a href="https://www.reddit.com/r/Reverse1999Codes/" class="button" target="_blank"
-    rel="noopener noreferrer">Codes</a>
-  <a href="https://www.prydwen.gg/re1999/characters" class="button" target="_blank" rel="noopener noreferrer">Builds</a>
-  <a href="https://www.prydwen.gg/re1999/psychubes" class="button" target="_blank"
-    rel="noopener noreferrer">Psychubes</a>
-  <a href="https://www.prydwen.gg/re1999/guides" class="button" target="_blank" rel="noopener noreferrer">Guides</a>
-  <a href="https://re1999.bluepoch.com/en/home/detail.html#news" class="button" target="_blank"
-    rel="noopener noreferrer">News</a>
-  <a href="https://www.prydwen.gg/re1999/tier-list" class="button" target="_blank"
-    rel="noopener noreferrer">Tierlist</a>
-  <a href="https://www.prydwen.gg/re1999/team-tier-list" class="button" target="_blank" rel="noopener noreferrer">Team
-    Tierlist</a>
-  <a href="https://x.com/Reverse1999_GL" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
-</div>
+  <div class="games">
+    <h2>Reverse 1999</h2>
+    <a href="https://www.reddit.com/r/Reverse1999Codes/" class="button" target="_blank"
+      rel="noopener noreferrer">Codes</a>
+    <a href="https://www.prydwen.gg/re1999/characters" class="button" target="_blank"
+      rel="noopener noreferrer">Builds</a>
+    <a href="https://www.prydwen.gg/re1999/psychubes" class="button" target="_blank"
+      rel="noopener noreferrer">Psychubes</a>
+    <a href="https://www.prydwen.gg/re1999/guides" class="button" target="_blank" rel="noopener noreferrer">Guides</a>
+    <a href="https://re1999.bluepoch.com/en/home/detail.html#news" class="button" target="_blank"
+      rel="noopener noreferrer">News</a>
+    <a href="https://www.prydwen.gg/re1999/tier-list" class="button" target="_blank"
+      rel="noopener noreferrer">Tierlist</a>
+    <a href="https://www.prydwen.gg/re1999/team-tier-list" class="button" target="_blank" rel="noopener noreferrer">Team
+      Tierlist</a>
+    <a href="https://x.com/Reverse1999_GL" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
+  </div>
 
-<div class="games">
-  <h2>Wuthering Waves</h2>
-  <a href="https://wutheringwaves.fandom.com/wiki/Redemption_Code" class="button" target="_blank"
-    rel="noopener noreferrer">Codes</a>
-  <a href="https://game8.co/games/Wuthering-Waves/archives/457465" class="button" target="_blank"
-    rel="noopener noreferrer">Builds</a>
-  <a href="https://game8.co/games/Wuthering-Waves/archives/452490" class="button" target="_blank"
-    rel="noopener noreferrer">Weapons</a>
-  <a href="https://game8.co/games/Wuthering-Waves/archives/452491" class="button" target="_blank"
-    rel="noopener noreferrer">Echoes</a>
-  <a href="https://wutheringwaves.kurogames.com/en/main/news" class="button" target="_blank"
-    rel="noopener noreferrer">News</a>
-  <a href="https://game8.co/games/Wuthering-Waves/archives/453476" class="button" target="_blank"
-    rel="noopener noreferrer">Maps</a>
-  <a href="https://game8.co/games/Wuthering-Waves/archives/454729" class="button" target="_blank"
-    rel="noopener noreferrer">Tierlist</a>
-  <a href="https://x.com/Wuthering_Waves" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
+  <div class="games">
+    <h2>Wuthering Waves</h2>
+    <a href="https://wutheringwaves.fandom.com/wiki/Redemption_Code" class="button" target="_blank"
+      rel="noopener noreferrer">Codes</a>
+    <a href="https://game8.co/games/Wuthering-Waves/archives/457465" class="button" target="_blank"
+      rel="noopener noreferrer">Builds</a>
+    <a href="https://game8.co/games/Wuthering-Waves/archives/452490" class="button" target="_blank"
+      rel="noopener noreferrer">Weapons</a>
+    <a href="https://game8.co/games/Wuthering-Waves/archives/452491" class="button" target="_blank"
+      rel="noopener noreferrer">Echoes</a>
+    <a href="https://wutheringwaves.kurogames.com/en/main/news" class="button" target="_blank"
+      rel="noopener noreferrer">News</a>
+    <a href="https://game8.co/games/Wuthering-Waves/archives/453476" class="button" target="_blank"
+      rel="noopener noreferrer">Maps</a>
+    <a href="https://game8.co/games/Wuthering-Waves/archives/454729" class="button" target="_blank"
+      rel="noopener noreferrer">Tierlist</a>
+    <a href="https://x.com/Wuthering_Waves" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
   </div>
   <p>
     <a href="https://genshinerebus.github.io/GachaDeadlines/" class="button">↩ Back to Website</a>

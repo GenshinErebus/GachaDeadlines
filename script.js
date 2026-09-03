@@ -666,30 +666,40 @@ const eventDatabase = {
                 name: "The Eaglet Takes Wing",
                 endDate: "2026-09-05T10:00:00Z"
             },
-            // Banner
-            {
+             {
                 id: "rev_014",
-                name: "Limited Banner",
+                name: "On Another's Sorrow",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_015",
-                name: "A Shell on the Waves",
-                endDate: "2026-09-08T10:00:00Z"
+                name: "A Stranger to Memory Lane",
+                endDate: "2026-09-24T10:00:00Z"
             },
+            // Banner
             {
                 id: "rev_016",
-                name: "Ripples on the Water",
+                name: "Limited Banner",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_017",
-                name: "Rerun Banner",
-                endDate: "2026-09-03T10:00:00Z"
+                name: "Event Banner",
+                endDate: "2026-09-24T10:00:00Z"
             },
             {
                 id: "rev_018",
-                name: "Rerun Banner 2",
+                name: "A Shell on the Waves",
+                endDate: "2026-09-08T10:00:00Z"
+            },
+            {
+                id: "rev_019",
+                name: "Ripples on the Water",
+                endDate: "2026-09-24T10:00:00Z"
+            },            
+            {
+                id: "rev_020",
+                name: "Rerun Banner",
                 endDate: "2026-09-24T10:00:00Z"
             }
         ]
