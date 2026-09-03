@@ -368,6 +368,11 @@ const eventDatabase = {
         ],
         events: [            
             {
+                id: "dna_001",
+                name: "Shh! The Parade Begins",
+                endDate: "2026-09-15T04:00:00Z"
+            },
+            {
                 id: "dna_002",
                 name: "Snowveil Fairytale",
                 endDate: "2026-09-07T16:00:00Z"
