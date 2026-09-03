@@ -759,6 +759,16 @@ const eventDatabase = {
                 name: "Second Coming of Solaris: Coded Deception",
                 endDate: "2026-09-14T03:00:00Z"
             },
+            {
+                id: "wuwa_009",
+                name: "The Strings Remember",
+                endDate: "2026-09-21T03:00:00Z"
+            },
+            {
+                id: "wuwa_010",
+                name: "Bountiful Crescendo",
+                endDate: "2026-09-10T03:00:00Z"
+            },
             // Banner
             {
                 id: "wuwa_012",

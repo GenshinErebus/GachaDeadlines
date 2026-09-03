@@ -9,7 +9,7 @@
     body {
       background-color: #050505;
       color: #00ff33;
-      font-family: "Courier New", Courier, monospace;     
+      font-family: "Courier New", Courier, monospace;
     }
 
     h1 {
@@ -17,58 +17,85 @@
       font-size: 25px;
     }
 
-.games {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;  /* everything starts on the left */
-  gap: 10px;
-  margin: 15px 0;
-  font-size: 24px;
-}
+    .games {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      /* everything starts on the left */
+      gap: 10px;
+      margin: 15px 0;
+      font-size: 24px;
+    }
 
-.games h2 {
-  margin: 0;
-  flex: 0 0 320px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 20px;                    /* similiar to buttons */
-}
+    .games h2 {
+      margin: 0;
+      flex: 0 0 320px;
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 3px;
+      font-size: 20px;
+      /* similiar to buttons */
+    }
 
-.button {
-  display: inline-block;
-  padding: 10px 10px;
-  background-color: transparent;      /* using the back of the background */
-  color: #00ff33;
-  border: 2px solid #00ff33;          /* thin green border */
-  border-radius: 0;                   /* not round */
-  text-decoration: none;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 3px;                /* matrix look */
-  transition: background-color 0.2s, color 0.2s;
-}
+    .button {
+      display: inline-block;
+      padding: 10px 10px;
+      background-color: transparent;
+      /* using the back of the background */
+      color: #00ff33;
+      border: 2px solid #00ff33;
+      /* thin green border */
+      border-radius: 0;
+      /* not round */
+      text-decoration: none;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      /* matrix look */
+      transition: background-color 0.2s, color 0.2s;
+    }
 
-.button:hover {
-  background-color: #00ff33;          /* invert look */
-  color: #050505;
-}
-  
-  
+    .button:hover {
+      background-color: #00ff33;
+      /* invert look */
+      color: #050505;
+    }
+
+    .back {
+      display: inline-block;
+      padding: 10px 10px;
+      background-color: transparent;
+      /* using the back of the background */
+      color: yellow;
+      border: 2px solid yellow;
+      /* thin green border */
+      border-radius: 0;
+      /* not round */
+      text-decoration: none;
+      font-family: "Courier New", Courier, monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-left: 30px;
+      /* matrix look */
+      transition: background-color 0.2s, color 0.2s;
+    }
+
     /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
    ============================================ */
-@media (max-width: 768px) {
-.games {
-  font-size: 12px;
-}
+    @media (max-width: 768px) {
+      .games {
+        font-size: 12px;
+      }
 
-.games h2 {
-  flex: 0 0 259px;
-  font-size: 16px;                   
-}
-}
+      .games h2 {
+        flex: 0 0 259px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 
@@ -175,8 +202,8 @@
       rel="noopener noreferrer">Maps</a>
     <a href="https://game8.co/games/Neverness-to-Everness/archives/597305" class="button" target="_blank"
       rel="noopener noreferrer">Tierlist</a>
-    <a href="https://game8.co/games/Neverness-to-Everness/archives/597305" class="button" target="_blank"
-      rel="noopener noreferrer">Tierlist</a>
+          <a href="https://game8.co/games/Neverness-to-Everness/archives/596606" class="button" target="_blank"
+      rel="noopener noreferrer">Best Teams</a>
     <a href="https://x.com/NTE_GL" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
   </div>
 
@@ -236,7 +263,7 @@
     <a href="https://x.com/Wuthering_Waves" class="button" target="_blank" rel="noopener noreferrer">X.COM</a>
   </div>
   <p>
-    <a href="https://genshinerebus.github.io/GachaDeadlines/" class="button">↩ Back to Website</a>
+    <a href="https://genshinerebus.github.io/GachaDeadlines/" class="back">↩ Back to Website</a>
   </p>
 </body>
 
