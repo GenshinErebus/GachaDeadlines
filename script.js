@@ -663,8 +663,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_013",
-                name: "The Eaglet Takes Wing",
-                endDate: "2026-09-05T10:00:00Z"
+                name: "Double Echoes",
+                endDate: "2026-09-15T10:00:00Z"
             },
              {
                 id: "rev_014",
