@@ -10,7 +10,7 @@
             background-color: #050505;
             color: #00ff33;
             font-family: 'Courier New', Courier, monospace;
-            padding: 40px;
+            padding: 20px;
             display: flex;
             justify-content: center;
         }
@@ -19,15 +19,14 @@
             background-color: #000000;
             padding: 30px;
             border-radius: 4px;
-            width: 100%;
-            max-width: 500px;
+            width: 45%;            
             box-shadow: 0 0 15px rgba(0, 255, 51, 0.3);
             border: 1px solid #00ff33;
         }
 
         h2 {
             margin-top: 0;
-            font-size: 1.2rem;
+            font-size: 4.7rem;
             margin-bottom: 20px;
             text-align: center;
             border-bottom: 1px dashed #00ff33;
@@ -38,7 +37,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 3.5rem;
             color: #00ff33;
         }
 
@@ -52,7 +51,7 @@
             color: #00ff33;
             border-radius: 4px;
             box-sizing: border-box;
-            font-size: 1rem;
+            font-size: 3rem;
             font-family: inherit;
         }
 
@@ -72,8 +71,8 @@
         .checkbox-label input[type="checkbox"] {
             margin-right: 10px;
             accent-color: #00ff33;
-            width: 18px;
-            height: 18px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
         }
 
@@ -86,7 +85,7 @@
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 2rem;
             font-family: inherit;
             transition: background 0.2s;
         }
@@ -105,7 +104,7 @@
             font-family: inherit;
             white-space: pre;
             word-break: break-all;
-            font-size: 1rem;
+            font-size: 3rem;
             letter-spacing: 0.5px;
             color: #00ff33;
         }
@@ -121,6 +120,7 @@
     margin-top: 30px;
     padding: 10px 20px;
     color: #00ff33;
+    font-size: 4rem;
     background-color: rgba(0, 255, 51, 0.05);
     border: 1px solid #00ff33;
     text-decoration: none;
@@ -135,28 +135,28 @@
 
 <body>
     <div class="container">
-        <h2>-- Gacha Deadline Converter --</h2>
+        <h2>Deadline Converter</h2>
 
         <label for="gameLogic">Select a Game:</label>
         <select id="gameLogic">
             <option value="" disabled selected>-- Select a Game --</option>
-            <option value="3">✨ Genshin Impact (EU)</option>
-            <option value="3">🚂 Honkai Star Rail (EU)</option>
-            <option value="3">📟 Zenless Zone Zero (EU)</option>
-            <option value="3">🏗️ Arknights Endfield (EU)</option>
+            <option value="3">✨ Genshin Impact</option>
+            <option value="3">🚂 Honkai Star Rail</option>
+            <option value="3">📟 Zenless Zone Zero</option>
+            <option value="3">🏗️ Arknights Endfield</option>
             <option value="21">🌗 Duet Night Abyss</option>
-            <option value="4">🏙️ Neverness To Everness (EU)</option>
+            <option value="4">🏙️ Neverness To Everness</option>
             <option value="0">⭐ MONGIL STAR DIVE</option>
             <option value="10">⏳ Reverse 1999</option>
-            <option value="3">🌊 Wuthering Waves (EU)</option>
+            <option value="3">🌊 Wuthering Waves</option>
         </select>
 
-        <label for="remainingTime">Input (Remaining Time OR ISO-Timestamp):</label>
-        <input type="text" id="remainingTime" placeholder="e.g., 6d 14h, 30d, 12h OR ISO-String">
+        <label for="remainingTime">Remaining Time:</label>
+        <input type="text" id="remainingTime" placeholder="e.g., 6d 14h, 30d, 12h">
 
         <label class="checkbox-label">
             <input type="checkbox" id="winterTimeOffset">
-            Apply winter time offset (-1 hour)
+            Apply winter time
         </label>
 
         <button onclick="calculateDeadline()">Generate & Copy Code</button>

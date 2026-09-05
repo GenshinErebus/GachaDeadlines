@@ -414,14 +414,9 @@ const eventDatabase = {
             },
             {
                 id: "dna_011",
-                name: "Phoxhunter Summit",
+                name: "Phoxhunter Summit (Shop)",
                 endDate: "2026-09-12T04:00:00Z"
-            },
-            {
-                id: "dna_012",
-                name: "Phoxhunter Summit (Stage)",
-                endDate: "2026-09-04T23:00:00Z"
-            },
+            },           
             {
                 id: "dna_013",
                 name: "Immersive Theatre - Legends of the Brave",

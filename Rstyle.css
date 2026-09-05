@@ -1,0 +1,165 @@
+/* ==========================================
+   DEFAULT THEME: DARK MODE (Retro Hacker Look)
+   ========================================== */
+:root {
+    --bg-color: #000000;       /* Pure black background */
+    --accent-color: #39ff14;   /* Vibrant neon green for borders and texts */
+    --text-main: #ffffff;      /* White text for game names and headings */
+}
+
+/* ==========================================
+   LIGHT THEME: LIGHT MODE
+   ========================================== */
+body.light-mode {
+    --bg-color: #ffffff;       /* Pure white background */
+    --accent-color: black;   /* Darker, rich forest green for readability on white */
+    --text-main: #1a1a1a;      /* Dark grey/black for game names and headings */
+}
+
+/* ==========================================
+   BASE
+   ========================================== */
+body {
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    font-family: "Courier New", Courier, monospace;
+    padding: 20px;
+    /* Smooth transition when switching colors */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    color: var(--text-main);
+    font-size: 25px;
+    text-align: center;
+}
+
+/* ==========================================
+   GAME SECTIONS
+   ========================================== */
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    /* everything starts on the left */
+    gap: 10px;
+    margin: 25px 0;
+    font-size: 24px;
+}
+
+.games h2 {
+    margin: 0;
+    flex: 0 0 325px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    letter-spacing: 3px;
+    font-size: 20px;
+    /* similiar to buttons */
+}
+
+/* ==========================================
+   LINK BUTTONS (Codes, Builds, ...)
+   ========================================== */
+.button {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: transparent;
+    /* using the back of the background */
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    /* thin green border */
+    border-radius: 0;
+    /* not round */
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    /* matrix look */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+    background-color: var(--accent-color);
+    /* invert look */
+    color: var(--bg-color);
+}
+
+/* ==========================================
+   BACK BUTTON (now black in light mode,
+   white in dark mode – not yellow anymore)
+   ========================================== */
+.back {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    border-radius: 0;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 30px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back:hover {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+}
+
+/* ==========================================
+   THEME TOGGLE
+   ========================================== */
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 25px;
+    z-index: 1000;
+}
+
+/* ==========================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    .games {
+        font-size: 12px;
+    }
+
+    .games h2 {
+        flex: 0 0 259px;
+        font-size: 16px;
+    }
+}
+
+/* ==========================================
+   LEGACY CLASSES (kept for other pages)
+   ========================================== */
+.game-label {
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.link-button {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.link-button:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}

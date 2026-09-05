@@ -5,102 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Links</title>
-  <style>
-    body {
-      background-color: #050505;
-      color: #00ff33;
-      font-family: "Courier New", Courier, monospace;
-    }
-
-    h1 {
-      color: white;
-      font-size: 25px;
-    }
-
-    .games {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
-      /* everything starts on the left */
-      gap: 10px;
-      margin: 15px 0;
-      font-size: 24px;
-    }
-
-    .games h2 {
-      margin: 0;
-      flex: 0 0 320px;
-      text-transform: uppercase;
-      color: white;
-      letter-spacing: 3px;
-      font-size: 20px;
-      /* similiar to buttons */
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 10px;
-      background-color: transparent;
-      /* using the back of the background */
-      color: #00ff33;
-      border: 2px solid #00ff33;
-      /* thin green border */
-      border-radius: 0;
-      /* not round */
-      text-decoration: none;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      /* matrix look */
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    .button:hover {
-      background-color: #00ff33;
-      /* invert look */
-      color: #050505;
-    }
-
-    .back {
-      display: inline-block;
-      padding: 10px 10px;
-      background-color: transparent;
-      /* using the back of the background */
-      color: yellow;
-      border: 2px solid yellow;
-      /* thin green border */
-      border-radius: 0;
-      /* not round */
-      text-decoration: none;
-      font-family: "Courier New", Courier, monospace;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-left: 30px;
-      /* matrix look */
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    /* ============================================
-   MOBILE LAYOUT (Screens ≤ 768px)
-   ============================================ */
-    @media (max-width: 768px) {
-      .games {
-        font-size: 12px;
-      }
-
-      .games h2 {
-        flex: 0 0 259px;
-        font-size: 16px;
-      }
-    }
-  </style>
+   <link rel="stylesheet" href="Rstyle.css">
 </head>
 
 <body>
   <h1>Research Links</h1>
+  <!-- Theme toggle button -->
+<button id="theme-toggle" class="toggle-btn">🌞 / 🌜</button>
   <div class="games">
     <h2>Genshin Impact</h2>
     <a href="https://www.crimsonwitch.com/codes/Genshin_Impact" class="button" target="_blank"
@@ -265,6 +176,7 @@
   <p>
     <a href="https://genshinerebus.github.io/GachaDeadlines/" class="back">↩ Back to Website</a>
   </p>
+  <script src="Rscript.js"></script>
 </body>
 
 </html>
