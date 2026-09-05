@@ -1350,3 +1350,159 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* ============================================
+   LIGHT MODE THEME
+   (Only swaps the matrix green/black palette.
+    Urgency colors red/yellow/green, server-reset
+    and maintenance cyan stay untouched, because
+    they are hard-coded outside the variables.)
+   ============================================ */
+body.light-mode {
+    /* Swap palette variables */
+    --matrix-black: #f0f2f0;          /* page background */
+    --matrix-dark-green: #e2e8e2;     /* navbar background */
+    --matrix-green: #0a5c0a;          /* main text */
+    --matrix-light-green: #008a1f;    /* accent / headings */
+    --matrix-dim-green: #4a7d4a;      /* muted labels, borders */
+    --matrix-terminal-bg: #ffffff;    /* card backgrounds */
+
+    color: var(--matrix-green);
+}
+
+/* Soften the CRT scanline overlays in light mode */
+body.light-mode::before,
+body.light-mode::after {
+    opacity: 0.05;
+}
+
+/* Reduce neon glow effects for readability on white */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .event-name {
+    text-shadow: none;
+}
+
+body.light-mode #gameSelect option {
+    background: #ffffff;
+    color: #0a5c0a;
+}
+
+/* Banner cards: white border would be invisible on
+   a light background, so switch to gold/amber here */
+body.light-mode [data-event-id*="gi_012"],
+body.light-mode [data-event-id*="gi_013"],
+body.light-mode [data-event-id*="gi_014"],
+body.light-mode [data-event-id*="hsr_013"],
+body.light-mode [data-event-id*="hsr_014"],
+body.light-mode [data-event-id*="hsr_015"],
+body.light-mode [data-event-id*="hsr_016"],
+body.light-mode [data-event-id*="zzz_015"],
+body.light-mode [data-event-id*="zzz_016"],
+body.light-mode [data-event-id*="zzz_017"],
+body.light-mode [data-event-id*="zzz_018"],
+body.light-mode [data-event-id*="zzz_019"],
+body.light-mode [data-event-id*="zzz_020"],
+body.light-mode [data-event-id*="ark_007"],
+body.light-mode [data-event-id*="ark_008"],
+body.light-mode [data-event-id*="dna_015"],
+body.light-mode [data-event-id*="dna_016"],
+body.light-mode [data-event-id*="nte_010"],
+body.light-mode [data-event-id*="nte_011"],
+body.light-mode [data-event-id*="nte_012"],
+body.light-mode [data-event-id*="msd_010"],
+body.light-mode [data-event-id*="msd_011"],
+body.light-mode [data-event-id*="msd_012"],
+body.light-mode [data-event-id*="msd_013"],
+body.light-mode [data-event-id*="rev_016"],
+body.light-mode [data-event-id*="rev_017"],
+body.light-mode [data-event-id*="rev_018"],
+body.light-mode [data-event-id*="rev_019"],
+body.light-mode [data-event-id*="rev_020"],
+body.light-mode [data-event-id*="wuwa_012"],
+body.light-mode [data-event-id*="wuwa_013"],
+body.light-mode [data-event-id*="wuwa_014"],
+body.light-mode [data-event-id*="wuwa_015"],
+body.light-mode [data-event-id*="wuwa_016"],
+body.light-mode [data-event-id="wuwa_017"] {
+    border: 1px solid #b8860b;  /* dark goldenrod, readable on light bg */
+    box-shadow: 0 0 8px rgba(184, 134, 11, 0.5), 0 0 20px rgba(184, 134, 11, 0.3);
+    background: rgba(184, 134, 11, 0.07);
+}
+
+/* Status bar gets a subtle light finish too */
+body.light-mode .status-bar {
+    background: #ffffff;
+}
+
+/* Light mode: server reset & maintenance cards -
+   force light backgrounds, keep cyan theme */
+body.light-mode .container .event-card.server-reset-card,
+body.light-mode .container .event-card.maintenance-card {
+    background-color: #eef7f7;
+    border: 2px solid #009aa5;
+}
+
+body.light-mode .container .event-card.server-reset-card .countdown,
+body.light-mode .container .event-card.maintenance-card .countdown {
+    background-color: #dff0f0;
+    border-color: #009aa5;
+}
+
+body.light-mode .container .event-card.server-reset-card .event-name,
+body.light-mode .container .event-card.server-reset-card .meta-label,
+body.light-mode .container .event-card.server-reset-card .countdown-label,
+body.light-mode .container .event-card.maintenance-card .event-name,
+body.light-mode .container .event-card.maintenance-card .meta-label,
+body.light-mode .container .event-card.maintenance-card .countdown-label {
+    color: #009aa5;
+    text-shadow: none;
+}
+
+body.light-mode .container .event-card.server-reset-card .meta-value,
+body.light-mode .container .event-card.maintenance-card .meta-value,
+body.light-mode .container .event-card.server-reset-card .countdown-value,
+body.light-mode .container .event-card.maintenance-card .countdown-value {
+    color: #008080;
+    text-shadow: none;
+}
+
+/* ============================================
+   LIGHT MODE URGENCY COLORS
+   ============================================ */
+
+/* Warning countdown: light amber background,
+   darker amber text/border */
+body.light-mode .countdown.warning {
+    border-color: #b38f00;
+    box-shadow: 0 0 10px rgba(179, 143, 0, 0.3) !important;
+    background: #fdf6e3;
+}
+
+body.light-mode .countdown.warning .countdown-value,
+body.light-mode .countdown.warning .countdown-label {
+    color: #8a6d00;
+    text-shadow: none;
+}
+
+/* Yellow-highlighted card title */
+body.light-mode .event-card.has-warning-timer .event-name {
+    color: #8a6d00;
+    text-shadow: none;
+}
+
+/* Urgent (red): soften to a darker red so it also
+   pops on white instead of glowing into nothing */
+body.light-mode .countdown.urgent {
+    border-color: #cc0000;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.3) !important;
+}
+
+body.light-mode .countdown.urgent .countdown-value {
+    color: #cc0000;
+}
+
+body.light-mode .event-card:has(.countdown.urgent) .event-name {
+    color: #cc0000;
+}

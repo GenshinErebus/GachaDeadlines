@@ -1837,3 +1837,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 log('Script loaded and ready...');
+
+/* ============================================
+   LIGHT / DARK MODE TOGGLE
+   ============================================ */
+
+const THEME_KEY = 'selectedTheme';
+
+/* Apply the given theme ('dark' or 'light') */
+function applyTheme(theme) {
+    const toggleBtn = document.getElementById('themeToggle');
+
+    if (theme === 'light') {
+        document.body.classList.add('light-mode');
+        if (toggleBtn) toggleBtn.textContent = '🌜';
+    } else {
+        document.body.classList.remove('light-mode');
+        if (toggleBtn) toggleBtn.textContent = '☀️';
+    }
+}
+
+/* Initialize theme from localStorage on page load */
+function initThemeToggle() {
+    const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
+    applyTheme(savedTheme);
+
+    const toggleBtn = document.getElementById('themeToggle');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-mode');
+        const newTheme = isLight ? 'dark' : 'light';
+
+        localStorage.setItem(THEME_KEY, newTheme);
+        applyTheme(newTheme);
+    });
+}
+
+/* Hook into existing DOMContentLoaded */
+document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
+});
