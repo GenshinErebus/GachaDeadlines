@@ -610,7 +610,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Region selector */
     .region-selector {
-        margin-top: 5px;
+        margin-top: 15px;
         margin-left: -20px;
     }
 
@@ -722,7 +722,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Make region selector smaller */
     .region-selector {
-        margin-left: -20px;
+        margin-left: 0px;
+        margin-top: 2px;
         display: flex;
         flex-wrap: nowrap;
         justify-content: center;
@@ -1512,4 +1513,66 @@ body.light-mode .countdown.urgent .countdown-value {
 
 body.light-mode .event-card:has(.countdown.urgent) .event-name {
     color: #cc0000;
+}
+
+/* ============================================
+   ZOOM CONTROLS - TILE SIZE ADJUSTMENT
+   (Only the events grid is scaled; navbar,
+    status bar and modal stay untouched.)
+   ============================================ */
+.zoom-controls {
+    position: absolute;
+    top: 75px;
+    /* adjust to taste */
+    left: 370px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 9999;
+}
+
+.zoom-controls button {
+    background: none;
+    border: 1px solid var(--matrix-dim-green);
+    color: var(--matrix-green);
+    cursor: pointer;
+    padding: 0 8px;
+    font-family: 'Courier New', 'Consolas', 'monospace';
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.zoom-controls button:hover {
+    color: var(--matrix-light-green);
+    border-color: var(--matrix-light-green);
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+.zoom-value {
+    font-size: 0.75rem;
+    color: var(--matrix-dim-green);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Apply zoom ONLY to the events grid (the tiles) */
+.events-grid {
+    zoom: var(--tile-zoom, 1);
+}
+
+/* Mobile: keep the controls compact */
+@media (max-width: 768px) {
+    .zoom-controls {
+        top: 80px;
+        /* adjust to taste */
+        left: 15px;
+    }
+}
+
+@media (max-width: 349px) {
+    .zoom-controls {
+        top: 61px;
+        /* adjust to taste */
+        left: 15px;
+    }
 }

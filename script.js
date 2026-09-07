@@ -78,6 +78,11 @@ const eventDatabase = {
                 endDate: "2026-10-01T03:00:00Z"
             },
             {
+                id: "gi_010",
+                name: "Trial of the Bastion",
+                endDate: "2026-09-17T03:00:00Z"
+            },
+            {
                 id: "gi_011",
                 name: "Stygan Onslaught",
                 endDate: "2026-09-22T03:00:00Z"
@@ -1857,4 +1862,51 @@ function initThemeToggle() {
 /* Hook into existing DOMContentLoaded */
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
+});
+
+/* ============================================
+   ZOOM CONTROLS - TILE SIZE + / -
+   Scales only the event card grid.
+   Value is persisted in localStorage.
+   ============================================ */
+
+const ZOOM_KEY = 'selectedZoom';
+const ZOOM_MIN = 0.5;
+const ZOOM_MAX = 2.0;
+const ZOOM_STEP = 0.1;
+
+/* Read the saved zoom factor (1 = 100%), fall back to 1 */
+function getTileZoom() {
+    const saved = parseFloat(localStorage.getItem(ZOOM_KEY));
+    if (!isNaN(saved) && saved >= ZOOM_MIN && saved <= ZOOM_MAX) {
+        return saved;
+    }
+    return 1;
+}
+
+/* Apply the zoom factor to the CSS variable and update the label */
+function applyTileZoom() {
+    document.documentElement.style.setProperty('--tile-zoom', getTileZoom());
+    const label = document.getElementById('zoomLevel');
+    if (label) {
+        label.textContent = Math.round(getTileZoom() * 100) + '%';
+    }
+}
+
+/* Change zoom: direction = 1 (bigger) or -1 (smaller) */
+function changeTileZoom(direction) {
+    const next = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, +(getTileZoom() + direction * ZOOM_STEP).toFixed(1)));
+    localStorage.setItem(ZOOM_KEY, next);
+    applyTileZoom();
+}
+
+/* Hook into existing DOMContentLoaded */
+document.addEventListener('DOMContentLoaded', () => {
+    applyTileZoom();
+
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+
+    if (zoomInBtn) zoomInBtn.addEventListener('click', () => changeTileZoom(1));
+    if (zoomOutBtn) zoomOutBtn.addEventListener('click', () => changeTileZoom(-1));
 });
