@@ -1,28 +1,42 @@
 <!DOCTYPE html>
+<!-- Main document, English language set for accessibility & SEO -->
 <html lang="en">
-
 <head>
+    <!-- Character encoding: UTF-8 for full Unicode support (emojis in game names, etc.) -->
     <meta charset="UTF-8">
+    <!-- Responsive viewport: makes the site scale correctly on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO configuration for event deadlines, banner count downs, and covered games -->
     <title>Event Deadlines & Banner Countdowns</title>
+    <!-- Page description shown in search engine results -->
     <meta name="description"
         content="A simple site to keep track of event deadlines, banner end times, character trial runs, and endgame content cycles. Never miss limited-time rewards.">
+    <!-- Keywords covering all supported gacha games for search indexing -->
     <meta name="keywords"
         content="Event, Deadlines, Banner Deadlines, Countdown, Timer, Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Arknights Endfield, Duet Night Abyss, Neverness To Everness, MONGIL STAR DIVE, Reverse 1999, Wuthering Waves">
+    <!-- Google Search Console ownership verification token -->
     <meta name="google-site-verification" content="n-9aGm3t8w_jbf9_1W1WA8_G1yoCYfSpY1zfEmwUv7c">
+    <!-- Stylesheet with version query (?v=...) used as cache-buster on updates -->
     <!-- STYLE_VERSION -->
     <link rel="stylesheet" href="style.css?v=279174b"><!-- END_STYLE -->
     <!-- Favicons - Neon green stopwatch design optimized for small sizes -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <!-- Web app manifest (icons, theme colors, install behavior) -->
     <link rel="manifest" href="site.webmanifest">
 </head>
 
 <body>
+    <!-- Visually hidden H1: gives screen readers & crawlers a main heading without visible UI impact -->
     <h1 class="visually-hidden">Event Deadlines & Banner Countdowns</h1>
+    <!-- ============================================
+         NAVIGATION BAR: game selection, server region
+         selector, theme toggle, update status, and
+         YouTube channel avatar
+         ============================================ -->
     <nav class="game-selector">
+        <!-- Game dropdown: triggers reload of that game's event database on change -->
         <select id="gameSelect" onchange="loadGameEvents()">
             <option value="">- Select a Game -</option>
             <option value="genshin">✨ Genshin Impact</option>
@@ -35,52 +49,71 @@
             <option value="reverse1999">⏳ Reverse 1999</option>
             <option value="wuwa">🌊 Wuthering Waves</option>
         </select>
+
         <!-- Region Selector in Matrix Style -->
+        <!-- Buttons switch the daily-reset time zone (ASIA / EUROPE / AMERICA),
+             last button toggles light/dark mode -->
         <div class="region-selector">
             <span>SERVER:</span>
             <button onclick="setRegion('asia')" id="btn-asia">[ASIA]</button>
+            <!-- Europe is the default region (also default in script.js) -->
             <button onclick="setRegion('eu')" id="btn-eu" class="active">[EUROPE]</button>
             <button onclick="setRegion('na')" id="btn-na">[AMERICA]</button>
             <button id="themeToggle" title="Toggle light/dark mode">☀️ LIGHT</button>
         </div>
+        <!-- "Updated" stamp wrapped in a link to the GitHub repo.
+             The placeholder comment inside the <p> is replaced/refreshed
+             dynamically by the inline script at the bottom of the page. -->
         <a id="update-status" href="https://github.com/GenshinErebus/GachaDeadlines"
             style="display: block; text-decoration: none; color: inherit;">
             <p id="update-status"><!-- LAST_UPDATE_HERE -->Updated 07 September 2026<!-- END_UPDATE --></p>
         </a>
 
-        <!-- Icon to get you to my channel -->
+        <!-- Icon linking to the creator's YouTube channel (opens in new tab) -->
         <a href="https://www.youtube.com/@GenshinErebus/videos" class="youtube-avatar" target="_blank">
             <img src="avatar.png" alt="youtube channel">
         </a>
     </nav>
-    <!-- Main content container -->
+    <!-- Main content container: populated dynamically by script.js -->
     <div class="container">
         <!-- Static SEO Fallback Text for Search Engines -->
+        <!-- Shown until the user picks a game; also ensures crawlers
+             see meaningful text on an otherwise JS-driven page -->
         <p style="color: #666; text-align: center; padding: 20px; font-style: italic;">
             Select a Gacha game from the menu above to display active countdown timers, character trial durations, and
             limited-time endgame cycle rewards.
         </p>
     </div>
 
-    <!-- Load JavaScript -->
+    <!-- Load JavaScript: all countdown/event logic lives here -->
     <!-- SCRIPT_VERSION -->
     <script src="script.js?v=279174b"></script><!-- END_SCRIPT -->
+
     <!-- ============================================
-     REPORT MISSING EVENTS - MODAL
-     ============================================ -->
+         REPORT MISSING EVENTS - MODAL
+         Feedback dialog: lets visitors report bugs,
+         request features, or flag missing events.
+         Two send options: local mail client or a
+         direct API submission (privacy note below).
+         ============================================ -->
+    <!-- Floating report button (fixed position, opens the modal) -->
     <button id="reportBtn" class="report-btn" title="Report a missing event?">
         <span class="report-btn-icon">⚠</span>
         <span class="report-btn-text">REPORT</span>
     </button>
 
+    <!-- Modal overlay (hidden by default, activated via .active class in script.js) -->
     <div id="reportModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
         <div class="modal-content">
+            <!-- Close (X) button -->
             <span id="closeModal" class="modal-close" role="button" aria-label="Close">&times;</span>
 
             <h2 id="reportTitle">FEEDBACK & REPORT CENTER</h2>
             <p class="modal-subtitle">Found a bug, want a feature, or missing an event? Let me know.</p>
 
+            <!-- Report form (novalidate: validation handled in JavaScript) -->
             <form id="missingEventForm" novalidate>
+                <!-- Topic selector: bug report / feature request / specific game -->
                 <div class="form-group">
                     <label for="reportGame">Topic:</label>
                     <select id="reportGame" name="game" required>
@@ -99,6 +132,7 @@
                     </select>
                 </div>
 
+                <!-- Free-text title/subject of the report -->
                 <div class="form-group">
                     <label for="reportEventName">TITLE / SUBJECT:</label>
                     <input type="text" id="reportEventName" name="event_name"
@@ -106,12 +140,14 @@
                         required>
                 </div>
 
+                <!-- Optional details field -->
                 <div class="form-group">
                     <label for="reportNotes">NOTES (optional):</label>
                     <textarea id="reportNotes" name="notes" rows="3"
                         placeholder="Server, region, approximate timeframe..." maxlength="500"></textarea>
                 </div>
 
+<!-- Optional server region (pre-filled with the active region) -->
                 <div class="form-group">
                     <label for="reportRegion">SERVER REGION (optional):</label>
                     <select id="reportRegion" name="region">
@@ -122,6 +158,7 @@
                     </select>
                 </div>
 
+                <!-- Two submit paths with different privacy implications -->
                 <div class="form-actions">
                     <button type="submit" class="submit-btn primary" id="btnMailto">
                         &lt; SEND VIA E-MAIL CLIENT
@@ -131,16 +168,24 @@
                     </button>
                 </div>
 
+ <!-- Privacy explanation for both send options -->
                 <p class="form-privacy">
                     <span class="privacy-dot"></span> "Send Via E-Mail Client" = uses your E-Mail Address<br>
                     <span class="privacy-dot"></span> "Send Directly" = doesn't use your E-Mail Address
                 </p>
 
+                <!-- Live region for success/error messages (announced by screen readers) -->
                 <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
             </form>
         </div>
     </div>
-    <!-- Cloudflare Worker Tracking -->
+
+   <!-- ============================================
+         INLINE SCRIPTS (page-level utilities)
+         ============================================ -->
+
+    <!-- Cloudflare Worker Tracking: fire-and-forget ping
+         (mode: 'no-cors') to count visits; failures ignored -->
     <script>
         (function () {
             const TRACK_URL = 'https://gachatracker.critic1985.workers.dev';
@@ -148,6 +193,10 @@
         })();
     </script>
 
+<!-- Live "Updated" date: performs a HEAD request on script.js with a
+         cache-busting timestamp so the browser must ask the server fresh.
+         Reads the Last-Modified header and displays it as
+         "Updated DD Month YYYY"; silently falls back to the static text. -->
     <script>
         (function () {
             const statusEl = document.getElementById('update-status');
@@ -162,7 +211,7 @@
                     if (lastModified) {
                         const date = new Date(lastModified);
 
-                        /* Format the date to your style (e.g., "17 July 2026") */
+                         /* Format the date to your style (e.g., "17 July 2026") */
                         const options = { day: 'numeric', month: 'long', year: 'numeric' };
                         const formattedDate = date.toLocaleDateString('en-US', options);
 

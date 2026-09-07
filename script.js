@@ -215,7 +215,7 @@ const eventDatabase = {
                 id: "zzz_000",
                 name: "The Great En-Nah Giveaway!",
                 endDate: "2026-09-08T03:00:00Z"
-            },            
+            },
             {
                 id: "zzz_002",
                 name: "Potential Hypothesis: Hunting Game",
@@ -260,12 +260,12 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
-            },            
+            },
             {
                 id: "zzz_013",
                 name: "Ding-Dong! Delivery Training in Progress",
                 endDate: "2026-09-14T03:00:00Z"
-            },             
+            },
             // Banner
             {
                 id: "zzz_015",
@@ -328,7 +328,7 @@ const eventDatabase = {
                 id: "ark_004",
                 name: "A Winter Dream Fogged Deep in the Woods",
                 endDate: "2026-10-14T22:00:00Z"
-            },            
+            },
             // Banner
             {
                 id: "ark_007",
@@ -344,14 +344,14 @@ const eventDatabase = {
     },
     duet: {
         name: "Duet Night Abyss",
-        maintenance: [ /*
+        maintenance: [
             {
                 id: "dna_maint_001",
-                startDate: "2026-09-29T06:00:00Z",
-                endDate: "2026-09-29T11:00:00Z"
-            } */
+                startDate: "2026-09-08T00:00:00Z",
+                endDate: "2026-09-08T07:00:00Z"
+            }
         ],
-        events: [            
+        events: [
             {
                 id: "dna_001",
                 name: "Shh! The Parade Begins",
@@ -391,12 +391,12 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
-            },            
+            },
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit (Shop)",
                 endDate: "2026-09-12T04:00:00Z"
-            },           
+            },
             {
                 id: "dna_013",
                 name: "Immersive Theatre - Legends of the Brave",
@@ -646,7 +646,7 @@ const eventDatabase = {
                 name: "Double Echoes",
                 endDate: "2026-09-15T10:00:00Z"
             },
-             {
+            {
                 id: "rev_014",
                 name: "On Another's Sorrow",
                 endDate: "2026-09-24T10:00:00Z"
@@ -676,7 +676,7 @@ const eventDatabase = {
                 id: "rev_019",
                 name: "Ripples on the Water",
                 endDate: "2026-09-24T10:00:00Z"
-            },            
+            },
             {
                 id: "rev_020",
                 name: "Rerun Banner",
