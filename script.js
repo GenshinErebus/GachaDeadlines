@@ -149,7 +149,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-09-07T03:00:00Z"
+                endDate: "2026-09-14T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -164,7 +164,12 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-09-07T03:00:00Z"
+                endDate: "2026-09-14T03:00:00Z"
+            },
+            {
+                id: "hsr_010",
+                name: "Planar Fissure",
+                endDate: "2026-09-21T03:00:00Z"
             },
             // Trial
             {
@@ -210,12 +215,7 @@ const eventDatabase = {
                 id: "zzz_000",
                 name: "The Great En-Nah Giveaway!",
                 endDate: "2026-09-08T03:00:00Z"
-            },
-            {
-                id: "zzz_001",
-                name: "Summmer Waves Roll In",
-                endDate: "2026-09-07T03:00:00Z"
-            },
+            },            
             {
                 id: "zzz_002",
                 name: "Potential Hypothesis: Hunting Game",
@@ -260,27 +260,12 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-09-09T03:00:00Z"
-            },
-            {
-                id: "zzz_011",
-                name: "Crispy Meal Deployment Plan",
-                endDate: "2026-09-07T03:00:00Z"
-            },
-            {
-                id: "zzz_012",
-                name: "Dangerous Fugitive's Leisurely Vacation",
-                endDate: "2026-09-07T03:00:00Z"
-            },
+            },            
             {
                 id: "zzz_013",
                 name: "Ding-Dong! Delivery Training in Progress",
                 endDate: "2026-09-14T03:00:00Z"
-            },
-             {
-                id: "zzz_014",
-                name: "Combat Training: Triple Bounty",
-                endDate: "2026-09-07T03:00:00Z"
-            },
+            },             
             // Banner
             {
                 id: "zzz_015",
@@ -406,12 +391,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
-            },
-            {
-                id: "dna_009",
-                name: "Immersive Theatre - Ensemble Act",
-                endDate: "2026-09-06T16:00:00Z"
-            },
+            },            
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit (Shop)",
