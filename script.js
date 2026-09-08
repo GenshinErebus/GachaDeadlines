@@ -674,8 +674,8 @@ const eventDatabase = {
             },
             {
                 id: "rev_018",
-                name: "A Shell on the Waves",
-                endDate: "2026-09-08T10:00:00Z"
+                name: "The Mourner's Eulogy",
+                endDate: "2026-09-22T10:00:00Z"
             },
             {
                 id: "rev_019",
