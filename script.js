@@ -361,37 +361,12 @@ const eventDatabase = {
                 id: "dna_001",
                 name: "Shh! The Parade Begins",
                 endDate: "2026-09-15T04:00:00Z"
-            },
-            {
-                id: "dna_002",
-                name: "Snowveil Fairytale",
-                endDate: "2026-09-07T16:00:00Z"
-            },
-            {
-                id: "dna_003",
-                name: "Traces in the Sand",
-                endDate: "2026-09-07T16:00:00Z"
-            },
-            {
-                id: "dna_004",
-                name: "Bloomfield Station: Tales Untold",
-                endDate: "2026-09-07T16:00:00Z"
-            },
+            },            
             {
                 id: "dna_005",
                 name: "Treasure Hunt Trials",
                 endDate: "2026-09-08T04:00:00Z"
-            },
-            {
-                id: "dna_006",
-                name: "White Bunnies' Invitation",
-                endDate: "2026-09-07T16:00:00Z"
-            },
-            {
-                id: "dna_007",
-                name: "Great Chaos of Mechapuppets",
-                endDate: "2026-09-07T16:00:00Z"
-            },
+            },           
             {
                 id: "dna_008",
                 name: "Crimson Mirage",
@@ -401,13 +376,8 @@ const eventDatabase = {
                 id: "dna_011",
                 name: "Phoxhunter Summit (Shop)",
                 endDate: "2026-09-12T04:00:00Z"
-            },
-            {
-                id: "dna_013",
-                name: "Immersive Theatre - Legends of the Brave",
-                endDate: "2026-09-07T16:00:00Z"
-            },
-            // Banner
+            } /*,           
+            // Banner 
             {
                 id: "dna_015",
                 name: "Event Esclusive",
@@ -417,7 +387,7 @@ const eventDatabase = {
                 id: "dna_016",
                 name: "Limited-Time Rerun",
                 endDate: "2026-09-07T16:00:00Z"
-            }
+            } */
         ]
     },
     nte: {

@@ -610,8 +610,8 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Region selector */
     .region-selector {
-        margin-top: 15px;
-        margin-left: -20px;
+        margin-top: 5px;
+        margin-left: -30px;
     }
 
     .stats-overview {
@@ -1522,7 +1522,7 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
    ============================================ */
 .zoom-controls {
     position: absolute;
-    top: 75px;
+    top: 70px;
     /* adjust to taste */
     left: 370px;
     display: inline-flex;
@@ -1563,7 +1563,7 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
 /* Mobile: keep the controls compact */
 @media (max-width: 768px) {
     .zoom-controls {
-        top: 80px;
+        top: 72px;
         /* adjust to taste */
         left: 15px;
     }
