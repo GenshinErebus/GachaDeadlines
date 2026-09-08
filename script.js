@@ -215,12 +215,7 @@ const eventDatabase = {
 
             }
         ],
-        events: [
-            {
-                id: "zzz_000",
-                name: "The Great En-Nah Giveaway!",
-                endDate: "2026-09-08T03:00:00Z"
-            },
+        events: [            
             {
                 id: "zzz_002",
                 name: "Potential Hypothesis: Hunting Game",
@@ -250,12 +245,7 @@ const eventDatabase = {
                 id: "zzz_007",
                 name: "Phaethon's Grand Reveal of the Year",
                 endDate: "2026-09-09T03:00:00Z"
-            },
-            {
-                id: "zzz_008",
-                name: "Gift From the Cloud",
-                endDate: "2026-09-08T03:00:00Z"
-            },
+            },           
             {
                 id: "zzz_009",
                 name: "Festival Special",
@@ -270,7 +260,7 @@ const eventDatabase = {
                 id: "zzz_013",
                 name: "Ding-Dong! Delivery Training in Progress",
                 endDate: "2026-09-14T03:00:00Z"
-            },
+            } /*,
             // Banner
             {
                 id: "zzz_015",
@@ -301,7 +291,7 @@ const eventDatabase = {
                 id: "zzz_020",
                 name: "W-Engine Reverberation",
                 endDate: "2026-09-08T03:00:00Z"
-            }
+            } */
         ]
     },
     arknights: {
@@ -361,33 +351,73 @@ const eventDatabase = {
                 id: "dna_001",
                 name: "Shh! The Parade Begins",
                 endDate: "2026-09-15T04:00:00Z"
-            },            
+            },
+             {
+                id: "dna_002",
+                name: "Opulent Rebate",
+                endDate: "2026-10-19T16:00:00Z"
+            },
             {
+                id: "dna_003",
+                name: "Way of the Penitent",
+                endDate: "2026-10-19T16:00:00Z"
+            },
+             {
+                id: "dna_004",
+                name: "Vibrant Strokes",
+                endDate: "2026-10-19T16:00:00Z"
+            },
+             {
                 id: "dna_005",
-                name: "Treasure Hunt Trials",
-                endDate: "2026-09-08T04:00:00Z"
-            },           
+                name: "Better Luno than Never",
+                endDate: "2026-09-29T04:00:00Z"
+            },
+             {
+                id: "dna_006",
+                name: "Parade Itinerary",
+                endDate: "2026-10-19T16:00:00Z"
+            },
+             {
+                id: "dna_007",
+                name: "Through the Inferno",
+                endDate: "2026-10-19T16:00:00Z"
+            },                                  
             {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
             },
+             {
+                id: "dna_009",
+                name: "Immersive Theatre",
+                endDate: "2026-09-29T09:00:00Z"
+            },
+             {
+                id: "dna_010",
+                name: "Traces in the Sand",
+                endDate: "2026-10-19T16:00:00Z"
+            },  
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit (Shop)",
                 endDate: "2026-09-12T04:00:00Z"
-            } /*,           
+            },
+            {
+                id: "dna_012",
+                name: "Paradise's 22nd White Bunny",
+                endDate: "2026-10-14T04:00:00Z"
+            },               
             // Banner 
             {
                 id: "dna_015",
                 name: "Event Esclusive",
-                endDate: "2026-09-07T16:00:00Z"
+                endDate: "2026-10-19T16:00:00Z"
             },
             {
                 id: "dna_016",
                 name: "Limited-Time Rerun",
-                endDate: "2026-09-07T16:00:00Z"
-            } */
+                endDate: "2026-10-19T16:00:00Z"
+            } 
         ]
     },
     nte: {
