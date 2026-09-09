@@ -304,6 +304,11 @@ const eventDatabase = {
                 name: "A Winter Dream Fogged Deep in the Woods",
                 endDate: "2026-10-14T22:00:00Z"
             },
+             {
+                id: "ark_005",
+                name: "Trial of the Bow",
+                endDate: "2026-10-14T22:00:00Z"
+            },
             // Banner
             {
                 id: "ark_007",
