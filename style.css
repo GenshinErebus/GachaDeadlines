@@ -112,6 +112,7 @@ body::after {
     color: var(--matrix-green);
     font-family: 'Courier New', 'Consolas', 'monospace';
     padding: 0.5rem;
+    font-size: 1.5rem;
 }
 
 #gameSelect option:hover {
@@ -132,7 +133,7 @@ h2,
 h3 {
     color: var(--matrix-light-green);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 0.125rem;
     margin-bottom: 1rem;
     position: relative;
     text-shadow:
@@ -151,7 +152,7 @@ h1 {
    ============================================ */
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -247,7 +248,7 @@ h1 {
     font-size: 0.7rem;
     color: var(--matrix-dim-green);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
 }
 
 /* Urgency states */
@@ -423,14 +424,14 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     padding: 1rem 1.5rem;
     display: flex;
     flex-direction: column;
-    min-width: 80px;
+    min-width: 5rem;
 }
 
 .stat-label {
     font-size: 0.7rem;
     color: var(--matrix-dim-green);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
     margin-bottom: 0.5rem;
 }
 
@@ -490,7 +491,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     border: none;
     color: var(--matrix-dim-green);
     cursor: pointer;
-    padding: 0 5px;
+    padding: 0 0.3125rem;
 }
 
 .region-selector button.active {
@@ -559,7 +560,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     }
 
     #gameSelect {
-        min-width: 320px;
+        min-width: 20rem;
     }
 }
 
@@ -602,7 +603,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     #gameSelect {
         max-width: calc(100% - 80px);
         width: auto;
-        min-width: 260px;
+        min-width: 16.25rem;
         margin-left: -20px;
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
@@ -731,7 +732,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Reduce game selector width and font size */
     #gameSelect {
-        min-width: 200px;
+        min-width: 12.5rem;
         font-size: 0.6rem;
         padding: 0.4rem 0.75rem;
     }
@@ -851,7 +852,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     align-items: center;
     justify-content: center;
     min-height: 60px;
-    min-width: 150px;
+    min-width: 9.375rem;
     padding: 0;
     height: auto;
 }
@@ -893,7 +894,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: #000000;
     font-weight: bold;
     background-color: #00ffff;
-    padding: 2px 6px;
+    padding: 0.125rem 0.375rem;
     display: inline-block;
 }
 
@@ -1172,7 +1173,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     color: var(--matrix-dim-green);
     font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.09375rem;
     margin-bottom: 0.4rem;
 }
 
