@@ -490,69 +490,49 @@ const eventDatabase = {
         events: [
             {
                 id: "msd_001",
-                name: "The Girl from the Void",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "The Moonlit Bunny Show",
+                endDate: "2026-09-30T00:00:00Z"
             },
             {
                 id: "msd_002",
-                name: "Th-this for beeing my friend...",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "The Girl from the Void (Shop)",
+                endDate: "2026-09-16T00:00:00Z"
             },
             {
                 id: "msd_003",
-                name: "Brishshell's 7-Day Gifts",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "Secret Fanservice for My Biggest Fans",
+                endDate: "2026-09-30T00:00:00Z"
             },
-            {
+             {
                 id: "msd_004",
-                name: "Special Missions with Brishshell",
-                endDate: "2026-09-09T00:00:00Z"
-            },
+                name: "Vivian's 7-Day Gifts",
+                endDate: "2026-09-30T00:00:00Z"
+            },   
             {
                 id: "msd_005",
-                name: "Doom's Lonely Herald",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "Special Missions with Vivian",
+                endDate: "2026-09-30T00:00:00Z"
             },
             {
                 id: "msd_006",
-                name: "El Dorado Guardian",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "Bunny Showgirl's Eternal Encore",
+                endDate: "2026-09-30T00:00:00Z"
             },
             {
                 id: "msd_007",
-                name: "10-Day Check-In Missions",
-                endDate: "2026-09-09T00:00:00Z"
-            },
-            {
-                id: "msd_008",
-                name: "An Invitation to Break the Ice",
-                endDate: "2026-09-09T00:00:00Z"
-            },
-            {
-                id: "msd_009",
-                name: "Path Bonus Time",
-                endDate: "2026-09-09T00:00:00Z"
-            },
-            {
-                id: "msd_010",
-                name: "Doom's Lonely Herald",
-                endDate: "2026-09-09T00:00:00Z"
-            },
-            {
-                id: "msd_011",
-                name: "Monstrous Longing",
-                endDate: "2026-09-09T00:00:00Z"
-            },
+                name: "Equipment Crafting Missions",
+                endDate: "2026-09-16T00:00:00Z"
+            },                                  
             // Banner
             {
                 id: "msd_012",
-                name: "Heir to the Amethyst Eye",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "Bunny Showgirl of Eternal Happiness",
+               endDate: "2026-09-30T00:00:00Z"
             },
             {
                 id: "msd_013",
-                name: "Creator of Warm Melodies",
-                endDate: "2026-09-09T00:00:00Z"
+                name: "Unending Finale",
+                endDate: "2026-09-30T00:00:00Z"
             }
         ]
     },
