@@ -218,13 +218,13 @@ const eventDatabase = {
         events: [            
             {
                 id: "zzz_002",
-                name: "Potential Hypothesis: Hunting Game",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "Angels Support Operation",
+                endDate: "2026-11-30T03:00:00Z"
             },
             {
                 id: "zzz_003",
-                name: "Return to Ridu: Feathers of Reunion",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "The Final Callback",
+                endDate: "2026-10-01T03:00:00Z"
             },
             {
                 id: "zzz_004",
@@ -233,65 +233,45 @@ const eventDatabase = {
             },
             {
                 id: "zzz_005",
-                name: "Marcel Anniversary Gifts",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "Potential Hypothesis: Reforged in Fire",
+                endDate: "2026-10-21T03:00:00Z"
             },
             {
                 id: "zzz_006",
-                name: "Anniversary Selects",
-                endDate: "2026-09-09T03:00:00Z"
-            },
-            {
-                id: "zzz_007",
-                name: "Phaethon's Grand Reveal of the Year",
-                endDate: "2026-09-09T03:00:00Z"
+                name: "All-New Program",
+                endDate: "2026-10-20T03:00:00Z"
             },           
-            {
-                id: "zzz_009",
-                name: "Festival Special",
-                endDate: "2026-09-09T03:00:00Z"
-            },
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
-                endDate: "2026-09-09T03:00:00Z"
+                endDate: "2026-10-21T03:00:00Z"
             },
             {
                 id: "zzz_013",
                 name: "Ding-Dong! Delivery Training in Progress",
                 endDate: "2026-09-14T03:00:00Z"
-            } /*,
+            },
             // Banner
             {
                 id: "zzz_015",
                 name: "Channel Exclusive",
-                endDate: "2026-09-08T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z"
             },
             {
                 id: "zzz_016",
                 name: "Channel Exclusive 2",
-                endDate: "2026-09-08T03:00:00Z"
-            },
-            {
-                id: "zzz_017",
-                name: "Exclusive Rescreaning",
-                endDate: "2026-09-08T03:00:00Z"
-            },
+                endDate: "2026-10-01T03:00:00Z"
+            },          
             {
                 id: "zzz_018",
                 name: "Channel W-Engine",
-                endDate: "2026-09-08T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z"
             },
             {
                 id: "zzz_019",
                 name: "Channel W-Engine 2",
-                endDate: "2026-09-08T03:00:00Z"
-            },
-            {
-                id: "zzz_020",
-                name: "W-Engine Reverberation",
-                endDate: "2026-09-08T03:00:00Z"
-            } */
+                endDate: "2026-10-01T03:00:00Z"
+            }
         ]
     },
     arknights: {
@@ -431,6 +411,11 @@ const eventDatabase = {
         ],
         events: [
             {
+                id: "nte_000",
+                name: "Runaway Echoes",
+                endDate: "2026-09-29T22:00:00Z"
+            },
+            {
                 id: "nte_001",
                 name: "Summertime",
                 endDate: "2026-09-29T22:00:00Z"
@@ -478,18 +463,18 @@ const eventDatabase = {
             // Banner
             {
                 id: "nte_010",
-                name: "Alluring Shadows",
-                endDate: "2026-09-08T22:00:00Z"
+                name: "Surfing All Channels!",
+                endDate: "2026-09-29T22:00:00Z"
             },
             {
                 id: "nte_011",
-                name: "The Ichi-daime",
-                endDate: "2026-09-08T22:00:00Z"
+                name: "Misty Tipsy Style",
+                endDate: "2026-09-29T22:00:00Z"
             },
             {
                 id: "nte_012",
-                name: "Specialbound Special",
-                endDate: "2026-09-08T22:00:00Z"
+                name: "Soundscape Special",
+                endDate: "2026-09-29T22:00:00Z"
             }
         ]
     },
