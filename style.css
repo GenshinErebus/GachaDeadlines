@@ -125,7 +125,7 @@ body::after {
 .container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0.5rem 2rem 2rem;
 }
 
 h1,
@@ -144,7 +144,7 @@ h3 {
 h1 {
     font-size: 2rem;
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 /* ============================================
@@ -154,7 +154,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .event-card {
@@ -413,7 +413,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
    ============================================ */
 .stats-overview {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
@@ -532,7 +532,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     a.youtube-avatar {
         position: absolute;
         top: 5px;
-        right: 290px;
+        right: 300px;
         z-index: 9999;
         display: block;
         width: 63px;
@@ -773,44 +773,22 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 /* ============================================
    GOLDEN GACHA BANNER STYLING
    ============================================ */
-[data-event-id*="gi_012"],
-[data-event-id*="gi_013"],
-[data-event-id*="gi_014"],
-[data-event-id*="hsr_013"],
-[data-event-id*="hsr_014"],
-[data-event-id*="hsr_015"],
-[data-event-id*="hsr_016"],
-[data-event-id*="zzz_015"],
-[data-event-id*="zzz_016"],
-[data-event-id*="zzz_017"],
-[data-event-id*="zzz_018"],
-[data-event-id*="zzz_019"],
-[data-event-id*="zzz_020"],
-[data-event-id*="ark_007"],
-[data-event-id*="ark_008"],
-[data-event-id*="dna_015"],
-[data-event-id*="dna_016"],
-[data-event-id*="nte_010"],
-[data-event-id*="nte_011"],
-[data-event-id*="nte_012"],
-[data-event-id*="msd_010"],
-[data-event-id*="msd_011"],
-[data-event-id*="msd_012"],
-[data-event-id*="msd_013"],
-[data-event-id*="rev_016"],
-[data-event-id*="rev_017"],
-[data-event-id*="rev_018"],
-[data-event-id*="rev_019"],
-[data-event-id*="rev_020"],
-[data-event-id*="wuwa_012"],
-[data-event-id*="wuwa_013"],
-[data-event-id*="wuwa_014"],
-[data-event-id*="wuwa_015"],
-[data-event-id*="wuwa_016"],
-[data-event-id="wuwa_017"] {
-    border: 1px solid #ffffff;
-    box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.05);
+:root {
+    --banner-border: #ffffff;
+    --banner-shadow: 0 0 8px #ffffff, 0 0 20px rgba(255, 255, 255, 0.6);
+    --banner-bg: rgba(255, 255, 255, 0.05);
+}
+
+.event-card.golden-banner {
+    border: 1px solid var(--banner-border);
+    box-shadow: var(--banner-shadow);
+    background: var(--banner-bg);
+}
+
+body.light-mode .event-card.golden-banner {
+    border-color: #b8860b;
+    box-shadow: 0 0 8px rgba(184, 134, 11, 0.5), 0 0 20px rgba(184, 134, 11, 0.3);
+    background: rgba(184, 134, 11, 0.07);
 }
 
 .events-btn {
@@ -1397,48 +1375,7 @@ body.light-mode #gameSelect option {
     color: #0a5c0a;
 }
 
-/* Banner cards: white border would be invisible on
-   a light background, so switch to gold/amber here */
-body.light-mode [data-event-id*="gi_012"],
-body.light-mode [data-event-id*="gi_013"],
-body.light-mode [data-event-id*="gi_014"],
-body.light-mode [data-event-id*="hsr_013"],
-body.light-mode [data-event-id*="hsr_014"],
-body.light-mode [data-event-id*="hsr_015"],
-body.light-mode [data-event-id*="hsr_016"],
-body.light-mode [data-event-id*="zzz_015"],
-body.light-mode [data-event-id*="zzz_016"],
-body.light-mode [data-event-id*="zzz_017"],
-body.light-mode [data-event-id*="zzz_018"],
-body.light-mode [data-event-id*="zzz_019"],
-body.light-mode [data-event-id*="zzz_020"],
-body.light-mode [data-event-id*="ark_007"],
-body.light-mode [data-event-id*="ark_008"],
-body.light-mode [data-event-id*="dna_015"],
-body.light-mode [data-event-id*="dna_016"],
-body.light-mode [data-event-id*="nte_010"],
-body.light-mode [data-event-id*="nte_011"],
-body.light-mode [data-event-id*="nte_012"],
-body.light-mode [data-event-id*="msd_010"],
-body.light-mode [data-event-id*="msd_011"],
-body.light-mode [data-event-id*="msd_012"],
-body.light-mode [data-event-id*="msd_013"],
-body.light-mode [data-event-id*="rev_016"],
-body.light-mode [data-event-id*="rev_017"],
-body.light-mode [data-event-id*="rev_018"],
-body.light-mode [data-event-id*="rev_019"],
-body.light-mode [data-event-id*="rev_020"],
-body.light-mode [data-event-id*="wuwa_012"],
-body.light-mode [data-event-id*="wuwa_013"],
-body.light-mode [data-event-id*="wuwa_014"],
-body.light-mode [data-event-id*="wuwa_015"],
-body.light-mode [data-event-id*="wuwa_016"],
-body.light-mode [data-event-id="wuwa_017"] {
-    border: 1px solid #b8860b;
-    /* dark goldenrod, readable on light bg */
-    box-shadow: 0 0 8px rgba(184, 134, 11, 0.5), 0 0 20px rgba(184, 134, 11, 0.3);
-    background: rgba(184, 134, 11, 0.07);
-}
+
 
 /* Status bar gets a subtle light finish too */
 body.light-mode .status-bar {
@@ -1523,8 +1460,7 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
    ============================================ */
 .zoom-controls {
     position: absolute;
-    top: 70px;
-    /* adjust to taste */
+    top: 75px;    
     left: 370px;
     display: inline-flex;
     align-items: center;

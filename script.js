@@ -97,17 +97,20 @@ const eventDatabase = {
             {
                 id: "gi_012",
                 name: "Character Event Wish",
-                endDate: "2026-09-22T14:00:00Z"
+                endDate: "2026-09-22T14:00:00Z",
+                banner: true
             },
             {
                 id: "gi_013",
                 name: "Character Event Wish-2",
-                endDate: "2026-09-22T14:00:00Z"
+                endDate: "2026-09-22T14:00:00Z",
+                banner: true
             },
             {
                 id: "gi_014",
                 name: "Weapon Event Wish",
-                endDate: "2026-09-22T14:00:00Z"
+                endDate: "2026-09-22T14:00:00Z",
+                banner: true
             }
         ]
     },
@@ -186,22 +189,26 @@ const eventDatabase = {
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
-                endDate: "2026-09-12T11:00:00Z"
+                endDate: "2026-09-12T11:00:00Z",
+                banner: true
             },
             {
                 id: "hsr_014",
                 name: "Character Event Warp (Rerun)",
-                endDate: "2026-09-12T11:00:00Z"
+                endDate: "2026-09-12T11:00:00Z",
+                banner: true
             },
             {
                 id: "hsr_015",
                 name: "Light Cone Event Warp",
-                endDate: "2026-09-12T11:00:00Z"
+                endDate: "2026-09-12T11:00:00Z",
+                banner: true
             },
             {
                 id: "hsr_016",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-09-12T11:00:00Z"
+                endDate: "2026-09-12T11:00:00Z",
+                banner: true
             }
         ]
     },
@@ -255,22 +262,26 @@ const eventDatabase = {
             {
                 id: "zzz_015",
                 name: "Channel Exclusive",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             },
             {
                 id: "zzz_016",
                 name: "Channel Exclusive 2",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             },          
             {
                 id: "zzz_018",
                 name: "Channel W-Engine",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             },
             {
                 id: "zzz_019",
                 name: "Channel W-Engine 2",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             }
         ]
     },
@@ -313,12 +324,14 @@ const eventDatabase = {
             {
                 id: "ark_007",
                 name: "WINTER HUNT",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             },
             {
                 id: "ark_008",
                 name: "Military Grade Issue",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-10-01T03:00:00Z",
+                banner: true
             }
         ]
     },
@@ -396,12 +409,14 @@ const eventDatabase = {
             {
                 id: "dna_015",
                 name: "Event Esclusive",
-                endDate: "2026-10-19T16:00:00Z"
+                endDate: "2026-10-19T16:00:00Z",
+                banner: true
             },
             {
                 id: "dna_016",
                 name: "Limited-Time Rerun",
-                endDate: "2026-10-19T16:00:00Z"
+                endDate: "2026-10-19T16:00:00Z",
+                banner: true
             } 
         ]
     },
@@ -469,17 +484,20 @@ const eventDatabase = {
             {
                 id: "nte_010",
                 name: "Surfing All Channels!",
-                endDate: "2026-09-29T22:00:00Z"
+                endDate: "2026-09-29T22:00:00Z",
+                banner: true
             },
             {
                 id: "nte_011",
                 name: "Misty Tipsy Style",
-                endDate: "2026-09-29T22:00:00Z"
+                endDate: "2026-09-29T22:00:00Z",
+                banner: true
             },
             {
                 id: "nte_012",
                 name: "Soundscape Special",
-                endDate: "2026-09-29T22:00:00Z"
+                endDate: "2026-09-29T22:00:00Z",
+                banner: true
             }
         ]
     },
@@ -532,12 +550,14 @@ const eventDatabase = {
             {
                 id: "msd_012",
                 name: "Bunny Showgirl of Eternal Happiness",
-               endDate: "2026-09-30T00:00:00Z"
+                endDate: "2026-09-30T00:00:00Z",
+                banner: true
             },
             {
                 id: "msd_013",
                 name: "Unending Finale",
-                endDate: "2026-09-30T00:00:00Z"
+                endDate: "2026-09-30T00:00:00Z",
+                banner: true
             }
         ]
     },
@@ -635,27 +655,32 @@ const eventDatabase = {
             {
                 id: "rev_016",
                 name: "Limited Banner",
-                endDate: "2026-09-24T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z",
+                banner: true
             },
             {
                 id: "rev_017",
                 name: "Event Banner",
-                endDate: "2026-09-24T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z",
+                banner: true
             },
             {
                 id: "rev_018",
                 name: "The Mourner's Eulogy",
-                endDate: "2026-09-22T10:00:00Z"
+                endDate: "2026-09-22T10:00:00Z",
+                banner: true
             },
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
-                endDate: "2026-09-24T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z",
+                banner: true
             },
             {
                 id: "rev_020",
                 name: "Rerun Banner",
-                endDate: "2026-09-24T10:00:00Z"
+                endDate: "2026-09-24T10:00:00Z",
+                banner: true
             }
         ]
     },
@@ -676,8 +701,8 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_002",
-                name: "Ascedant Aces",
-                endDate: "2026-09-10T09:00:00Z"
+                name: "If Dreams Still Reverberate",
+                endDate: "2026-09-29T03:00:00Z"
             },
             {
                 id: "wuwa_003",
@@ -713,27 +738,48 @@ const eventDatabase = {
                 id: "wuwa_009",
                 name: "The Strings Remember",
                 endDate: "2026-09-21T03:00:00Z"
+            },
+             {
+                id: "wuwa_010",
+                name: "Acendant Aces",
+                endDate: "2026-09-29T11:00:00Z"
             },           
             // Banner
             {
-                id: "wuwa_012",
-                name: "Featured Resonator Convene",
-                endDate: "2026-09-10T09:00:00Z"
-            },
-            {
-                id: "wuwa_013",
-                name: "Featured Resonator Convene Rerun",
-                endDate: "2026-09-10T09:00:00Z"
-            },
-            {
                 id: "wuwa_015",
-                name: "Featured Weapon Convene",
-                endDate: "2026-09-10T09:00:00Z"
+                name: "Featured Resonator Convene",
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
             },
             {
                 id: "wuwa_016",
+                name: "Featured Resonator Convene Rerun",
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
+            },
+             {
+                id: "wuwa_017",
+                name: "Featured Resonator Convene Rerun 2",
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
+            },
+            {
+                id: "wuwa_018",
+                name: "Featured Weapon Convene",
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
+            },
+            {
+                id: "wuwa_019",
                 name: "Featured Weapon Convene Rerun",
-                endDate: "2026-09-10T09:00:00Z"
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
+            },
+             {
+                id: "wuwa_020",
+                name: "Featured Weapon Convene Rerun 2",
+                endDate: "2026-09-29T11:00:00Z",
+                banner: true
             }
         ]
     }
@@ -1141,7 +1187,7 @@ function getCurrentMaintenance(gameKey) {
 
 function createEventCard(event) {
     const card = document.createElement('div');
-    card.className = 'event-card';
+    card.className = 'event-card' + (event.banner ? ' golden-banner' : '');
     card.dataset.eventId = event.id;
 
     const status = getEventStatus(event.endDate);
