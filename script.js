@@ -222,7 +222,12 @@ const eventDatabase = {
 
             }
         ],
-        events: [            
+        events: [   
+            {
+                id: "zzz_001",
+                name: "Clink, Clank, Pinball Knight!",
+                endDate: "2026-10-19T03:00:00Z"
+            },         
             {
                 id: "zzz_002",
                 name: "Angels Support Operation",
