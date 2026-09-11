@@ -88,25 +88,25 @@ const eventDatabase = {
             },
             // Trial
             {
-                id: "gi_010",
+                id: "gi_012",
                 name: "Test Run",
                 endDate: "2026-09-22T14:00:00Z"
             },
             // Banner
             {
-                id: "gi_012",
+                id: "gi_013",
                 name: "Character Event Wish",
                 endDate: "2026-09-22T14:00:00Z",
                 banner: true
             },
             {
-                id: "gi_013",
+                id: "gi_014",
                 name: "Character Event Wish-2",
                 endDate: "2026-09-22T14:00:00Z",
                 banner: true
             },
             {
-                id: "gi_014",
+                id: "gi_015",
                 name: "Weapon Event Wish",
                 endDate: "2026-09-22T14:00:00Z",
                 banner: true
