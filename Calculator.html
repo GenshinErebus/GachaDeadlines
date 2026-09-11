@@ -21,7 +21,6 @@
             <option value="3">🏗️ Arknights Endfield</option>
             <option value="21">🌗 Duet Night Abyss</option>
             <option value="4">🏙️ Neverness To Everness</option>
-            <option value="0">⭐ MONGIL STAR DIVE</option>
             <option value="10">⏳ Reverse 1999</option>
             <option value="3">🌊 Wuthering Waves</option>
         </select>
@@ -45,7 +44,7 @@
             const gameSelect = document.getElementById('gameLogic');
 
             if (gameSelect.selectedIndex === 0) {
-                alert("Bitte wähle zuerst ein Spiel aus!");
+                alert("Please select a game first!");
                 return;
             }
 
@@ -54,7 +53,7 @@
             const outputDiv = document.getElementById('output');
 
             if (!inputStr) {
-                outputDiv.innerText = "Bitte gib Daten ein!";
+                outputDiv.innerText = "Please enter data!";
                 return;
             }
 
@@ -64,7 +63,7 @@
             if (inputStr.includes('T')) {
                 const match = inputStr.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
                 if (!match) {
-                    outputDiv.innerText = "Ungültiges ISO-Datumsformat!";
+                    outputDiv.innerText = "Invalid ISO date format!";
                     return;
                 }
                 const utcDate = Date.UTC(
@@ -113,7 +112,7 @@
                     }
                     targetDate.setUTCDate(targetDate.getUTCDate() + parseInt(inputStr));
                 } else {
-                    outputDiv.innerText = "Format nicht erkannt!";
+                    outputDiv.innerText = "Format not recognized!";
                     return;
                 }
             }

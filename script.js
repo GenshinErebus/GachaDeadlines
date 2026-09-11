@@ -9,7 +9,6 @@ const serverResets = {
     arknights: { asia: "20:00", eu: "03:00", na: "09:00" },
     duet: { asia: "21:00", eu: "04:00", na: "10:00" },
     nte: { asia: "21:00", eu: "04:00", na: "10:00" },
-    mongil: { asia: "00:00", eu: "00:00", na: "00:00" },
     reverse1999: { asia: "10:00", eu: "10:00", na: "10:00" },
     wuwa: { asia: "20:00", eu: "03:00", na: "09:00" }
 };
@@ -222,12 +221,12 @@ const eventDatabase = {
 
             }
         ],
-        events: [   
+        events: [
             {
                 id: "zzz_001",
                 name: "Clink, Clank, Pinball Knight!",
                 endDate: "2026-10-19T03:00:00Z"
-            },         
+            },
             {
                 id: "zzz_002",
                 name: "Angels Support Operation",
@@ -252,7 +251,7 @@ const eventDatabase = {
                 id: "zzz_006",
                 name: "All-New Program",
                 endDate: "2026-10-20T03:00:00Z"
-            },           
+            },
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
@@ -275,7 +274,7 @@ const eventDatabase = {
                 name: "Channel Exclusive 2",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
-            },          
+            },
             {
                 id: "zzz_018",
                 name: "Channel W-Engine",
@@ -320,7 +319,7 @@ const eventDatabase = {
                 name: "A Winter Dream Fogged Deep in the Woods",
                 endDate: "2026-10-14T22:00:00Z"
             },
-             {
+            {
                 id: "ark_005",
                 name: "Trial of the Bow",
                 endDate: "2026-10-14T22:00:00Z"
@@ -355,7 +354,7 @@ const eventDatabase = {
                 name: "Shh! The Parade Begins",
                 endDate: "2026-09-15T04:00:00Z"
             },
-             {
+            {
                 id: "dna_002",
                 name: "Opulent Rebate",
                 endDate: "2026-10-19T16:00:00Z"
@@ -365,41 +364,41 @@ const eventDatabase = {
                 name: "Way of the Penitent",
                 endDate: "2026-10-19T16:00:00Z"
             },
-             {
+            {
                 id: "dna_004",
                 name: "Vibrant Strokes",
                 endDate: "2026-10-19T16:00:00Z"
             },
-             {
+            {
                 id: "dna_005",
                 name: "Better Luno than Never",
                 endDate: "2026-09-29T04:00:00Z"
             },
-             {
+            {
                 id: "dna_006",
                 name: "Parade Itinerary",
                 endDate: "2026-10-19T16:00:00Z"
             },
-             {
+            {
                 id: "dna_007",
                 name: "Through the Inferno",
                 endDate: "2026-10-19T16:00:00Z"
-            },                                  
+            },
             {
                 id: "dna_008",
                 name: "Crimson Mirage",
                 endDate: "2026-09-29T04:00:00Z"
             },
-             {
+            {
                 id: "dna_009",
                 name: "Immersive Theatre",
                 endDate: "2026-09-29T09:00:00Z"
             },
-             {
+            {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
-            },  
+            },
             {
                 id: "dna_011",
                 name: "Phoxhunter Summit (Shop)",
@@ -410,16 +409,16 @@ const eventDatabase = {
                 name: "Paradise's 22nd White Bunny",
                 endDate: "2026-10-14T04:00:00Z"
             },
-             {
+            {
                 id: "dna_013",
                 name: "Bountiful Day",
                 endDate: "2026-09-17T04:00:00Z"
             },
-             {
+            {
                 id: "dna_014",
                 name: "Moments in Frames",
                 endDate: "2026-09-29T04:00:00Z"
-            },                     
+            },
             // Banner 
             {
                 id: "dna_015",
@@ -432,7 +431,7 @@ const eventDatabase = {
                 name: "Limited-Time Rerun",
                 endDate: "2026-10-19T16:00:00Z",
                 banner: true
-            } 
+            }
         ]
     },
     nte: {
@@ -512,66 +511,6 @@ const eventDatabase = {
                 id: "nte_012",
                 name: "Soundscape Special",
                 endDate: "2026-09-29T22:00:00Z",
-                banner: true
-            }
-        ]
-    },
-    mongil: {
-        name: "MONGIL STAR DIVE",
-        maintenance: [
-            {
-                id: "msd_maint_001",
-                startDate: "2026-09-08T23:30:00Z",
-                endDate: "2026-09-09T02:00:00Z"
-            }
-        ],
-        events: [
-            {
-                id: "msd_001",
-                name: "The Moonlit Bunny Show",
-                endDate: "2026-09-30T00:00:00Z"
-            },
-            {
-                id: "msd_002",
-                name: "The Girl from the Void (Shop)",
-                endDate: "2026-09-16T00:00:00Z"
-            },
-            {
-                id: "msd_003",
-                name: "Secret Fanservice for My Biggest Fans",
-                endDate: "2026-09-30T00:00:00Z"
-            },
-             {
-                id: "msd_004",
-                name: "Vivian's 7-Day Gifts",
-                endDate: "2026-09-30T00:00:00Z"
-            },   
-            {
-                id: "msd_005",
-                name: "Special Missions with Vivian",
-                endDate: "2026-09-30T00:00:00Z"
-            },
-            {
-                id: "msd_006",
-                name: "Bunny Showgirl's Eternal Encore",
-                endDate: "2026-09-30T00:00:00Z"
-            },
-            {
-                id: "msd_007",
-                name: "Equipment Crafting Missions",
-                endDate: "2026-09-16T00:00:00Z"
-            },                                  
-            // Banner
-            {
-                id: "msd_012",
-                name: "Bunny Showgirl of Eternal Happiness",
-                endDate: "2026-09-30T00:00:00Z",
-                banner: true
-            },
-            {
-                id: "msd_013",
-                name: "Unending Finale",
-                endDate: "2026-09-30T00:00:00Z",
                 banner: true
             }
         ]
@@ -754,11 +693,11 @@ const eventDatabase = {
                 name: "The Strings Remember",
                 endDate: "2026-09-21T03:00:00Z"
             },
-             {
+            {
                 id: "wuwa_010",
                 name: "Acendant Aces",
                 endDate: "2026-09-29T11:00:00Z"
-            },           
+            },
             // Banner
             {
                 id: "wuwa_015",
@@ -772,7 +711,7 @@ const eventDatabase = {
                 endDate: "2026-09-29T11:00:00Z",
                 banner: true
             },
-             {
+            {
                 id: "wuwa_017",
                 name: "Featured Resonator Convene Rerun 2",
                 endDate: "2026-09-29T11:00:00Z",
@@ -790,7 +729,7 @@ const eventDatabase = {
                 endDate: "2026-09-29T11:00:00Z",
                 banner: true
             },
-             {
+            {
                 id: "wuwa_020",
                 name: "Featured Weapon Convene Rerun 2",
                 endDate: "2026-09-29T11:00:00Z",
@@ -964,7 +903,6 @@ function loadGameEvents() {
         arknights: { wiki: "https://endfield.wiki.gg/wiki/Event", videos: "https://www.youtube.com/watch?v=rmROLmiIbxw&list=PLaIcRoqjRStZlRec3E-rBI1FrkNG4hKqu" },
         duet: { wiki: "https://www.facebook.com/DNAbyss.Official/", videos: "https://www.youtube.com/watch?v=OZjV2_BfKPQ&list=PLaIcRoqjRStblGWClhd6beCNPpDNL89R5" },
         nte: { wiki: "https://www.ntebuild.com/events", videos: "https://www.youtube.com/watch?v=WgKBf6WFQ-M&list=PLaIcRoqjRStagdMPEuG_tKQFm6mfHyESW" },
-        mongil: { wiki: "https://forum.netmarble.com/stardive_gl/list/6/1", videos: "https://www.youtube.com/watch?v=UTB4I4pR0s8&list=PLaIcRoqjRStZpkKZNn8FkHcnZyM1PK34p" },
         reverse1999: { wiki: "https://reverse1999.fandom.com/wiki/Events", videos: "https://www.youtube.com/watch?v=VJ3LrUzv1fM&list=PLaIcRoqjRStal3cgomG7Hf3aP6tDllaBA" },
         wuwa: { wiki: "https://wuwatracker.com/timeline", videos: "https://www.youtube.com/watch?v=B-zJc2W4acU&list=PLaIcRoqjRStaGFEb_oMvIc-SCrXgCg4Fx" }
     };
