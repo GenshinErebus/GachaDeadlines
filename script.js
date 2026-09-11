@@ -241,7 +241,7 @@ const eventDatabase = {
             {
                 id: "zzz_004",
                 name: "Deadly Assault (Period)",
-                endDate: "2026-09-11T03:00:00Z"
+                endDate: "2026-09-25T03:00:00Z"
             },
             {
                 id: "zzz_005",

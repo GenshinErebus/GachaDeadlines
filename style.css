@@ -1463,7 +1463,7 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
    ============================================ */
 .zoom-controls {
     position: absolute;
-    top: 75px;    
+    top: 70px;    
     left: 370px;
     display: inline-flex;
     align-items: center;
