@@ -8,7 +8,7 @@ A clean, responsive, and matrix-themed countdown dashboard for tracking time-lim
 
 The dashboard exclusively tracks countdowns for the following titles:
 
-`Genshin Impact · Honkai: Star Rail · Zenless Zone Zero · Wuthering Waves · Reverse: 1999 · Duet Night Abyss · Arknights: Endfield · Neverness to Everness · MONGIL: STAR DIVE`
+`Genshin Impact · Honkai: Star Rail · Zenless Zone Zero · Wuthering Waves · Reverse: 1999 · Duet Night Abyss · Arknights: Endfield · Neverness to Everness`
 
 ## Key Features 🚀
 
