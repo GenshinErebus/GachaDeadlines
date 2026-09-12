@@ -178,35 +178,40 @@ const eventDatabase = {
                 name: "Planar Fissure",
                 endDate: "2026-09-21T03:00:00Z"
             },
-            // Trial
             {
                 id: "hsr_011",
+                name: "Minuscule Great Adventure",
+                endDate: "2026-09-27T20:00:00Z"
+            },
+            // Trial
+            {
+                id: "hsr_012",
                 name: "Aptitude Showcase",
-                endDate: "2026-09-12T11:00:00Z"
+                endDate: "2026-09-27T20:00:00Z"
             },
             // Banner
             {
                 id: "hsr_013",
                 name: "Character Event Warp",
-                endDate: "2026-09-12T11:00:00Z",
+                endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_014",
                 name: "Character Event Warp (Rerun)",
-                endDate: "2026-09-12T11:00:00Z",
+                endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_015",
                 name: "Light Cone Event Warp",
-                endDate: "2026-09-12T11:00:00Z",
+                endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_016",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-09-12T11:00:00Z",
+                endDate: "2026-09-27T20:00:00Z",
                 banner: true
             }
         ]

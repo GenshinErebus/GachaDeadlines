@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Game Check-In Tracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #ffffff;
+            margin-top: 0px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-size: 38px;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 100%;
+            width: 100%;
+        }
+        .game-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2d2d2d;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .game-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .game-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+        }
+        .status {
+            font-size: 20px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .not-checked { background-color: #3d1d1d; color: #ff8787; }
+        .checked { background-color: #1b3322; color: #81e694; }
+        button {
+            background-color: #3b5bdb;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        button:hover { background-color: #4c6ef5; }
+        button:disabled {
+            background-color: #2d2d2d;
+            color: #707070;
+            cursor: not-allowed;
+            border: 1px solid #3d3d3d;
+        }
+
+        .back {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    border-radius: 0;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 30px;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 50px;
+}
+
+.back:hover {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+}
+    </style>
+</head>
+<body>
+
+    <h1>🎮 DAILY GAME CHECK-IN</h1>
+    <div class="games-grid" id="gamesContainer"></div>
+
+<script>
+    // 1. ADD YOUR GAMES HERE
+    // Just add the names to this list. The UI updates automatically!
+    const GAMES_LIST = [
+         "Genshin Impact",
+        "Honkai: Star Rail",
+        "Zenless Zone Zero",       
+        "Arknights Endfield",
+        "Duet Night Abyss",
+        "Neverness To Everness",
+        "Reverse 1999",
+        "Wuthering Waves"
+    ];
+
+    // Helper to get today's date string (YYYY-MM-DD)
+    function getTodayString() {
+        const today = new Date();
+        return today.getFullYear() + '-' + 
+               String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+               String(today.getDate()).padStart(2, '0');
+    }
+
+    // Generates a clean key for LocalStorage from the game name
+    function getStorageKey(gameName) {
+        return gameName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    // Initialize the dashboard and check for midnight resets
+    function initDashboard() {
+        const container = document.getElementById('gamesContainer');
+        const todayStr = getTodayString();
+
+        GAMES_LIST.forEach(game => {
+            const key = getStorageKey(game);
+            const lastCheckInDate = localStorage.getItem(`date_${key}`);
+
+            // Reset if midnight has passed since the last check-in
+            if (lastCheckInDate !== todayStr) {
+                localStorage.removeItem(`status_${key}`);
+            }
+
+            // Create HTML structure for each game
+            const isChecked = localStorage.getItem(`status_${key}`) === 'true';
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            card.id = `card_${key}`;
+            
+            card.innerHTML = `
+                <h2 class="game-title">${game}</h2>
+                <div id="status_${key}" class="status ${isChecked ? 'checked' : 'not-checked'}">
+                    ${isChecked ? '✅ Checked In' : '❌ Missing Check-In'}
+                </div>
+                <button id="btn_${key}" onclick="doCheckIn('${game}')" ${isChecked ? 'disabled' : ''}>
+                    ${isChecked ? 'Come back tomorrow' : 'Check-In'}
+                </button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Handles the check-in event for a specific game
+    function doCheckIn(gameName) {
+        const key = getStorageKey(gameName);
+        const todayStr = getTodayString();
+
+        // Save status and date to LocalStorage
+        localStorage.setItem(`status_${key}`, 'true');
+        localStorage.setItem(`date_${key}`, todayStr);
+
+        // Update the UI elements for this game card immediately
+        const statusBox = document.getElementById(`status_${key}`);
+        const button = document.getElementById(`btn_${key}`);
+
+        statusBox.textContent = "✅ Checked In";
+        statusBox.className = "status checked";
+        button.disabled = true;
+        button.textContent = "Come back tomorrow";
+    }
+
+    // Start everything when the page loads
+    window.onload = initDashboard;
+</script>
+
+  <p>
+    <a href="https://genshinerebus.github.io/GachaDeadlines/" class="back">↩ Back to Website</a>
+  </p>
+
+</body>
+</html>
