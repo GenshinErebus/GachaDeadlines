@@ -398,12 +398,7 @@ const eventDatabase = {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_011",
-                name: "Phoxhunter Summit (Shop)",
-                endDate: "2026-09-12T04:00:00Z"
-            },
+            },           
             {
                 id: "dna_012",
                 name: "Paradise's 22nd White Bunny",
