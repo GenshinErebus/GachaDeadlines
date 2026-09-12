@@ -554,12 +554,7 @@ const eventDatabase = {
                 id: "rev_005",
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
-            },
-            {
-                id: "rev_006",
-                name: "Laplace Employee Handbook (EP. 08)",
-                endDate: "2026-09-12T17:00:00Z"
-            },
+            },            
             {
                 id: "rev_007",
                 name: "Laplace Aesthetics",
