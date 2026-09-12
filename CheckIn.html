@@ -209,7 +209,7 @@
                 ${isChecked ? '✅ Cleared' : '❌ To Do'}
             </div>
             <button id="${btnId}" onclick="doCheckIn('${game}', '${type}')" ${isChecked ? 'disabled' : ''}>
-                ${isChecked ? 'Finished' : 'Done?'}
+                ${isChecked ? (type === 'weekly' ? 'Done for the week' : 'Done for today') : 'Done?'}
             </button>
         `;
         container.appendChild(card);
@@ -242,10 +242,10 @@
         const statusBox = document.getElementById(statusId);
         const button = document.getElementById(btnId);
 
-        statusBox.textContent = "✅ Done";
+        statusBox.textContent = "✅ Cleared";
         statusBox.className = "status checked";
         button.disabled = true;
-        button.textContent = "Done for today";
+        button.textContent = type === 'weekly' ? "Done for the week" : "Done for today";
     }
 
     // Start everything when the page loads

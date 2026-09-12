@@ -112,7 +112,7 @@ body::after {
     color: var(--matrix-green);
     font-family: 'Courier New', 'Consolas', 'monospace';
     padding: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 #gameSelect option:hover {
