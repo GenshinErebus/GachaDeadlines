@@ -33,8 +33,8 @@ const eventDatabase = {
         events: [
             {
                 id: "gi_001",
-                name: "Heated Battle Mode: Tactical Formation",
-                endDate: "2026-09-14T03:00:00Z"
+                name: "Overflowing Abundance",
+                endDate: "2026-09-21T03:00:00Z"
             },
             {
                 id: "gi_002",
@@ -65,12 +65,7 @@ const eventDatabase = {
                 id: "gi_007",
                 name: "Wonderland Treasures: Phantasmagoric Discourse",
                 endDate: "2026-09-21T03:00:00Z"
-            },
-            {
-                id: "gi_008",
-                name: "Great Expeditionist Challenge",
-                endDate: "2026-09-14T03:00:00Z"
-            },
+            },            
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
@@ -146,7 +141,7 @@ const eventDatabase = {
             {
                 id: "hsr_004",
                 name: "Pure Fiction (Period)",
-                endDate: "2026-09-14T03:00:00Z"
+                endDate: "2026-10-19T03:00:00Z"
             },
             {
                 id: "hsr_005",
@@ -156,7 +151,7 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-09-14T03:00:00Z"
+                endDate: "2026-09-21T03:00:00Z"
             },
             {
                 id: "hsr_007",
@@ -171,7 +166,7 @@ const eventDatabase = {
             {
                 id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-09-14T03:00:00Z"
+                endDate: "2026-09-21T03:00:00Z"
             },
             {
                 id: "hsr_010",
@@ -261,12 +256,7 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
-            },
-            {
-                id: "zzz_013",
-                name: "Ding-Dong! Delivery Training in Progress",
-                endDate: "2026-09-14T03:00:00Z"
-            },
+            },            
             // Banner
             {
                 id: "zzz_015",
@@ -488,12 +478,7 @@ const eventDatabase = {
                 id: "nte_008",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_009",
-                name: "Gold Clash",
-                endDate: "2026-09-14T03:00:00Z"
-            },
+            },           
             // Banner
             {
                 id: "nte_010",
@@ -671,18 +656,13 @@ const eventDatabase = {
             {
                 id: "wuwa_006",
                 name: "Hazard Revisited (Period)",
-                endDate: "2026-09-14T03:00:00Z"
+                endDate: "2026-10-12T03:00:00Z"
             },
             {
                 id: "wuwa_007",
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
-            },
-            {
-                id: "wuwa_008",
-                name: "Second Coming of Solaris: Coded Deception",
-                endDate: "2026-09-14T03:00:00Z"
-            },
+            },           
             {
                 id: "wuwa_009",
                 name: "The Strings Remember",
