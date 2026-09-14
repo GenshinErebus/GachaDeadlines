@@ -31,7 +31,9 @@ body {
 h1 {
     color: var(--text-main);
     font-size: 25px;
-    text-align: center;
+    text-align: left;
+    margin-left: 130px;
+    margin-top: -5px;
 }
 
 /* ==========================================

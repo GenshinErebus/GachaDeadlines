@@ -478,7 +478,12 @@ const eventDatabase = {
                 id: "nte_008",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
-            },           
+            },
+            {
+                id: "nte_009",
+                name: "Pixel Surge",
+                endDate: "2026-09-21T03:00:00Z"
+            },                
             // Banner
             {
                 id: "nte_010",

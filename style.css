@@ -744,7 +744,7 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     }
         .terminal-clock-btn {
     top: 0.3875rem;
-    left: 0px;
+    left: -5px;
 }
 }
 
@@ -1401,8 +1401,10 @@ body.light-mode {
     /* muted labels, borders */
     --matrix-terminal-bg: #ffffff;
     /* card backgrounds */
-
     color: var(--matrix-green);
+    .terminal-clock-btn { 
+       color: #0a5c0a;
+        }
 }
 
 /* Soften the CRT scanline overlays in light mode */
