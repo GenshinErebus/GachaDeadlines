@@ -65,7 +65,7 @@ const eventDatabase = {
                 id: "gi_007",
                 name: "Wonderland Treasures: Phantasmagoric Discourse",
                 endDate: "2026-09-21T03:00:00Z"
-            },            
+            },
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
@@ -256,7 +256,7 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
-            },            
+            },
             // Banner
             {
                 id: "zzz_015",
@@ -343,7 +343,7 @@ const eventDatabase = {
                 endDate: "2026-09-08T07:00:00Z"
             }
         ],
-        events: [            
+        events: [
             {
                 id: "dna_002",
                 name: "Opulent Rebate",
@@ -388,7 +388,7 @@ const eventDatabase = {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
-            },           
+            },
             {
                 id: "dna_012",
                 name: "Paradise's 22nd White Bunny",
@@ -478,7 +478,7 @@ const eventDatabase = {
                 id: "nte_009",
                 name: "Pixel Surge",
                 endDate: "2026-09-21T03:00:00Z"
-            },                
+            },
             // Banner
             {
                 id: "nte_010",
@@ -539,7 +539,7 @@ const eventDatabase = {
                 id: "rev_005",
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
-            },            
+            },
             {
                 id: "rev_007",
                 name: "Laplace Aesthetics",
@@ -569,11 +569,6 @@ const eventDatabase = {
                 id: "rev_012",
                 name: "Break Time Activity",
                 endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_013",
-                name: "Double Echoes",
-                endDate: "2026-09-15T10:00:00Z"
             },
             {
                 id: "rev_014",
@@ -662,7 +657,7 @@ const eventDatabase = {
                 id: "wuwa_007",
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
-            },           
+            },
             {
                 id: "wuwa_009",
                 name: "The Strings Remember",
@@ -761,6 +756,7 @@ function createStatusBar() {
                class="system-online-link">
                 SYSTEM ONLINE
             </a>
+            <a id="disclaimer" href="https://genshinerebus.github.io/GachaDeadlines/Disclaimer.md" class="disclaimer-link" title="Disclaimer">📄⚠️</a>
         </div>
         <div class="timestamp">
             <span id="serverTime">LOADING...</span>

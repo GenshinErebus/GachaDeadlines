@@ -124,7 +124,7 @@ body::after {
     width: 22px;
     height: 22px;
     background: transparent;
-    color: #00ff00; 
+    color: #00ff00;
     transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
     cursor: pointer;
     filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.7));
@@ -149,6 +149,7 @@ body::after {
     height: 100%;
     display: block;
 }
+
 /* ============================================
    MAIN CONTENT CONTAINER
    ============================================ */
@@ -592,31 +593,32 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     #gameSelect {
         min-width: 20rem;
     }
+
     .terminal-clock-btn {
-     top: 0.3125rem;
-    left: 0px;
-}
+        top: 0.3125rem;
+        left: 0px;
+    }
 }
 
 /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
    ============================================ */
-@media (max-width: 48rem) { 
+@media (max-width: 48rem) {
     a.youtube-avatar {
         position: absolute;
-        top: 0.25rem;       
-        right: 0.625rem;    
+        top: 0.25rem;
+        right: 0.625rem;
         left: auto;
         margin: 0;
         display: block;
         z-index: 9999;
-        width: 3.9375rem;   
-        height: 3.9375rem;  
+        width: 3.9375rem;
+        height: 3.9375rem;
     }
 
     a.youtube-avatar img {
         display: block;
-        width: 100%;        
+        width: 100%;
         height: 100%;
         max-width: 100%;
         mix-blend-mode: screen;
@@ -742,10 +744,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         word-wrap: break-word;
         padding: 0.5rem;
     }
-        .terminal-clock-btn {
-    top: 0.3875rem;
-    left: -5px;
-}
+
+    .terminal-clock-btn {
+        top: 0.3875rem;
+        left: -5px;
+    }
+
+    #disclaimer {
+        margin-left: -30px;
+        }
 }
 
 /* ==========================================================================
@@ -753,12 +760,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
        ========================================================================== */
 
 /* Case 1: Extra small screens (Below 350px) */
-@media (max-width: 21.8125rem) { /* 349px */
-    
+@media (max-width: 21.8125rem) {
+    /* 349px */
+
     /* Downscale profile picture via container */
     a.youtube-avatar {
-        width: 2.625rem;       /* 42px */
-        height: 2.625rem;      /* 42px */
+        width: 2.625rem;
+        /* 42px */
+        height: 2.625rem;
+        /* 42px */
     }
 
     /* Make region selector smaller */
@@ -776,12 +786,16 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         font-size: 0.6rem;
         padding: 0.4rem 0.75rem;
     }
-        .terminal-clock-btn {
-    top: -0.95rem;
-    left: -0.8375rem;
-     width: 15px;
-    height: 15px;
-}
+
+    .terminal-clock-btn {
+        top: -0.95rem;
+        left: -0.8375rem;
+        width: 15px;
+        height: 15px;
+    }
+        #disclaimer {
+        margin-left: -25px;
+        }
 }
 
 /* Case 2: Widths between 350px and 375px */
@@ -789,8 +803,10 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
 
     /* Only downscale profile picture here via container */
     a.youtube-avatar {
-        width: 3rem;           /* 48px */
-        height: 3rem;          /* 48px */
+        width: 3rem;
+        /* 48px */
+        height: 3rem;
+        /* 48px */
     }
 }
 
@@ -1365,8 +1381,8 @@ body.light-mode .event-card.golden-banner {
     .report-btn-text {
         display: none;
     }
-    
-    
+
+
 }
 
 .visually-hidden {
@@ -1402,9 +1418,10 @@ body.light-mode {
     --matrix-terminal-bg: #ffffff;
     /* card backgrounds */
     color: var(--matrix-green);
-    .terminal-clock-btn { 
-       color: #0a5c0a;
-        }
+
+    .terminal-clock-btn {
+        color: #0a5c0a;
+    }
 }
 
 /* Soften the CRT scanline overlays in light mode */
@@ -1511,7 +1528,7 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
    ============================================ */
 .zoom-controls {
     position: absolute;
-    top: 70px;    
+    top: 70px;
     left: 370px;
     display: inline-flex;
     align-items: center;
@@ -1563,4 +1580,25 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
         /* adjust to taste */
         left: 15px;
     }
+}
+
+/* ============================================
+   DISCLAIMER LINK STYLING
+   ============================================ */
+.disclaimer-link {
+    color: var(--matrix-dim-green);
+    text-decoration: none;
+    margin-left: 0.2rem;
+    margin-right: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.disclaimer-link:hover {
+    color: #ffe600;
+    text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
+    transform: scale(1.1);
 }
