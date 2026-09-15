@@ -756,7 +756,7 @@ function createStatusBar() {
                class="system-online-link">
                 SYSTEM ONLINE
             </a>
-            <a id="disclaimer" href="https://genshinerebus.github.io/GachaDeadlines/Disclaimer.md" class="disclaimer-link" title="Disclaimer">📄⚠️</a>
+            <a id="disclaimer" href="https://genshinerebus.github.io/GachaDeadlines/DISCLAIMER.md" class="disclaimer-link" title="Disclaimer">📄⚠️</a>
         </div>
         <div class="timestamp">
             <span id="serverTime">LOADING...</span>
