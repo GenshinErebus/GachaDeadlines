@@ -343,12 +343,7 @@ const eventDatabase = {
                 endDate: "2026-09-08T07:00:00Z"
             }
         ],
-        events: [
-            {
-                id: "dna_001",
-                name: "Shh! The Parade Begins",
-                endDate: "2026-09-15T04:00:00Z"
-            },
+        events: [            
             {
                 id: "dna_002",
                 name: "Opulent Rebate",

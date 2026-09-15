@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: *.json$
+
+Sitemap: https://genshinerebus.github.io/GachaDeadlines/sitemap.xml
