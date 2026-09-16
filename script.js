@@ -6,7 +6,7 @@ const serverResets = {
     genshin: { asia: "20:00", eu: "03:00", na: "09:00" },
     hsr: { asia: "20:00", eu: "03:00", na: "09:00" },
     zzz: { asia: "20:00", eu: "03:00", na: "09:00" },
-    arknights: { asia: "20:00", eu: "03:00", na: "09:00" },
+    arknights: { asia: "20:00", eu: "03:00", na: "03:00" },
     duet: { asia: "21:00", eu: "04:00", na: "10:00" },
     nte: { asia: "21:00", eu: "04:00", na: "10:00" },
     reverse1999: { asia: "10:00", eu: "10:00", na: "10:00" },

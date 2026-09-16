@@ -1119,7 +1119,7 @@ body.light-mode .event-card.golden-banner {
 }
 
 .report-btn-icon {
-    color: #ffe600;
+    color: #ff3b30;
     font-size: 0.9rem;
 }
 
@@ -1602,3 +1602,9 @@ body.light-mode .event-card:has(.countdown.urgent) .event-name {
     text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
     transform: scale(1.1);
 }
+
+/* Reportbutton Icon in different Red in Lightmode */
+body.light-mode #reportBtn .report-btn-icon {
+    color: #c30000;
+}
+

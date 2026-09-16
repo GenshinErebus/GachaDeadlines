@@ -1,108 +1,108 @@
 body {
-            background-color: #050505;
-            color: #00ff33;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
+    background-color: #050505;
+    color: #00ff33;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-        .container {
-            background-color: #000000;
-            padding: 30px;
-            border-radius: 4px;
-            width: 50%;            
-            box-shadow: 0 0 15px rgba(0, 255, 51, 0.3);
-            border: 1px solid #00ff33;
-        }
+.container {
+    background-color: #000000;
+    padding: 30px;
+    border-radius: 4px;
+    width: 50%;
+    box-shadow: 0 0 15px rgba(0, 255, 51, 0.3);
+    border: 1px solid #00ff33;
+}
 
-        h2 {
-            margin-top: 0;
-            font-size: 4.7rem;
-            margin-bottom: 20px;
-            text-align: center;
-            border-bottom: 1px dashed #00ff33;
-            padding-bottom: 10px;
-        }
+h2 {
+    margin-top: 0;
+    font-size: 4.7rem;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px dashed #00ff33;
+    padding-bottom: 10px;
+}
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size: 3.5rem;
-            color: #00ff33;
-        }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: #00ff33;
+}
 
-        select,
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background-color: #0a0a0a;
-            border: 1px solid #00ff33;
-            color: #00ff33;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 3rem;
-            font-family: inherit;
-        }
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #0a0a0a;
+    border: 1px solid #00ff33;
+    color: #00ff33;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 3rem;
+    font-family: inherit;
+}
 
-        select option {
-            background-color: #000000;
-            color: #00ff33;
-            font-size: 1.9rem;
-        }
+select option {
+    background-color: #000000;
+    color: #00ff33;
+    font-size: 1.9rem;
+}
 
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            cursor: pointer;
-            font-weight: normal;
-        }
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: normal;
+}
 
-        .checkbox-label input[type="checkbox"] {
-            margin-right: 10px;
-            accent-color: #00ff33;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #00ff33;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: #00ff33;
-            border: none;
-            color: black;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 2rem;
-            font-family: inherit;
-            transition: background 0.2s;
-        }
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #00ff33;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: inherit;
+    transition: background 0.2s;
+}
 
-        button:hover {
-            background-color: #00cc2c;
-        }
+button:hover {
+    background-color: #00cc2c;
+}
 
-        .output-box {
-            margin-top: 20px;
-            background-color: #050505;
-            border-left: 4px solid #00ff33;
-            padding: 15px;
-            border-radius: 4px;
-            min-height: 50px;
-            font-family: inherit;
-            white-space: pre;
-            word-break: break-all;
-            font-size: 3rem;
-            letter-spacing: 0.5px;
-            color: #00ff33;
-        }
+.output-box {
+    margin-top: 20px;
+    background-color: #050505;
+    border-left: 4px solid #00ff33;
+    padding: 15px;
+    border-radius: 4px;
+    min-height: 50px;
+    font-family: inherit;
+    white-space: pre;
+    word-break: break-all;
+    font-size: 3rem;
+    letter-spacing: 0.5px;
+    color: #00ff33;
+}
 
-    .back-container {
+.back-container {
     text-align: center;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -122,4 +122,80 @@ body {
 .back-link:hover {
     background-color: rgba(0, 255, 51, 0.15);
     box-shadow: 0 0 10px rgba(0, 255, 51, 0.3);
+}
+
+/* ============================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   ============================================ */
+@media (max-width: 48rem) {
+    h2 {
+        font-size: 1.9rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    select,
+    input[type="text"] {
+        font-size: 1.5rem;
+    }
+
+    elect option {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    .output-box {
+        font-size: 1.1rem;
+    }
+
+    .back-link {
+        font-size: 1.7rem;
+    }
+
+    .container {
+        width: 98%;
+    }
+}
+
+/* ============================================
+   ULTRA-MOBILE RESOLUTIONS
+   ============================================ */
+@media (max-width: 21.8125rem) {
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    select,
+    input[type="text"] {
+        font-size: 0.86rem;
+    }
+
+    elect option {
+        font-size: 0.8rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+    }
+
+    .output-box {
+        font-size: 0.7rem;
+    }
+
+    .back-link {
+        font-size: 1rem;
+    }
+
+    .container {
+        width: 95%;
+    }
 }
