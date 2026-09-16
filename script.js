@@ -253,6 +253,11 @@ const eventDatabase = {
                 endDate: "2026-10-20T03:00:00Z"
             },
             {
+                id: "zzz_007",
+                name: "Shadow Chase Showdown",
+                endDate: "2026-10-05T03:00:00Z"
+            },
+            {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
@@ -318,6 +323,11 @@ const eventDatabase = {
                 id: "ark_005",
                 name: "Trial of the Bow",
                 endDate: "2026-10-14T22:00:00Z"
+            },
+            {
+                id: "ark_006",
+                name: "AIC Support: Chubby Lung Attacks",
+                endDate: "2026-09-30T21:00:00Z"
             },
             // Banner
             {
