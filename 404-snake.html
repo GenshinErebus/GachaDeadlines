@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Memory Overload (Snake)</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow: hidden;
+      touch-action: none; /* Disables smartphone page scrolling while swiping */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    .score-board {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Game Canvas - Responsive scaling */
+    canvas {
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CRITICAL] 404_SECTOR_LOST</div>
+      <div>Collect memory leaks to repair the core data index. Avoid the firewall borders!</div>
+      <div>Controls: Swipe (Mobile) or use <span style="color: #ffffff;">ARROW KEYS / WASD</span> (Desktop)</div>
+    </div>
+
+    <div class="score-board">
+      DATA INDEXED: <span id="current-score">0</span> / 10
+    </div>
+
+    <!-- The Snake Matrix Canvas -->
+    <canvas id="snakeCanvas" width="400" height="400"></canvas>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT SYSTEM</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('snakeCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const scoreEl = document.getElementById('current-score');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    // Grid sizing configs
+    const gridSize = 20;
+    const tileCount = canvas.width / gridSize;
+
+    // Game states
+    let snake = [];
+    let food = { x: 0, y: 0 };
+    let dx = gridSize; // horizontal speed (starting moving right)
+    let dy = 0;        // vertical speed
+    let score = 0;
+    let isGameOver = false;
+    let gameInterval;
+    const gameSpeed = 100; // lower number = faster game (ms per frame)
+
+    // --- SWIPE GESTURE DETECTION (SMARTPHONE) ---
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    canvas.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    canvas.addEventListener('touchmove', (e) => {
+      if (isGameOver) return;
+      e.preventDefault(); // Lock mobile screen bouncing while steering
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', (e) => {
+      if (isGameOver) return;
+      
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+      
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      
+      // Check if user swiped far enough to trigger a turn (threshold of 30px)
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (Math.abs(diffX) > 30) {
+          // Horizontal Swipes
+          if (diffX > 0 && dx === 0) { dx = gridSize; dy = 0; }      // Swipe Right
+          else if (diffX < 0 && dx === 0) { dx = -gridSize; dy = 0; } // Swipe Left
+        }
+      } else {
+        if (Math.abs(diffY) > 30) {
+          // Vertical Swipes
+          if (diffY > 0 && dy === 0) { dx = 0; dy = gridSize; }      // Swipe Down
+          else if (diffY < 0 && dy === 0) { dx = 0; dy = -gridSize; } // Swipe Up
+        }
+      }
+    });
+
+    // --- KEYBOARD CONTROLS (DESKTOP) ---
+    document.addEventListener('keydown', (e) => {
+      if (isGameOver) return;
+      
+      const key = e.key.toLowerCase();
+      
+      if ((key === 'arrowup' || key === 'w') && dy === 0) { dx = 0; dy = -gridSize; e.preventDefault(); }
+      if ((key === 'arrowdown' || key === 's') && dy === 0) { dx = 0; dy = gridSize; e.preventDefault(); }
+      if ((key === 'arrowleft' || key === 'a') && dx === 0) { dx = -gridSize; dy = 0; e.preventDefault(); }
+      if ((key === 'arrowright' || key === 'd') && dx === 0) { dx = gridSize; dy = 0; e.preventDefault(); }
+    });
+
+    // --- ENGINE LOGIC ---
+
+    function generateFood() {
+      food.x = Math.floor(Math.random() * tileCount) * gridSize;
+      food.y = Math.floor(Math.random() * tileCount) * gridSize;
+      
+      // Make sure food doesn't spawn inside the snake's body
+      snake.forEach(part => {
+        if (part.x === food.x && part.y === food.y) generateFood();
+      });
+    }
+
+    function update() {
+      if (isGameOver) return;
+
+      // 1. Move the head forward
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+      snake.unshift(head);
+
+      // 2. Check food collision (Eating mechanism)
+      if (head.x === food.x && head.y === food.y) {
+        score++;
+        scoreEl.innerText = score;
+        generateFood();
+        
+        // Unlock escape button if player manages a 10-score sequence
+        if (score >= 10) {
+          escapeBtn.classList.remove('hidden');
+        }
+      } else {
+        // Remove the tail if no food eaten (keeps moving instead of growing)
+        snake.pop();
+      }
+
+      // 3. Wall / Border collisions check
+      if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+        triggerLoss();
+      }
+
+      // 4. Self-destruction body collision check
+      for (let i = 1; i < snake.length; i++) {
+        if (head.x === snake[i].x && head.y === snake[i].y) {
+          triggerLoss();
+        }
+      }
+    }
+
+    function draw() {
+      // Clear board
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#00ff33';
+
+      // Draw Snake segments
+      snake.forEach((part, index) => {
+        // Bright green head, slightly dimmer tail links
+        ctx.fillStyle = index === 0 ? '#00ff33' : '#0c2c0e';
+        ctx.fillRect(part.x, part.y, gridSize - 2, gridSize - 2);
+      });
+
+      // Draw Food Node as a little hacker '01' text or square block
+      ctx.fillStyle = '#ff3333';
+      ctx.shadowColor = '#ff3333';
+      ctx.fillRect(food.x, food.y, gridSize - 2, gridSize - 2);
+
+      // Overlay Error state screen text
+      if (isGameOver) {
+        ctx.fillStyle = '#ff3333';
+        ctx.shadowColor = '#ff3333';
+        ctx.font = '20px "Courier New"';
+        ctx.textAlign = 'center';
+        ctx.fillText('⚡ SEGMENTATION_FAULT ⚡', canvas.width / 2, canvas.height / 2 - 10);
+        ctx.font = '14px "Courier New"';
+        ctx.fillText('Click Reboot System to re-index', canvas.width / 2, canvas.height / 2 + 15);
+      }
+
+      ctx.shadowBlur = 0; // Performance sweep cleanup
+    }
+
+    function triggerLoss() {
+      isGameOver = true;
+      clearInterval(gameInterval);
+      resetBtn.classList.remove('hidden');
+    }
+
+    function resetGame() {
+      score = 0;
+      scoreEl.innerText = score;
+      isGameOver = false;
+      dx = gridSize;
+      dy = 0;
+      resetBtn.classList.add('hidden');
+      
+      // Initialize snake in the center of the grid (3 segments long)
+      snake = [
+        { x: gridSize * 5, y: gridSize * 10 },
+        { x: gridSize * 4, y: gridSize * 10 },
+        { x: gridSize * 3, y: gridSize * 10 }
+      ];
+      
+      generateFood();
+      clearInterval(gameInterval);
+      gameInterval = setInterval(() => { update(); draw(); }, gameSpeed);
+    }
+
+    // Launch engine mechanics
+    resetGame();
+  </script>
+
+</body>
+</html>

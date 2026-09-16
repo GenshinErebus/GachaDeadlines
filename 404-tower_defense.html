@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Data Defender Protocol</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+    .header-text {
+      margin-bottom: 12px;
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+    .score-board {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-around;
+    }
+    /* Responsive Grid Board instead of Canvas */
+    .grid-board {
+      position: relative;
+      width: 90vw;
+      max-width: 360px;
+      height: 360px;
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      margin: 15px auto;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      overflow: hidden;
+    }
+    /* Fixed path segments mapping the track layout */
+    .path-tile {
+      position: absolute;
+      background-color: rgba(0, 255, 51, 0.15);
+    }
+    /* Strategic build spots */
+    .slot {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      border: 1px solid #00ff33;
+      background-color: #050505;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    .slot:hover {
+      background-color: #0c2c0e;
+      box-shadow: 0 0 8px #00ff33;
+    }
+    /* Deployed Active Filter Node styling */
+    .slot.occupied {
+      background-color: #00ff33;
+      box-shadow: 0 0 12px #00ff33;
+      cursor: not-allowed;
+    }
+    /* Traveling virus node style */
+    .virus-node {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      transition: left 0.1s linear, top 0.1s linear;
+      z-index: 10;
+    }
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 8px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [DDOS_ATTACK] GATEWAY FLOOD IN PROGRESS (404)</div>
+      <div>Deploy anti-virus filter nodes near the path to block the breach.</div>
+      <div>Controls: Tap green squares to deploy a node (Cost: 20 Bits).</div>
+    </div>
+
+    <div class="score-board">
+      <div>BITS: <span id="bits-count">40</span></div>
+      <div>FILTERED: <span id="filtered-count">0</span> / 10</div>
+      <div>INTEGRITY: <span id="integrity-count">100</span>%</div>
+    </div>
+
+    <!-- HTML-based Grid Map Board -->
+    <div class="grid-board" id="main-board">
+      <!-- Fixed Path Blocks Track Layout -->
+      <div class="path-tile" style="left: 0px; top: 70px; width: 260px; height: 40px;"></div>
+      <div class="path-tile" style="left: 220px; top: 70px; width: 40px; height: 200px;"></div>
+      <div class="path-tile" style="left: 220px; top: 230px; width: 140px; height: 40px;"></div>
+    </div>
+
+    <div id="terminal-msg" style="min-height: 25px; margin: 10px 0;"></div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT TERMINAL</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const board = document.getElementById('main-board');
+    const bitsEl = document.getElementById('bits-count');
+    const filteredEl = document.getElementById('filtered-count');
+    const integrityEl = document.getElementById('integrity-count');
+    const terminalMsg = document.getElementById('terminal-msg');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    let bits = 40;
+    let filtered = 0;
+    let integrity = 100;
+    let isGameOver = false;
+    let spawnCounter = 0;
+    let activeViruses = [];
+    let deployedTowers = [];
+    
+    let spawnClock;
+    let physicsClock;
+    let shootingClock;
+
+    // Strategic build slots configs
+    const slotLocations = [
+      { x: 40, y: 130 }, { x: 120, y: 130 }, { x: 300, y: 170 },
+      { x: 80, y: 20 },  { x: 180, y: 20 },  { x: 280, y: 290 }
+    ];
+
+    function startDefenderEngine() {
+      bits = 40; filtered = 0; integrity = 100; isGameOver = false;
+      spawnCounter = 0; activeViruses = []; deployedTowers = [];
+      
+      bitsEl.innerText = bits;
+      filteredEl.innerText = filtered;
+      integrityEl.innerText = integrity;
+      terminalMsg.innerText = '';
+      
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+
+      // Clear layout old elements safely
+      document.querySelectorAll('.slot').forEach(e => e.remove());
+      document.querySelectorAll('.virus-node').forEach(e => e.remove());
+
+      // Deploy structural click slots
+      slotLocations.forEach(loc => {
+        const slot = document.createElement('div');
+        slot.className = 'slot';
+        slot.style.left = loc.x + 'px';
+        slot.style.top = loc.y + 'px';
+        
+        slot.addEventListener('click', function() {
+          if (isGameOver || this.classList.contains('occupied') || bits < 20) return;
+          bits -= 20;
+          bitsEl.innerText = bits;
+          this.classList.add('occupied');
+          this.innerText = '☤'; // Node icon symbol
+          deployedTowers.push({ x: loc.x + 17, y: loc.y + 17, range: 100 });
+        });
+        
+        board.appendChild(slot);
+      });
+
+      // Synchronize intervals clocks loops
+      spawnClock = setInterval(spawnVirusPacket, 2500);
+      physicsClock = setInterval(updatePhysicsLoop, 40);
+      shootingClock = setInterval(executeDefensesShooting, 700);
+    }
+
+    function spawnVirusPacket() {
+      if (isGameOver || spawnCounter >= 15) return;
+      
+      const vEl = document.createElement('div');
+      vEl.className = 'virus-node';
+      vEl.innerText = '👾';
+      board.appendChild(vEl);
+
+      activeViruses.push({
+        element: vEl, x: 0, y: 90, speed: 1.5, trackStage: 0
+      });
+      spawnCounter++;
+    }
+
+    function updatePhysicsLoop() {
+      if (isGameOver) return;
+
+      for (let i = activeViruses.length - 1; i >= 0; i--) {
+        let v = activeViruses[i];
+
+        if (v.trackStage === 0) {
+          v.x += v.speed;
+          if (v.x >= 240) { v.x = 240; v.trackStage = 1; }
+        } else if (v.trackStage === 1) {
+          v.y += v.speed;
+          if (v.y >= 250) { v.y = 250; v.trackStage = 2; }
+        } else if (v.trackStage === 2) {
+          v.x += v.speed;
+          if (v.x >= 360) {
+            // Breach complete event target points reduction
+            v.element.remove();
+            activeViruses.splice(i, 1);
+            integrity = Math.max(0, integrity - 20);
+            integrityEl.innerText = integrity;
+            if (integrity <= 0) triggerMatchEnd(false);
+            continue;
+          }
+        }
+
+        v.element.style.left = v.x + 'px';
+        v.element.style.top = v.y + 'px';
+      }
+    }
+
+    function executeDefensesShooting() {
+      if (isGameOver) return;
+
+      deployedTowers.forEach(t => {
+        if (activeViruses.length === 0) return;
+
+        // Target the first/closest scanning element array unit inside threshold ranges
+        for (let i = 0; i < activeViruses.length; i++) {
+          let v = activeViruses[i];
+          let dist = Math.sqrt((v.x - t.x) ** 2 + (v.y - t.y) ** 2);
+
+          if (dist <= t.range) {
+            // Elimination impact explosion trigger instantly
+            v.element.style.color = '#ffffff';
+            setTimeout(() => { v.element.remove(); }, 100);
+            
+            activeViruses.splice(i, 1);
+            bits += 10;
+            filtered++;
+            
+            bitsEl.innerText = bits;
+            filteredEl.innerText = filtered;
+
+            if (filtered >= 10) triggerMatchEnd(true);
+            break;
+          }
+        }
+      });
+    }
+
+    function triggerMatchEnd(won) {
+      isGameOver = true;
+      clearInterval(spawnClock);
+      clearInterval(physicsClock);
+      clearInterval(shootingClock);
+
+      resetBtn.classList.remove('hidden');
+      if (won) {
+        escapeBtn.classList.remove('hidden');
+        terminalMsg.innerHTML = "<span style='color:#00ff33;font-weight:bold;'>GATEWAY_SECURED: Malware Cleansed!</span>";
+      } else {
+        terminalMsg.innerHTML = "<span style='color:#ff3333;'>CRITICAL_FAILURE: Mainframe Overrun!</span>";
+      }
+    }
+
+    function resetGame() {
+      startDefenderEngine();
+    }
+
+    // Launch configuration engine setup execution instantly
+    startDefenderEngine();
+  </script>
+</body>
+</html>

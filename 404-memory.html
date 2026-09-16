@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Memory Leak</title>
+  <style>
+    /* Retro Terminal Aesthetics */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      user-select: none;
+      touch-action: manipulation; /* Optimizes tap delays on smartphones */
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    /* 4x4 Grid - Responsively scales on smartphones using viewport units */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 360px;
+      width: 85vw;
+    }
+
+    /* Card Styling */
+    .card {
+      aspect-ratio: 1 / 1;
+      background-color: #111;
+      border: 2px solid #00ff33;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: transparent; /* Hidden by default */
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* Card Backside visual indicator */
+    .card::before {
+      content: "[?]";
+      color: #00ff33;
+      font-size: 1rem;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 12px #00ff33;
+      background-color: #0c2c0e;
+    }
+
+    /* Card Face Up/Flipped active state */
+    .card.flipped {
+      background-color: #00ff33;
+      color: #050505 !important;
+      box-shadow: 0 0 15px #00ff33;
+      text-shadow: none;
+      cursor: default;
+    }
+    .card.flipped::before {
+      display: none; /* Hide the [?] symbol */
+    }
+
+    /* Card Matched permanently solved state */
+    .card.matched {
+      background-color: #0c2c0e;
+      color: #00ff33 !important;
+      border-color: rgba(0, 255, 51, 0.4);
+      box-shadow: none;
+      text-shadow: 0 0 3px #00ff33;
+      cursor: default;
+    }
+    .card.matched::before {
+      display: none;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      min-height: 25px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CRITICAL] 404_MEMORY_LEAK_DETECTED</div>
+      <div>RAM sectors corrupted. Pair the terminal code blocks to rebuild the index.</div>
+    </div>
+
+    <!-- 4x4 Game Matrix -->
+    <div class="grid" id="game-grid"></div>
+
+    <div class="status-panel" id="status-msg">Tries: 0</div>
+
+    <div>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const gridContainer = document.getElementById('game-grid');
+    const statusMsg = document.getElementById('status-msg');
+    const escapeBtn = document.getElementById('escape-btn');
+
+    // 8 Pairs of geek/dev terminal symbols
+    const cardIcons = [
+      'HTML', 'HTML',
+      'CSS', 'CSS',
+      'JSON', 'JSON',
+      'NULL', 'NULL',
+      '404', '404',
+      'C#', 'C#',
+      'GIT', 'GIT',
+      'SUDO', 'SUDO'
+    ];
+
+    let flippedCards = [];
+    let matchedPairsCount = 0;
+    let totalTries = 0;
+    let lockBoard = false;
+
+    // Fisher-Yates Shuffle Engine
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Generate Card Grid System
+    function initializeGame() {
+      const shuffledIcons = shuffle([...cardIcons]);
+      gridContainer.innerHTML = '';
+      
+      shuffledIcons.forEach((icon, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.icon = icon;
+        card.innerText = icon;
+        
+        // Touchstart and Click combo optimized for all screens
+        card.addEventListener('click', flipCard);
+        
+        gridContainer.appendChild(card);
+      });
+    }
+
+    function flipCard() {
+      if (lockBoard) return;
+      if (this === flippedCards[0]) return; // Stop double clicking same card
+      if (this.classList.contains('matched') || this.classList.contains('flipped')) return;
+
+      this.classList.add('flipped');
+      flippedCards.push(this);
+
+      if (flippedCards.length === 2) {
+        totalTries++;
+        statusMsg.innerText = `Tries: ${totalTries}`;
+        checkMatch();
+      }
+    }
+
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+      const isMatch = card1.dataset.icon === card2.dataset.icon;
+
+      if (isMatch) {
+        disableCards();
+      } else {
+        unflipCards();
+      }
+    }
+
+    function disableCards() {
+      flippedCards[0].classList.add('matched');
+      flippedCards[1].classList.add('matched');
+      
+      matchedPairsCount++;
+      resetTracker();
+
+      // Check win state
+      if (matchedPairsCount === cardIcons.length / 2) {
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>INDEX_REBUILT: System Stabilized!</span>";
+        escapeBtn.classList.remove('hidden');
+      }
+    }
+
+    function unflipCards() {
+      lockBoard = true;
+      // Brief delay so the user can memorize the position
+      setTimeout(() => {
+        flippedCards[0].classList.remove('flipped');
+        flippedCards[1].classList.remove('flipped');
+        resetTracker();
+      }, 900);
+    }
+
+    function resetTracker() {
+      flippedCards = [];
+      lockBoard = false;
+    }
+
+    // Fire engine up
+    initializeGame();
+  </script>
+
+</body>
+</html>

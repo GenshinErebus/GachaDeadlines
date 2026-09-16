@@ -2,173 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Courier New', 'Consolas', monospace;
-            background-color: #000000;
-            color: #00ff41;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        canvas {
-            display: block;
-        }
-
-        .container {
-            text-align: center;
-            z-index: 10;
-            max-width: 600px;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #00ff41;
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .error-code {
-            font-size: 100px;
-            font-weight: bold;
-            color: #00ff41;
-            text-shadow: 
-                0 0 10px #00ff41,
-                0 0 20px #00ff41,
-                0 0 30px #00ff41;
-            animation: glitch 0.3s infinite alternate;
-            margin-bottom: 20px;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 0 0 10px #00ff41; }
-            50% { text-shadow: 0 0 5px #00ff41, -2px 0 #ff0000, 2px 0 #00ffff; }
-            100% { text-shadow: 0 0 15px #00ff41; }
-        }
-
-        .title {
-            font-size: 48px;
-            color: #00ff41;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .message {
-            font-size: 28px;
-            color: #00cc33;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .cursor {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .home-button {
-            display: inline-block;
-            padding: 12px 35px;
-            background: transparent;
-            color: #00ff41;
-            text-decoration: none;
-            font-size: 28px;
-            font-weight: bold;
-            border: 2px solid #00ff41;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .home-button:hover {
-            background: #00ff41;
-            color: #000000;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
-        }
-    </style>
+    <title>Redirecting...</title>
+    <script>
+        // List of custom game 404 pages
+        const gamePages = [
+            '/404-chatbot.html',
+            '/404-code_breaker.html',
+            '/404-connect_four.html',
+            '/404-cookie-monster.html',
+            '/404-datastream.html',
+            '/404-endless_runner.html',
+            '/404-Excuse_Roulette.html',
+            '/404-false_terminal.html',
+            '/404-flappy_bird.html',
+            '/404-git_conflict.html',
+            '/404-hacker_wordle.html',
+            '/404-labyrinth.html',
+            '/404-linux_fortune_teller.html',
+            '/404-magnifier.html',
+            '/404-matrix_code_breaker.html',
+            '/404-matrix_rain.html',
+            '/404-memory.html',
+            '/404-minesweeper.html',
+            '/404-pong.html',
+            '/404-snake.html',
+            '/404-tetris.html',
+            '/404-tic_tac_toe.html',
+            '/404-tower_defense.html',
+            '/404-virus_invaders.html'
+        ];
+        
+        // Pick a random page from the list
+        const randomGame = gamePages[Math.floor(Math.random() * gamePages.length)];
+        
+        // Instantly forward the user without breaking the browser history
+        window.location.replace(randomGame);
+    </script>
 </head>
 <body>
-    <div class="matrix-bg">
-        <canvas id="matrixCanvas"></canvas>
-    </div>
-
-    <div class="container">
-        <div class="error-code">404</div>
-        <h1 class="title">PAGE NOT FOUND<span class="cursor">_</span></h1>
-        <p class="message">
-            > Connection terminated<br>
-            > The requested path does not exist in the system<br>
-            > Return to main menu...<br><br>
-            <span style="font-size: 24px;">[MATRIX_404_ERROR_HANDLER_v2.0]</span>
-        </p>
-        <a href="/" class="home-button">Back to Homepage</a>
-    </div>
-
-    <script>
-        // Matrix Digital Rain Effect
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const charArray = chars.split('');
-        const fontSize = 14;
-        const columns = Math.floor(canvas.width / fontSize);
-        const drops = [];
-
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.random() * -100;
-        }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = charArray[Math.floor(Math.random() * charArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(draw, 50);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <!-- Stays blank as the redirect happens instantly -->
 </body>
 </html>

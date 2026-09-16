@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Matrix Code-Breaker</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 600px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* Container for the binary text block */
+    .binary-stream {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 15px;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      color: #ffffff;
+      word-break: break-all;
+      letter-spacing: 1px;
+      margin: 20px 0;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 15px 0;
+      min-height: 25px;
+    }
+
+    /* Button area layout styling */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .escape-btn {
+      border: 2px solid #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>🔐 DECRYPTION_KEY_REQUIRED (404)</h1>
+    <p style="color: #888; font-size: 0.9rem;">The requested database link is encrypted. Decode the binary stream to bypass the firewall.</p>
+    
+    <!-- Visual area where the zeros and ones are printed -->
+    <div class="binary-stream" id="binary-display">00000000</div>
+
+    <div class="status-panel" id="status-msg">Select the correct decryption cipher:</div>
+
+    <!-- Interface area for interaction buttons -->
+    <div class="btn-row" id="interface-box">
+      <button class="btn" id="choice-0" onclick="verifyDecryption(0)">---</button>
+      <button class="btn" id="choice-1" onclick="verifyDecryption(1)">---</button>
+      <button class="btn" id="choice-2" onclick="verifyDecryption(2)">---</button>
+    </div>
+
+    <!-- Final escape protocol anchor link triggered on success -->
+    <div class="btn-row">
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const binaryDisplay = document.getElementById('binary-display');
+    const statusMsg = document.getElementById('status-msg');
+    const interfaceBox = document.getElementById('interface-box');
+    const escapeLink = document.getElementById('escape-link');
+
+    // Safe core vocabulary database (All exactly 4 letters to keep layout perfectly aligned)
+    const wordPool = ["HOME", "EXIT", "LINK", "NODE", "SUDO", "ROOT", "DATA", "CODE", "HOST", "PORT", "GRID"];
+    
+    let correctAnswer = "";
+    let choices = [];
+    let gameActive = true;
+
+    // Helper engine to transform string text letters into real 8-bit binary representation strings
+    function convertTextToBinary(text) {
+      let output = [];
+      for (let i = 0; i < text.length; i++) {
+        let bin = text.charCodeAt(i).toString(2);
+        // Pad zeros to guarantee clean 8-bit alignment blocks
+        let padded = "00000000".substring(bin.length) + bin;
+        output.push(padded);
+      }
+      // Joined with clear empty spaces for responsive reading wrap patterns
+      return output.join(" ");
+    }
+
+    // Shuffle implementation logic using seed modifiers to bypass browser cache completely
+    function FisherYatesShuffle(array) {
+      let currentIndex = array.length;
+      const seed = Date.now() + Math.random();
+      
+      while (currentIndex !== 0) {
+        let randomIndex = Math.floor((seed * currentIndex) % array.length);
+        currentIndex--;
+        // Swap elements around inside array track
+        let temp = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temp;
+      }
+      return array;
+    }
+
+    function initCodeBreaker() {
+      gameActive = true;
+      statusMsg.innerHTML = "Select the correct decryption cipher:";
+      escapeLink.classList.add('hidden');
+      interfaceBox.classList.remove('hidden');
+
+      // 1. Pick a random correct solution keyword
+      const randomSeed = Date.now() + Math.random();
+      const poolIndex = Math.floor((randomSeed * 11) % wordPool.length);
+      correctAnswer = wordPool[poolIndex];
+
+      // 2. Generate encrypted binary blocks stream representation
+      binaryDisplay.innerText = convertTextToBinary(correctAnswer);
+
+      // 3. Collect wrong decoy answers from remaining pool
+      let decoys = wordPool.filter(w => w !== correctAnswer);
+      decoys = FisherYatesShuffle(decoys);
+
+      // 4. Group final 3 choice structures together
+      choices = [correctAnswer, decoys[0], decoys[1]];
+      choices = FisherYatesShuffle(choices);
+
+      // 5. Inject text strings dynamically inside button nodes
+      for (let i = 0; i < 3; i++) {
+        document.getElementById("choice-" + i).innerText = choices[i];
+      }
+    }
+
+    function verifyDecryption(selectedIndex) {
+      if (!gameActive) return;
+
+      const userChoice = choices[selectedIndex];
+
+      if (userChoice === correctAnswer) {
+        gameActive = false;
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>DECRYPTION_SUCCESS: Mainframe unlocked!</span>";
+        interfaceBox.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+      } else {
+        // Punish player on mistake by instantly re-rolling a whole new cipher puzzle challenge
+        statusMsg.innerHTML = "<span style='color: #ff3333;'>CIPHER_MISMATCH: Firewall triggered! Re-routing...</span>";
+        gameActive = false;
+        setTimeout(initCodeBreaker, 1200);
+      }
+    }
+
+    // Launch application configuration environment setups instantly
+    initCodeBreaker();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Sector Disrupted</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      margin: 0;
+      text-shadow: 0 0 5px #00ff33;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .header-text {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Tic-Tac-Toe Grid Styling */
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;
+      justify-content: center;
+      margin: 30px auto;
+    }
+
+    .cell {
+      background-color: #111;
+      border: 2px solid #00ff33;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #00ff33;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+    }
+
+    .cell:hover {
+      background-color: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .cell.taken {
+      cursor: not-allowed;
+      background-color: #111 !important;
+      color: #00ff33 !important;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2) !important;
+    }
+
+    .status {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      min-height: 30px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CRITICAL] 404_PAGE_NOT_FOUND</div>
+      <div>The coordinates you requested do not exist.</div>
+      <div>Defeat the AI grid-sentinel to unlock the escape protocol.</div>
+    </div>
+
+    <!-- The Game Board -->
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+
+    <div class="status" id="status">Your turn, User (X)...</div>
+
+    <div>
+      <button class="btn" id="reset-btn">Reset Grid</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const board = document.getElementById('board');
+    const cells = document.querySelectorAll('.cell');
+    const statusText = document.getElementById('status');
+    const resetBtn = document.getElementById('reset-btn');
+    const escapeBtn = document.getElementById('escape-btn');
+
+    let gameState = ["", "", "", "", "", "", "", "", ""];
+    let isGameActive = true;
+    const humanPlayer = "X";
+    const aiPlayer = "O";
+
+    // FIXED: Correct winning combinations
+    const winningConditions = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+      [0, 4, 8], [2, 4, 6]             // Diagonals
+    ];
+
+    cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+    resetBtn.addEventListener('click', resetGame);
+
+    function handleCellClick(e) {
+      const clickedCell = e.target;
+      const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+
+      if (gameState[clickedCellIndex] !== "" || !isGameActive) return;
+
+      makeMove(clickedCell, clickedCellIndex, humanPlayer);
+      
+      if (!checkWin(humanPlayer) && !checkDraw()) {
+        statusText.innerText = "AI processing next step...";
+        isGameActive = false; 
+        setTimeout(aiMove, 400); 
+      }
+    }
+
+    function makeMove(cell, index, player) {
+      gameState[index] = player;
+      cell.innerText = player;
+      cell.classList.add('taken');
+    }
+
+    function aiMove() {
+      let move = findBestMove(aiPlayer) ?? findBestMove(humanPlayer) ?? pickRandomMove();
+
+      if (move !== null) {
+        const targetCell = document.querySelector(`[data-index="${move}"]`);
+        makeMove(targetCell, move, aiPlayer);
+      }
+
+      isGameActive = true;
+
+      if (!checkWin(aiPlayer)) {
+        checkDraw();
+      }
+    }
+
+    function findBestMove(player) {
+      for (let condition of winningConditions) {
+        let count = 0;
+        let emptyIndex = null;
+        for (let index of condition) {
+          if (gameState[index] === player) count++;
+          else if (gameState[index] === "") emptyIndex = index;
+        }
+        if (count === 2 && emptyIndex !== null) return emptyIndex;
+      }
+      return null;
+    }
+
+    function pickRandomMove() {
+      let emptyCells = [];
+      gameState.forEach((val, idx) => { if (val === "") emptyCells.push(idx); });
+      if (emptyCells.length === 0) return null;
+      return emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    }
+
+    function checkWin(player) {
+      let roundWon = false;
+      for (let i = 0; i < winningConditions.length; i++) {
+        const winCondition = winningConditions[i];
+        let a = gameState[winCondition[0]];
+        let b = gameState[winCondition[1]];
+        let c = gameState[winCondition[2]];
+        if (a === '' || b === '' || c === '') continue;
+        if (a === b && b === c && a === player) {
+          roundWon = true;
+          break;
+        }
+      }
+
+      if (roundWon) {
+        isGameActive = false;
+        if (player === humanPlayer) {
+          statusText.innerHTML = "<span style='color: #00ff33;'>SUCCESS: Sentinel bypassed!</span>";
+        } else {
+          statusText.innerHTML = "<span style='color: #ff3333;'>FAILURE: Sentinel wins. Try again.</span>";
+        }
+        unlockEscape();
+        return true;
+      }
+      return false;
+    }
+
+    function checkDraw() {
+      if (!gameState.includes("")) {
+        statusText.innerText = "TIE: Draw state achieved. Good enough.";
+        isGameActive = false;
+        unlockEscape();
+        return true;
+      }
+      if (isGameActive && gameState.includes("")) {
+        statusText.innerText = "Your turn, User (X)...";
+      }
+      return false;
+    }
+
+    function unlockEscape() {
+      escapeBtn.classList.remove('hidden');
+    }
+
+    function resetGame() {
+      gameState = ["", "", "", "", "", "", "", "", ""];
+      isGameActive = true;
+      statusText.innerText = "Your turn, User (X)...";
+      cells.forEach(cell => {
+        cell.innerText = "";
+        cell.classList.remove('taken');
+      });
+    }
+  </script>
+
+</body>
+</html>

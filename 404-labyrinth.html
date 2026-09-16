@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Network Maze</title>
+  <style>
+    /* Retro Terminal Styling */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      user-select: none; /* Prevents text selection while tapping buttons */
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    /* Maze Grid Layout - Fully Responsive */
+    .maze-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1px;
+      justify-content: center;
+      background-color: #222;
+      padding: 5px;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      margin: 15px auto;
+      max-width: 380px; /* Limits size on big screens */
+      width: 90vw; /* Scales with smartphone screen widths */
+    }
+
+    /* Cell Types scaling proportionally */
+    .cell {
+      aspect-ratio: 1 / 1;
+      box-sizing: border-box;
+    }
+
+    .wall {
+      background-color: #0c2c0e;
+      border: 1px solid #144d17;
+    }
+
+    .path {
+      background-color: #111;
+    }
+
+    .player {
+      background-color: #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+      border-radius: 3px;
+    }
+
+    .goal {
+      background-color: #ff3333;
+      box-shadow: 0 0 10px #ff3333;
+      border-radius: 3px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    /* Touch Controls Container (Visible only on mobile devices) */
+    .dpad-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 15px auto;
+    }
+
+    .dpad-row {
+      display: flex;
+    }
+
+    .dpad-btn {
+      width: 55px;
+      height: 55px;
+      background: #111;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 4px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.3);
+    }
+
+    .dpad-btn:active {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    /* Hide D-Pad on large desktop screens where keyboard is available */
+    @media (min-width: 768px) {
+      .dpad-container {
+        display: none;
+      }
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CRITICAL] 404_ROUTE_NOT_FOUND</div>
+      <div>The path is blocked. Guide the data packet to the exit node.</div>
+    </div>
+
+    <!-- 12x12 Maze Container -->
+    <div class="maze-grid" id="maze"></div>
+
+    <div id="status" style="min-height: 25px;"></div>
+
+    <!-- On-Screen Mobile Joystick Controller (D-Pad) -->
+    <div class="dpad-container">
+      <div class="dpad-row">
+        <button class="dpad-btn" id="btn-up">▲</button>
+      </div>
+      <div class="dpad-row">
+        <button class="dpad-btn" id="btn-left">◀</button>
+        <button class="dpad-btn" id="btn-down">▼</button>
+        <button class="dpad-btn" id="btn-right">▶</button>
+      </div>
+    </div>
+
+    <div>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const mazeContainer = document.getElementById('maze');
+    const statusText = document.getElementById('status');
+    const escapeBtn = document.getElementById('escape-btn');
+
+    const width = 12;
+    const height = 12;
+    
+    // 0 = Path, 1 = Wall, 2 = Start (Player), 3 = Goal (Exit)
+    const layout = [
+      1,1,1,1,1,1,1,1,1,1,1,1,
+      2,0,0,0,1,0,0,0,0,0,0,1,
+      1,1,1,0,1,0,1,1,1,1,0,1,
+      1,0,0,0,0,0,1,0,0,1,0,1,
+      1,0,1,1,1,1,1,0,1,1,0,1,
+      1,0,1,0,0,0,0,0,1,0,0,1,
+      1,0,1,0,1,1,1,1,1,0,1,1,
+      1,0,0,0,1,0,0,0,0,0,0,1,
+      1,1,1,1,1,0,1,1,1,1,0,1,
+      1,0,0,0,0,0,1,0,0,0,0,1,
+      1,0,1,1,1,1,1,0,1,1,0,3,
+      1,1,1,1,1,1,1,1,1,1,1,1
+    ];
+
+    let playerIndex = layout.indexOf(2);
+    let goalIndex = layout.indexOf(3);
+    let gameActive = true;
+
+    // Render the grid elements dynamically
+    function createMaze() {
+      mazeContainer.innerHTML = '';
+      layout.forEach((cellType, index) => {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        
+        if (cellType === 1) cell.classList.add('wall');
+        else if (cellType === 0) cell.classList.add('path');
+        else if (cellType === 2) cell.classList.add('path', 'player');
+        else if (cellType === 3) cell.classList.add('path', 'goal');
+        
+        mazeContainer.appendChild(cell);
+      });
+    }
+
+    // Single central movement function
+    function movePlayer(direction) {
+      if (!gameActive) return;
+
+      let newIndex = playerIndex;
+
+      if (direction === 'up') newIndex = playerIndex - width;
+      else if (direction === 'down') newIndex = playerIndex + width;
+      else if (direction === 'left') newIndex = playerIndex - 1;
+      else if (direction === 'right') newIndex = playerIndex + 1;
+
+      // Check bounds and wall collisions
+      if (newIndex >= 0 && newIndex < layout.length && layout[newIndex] !== 1) {
+        const cells = document.querySelectorAll('.cell');
+        cells[playerIndex].classList.remove('player');
+        
+        playerIndex = newIndex;
+        cells[playerIndex].classList.add('player');
+        
+        checkWin();
+      }
+    }
+
+    // Keyboard controls handler
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      if (key === 'arrowup' || key === 'w') movePlayer('up');
+      if (key === 'arrowdown' || key === 's') movePlayer('down');
+      if (key === 'arrowleft' || key === 'a') movePlayer('left');
+      if (key === 'arrowright' || key === 'd') movePlayer('right');
+
+      if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(e.key)) {
+        e.preventDefault(); // Stop page scrolling
+      }
+    });
+
+    // Touch Event Listeners for mobile D-Pad Buttons
+    document.getElementById('btn-up').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('up'); });
+    document.getElementById('btn-down').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('down'); });
+    document.getElementById('btn-left').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('left'); });
+    document.getElementById('btn-right').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('right'); });
+
+    // Fallback click handlers for testing responsive view on Desktop computers
+    document.getElementById('btn-up').addEventListener('click', () => movePlayer('up'));
+    document.getElementById('btn-down').addEventListener('click', () => movePlayer('down'));
+    document.getElementById('btn-left').addEventListener('click', () => movePlayer('left'));
+    document.getElementById('btn-right').addEventListener('click', () => movePlayer('right'));
+
+    function checkWin() {
+      if (playerIndex === goalIndex) {
+        gameActive = false;
+        statusText.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>ROUTE_ESTABLISHED: Link unlocked!</span>";
+        escapeBtn.classList.remove('hidden');
+      }
+    }
+
+    createMaze();
+  </script>
+
+</body>
+</html>

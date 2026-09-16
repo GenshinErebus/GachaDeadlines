@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Terminal Error</title>
+  <style>
+    /* Retro Terminal Styling */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      margin: 0;
+      text-shadow: 0 0 5px #00ff33;
+    }
+
+    .terminal {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .output-line {
+      margin: 5px 0;
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+
+    .input-area {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .prompt {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Invisible input field that styles nicely */
+    #terminal-input {
+      background: transparent;
+      border: none;
+      color: #00ff33;
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      flex-grow: 1;
+      text-shadow: 0 0 5px #00ff33;
+    }
+
+    /* Custom Selection Styling */
+    ::selection {
+      background: #00ff33;
+      color: #050505;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal" id="terminal">
+    <!-- Initial boot sequence output -->
+    <div class="output-line">⚠️ [ERROR] CRITICAL SYSTEM FAILURE DETECTED...</div>
+    <div class="output-line">⚠️ STATUS_CODE: 404_PAGE_NOT_FOUND</div>
+    <div class="output-line">Requested coordinates do not exist in this sector.</div>
+    <div class="output-line">====================================================</div>
+    <div class="output-line">Type <span style="color: #ffffff;">help</span> to see available fallback commands.</div>
+    <div class="output-line">====================================================</div>
+    
+    <!-- Area where new outputs will be dynamically appended -->
+    <div id="history"></div>
+
+    <!-- Active command input line -->
+    <div class="input-area">
+      <span class="prompt">guest@system:~#</span>
+      <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+
+  <script>
+    const inputField = document.getElementById('terminal-input');
+    const historyContainer = document.getElementById('history');
+
+    // Keep input field focused even if user clicks elsewhere on the page
+    document.addEventListener('click', () => inputField.focus());
+
+    // Handle user inputs
+    inputField.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        const command = this.value.trim().toLowerCase();
+        
+        // Print the typed command into history
+        printLine(`guest@system:~# ${this.value}`);
+        
+        // Process the command
+        processCommand(command);
+        
+        // Reset input and scroll down
+        this.value = '';
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    });
+
+    // Terminal command logic
+    function processCommand(cmd) {
+      switch (cmd) {
+        case '':
+          break;
+        case 'help':
+          printLine('Available protocols:\n' +
+                    '  home   - Safely abort and return to the main base\n' +
+                    '  clear  - Wipe current terminal buffer\n' +
+                    '  joke   - Request a developer joke for morale boost\n' +
+                    '  matrix - Wake up, Neo...');
+          break;
+        case 'home':
+          printLine('Initiating hyper-jump back to homepage...');
+          setTimeout(() => {
+            window.location.href = '/'; // Path to your homepage
+          }, 1500);
+          break;
+        case 'clear':
+          historyContainer.innerHTML = '';
+          break;
+        case 'joke':
+          const jokes = [
+            "Why do programmers wear glasses? Because they can't C#.",
+            "There are 10 types of people in the world: those who understand binary, and those who don't.",
+            "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'"
+          ];
+          const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+          printLine(`🤖 System: "${randomJoke}"`);
+          break;
+        case 'matrix':
+          printLine('Knock, knock, Neo. 🐇');
+          break;
+        default:
+          printLine(`❌ Unknown command: "${cmd}". Type "help" for valid parameters.`);
+      }
+    }
+
+    // Helper function to append text blocks
+    function printLine(text) {
+      const line = document.createElement('div');
+      line.className = 'output-line';
+      line.innerText = text;
+      historyContainer.appendChild(line);
+    }
+  </script>
+
+</body>
+</html>

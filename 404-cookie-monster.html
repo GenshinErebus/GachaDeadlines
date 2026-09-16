@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Memory Overload</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* The Monster visual styling container */
+    .monster-container {
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    #monster-sprite {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ff33;
+      transition: all 0.3s ease;
+      letter-spacing: 2px;
+    }
+
+    .log-panel {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.3);
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      min-height: 45px;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .escape-btn {
+      border: 2px solid #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>👾 BUFFER_OVERFLOW: COOKIE_MONSTER</h1>
+    <p style="color: #888; font-size: 0.9rem;">The requested link layer is gone. A wild memory-leak entity blocks the gateway. Feed it cookies to bypass.</p>
+    
+    <!-- The pixel data ghost character -->
+    <div class="monster-container">
+      <div id="monster-sprite">[o_o]</div>
+    </div>
+
+    <!-- Live event log printer -->
+    <div class="log-panel" id="log-display">Entity status: HUNGRY // Cookies fed: 0/5</div>
+
+    <div class="btn-row">
+      <button class="btn" id="feed-btn" onclick="feedMonsterNode()">🍪 FEED_COOKIE.EXE</button>
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 RUN EMERGENCY_ABORT.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const sprite = document.getElementById('monster-sprite');
+    const logDisplay = document.getElementById('log-display');
+    const feedBtn = document.getElementById('feed-btn');
+    const escapeLink = document.getElementById('escape-link');
+
+    let cookiesEaten = 0;
+    
+    // Funny server log reactions
+    const logMessages = [
+      "Log: LocalStorage sector devoured... Crunch.",
+      "Log: Browser cache partition consumed... Omnomnom.",
+      "Log: Session cookies wiped from heap memory.",
+      "Log: History breadcrumbs digested successfully.",
+      "Log: IndexDB storage space filled to maximum capacity!"
+    ];
+
+    // Character expressions mapping different sizes safely
+    const monsterExpressions = [
+      "[o_o]", 
+      "=[o_o]=", 
+      "==[O_O]==", 
+      "===[ ʘ_ Cullen ʘ_ ]===", 
+      "⚡===[ 🟢_ʘ ]==="
+    ];
+
+    function feedMonsterNode() {
+      if (cookiesEaten >= 5) return;
+
+      cookiesEaten++;
+      
+      // Update visual presentation sizes based on feed levels
+      const scaleMultiplier = 1 + (cookiesEaten * 0.25);
+      sprite.style.transform = "scale(" + scaleMultiplier + ")";
+      
+      // Update character face expression dynamically
+      const expressionIndex = Math.min(cookiesEaten, monsterExpressions.length - 1);
+      sprite.innerText = monsterExpressions[expressionIndex];
+
+      if (cookiesEaten < 5) {
+        logDisplay.innerText = logMessages[cookiesEaten - 1] + " (" + cookiesEaten + "/5)";
+      } else {
+        // Win threshold criteria passed
+        feedBtn.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+        logDisplay.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>FATAL_OVERLOAD: Entity is full! Path opened.</span>";
+        sprite.innerText = "💥 STATUS: SATISFIED 💥";
+        sprite.style.color = "#ffffff";
+      }
+    }
+  </script>
+
+</body>
+</html>

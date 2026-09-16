@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Grid Disrupted (Pong)</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow: hidden;
+      /* Prevents pull-to-refresh gestures on mobile browsers while playing */
+      touch-action: none; 
+    }
+
+    .container {
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    /* Game Canvas - Fully Responsive scaling */
+    canvas {
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+      height: auto;
+      /* Hides normal mouse cursor on desktops */
+      cursor: none; 
+    }
+
+    .score-board {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CRITICAL] 404_PAGE_NOT_FOUND</div>
+      <div>The link is broken. Drag or move your finger/mouse to control the paddle.</div>
+    </div>
+
+    <div class="score-board">
+      USER: <span id="user-score">0</span> | AI: <span id="ai-score">0</span>
+    </div>
+
+    <!-- The Game Screen -->
+    <canvas id="pongCanvas" width="600" height="400"></canvas>
+
+    <div>
+      <a href="/" class="btn" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('pongCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const userScoreEl = document.getElementById('user-score');
+    const aiScoreEl = document.getElementById('ai-score');
+
+    // Game objects configurations
+    const paddleWidth = 10;
+    const paddleHeight = 80;
+    const ballRadius = 7;
+
+    const user = { x: 15, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+    const ai = { x: canvas.width - 25, y: canvas.height / 2 - paddleHeight / 2, score: 0 };
+    const ball = { x: canvas.width / 2, y: canvas.height / 2, speedX: 4, speedY: 4, speedMultiplier: 1.05 };
+
+    // --- RESPONSIVE CONTROLS SYSTEM ---
+
+    // Central function to process raw coordinates (Mouse or Touch) onto the canvas grid
+    function processInputY(clientY) {
+      const rect = canvas.getBoundingClientRect();
+      
+      // 1. Calculate how far down the client clicked relative to the visible canvas box
+      const relativeY = clientY - rect.top;
+      
+      // 2. Scale that visual position back up to our absolute canvas resolution (400px height)
+      const canvasScaleFactor = canvas.height / rect.height;
+      const targetCanvasY = relativeY * canvasScaleFactor;
+      
+      // 3. Apply position to center the paddle under the finger/cursor
+      user.y = Math.max(0, Math.min(canvas.height - paddleHeight, targetCanvasY - paddleHeight / 2));
+    }
+
+    // DESKTOP: Mouse movement tracker
+    canvas.addEventListener('mousemove', (e) => {
+      processInputY(e.clientY);
+    });
+
+    // SMARTPHONE: Touch gesture tracker (Swipes & Drags)
+    canvas.addEventListener('touchmove', (e) => {
+      // Prevent smartphone from scrolling the website while playing
+      e.preventDefault(); 
+      
+      if (e.touches.length > 0) {
+        processInputY(e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+    // Initial touch interaction starter (so it jumps to the finger instantly on first tap)
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      if (e.touches.length > 0) {
+        processInputY(e.touches[0].clientY);
+      }
+    }, { passive: false });
+
+
+    // --- BASE PONG ENGINE ---
+
+    function resetBall() {
+      ball.x = canvas.width / 2;
+      ball.y = canvas.height / 2;
+      ball.speedX = -ball.speedX > 0 ? 4 : -4; 
+      ball.speedY = (Math.random() * 2 - 1) * 3; 
+    }
+
+    function checkCollision(b, p) {
+      return b.x + ballRadius > p.x && 
+             b.x - ballRadius < p.x + paddleWidth && 
+             b.y + ballRadius > p.y && 
+             b.y - ballRadius < p.y + paddleHeight;
+    }
+
+    function update() {
+      ball.x += ball.speedX;
+      ball.y += ball.speedY;
+
+      // Top & Bottom boundary bounce
+      if (ball.y - ballRadius < 0 || ball.y + ballRadius > canvas.height) {
+        ball.speedY = -ball.speedY;
+      }
+
+      // Smooth AI tracking mechanics
+      const aiTarget = ball.y - paddleHeight / 2;
+      ai.y += (aiTarget - ai.y) * 0.12; 
+      ai.y = Math.max(0, Math.min(canvas.height - paddleHeight, ai.y)); 
+
+      // Hit physics checks
+      let player = (ball.x < canvas.width / 2) ? user : ai;
+
+      if (checkCollision(ball, player)) {
+        ball.speedX = -ball.speedX * ball.speedMultiplier;
+        let hitPoint = ball.y - (player.y + paddleHeight / 2);
+        hitPoint = hitPoint / (paddleHeight / 2); 
+        ball.speedY = hitPoint * 5;
+      }
+
+      // Point scoring conditions
+      if (ball.x - ballRadius < 0) {
+        ai.score++;
+        aiScoreEl.innerText = ai.score;
+        resetBall();
+      } else if (ball.x + ballRadius > canvas.width) {
+        user.score++;
+        userScoreEl.innerText = user.score;
+        resetBall();
+      }
+    }
+
+    function draw() {
+      // Reset Frame
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Center dashed timeline network
+      ctx.strokeStyle = 'rgba(0, 255, 51, 0.2)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2, 0);
+      ctx.lineTo(canvas.width / 2, canvas.height);
+      ctx.stroke();
+
+      // Matrix Neon styling settings
+      ctx.fillStyle = '#00ff33';
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#00ff33';
+
+      ctx.fillRect(user.x, user.y, paddleWidth, paddleHeight);
+      ctx.fillRect(ai.x, ai.y, paddleWidth, paddleHeight);
+      
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.shadowBlur = 0; // Performance cleanup
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+
+    resetBall();
+    gameLoop();
+  </script>
+
+</body>
+</html>

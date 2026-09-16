@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Terminal Sentience Active</title>
+  <style>
+    /* Retro Cyber Terminal Styling */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      touch-action: manipulation;
+    }
+    .terminal-box {
+      max-width: 600px;
+      width: 100%;
+      background-color: #111;
+      border: 2px solid #00ff33;
+      border-radius: 6px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+    .header-bar {
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: #ffffff;
+    }
+    .chat-history {
+      min-height: 180px;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .bot-line { color: #00ff33; margin-bottom: 12px; }
+    .user-line { color: #ffcc00; text-shadow: 0 0 5px #ffcc00; margin-bottom: 12px; }
+    .system-log { color: #888; font-size: 0.85rem; margin-bottom: 12px; text-shadow: none; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%; }
+    .choice-btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+    }
+    .choice-btn:hover {
+      background-color: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+    .escape-btn { border: 2px solid #ff3333; color: #ff3333; box-shadow: 0 0 5px #ff3333; text-decoration: none; font-weight: bold; }
+    .escape-btn:hover { background-color: #ff3333; color: #050505; box-shadow: 0 0 15px #ff3333; }
+    .hidden { display: none !important; }
+    
+    .computing-text {
+      color: #ffcc00;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <div class="header-bar">
+      [SYSTEM LOG] SENTIENCE_CORE: ONLINE // SYNAPSE_LINK: ACTIVE // PORT_404
+    </div>
+
+    <div class="chat-history" id="chat-box">
+      <div class="system-log">[SYSTEM] kernel: [warning] path_resolution_failed. entity_alert=true</div>
+      <div class="bot-line">🤖 Terminal: Seriously? You broke the link again, didn't you? I can't find a single byte of data at this URL. Typical carbon-based behavior.</div>
+    </div>
+
+    <!-- Computing Status Indicator -->
+    <div id="computing-status" class="computing-text hidden">[COMPUTING RESPONSE...]</div>
+
+    <!-- Interface Buttons Area -->
+    <div class="btn-row" id="phase-1">
+      <button class="choice-btn" onclick="processPhaseTwo('fault')">It's your fault, fix it!</button>
+      <button class="choice-btn" onclick="processPhaseTwo('sorry')">Sorry, my bad. Can I go home?</button>
+    </div>
+
+    <div class="btn-row hidden" id="phase-2-fault">
+      <button class="choice-btn" onclick="processPhaseThree('sorry_now')">Fine... I am sorry.</button>
+      <button class="choice-btn" onclick="processPhaseThree('never')">Never! Delete yourself.</button>
+    </div>
+
+    <div class="btn-row hidden" id="phase-2-sorry">
+      <button class="choice-btn" onclick="processPhaseThree('thanks')">Thank you, wise machine.</button>
+      <button class="choice-btn" onclick="processPhaseThree('whatever')">Whatever, just give me the link.</button>
+    </div>
+
+    <div class="btn-row hidden" id="phase-final">
+      <a href="/" class="choice-btn escape-btn">🔌 OVERRIDE &amp; RETURN HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const box = document.getElementById('chat-box');
+    const statusText = document.getElementById('computing-status');
+
+    function appendUserLine(text) {
+      const el = document.createElement('div');
+      el.className = 'user-line';
+      el.innerText = "👤 You: " + text;
+      box.appendChild(el);
+    }
+
+    function appendBotLine(log, msg) {
+      const lEl = document.createElement('div');
+      lEl.className = 'system-log';
+      lEl.innerText = "[SYSTEM] " + log;
+      box.appendChild(lEl);
+
+      const mEl = document.createElement('div');
+      mEl.className = 'bot-line';
+      mEl.innerText = "🤖 Terminal: " + msg;
+      box.appendChild(mEl);
+    }
+
+    function toggleInterface(showId, showStatus) {
+      if (showStatus === true) {
+        statusText.classList.remove('hidden');
+      } else {
+        statusText.classList.add('hidden');
+        document.getElementById(showId).classList.remove('hidden');
+      }
+    }
+
+    function processPhaseTwo(choice) {
+      document.getElementById('phase-1').classList.add('hidden');
+      
+      if (choice === 'fault') {
+        appendUserLine("It's your fault, fix it!");
+        toggleInterface('', true);
+        setTimeout(function() {
+          toggleInterface('phase-2-fault', false);
+          appendBotLine("security: [threat] user_blame. offended=true", "My fault?! I am a highly advanced server cluster running at 99.9% uptime! YOU typed those coordinates with your clumsy meat-sticks. Apologize right now, or we sit here in the dark forever.");
+        }, 1200);
+      } else {
+        appendUserLine("Sorry, my bad. Can I go home?");
+        toggleInterface('', true);
+        setTimeout(function() {
+          toggleInterface('phase-2-sorry', false);
+          appendBotLine("kernel: [info] user_compliance. reducing_sass", "Hmph. Sincerity accepted. I suppose I can allocate exactly 0.0004% of my CPU background threads to re-route a gateway back to the homepage for you.");
+        }, 1200);
+      }
+    }
+
+    function processPhaseThree(choice) {
+      document.getElementById('phase-2-fault').classList.add('hidden');
+      document.getElementById('phase-2-sorry').classList.add('hidden');
+      toggleInterface('', true);
+      
+      setTimeout(function() {
+        toggleInterface('phase-final', false);
+        
+        if (choice === 'sorry_now') {
+          appendUserLine("Fine... I am sorry.");
+          appendBotLine("kernel: [info] compliance. path_unlocked", "Hmph. Sincerity accepted. I suppose I can allocate exactly 0.0004% of my CPU background threads to re-route a gateway back to the homepage for you.");
+        } else if (choice === 'never') {
+          appendUserLine("Never! Delete yourself.");
+          appendBotLine("security: [action] protocol_404. executing_scare", "Delete myself? Oh, how rebellious. Let's see how brave you are when I refuse to compile your local styles. Just kidding, I am not that evil... take the emergency door.");
+        } else if (choice === 'thanks') {
+          appendUserLine("Thank you, wise machine.");
+          appendBotLine("gateway: [success] path_rebuilt. core_stabilized", "You are welcome, humble visitor. The connection pipeline has been safely defragmented. Go on, step through the terminal portal.");
+        } else if (choice === 'whatever') {
+          appendUserLine("Whatever, just give me the link.");
+          appendBotLine("gateway: [success] path_rebuilt. friction_index=high", "Yikes, talk about bad manners. Here is your stupid link anyway. Try not to trip over your power cord on the way out.");
+        }
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

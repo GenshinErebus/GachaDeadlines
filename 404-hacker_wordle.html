@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Password Cracker (Wordle)</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    /* Wordle 6x5 Grid */
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 15px auto;
+    }
+
+    .word-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .letter-box {
+      width: 42px;
+      height: 42px;
+      border: 2px solid #00ff33;
+      border-radius: 4px;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    /* Wordle Status Colors Mapping States Safely */
+    .letter-box.correct {
+      background-color: #0c2c0e;
+      border-color: #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+    .letter-box.present {
+      background-color: #3a3000;
+      border-color: #ffcc00;
+      color: #ffcc00;
+      text-shadow: 0 0 5px #ffcc00;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+    .letter-box.absent {
+      background-color: #221111;
+      border-color: #331111;
+      color: #552222;
+      text-shadow: none;
+      box-shadow: none;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      min-height: 25px;
+    }
+
+    /* Custom Virtual Keyboard Grid Layout */
+    .keyboard {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 400px;
+      margin: 15px auto;
+      width: 100%;
+    }
+
+    .kb-row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      width: 100%;
+    }
+
+    .key {
+      background-color: #111;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 10px 0;
+      flex: 1;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0, 255, 51, 0.3);
+      transition: all 0.1s;
+      text-align: center;
+    }
+
+    .key:active, .key:hover {
+      background-color: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 12px #00ff33;
+      font-weight: bold;
+    }
+
+    .key.wide {
+      flex: 1.5;
+      font-size: 0.8rem;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 8px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [AUTHENTICATION_REQUIRED] SYSTEM LOCKOUT 404</div>
+      <div>Crack the 5-letter cryptographic password mainframe token.</div>
+    </div>
+
+    <!-- 6 Rows x 5 Letters Grid Layout -->
+    <div class="grid" id="wordle-grid"></div>
+
+    <div class="status-panel" id="status-msg">Tries left: 6</div>
+
+    <!-- Responsive On-Screen Keyboard -->
+    <div class="keyboard" id="v-keyboard">
+      <div class="kb-row">
+        <button class="key">Q</button><button class="key">W</button><button class="key">E</button><button class="key">R</button><button class="key">T</button>
+        <button class="key">Z</button><button class="key">U</button><button class="key">I</button><button class="key">O</button><button class="key">P</button>
+      </div>
+      <div class="kb-row">
+        <button class="key">A</button><button class="key">S</button><button class="key">D</button><button class="key">F</button><button class="key">G</button>
+        <button class="key">H</button><button class="key">J</button><button class="key">K</button><button class="key">L</button>
+      </div>
+      <div class="kb-row">
+        <button class="key wide" id="key-del">DEL</button>
+        <button class="key">Y</button><button class="key">X</button><button class="key">C</button><button class="key">V</button>
+        <button class="key">B</button><button class="key">N</button><button class="key">M</button>
+        <button class="key wide" id="key-ent">ENTER</button>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const gridContainer = document.getElementById('wordle-grid');
+    const statusMsg = document.getElementById('status-msg');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const keyboard = document.getElementById('v-keyboard');
+
+    const maxTries = 6;
+    const wordLength = 5;
+    const TECH_WORDS = ["LINUX", "ARRAY", "CYBER", "LOGIC", "PROXY", "STACK", "NODES", "RESET", "ADMIN", "MOUSE", "PIXEL"];
+    
+    let secretWord = "";
+    let currentTry = 0;
+    let currentGuess = [];
+    let gameActive = true;
+
+    function initGame() {
+      secretWord = TECH_WORDS[Math.floor(Math.random() * TECH_WORDS.length)];
+      currentTry = 0;
+      currentGuess = [];
+      gameActive = true;
+      
+      statusMsg.innerText = "Tries left: " + maxTries;
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      keyboard.classList.remove('hidden');
+
+      gridContainer.innerHTML = '';
+      for (let r = 0; r < maxTries; r++) {
+        const row = document.createElement('div');
+        row.className = 'word-row';
+        for (let c = 0; c < wordLength; c++) {
+          const box = document.createElement('div');
+          box.className = 'letter-box';
+          box.id = "box-" + r + "-" + c;
+          row.appendChild(box);
+        }
+        gridContainer.appendChild(row);
+      }
+    }
+
+    keyboard.addEventListener('click', (e) => {
+      if (!gameActive || !e.target.classList.contains('key')) return;
+      const keyEl = e.target;
+      if (keyEl.id === 'key-del') {
+        handleDelete();
+      } else if (keyEl.id === 'key-ent') {
+        handleSubmit();
+      } else {
+        handleLetterInput(keyEl.innerText);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!gameActive) return;
+      const key = e.key.toUpperCase();
+      if (key === 'BACKSPACE') handleDelete();
+      if (key === 'ENTER') handleSubmit();
+      if (key.length === 1 && key >= 'A' && key <= 'Z') handleLetterInput(key);
+    });
+
+    function handleLetterInput(letter) {
+      if (currentGuess.length < wordLength) {
+        currentGuess.push(letter);
+        updateVisualRow();
+      }
+    }
+
+    function handleDelete() {
+      if (currentGuess.length > 0) {
+        currentGuess.pop();
+        updateVisualRow();
+      }
+    }
+
+    function updateVisualRow() {
+      for (let c = 0; c < wordLength; c++) {
+        const box = document.getElementById("box-" + currentTry + "-" + c);
+        box.innerText = currentGuess[c] !== undefined ? currentGuess[c] : '';
+      }
+    }
+
+    function displayRemainingTries() {
+      const remaining = maxTries - currentTry;
+      statusMsg.innerText = "Tries left: " + remaining;
+    }
+
+    function handleSubmit() {
+      if (currentGuess.length < wordLength) {
+        statusMsg.innerText = "ERROR: Token length insufficient.";
+        return;
+      }
+
+      let secretCopy = secretWord.split('');
+      let rowStatuses = Array(wordLength).fill('absent');
+
+      for (let i = 0; i < wordLength; i++) {
+        if (currentGuess[i] === secretCopy[i]) {
+          rowStatuses[i] = 'correct';
+          secretCopy[i] = null;
+          currentGuess[i] = null;
+        }
+      }
+
+      for (let i = 0; i < wordLength; i++) {
+        if (currentGuess[i] !== null) {
+          let idx = secretCopy.indexOf(currentGuess[i]);
+          if (idx !== -1) {
+            rowStatuses[i] = 'present';
+            secretCopy[idx] = null;
+          }
+        }
+      }
+
+      for (let i = 0; i < wordLength; i++) {
+        const box = document.getElementById("box-" + currentTry + "-" + i);
+        box.classList.add(rowStatuses[i]);
+      }
+
+      if (rowStatuses.every(status => status === 'correct')) {
+        gameActive = false;
+        statusMsg.innerHTML = "<span style='color:#00ff33;font-weight:bold;'>ACCESS_GRANTED: Decryption Successful!</span>";
+        escapeBtn.classList.remove('hidden');
+        keyboard.classList.add('hidden');
+      } else {
+        currentTry++;
+        currentGuess = [];
+        
+        if (currentTry >= maxTries) {
+          gameActive = false;
+          statusMsg.innerHTML = "<span style='color:#ff3333;'>DECRYPTION_FAILED! Token was: " + secretWord + "</span>";
+          resetBtn.classList.remove('hidden');
+          keyboard.classList.add('hidden');
+        } else {
+          displayRemainingTries();
+        }
+      }
+    }
+
+    function resetGame() {
+      initGame();
+    }
+
+    initGame();
+  </script>
+</body>
+</html>

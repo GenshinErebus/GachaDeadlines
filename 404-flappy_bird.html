@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Flappy Packet Protocol</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow: hidden;
+      touch-action: none; /* Prevents mobile scrolling and bouncing during gameplay */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    .score-board {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Game Screen Canvas Box - Scales beautifully on mobile screens */
+    canvas {
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [CONNECTION_UNSTABLE] PACKET_TRANSIT_MODE</div>
+      <div>Keep the data packet airborne. Dodge the incoming firewall segments.</div>
+      <div>Controls: Tap Screen (Mobile) or Press <span style="color: #ffffff;">SPACE / UP</span> (Desktop)</div>
+    </div>
+
+    <div class="score-board">
+      NODES PASSED: <span id="current-score">0</span> / 5
+    </div>
+
+    <!-- The Game Canvas screen (360x450 vertical aspect ratio) -->
+    <canvas id="flappyCanvas" width="360" height="450"></canvas>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('flappyCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const scoreEl = document.getElementById('current-score');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    // Engine Configurations
+    let score = 0;
+    let isGameOver = false;
+    let pipes = [];
+    let frameCount = 0;
+    let gameInterval;
+
+    // Airborne Data Packet Physics
+    const packet = {
+      x: 50,
+      y: 150,
+      size: 16,
+      gravity: 0.35,
+      velocity: 0,
+      jumpForce: -6.5
+    };
+
+    const pipeWidth = 50;
+    const pipeGap = 110; // Gap size between top and bottom firewall segments
+    const pipeSpeed = 2.5;
+
+    // --- PACKET INPUT ENGINE ---
+
+    function triggerJump() {
+      if (isGameOver) {
+        resetGame();
+      } else {
+        packet.velocity = packet.jumpForce;
+      }
+    }
+
+    // DESKTOP: Space/Arrow keys
+    document.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'ArrowUp' || e.key.toLowerCase() === 'w') {
+        e.preventDefault(); // Stop window space scrolling
+        triggerJump();
+      }
+    });
+
+    // SMARTPHONE: Unified tap tracking layer
+    document.addEventListener('touchstart', (e) => {
+      // Don't trigger a jump if the user targets navigation interface links/buttons
+      if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+        e.preventDefault();
+        triggerJump();
+      }
+    }, { passive: false });
+
+    // Fallback normal click event
+    canvas.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      triggerJump();
+    });
+
+
+    // --- BASE LOGIC CYCLE ---
+
+    function spawnPipe() {
+      // Randomize gap offset height layout safely
+      const minHeight = 40;
+      const maxHeight = canvas.height - pipeGap - minHeight;
+      const topHeight = Math.floor(Math.random() * (maxHeight - minHeight)) + minHeight;
+
+      pipes.push({
+        x: canvas.width,
+        top: topHeight,
+        bottom: canvas.height - topHeight - pipeGap,
+        passed: false
+      });
+    }
+
+    function checkCollision(pk, p) {
+      // Check collision with top pipe segment
+      const hitTop = pk.x + pk.size > p.x && pk.x < p.x + pipeWidth && pk.y < p.top;
+      // Check collision with bottom pipe segment
+      const hitBottom = pk.x + pk.size > p.x && pk.x < p.x + pipeWidth && pk.y + pk.size > canvas.height - p.bottom;
+      
+      return hitTop || hitBottom;
+    }
+
+    function update() {
+      if (isGameOver) return;
+
+      frameCount++;
+
+      // 1. Core Physics velocity gravity step
+      packet.velocity += packet.gravity;
+      packet.y += packet.velocity;
+
+      // Ground bounds ceiling check
+      if (packet.y + packet.size >= canvas.height || packet.y <= 0) {
+        triggerLoss();
+      }
+
+      // 2. Obstacle generation timing frequency
+      if (frameCount % 100 === 0) {
+        spawnPipe();
+      }
+
+      // 3. Drive pipeline system leftwards
+      for (let i = pipes.length - 1; i >= 0; i--) {
+        pipes[i].x -= pipeSpeed;
+
+        // Collision logic check
+        if (checkCollision(packet, pipes[i])) {
+          triggerLoss();
+        }
+
+        // Successfully cleared milestone tracking point verification
+        if (!pipes[i].passed && pipes[i].x + pipeWidth < packet.x) {
+          pipes[i].passed = true;
+          score++;
+          scoreEl.innerText = score;
+
+          if (score >= 5) {
+            escapeBtn.classList.remove('hidden');
+          }
+        }
+
+        // Wipe out-of-screen pipelines array memory blocks
+        if (pipes[i].x + pipeWidth < 0) {
+          pipes.splice(i, 1);
+        }
+      }
+    }
+
+    function draw() {
+      // Refresh screen canvas background grid box
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Setup global neon matrix glowing layers
+      ctx.shadowBlur = 8;
+
+      // Draw airborne packet cube
+      ctx.fillStyle = '#00ff33';
+      ctx.shadowColor = '#00ff33';
+      ctx.fillRect(packet.x, packet.y, packet.size, packet.size);
+
+      // Draw Firewall obstacle pipeline blocks
+      ctx.fillStyle = '#ff3333';
+      ctx.shadowColor = '#ff3333';
+      pipes.forEach(p => {
+        // Top column block element
+        ctx.fillRect(p.x, 0, pipeWidth, p.top);
+        // Bottom column block element
+        ctx.fillRect(p.x, canvas.height - p.bottom, pipeWidth, p.bottom);
+      });
+
+      // Clear performance shadows
+      ctx.shadowBlur = 0;
+
+      // Render Display States Window Text overlay blocks
+      if (isGameOver) {
+        ctx.fillStyle = '#ff3333';
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = '#ff3333';
+        ctx.font = '18px "Courier New"';
+        ctx.textAlign = 'center';
+        ctx.fillText('⚡ PACKET_COLLISION ⚡', canvas.width / 2, canvas.height / 2 - 10);
+        ctx.font = '13px "Courier New"';
+        ctx.fillText('Tap Screen or Space to Reboot', canvas.width / 2, canvas.height / 2 + 15);
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function triggerLoss() {
+      isGameOver = true;
+      clearInterval(gameInterval);
+      resetBtn.classList.remove('hidden');
+    }
+
+    function resetGame() {
+      score = 0;
+      scoreEl.innerText = score;
+      isGameOver = false;
+      pipes = [];
+      frameCount = 0;
+      packet.y = 150;
+      packet.velocity = 0;
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      
+      clearInterval(gameInterval);
+      gameInterval = setInterval(() => { update(); draw(); }, 1000 / 60); // 60 FPS core engine
+    }
+
+    // Launch configuration engine setup
+    resetGame();
+  </script>
+
+</body>
+</html>

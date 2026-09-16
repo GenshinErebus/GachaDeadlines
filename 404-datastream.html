@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Data Stream Protocol</title>
+  <style>
+    /* Retro Terminal Styling */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow: hidden;
+      touch-action: none; /* Prevents scrolling or zooming on smartphones while tapping */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+
+    .score-board {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Game Window Container */
+    .game-window {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      height: 380px;
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      margin: 15px auto;
+      overflow: hidden;
+    }
+
+    /* The 3 falling tracks */
+    .tracks-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .track {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      border-right: 1px dashed rgba(0, 255, 51, 0.2);
+    }
+    .track:last-child {
+      border-right: none;
+    }
+
+    /* Falling Data Nodes */
+    .node {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+      height: 20px;
+      background-color: #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+      border-radius: 4px;
+    }
+
+    /* Target / Hit Zone at the bottom */
+    .hit-zone-line {
+      position: absolute;
+      bottom: 60px;
+      width: 100%;
+      height: 25px;
+      border-top: 2px solid #ff3333;
+      border-bottom: 2px solid #ff3333;
+      background-color: rgba(255, 51, 51, 0.1);
+      pointer-events: none;
+    }
+
+    /* Mobile Friendly Touch / Click Buttons at the bottom */
+    .button-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      background-color: #0a0a0a;
+      border-top: 2px solid #00ff33;
+    }
+
+    .lane-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #00ff33;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.1s;
+      border-right: 1px solid rgba(0, 255, 51, 0.3);
+    }
+    .lane-btn:last-child {
+      border-right: none;
+    }
+
+    /* Flash effect when a button is pressed */
+    .lane-btn:active {
+      background-color: rgba(0, 255, 51, 0.4);
+      color: #050505;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [STREAM_INTERRUPTION] RECOVERY_REQUIRED</div>
+      <div>Intercept packets in the target zone to sync the transmission grid.</div>
+      <div>Controls: Tap Lanes (Mobile) or Press keys <span style="color: #ffffff;">A / S / D</span> (Desktop)</div>
+    </div>
+
+    <div class="score-board">
+      SYNC RATE: <span id="current-score">0</span> / 25
+    </div>
+
+    <!-- The Active Rhythm Grid View -->
+    <div class="game-window">
+      <div class="tracks-container">
+        <div class="track" id="track-0"></div>
+        <div class="track" id="track-1"></div>
+        <div class="track" id="track-2"></div>
+      </div>
+      
+      <!-- Visual Timing target overlay -->
+      <div class="hit-zone-line"></div>
+
+      <!-- Smartphone Touch Buttons Layer -->
+      <div class="button-container">
+        <button class="lane-btn" id="btn-0">A</button>
+        <button class="lane-btn" id="btn-1">S</button>
+        <button class="lane-btn" id="btn-2">D</button>
+      </div>
+    </div>
+
+    <div id="status-msg" style="min-height: 25px;"></div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">RELOAD STREAM</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const scoreEl = document.getElementById('current-score');
+    const statusMsg = document.getElementById('status-msg');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    
+    const tracks = [
+      document.getElementById('track-0'),
+      document.getElementById('track-1'),
+      document.getElementById('track-2')
+    ];
+
+    let score = 0;
+    let gameActive = true;
+    let nodes = [];
+    let spawnTimer;
+    let gameInterval;
+    
+    // Core settings
+    const nodeSpeed = 4; // Falling pixels per frame step
+    const targetMinY = 270; // Adjusted hit boundaries
+    const targetMaxY = 320; 
+    const targetGoal = 25; // Points needed to pass
+
+    function spawnNode() {
+      if (!gameActive) return;
+      
+      const trackIdx = Math.floor(Math.random() * 3);
+      
+      const nodeEl = document.createElement('div');
+      nodeEl.className = 'node';
+      nodeEl.style.top = '0px';
+      tracks[trackIdx].appendChild(nodeEl);
+      
+      nodes.push({
+        element: nodeEl,
+        track: trackIdx,
+        y: 0
+      });
+
+      clearInterval(spawnTimer);
+      const nextSpawn = Math.floor(Math.random() * 800) + 600;
+      spawnTimer = setInterval(spawnNode, nextSpawn);
+    }
+
+    function updateEngine() {
+      if (!gameActive) return;
+
+      for (let i = nodes.length - 1; i >= 0; i--) {
+        let node = nodes[i];
+        node.y += nodeSpeed;
+        node.element.style.top = node.y + 'px';
+
+        if (node.y > 320) {
+          node.element.remove();
+          nodes.splice(i, 1);
+          triggerMiss();
+        }
+      }
+    }
+
+    function triggerHitAttempt(trackIdx) {
+      if (!gameActive) return;
+
+      const laneNodes = nodes.filter(n => n.track === trackIdx);
+      
+      if (laneNodes.length > 0) {
+        // FIXED: Now properly selects the lowest/first node in that specific lane
+        const targetNode = laneNodes[0]; 
+        
+        if (targetNode.y >= targetMinY && targetNode.y <= targetMaxY) {
+          score++;
+          scoreEl.innerText = score;
+          
+          targetNode.element.style.backgroundColor = '#ffffff';
+          setTimeout(() => targetNode.element.remove(), 50);
+          
+          nodes = nodes.filter(n => n !== targetNode);
+          checkWinCondition();
+        } else {
+          triggerMiss();
+        }
+      }
+    }
+
+    function triggerMiss() {
+      if (score > 0) {
+        score--;
+        scoreEl.innerText = score;
+      }
+    }
+
+    function checkWinCondition() {
+      if (score >= targetGoal) {
+        gameActive = false;
+        clearInterval(spawnTimer);
+        clearInterval(gameInterval);
+        
+        nodes.forEach(n => n.element.remove());
+        nodes = [];
+        
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>GRID_SYNC_COMPLETE: Stream Restored!</span>";
+        escapeBtn.classList.remove('hidden');
+      }
+    }
+
+    // DESKTOP: Keyboard inputs
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'a') triggerHitAttempt(0);
+      if (e.key.toLowerCase() === 's') triggerHitAttempt(1);
+      if (e.key.toLowerCase() === 'd') triggerHitAttempt(2);
+    });
+
+    // SMARTPHONE: Touch inputs
+    for (let i = 0; i < 3; i++) {
+      const btn = document.getElementById(`btn-${i}`);
+      
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault(); 
+        triggerHitAttempt(i);
+      }, { passive: false });
+
+      btn.addEventListener('click', () => triggerHitAttempt(i));
+    }
+
+    function startGame() {
+      gameActive = true;
+      score = 0;
+      scoreEl.innerText = score;
+      statusMsg.innerText = '';
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      
+      gameInterval = setInterval(updateEngine, 1000 / 60); 
+      spawnTimer = setInterval(spawnNode, 500);
+    }
+
+    function resetGame() {
+      nodes.forEach(n => n.element.remove());
+      nodes = [];
+      clearInterval(spawnTimer);
+      clearInterval(gameInterval);
+      startGame();
+    }
+
+    startGame();
+  </script>
+
+</body>
+</html>

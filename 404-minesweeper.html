@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Network Miner</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow-x: hidden;
+      touch-action: manipulation; /* Removes double-tap lag on mobile */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      min-height: 25px;
+    }
+
+    /* 8x8 Grid Board Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 4px;
+      margin: 15px auto;
+      max-width: 340px;
+      width: 85vw;
+    }
+
+    /* Cell Nodes */
+    .cell {
+      aspect-ratio: 1 / 1;
+      background-color: #111;
+      border: 1px solid #00ff33;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0, 255, 51, 0.2);
+      transition: background 0.1s;
+    }
+
+    .cell:hover {
+      background-color: #0c2c0e;
+      box-shadow: 0 0 8px #00ff33;
+    }
+
+    /* Flipped / Safe cell state */
+    .cell.revealed {
+      background-color: #0c2c0e;
+      border-color: rgba(0, 255, 51, 0.3);
+      cursor: default;
+      box-shadow: none;
+    }
+
+    /* Flagged infected state */
+    .cell.flagged {
+      color: #ff3333;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    /* Exploded mine state */
+    .cell.mine {
+      background-color: #ff3333;
+      color: #050505;
+      border-color: #ff3333;
+      text-shadow: none;
+      box-shadow: 0 0 15px #ff3333;
+    }
+
+    /* Action & Mode Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 6px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .btn.active-mode {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 12px #00ff33;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [SECTOR_BREACH] CORRUPTED_NETWORK_NODES</div>
+      <div>Detect and isolate malicious data packets without triggering a crash.</div>
+    </div>
+
+    <div class="status-panel" id="status-msg">Safe sectors left: 54</div>
+
+    <!-- The 8x8 Grid Map -->
+    <div class="grid" id="minefield"></div>
+
+    <!-- Mobile Navigation Tools toggle -->
+    <div>
+      <button class="btn active-mode" id="mode-reveal-btn">🔍 REVEAL</button>
+      <button class="btn" id="mode-flag-btn">🚩 FLAG VIRUS</button>
+    </div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
+      <a href="/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const gridContainer = document.getElementById('minefield');
+    const statusMsg = document.getElementById('status-msg');
+    const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const modeRevealBtn = document.getElementById('mode-reveal-btn');
+    const modeFlagBtn = document.getElementById('mode-flag-btn');
+
+    const SIZE = 8;
+    const MINE_COUNT = 10;
+    
+    let board = [];
+    let gameActive = true;
+    let currentMode = 'reveal'; // 'reveal' or 'flag'
+    let safeCellsLeft = (SIZE * SIZE) - MINE_COUNT;
+
+    // Connect smartphone mode toggle keys
+    modeRevealBtn.addEventListener('click', () => setMode('reveal'));
+    modeFlagBtn.addEventListener('click', () => setMode('flag'));
+
+    function setMode(mode) {
+      currentMode = mode;
+      if (mode === 'reveal') {
+        modeRevealBtn.classList.add('active-mode');
+        modeFlagBtn.classList.remove('active-mode');
+      } else {
+        modeFlagBtn.classList.add('active-mode');
+        modeRevealBtn.classList.remove('active-mode');
+      }
+    }
+
+    function initBoard() {
+      gridContainer.innerHTML = '';
+      board = Array.from({ length: SIZE }, () => Array(SIZE).fill(null).map(() => ({
+        isMine: false,
+        isRevealed: false,
+        isFlagged: false,
+        neighborMines: 0
+      })));
+
+      // Plant mine packets randomly
+      let planted = 0;
+      while (planted < MINE_COUNT) {
+        const r = Math.floor(Math.random() * SIZE);
+        const c = Math.floor(Math.random() * SIZE);
+        if (!board[r][c].isMine) {
+          board[r][c].isMine = true;
+          planted++;
+        }
+      }
+
+      // Calculate numeric proximities mapping neighbors
+      for (let r = 0; r < SIZE; r++) {
+        for (let c = 0; c < SIZE; c++) {
+          if (board[r][c].isMine) continue;
+          let count = 0;
+          for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+              if (r + i >= 0 && r + i < SIZE && c + j >= 0 && c + j < SIZE) {
+                if (board[r + i][c + j].isMine) count++;
+              }
+            }
+          }
+          board[r][c].neighborMines = count;
+        }
+      }
+
+      // Render cells systematically
+      for (let r = 0; r < SIZE; r++) {
+        for (let c = 0; c < SIZE; c++) {
+          const cellEl = document.createElement('div');
+          cellEl.className = 'cell';
+          cellEl.id = `cell-${r}-${c}`;
+          
+          cellEl.addEventListener('click', () => handleCellClick(r, c));
+          // Desktop comfort right-click context menu integration toggle
+          cellEl.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            if (gameActive) handleFlag(r, c);
+          });
+
+          gridContainer.appendChild(cellEl);
+        }
+      }
+    }
+
+    function handleCellClick(r, c) {
+      if (!gameActive) return;
+      if (currentMode === 'flag') {
+        handleFlag(r, c);
+      } else {
+        handleReveal(r, c);
+      }
+    }
+
+    function handleFlag(r, c) {
+      const cell = board[r][c];
+      if (cell.isRevealed) return;
+
+      cell.isFlagged = !cell.isFlagged;
+      const el = document.getElementById(`cell-${r}-${c}`);
+      el.innerText = cell.isFlagged ? '🚩' : '';
+      el.classList.toggle('flagged', cell.isFlagged);
+    }
+
+    function handleReveal(r, c) {
+      const cell = board[r][c];
+      if (cell.isRevealed || cell.isFlagged) return;
+
+      cell.isRevealed = true;
+      const el = document.getElementById(`cell-${r}-${c}`);
+      el.classList.add('revealed');
+
+      if (cell.isMine) {
+        triggerGameOver();
+        return;
+      }
+
+      safeCellsLeft--;
+      statusMsg.innerText = `Safe sectors left: ${safeCellsLeft}`;
+
+      if (cell.neighborMines > 0) {
+        el.innerText = cell.neighborMines;
+      } else {
+        // Flood fill empty zone propagation mechanics recursive chains
+        for (let i = -1; i <= 1; i++) {
+          for (let j = -1; j <= 1; j++) {
+            if (r + i >= 0 && r + i < SIZE && c + j >= 0 && c + j < SIZE) {
+              handleReveal(r + i, c + j);
+            }
+          }
+        }
+      }
+
+      checkWin();
+    }
+
+    function triggerGameOver() {
+      gameActive = false;
+      resetBtn.classList.remove('hidden');
+      statusMsg.innerHTML = "<span style='color: #ff3333;'>FATAL_ERROR: Packet detonated! Buffer dump.</span>";
+
+      // Show all mine locations
+      for (let r = 0; r < SIZE; r++) {
+        for (let c = 0; c < SIZE; c++) {
+          if (board[r][c].isMine) {
+            const el = document.getElementById(`cell-${r}-${c}`);
+            el.innerText = '👾';
+            el.classList.add('mine');
+          }
+        }
+      }
+    }
+
+    function checkWin() {
+      if (safeCellsLeft === 0 && gameActive) {
+        gameActive = false;
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>SECTOR_CLEANSED: Network Node Sync!</span>";
+        escapeBtn.classList.remove('hidden');
+      }
+    }
+
+    function resetGame() {
+      gameActive = true;
+      safeCellsLeft = (SIZE * SIZE) - MINE_COUNT;
+      statusMsg.innerText = `Safe sectors left: ${safeCellsLeft}`;
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      setMode('reveal');
+      initBoard();
+    }
+
+    // Launch configuration engine setup
+    initBoard();
+  </script>
+</body>
+</html>
