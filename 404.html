@@ -4,42 +4,47 @@
     <meta charset="UTF-8">
     <title>Redirecting...</title>
     <script>
-        // List of custom game 404 pages
         const gamePages = [
-            '/404-chatbot.html',
-            '/404-code_breaker.html',
-            '/404-connect_four.html',
-            '/404-cookie-monster.html',
-            '/404-datastream.html',
-            '/404-endless_runner.html',
-            '/404-Excuse_Roulette.html',
-            '/404-false_terminal.html',
-            '/404-flappy_bird.html',
-            '/404-git_conflict.html',
-            '/404-hacker_wordle.html',
-            '/404-labyrinth.html',
-            '/404-linux_fortune_teller.html',
-            '/404-magnifier.html',
-            '/404-matrix_code_breaker.html',
-            '/404-matrix_rain.html',
-            '/404-memory.html',
-            '/404-minesweeper.html',
-            '/404-pong.html',
-            '/404-snake.html',
-            '/404-tetris.html',
-            '/404-tic_tac_toe.html',
-            '/404-tower_defense.html',
-            '/404-virus_invaders.html'
+            '404-chatbot.html',
+            '404-code_breaker.html',
+            '404-connect_four.html',
+            '404-cookie-monster.html',
+            '404-datastream.html',
+            '404-endless_runner.html',
+            '404-Excuse_Roulette.html',
+            '404-false_terminal.html',
+            '404-flappy_bird.html',
+            '404-git_conflict.html',
+            '404-hacker_wordle.html',
+            '404-labyrinth.html',
+            '404-linux_fortune_teller.html',
+            '404-magnifier.html',
+            '404-matrix_code_breaker.html',
+            '404-matrix_rain.html',
+            '404-memory.html',
+            '404-minesweeper.html',
+            '404-pong.html',
+            '404-snake.html',
+            '404-tetris.html',
+            '404-tic_tac_toe.html',
+            '404-tower_defense.html',
+            '404-virus_invaders.html'
         ];
         
-        // Pick a random page from the list
+        // 1. Pick a random game from the list
         const randomGame = gamePages[Math.floor(Math.random() * gamePages.length)];
         
-        // Instantly forward the user without breaking the browser history
-        window.location.replace(randomGame);
+        // 2. Dynamically extract 'GachaDeadlines' from your URL path
+        const pathSegments = window.location.pathname.split('/');
+        const repoName = pathSegments[1]; // Grabs 'GachaDeadlines' correctly
+        
+        // 3. Construct the flawless absolute URL
+        const finalUrl = window.location.origin + '/' + repoName + '/' + randomGame;
+        
+        // 4. Fire the redirect instantly
+        window.location.replace(finalUrl);
     </script>
 </head>
 <body>
-    <!-- Stays blank as the redirect happens instantly -->
 </body>
 </html>
