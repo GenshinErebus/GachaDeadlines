@@ -403,12 +403,7 @@ const eventDatabase = {
                 id: "dna_012",
                 name: "Paradise's 22nd White Bunny",
                 endDate: "2026-10-14T04:00:00Z"
-            },
-            {
-                id: "dna_013",
-                name: "Bountiful Day",
-                endDate: "2026-09-17T04:00:00Z"
-            },
+            },           
             {
                 id: "dna_014",
                 name: "Moments in Frames",

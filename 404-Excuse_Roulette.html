@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +26,8 @@
     }
 
     .error-box {
-      max-width: 600px;
-      width: 100%;
+      width: 65vw;
+      height: 65vh;
       border: 2px dashed #00ff33;
       padding: 30px;
       border-radius: 8px;
@@ -35,13 +36,13 @@
       box-sizing: border-box;
     }
 
-    h1 { 
-      font-size: 2.2rem; 
-      margin-top: 0; 
+    h1 {
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      margin-top: 0;
     }
 
     #excuse-text {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       color: #ffffff;
       margin: 25px 0;
       min-height: 60px;
@@ -54,7 +55,7 @@
       color: #00ff33;
       padding: 12px 24px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       cursor: pointer;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
@@ -72,12 +73,13 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="error-box">
     <h1>⚠️ ANOMALY_HTTP_404</h1>
     <p>The requested data sector has been completely dematerialized.</p>
-    
+
     <div id="excuse-text">Analyzing root failure database...</div>
 
     <a href="/GachaDeadlines/" class="btn">🔌 RESET CONNECTION AND GO HOME</a>
@@ -97,11 +99,11 @@
 
     function renderRandomExcuse() {
       const displayField = document.getElementById("excuse-text");
-      
+
       // FIXED: Using Date.now() as a seed modifier to completely bypass browser caching on first load
       const pseudoSeed = Date.now() + Math.random();
       const randomIndex = Math.floor((pseudoSeed * 13) % excusesList.length);
-      
+
       displayField.innerText = excusesList[randomIndex];
     }
 
@@ -110,4 +112,5 @@
   </script>
 
 </body>
+
 </html>

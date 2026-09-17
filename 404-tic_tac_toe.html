@@ -22,9 +22,18 @@
     }
 
     .container {
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
+  /* Forces the container to take up 100% of the screen width and height */
+  width: 100vw;
+  height: 100vh;  
+  /* Reset margins and ensure padding doesn't cause hidden scrollbars */
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Perfect center alignment */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
     }
 
     .header-text {
@@ -49,7 +58,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
       font-weight: bold;
       color: #00ff33;
       cursor: pointer;
@@ -71,7 +80,7 @@
     }
 
     .status {
-      font-size: 1.2rem;
+      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
       margin-top: 15px;
       min-height: 30px;
     }
@@ -82,7 +91,7 @@
       color: #00ff33;
       padding: 10px 20px;
       font-family: inherit;
-      font-size: 1rem;
+     font-size: clamp(0.85rem, 1.8vw, 1.2rem);
       cursor: pointer;
       margin: 10px;
       border-radius: 4px;

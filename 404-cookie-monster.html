@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +26,8 @@
     }
 
     .terminal-box {
-      max-width: 500px;
-      width: 100%;
+      width: 95vw;
+      height: 90vh;
       border: 2px solid #00ff33;
       padding: 25px;
       border-radius: 6px;
@@ -35,9 +36,9 @@
       box-sizing: border-box;
     }
 
-    h1 { 
-      font-size: 1.8rem; 
-      margin-top: 0; 
+    h1 {
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      margin-top: 0;
       border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
       padding-bottom: 10px;
     }
@@ -52,7 +53,7 @@
     }
 
     #monster-sprite {
-      font-size: 2rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       font-weight: bold;
       color: #00ff33;
       transition: all 0.3s ease;
@@ -64,7 +65,7 @@
       border: 1px solid rgba(0, 255, 51, 0.3);
       padding: 12px;
       border-radius: 4px;
-      font-size: 0.95rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       color: #ffffff;
       min-height: 45px;
       margin: 15px 0;
@@ -87,7 +88,7 @@
       color: #00ff33;
       padding: 12px 24px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       font-weight: bold;
       cursor: pointer;
       border-radius: 4px;
@@ -114,12 +115,14 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="terminal-box">
     <h1>👾 BUFFER_OVERFLOW: COOKIE_MONSTER</h1>
-    <p style="color: #888; font-size: 0.9rem;">The requested link layer is gone. A wild memory-leak entity blocks the gateway. Feed it cookies to bypass.</p>
-    
+    <p style="color: #888; font-size: 0.9rem;">The requested link layer is gone. A wild memory-leak entity blocks the
+      gateway. Feed it cookies to bypass.</p>
+
     <!-- The pixel data ghost character -->
     <div class="monster-container">
       <div id="monster-sprite">[o_o]</div>
@@ -141,7 +144,7 @@
     const escapeLink = document.getElementById('escape-link');
 
     let cookiesEaten = 0;
-    
+
     // Funny server log reactions
     const logMessages = [
       "Log: LocalStorage sector devoured... Crunch.",
@@ -153,10 +156,10 @@
 
     // Character expressions mapping different sizes safely
     const monsterExpressions = [
-      "[o_o]", 
-      "=[o_o]=", 
-      "==[O_O]==", 
-      "===[ ʘ_ Cullen ʘ_ ]===", 
+      "[o_o]",
+      "=[o_o]=",
+      "==[O_O]==",
+      "===[ ʘ_ Cullen ʘ_ ]===",
       "⚡===[ 🟢_ʘ ]==="
     ];
 
@@ -164,11 +167,11 @@
       if (cookiesEaten >= 5) return;
 
       cookiesEaten++;
-      
+
       // Update visual presentation sizes based on feed levels
       const scaleMultiplier = 1 + (cookiesEaten * 0.25);
       sprite.style.transform = "scale(" + scaleMultiplier + ")";
-      
+
       // Update character face expression dynamically
       const expressionIndex = Math.min(cookiesEaten, monsterExpressions.length - 1);
       sprite.innerText = monsterExpressions[expressionIndex];
@@ -187,4 +190,5 @@
   </script>
 
 </body>
+
 </html>

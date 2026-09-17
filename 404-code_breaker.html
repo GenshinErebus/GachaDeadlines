@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,14 +26,14 @@
 
     .container {
       text-align: center;
-      max-width: 450px;
-      width: 100%;
+      width: 99vw;
+      height: 97vh;
     }
 
     .header-text {
       margin-bottom: 20px;
       line-height: 1.4;
-      font-size: 0.9rem;
+      font-size: clamp(0.7rem, 2.2vw, 2.2rem);
     }
 
     /* Guess History Rows */
@@ -50,15 +51,15 @@
     }
 
     .digit-box {
-      width: 45px;
-      height: 45px;
+      width: 65px;
+      height: 65px;
       border: 2px solid #00ff33;
       border-radius: 4px;
       background-color: #111;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 2.6vw, 2.6rem);
       font-weight: bold;
       color: #00ff33;
       box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
@@ -72,6 +73,7 @@
       box-shadow: 0 0 10px #00ff33;
       color: #00ff33;
     }
+
     .digit-box.wrong-place {
       background-color: #3a3000;
       border-color: #ffcc00;
@@ -79,6 +81,7 @@
       text-shadow: 0 0 5px #ffcc00;
       box-shadow: 0 0 10px #ffcc00;
     }
+
     .digit-box.wrong {
       background-color: #221111;
       border-color: #ff3333;
@@ -88,7 +91,7 @@
     }
 
     .status-panel {
-      font-size: 1.1rem;
+      font-size: clamp(1.1rem, 2.6vw, 2.6rem);
       margin: 15px 0;
       min-height: 25px;
     }
@@ -98,7 +101,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      max-width: 280px;
+      width: 40vw;
       margin: 20px auto;
     }
 
@@ -107,15 +110,16 @@
       border: 1px solid #00ff33;
       color: #00ff33;
       font-family: inherit;
-      font-size: 1.2rem;
-      padding: 12px;
+      font-size: clamp(0.5rem, 2vw, 2rem);
+      padding: 10px;
       border-radius: 6px;
       cursor: pointer;
       box-shadow: 0 0 3px rgba(0, 255, 51, 0.3);
       transition: all 0.1s;
     }
 
-    .key:active, .key:hover {
+    .key:active,
+    .key:hover {
       background-color: #00ff33;
       color: #050505;
       box-shadow: 0 0 12px #00ff33;
@@ -124,7 +128,7 @@
 
     .key.wide {
       grid-column: span 1;
-      font-size: 0.9rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -137,7 +141,7 @@
       color: #00ff33;
       padding: 10px 20px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       cursor: pointer;
       margin: 10px;
       border-radius: 4px;
@@ -159,6 +163,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
@@ -203,7 +208,7 @@
 
     const maxAttempts = 6;
     const codeLength = 4;
-    
+
     let secretCode = [];
     let currentAttempt = 0;
     let currentGuess = [];
@@ -222,7 +227,7 @@
         const row = document.createElement('div');
         row.className = 'attempt-row';
         row.id = `row-${r}`;
-        
+
         for (let c = 0; c < codeLength; c++) {
           const box = document.createElement('div');
           box.className = 'digit-box';
@@ -236,9 +241,9 @@
     function setupKeypad() {
       keypad.addEventListener('click', (e) => {
         if (!gameActive || !e.target.classList.contains('key')) return;
-        
+
         const val = e.target.getAttribute('data-val');
-        
+
         if (val === 'del') {
           handleDelete();
         } else if (val === 'ent') {
@@ -323,7 +328,7 @@
       } else {
         currentAttempt++;
         currentGuess = [];
-        
+
         if (currentAttempt >= maxAttempts) {
           gameActive = false;
           statusMsg.innerHTML = `<span style='color: #ff3333;'>DECRYPTION_FAILED! PIN: ${secretCode.join('')}</span>`;
@@ -353,4 +358,5 @@
   </script>
 
 </body>
+
 </html>

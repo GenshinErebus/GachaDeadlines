@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +25,8 @@
     }
 
     .terminal-box {
-      max-width: 650px;
-      width: 100%;
+      width: 50vw;
+      height: 70vh;
       border: 2px solid #00ff33;
       padding: 25px;
       border-radius: 6px;
@@ -34,9 +35,9 @@
       box-sizing: border-box;
     }
 
-    h1 { 
-      font-size: 1.6rem; 
-      margin-top: 0; 
+    h1 {
+      font-size: clamp(0.6rem, 1.6vw, 1.6rem);
+      margin-top: 0;
       border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
       padding-bottom: 10px;
       color: #ff3333;
@@ -49,7 +50,7 @@
       border: 1px solid rgba(0, 255, 51, 0.4);
       padding: 20px;
       border-radius: 4px;
-      font-size: 0.95rem;
+      font-size: clamp(0.5rem, 1.2vw, 1.2rem);
       text-align: left;
       line-height: 1.6;
       margin: 20px 0;
@@ -58,12 +59,25 @@
     }
 
     /* Standard git conflict coloration highlight tags */
-    .git-head { color: #ff3333; text-shadow: 0 0 5px #ff3333; font-weight: bold; }
-    .git-middle { color: #888; text-shadow: none; font-weight: bold; }
-    .git-incoming { color: #00ff33; font-weight: bold; }
+    .git-head {
+      color: #ff3333;
+      text-shadow: 0 0 5px #ff3333;
+      font-weight: bold;
+    }
+
+    .git-middle {
+      color: #888;
+      text-shadow: none;
+      font-weight: bold;
+    }
+
+    .git-incoming {
+      color: #00ff33;
+      font-weight: bold;
+    }
 
     .status-panel {
-      font-size: 1.05rem;
+      font-size: clamp(0.6rem, 1.3vw, 1.3rem);
       margin: 15px 0;
       min-height: 25px;
     }
@@ -82,7 +96,7 @@
       color: #00ff33;
       padding: 12px 20px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: clamp(0.9rem, 2.3vw, 2.3rem);
       cursor: pointer;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
@@ -102,6 +116,7 @@
       color: #ff3333;
       text-shadow: 0 0 5px #ff3333;
     }
+
     .btn-red:hover {
       background: #ff3333;
       color: #050505;
@@ -113,20 +128,24 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="terminal-box">
     <h1>CONFLIT_DETECTED: Automatic merge failed.</h1>
-    <p style="color: #888; font-size: 0.9rem;">The request pipeline encountered an unresolved routing match. Resolve the conflict to compile the escape path.</p>
-    
+    <p style="color: #888; font-size: 0.9rem;">The request pipeline encountered an unresolved routing match. Resolve the
+      conflict to compile the escape path.</p>
+
     <!-- Visual display container for the Git block code -->
-    <div class="conflict-view" id="code-box"><span class="git-head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Current Change)</span>
-<span style="color: #ff3333;">URL_STATUS = "404_NOT_FOUND";</span>
-<span style="color: #ff3333;">USER_STATE = "LOST_IN_SPACE";</span>
-<span class="git-middle">=======</span>
-<span style="color: #00ff33;">URL_STATUS = "200_OK";</span>
-<span style="color: #00ff33;">USER_STATE = "RETURNING_HOME";</span>
-<span class="git-incoming">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main (Incoming Change)</span></div>
+    <div class="conflict-view" id="code-box"><span class="git-head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Current
+        Change)</span>
+      <span style="color: #ff3333;">URL_STATUS = "404_NOT_FOUND";</span>
+      <span style="color: #ff3333;">USER_STATE = "LOST_IN_SPACE";</span>
+      <span class="git-middle">=======</span>
+      <span style="color: #00ff33;">URL_STATUS = "200_OK";</span>
+      <span style="color: #00ff33;">USER_STATE = "RETURNING_HOME";</span>
+      <span class="git-incoming">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main (Incoming Change)</span>
+    </div>
 
     <div class="status-panel" id="status-msg">Choose code resolution option:</div>
 
@@ -136,7 +155,9 @@
     </div>
 
     <div class="btn-row">
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-link" style="border: 2px solid #00ff33; box-shadow: 0 0 10px #00ff33;">🚀 git commit -am "Fix 404 routing" &amp;&amp; git push</a>
+      <a href="/GachaDeadlines/" class="btn hidden" id="escape-link"
+        style="border: 2px solid #00ff33; box-shadow: 0 0 10px #00ff33;">🚀 git commit -am "Fix 404 routing" &amp;&amp;
+        git push</a>
     </div>
   </div>
 
@@ -148,19 +169,19 @@
 
     function resolveConflict(strategy) {
       interfaceBox.classList.add('hidden');
-      
+
       if (strategy === 'head') {
         // Punish option: User stays locked in the 404 state screen
         codeBox.innerHTML = 'URL_STATUS = "404_NOT_FOUND";\nUSER_STATE = "LOST_IN_SPACE";';
         statusMsg.innerHTML = "<span style='color: #ff3333;'>Conflict resolved. Current path compiled... Still lost. Re-routing loop active.</span>";
-        
+
         // Re-open choices layout automatically after a brief delay
         setTimeout(() => {
           codeBox.innerHTML = '<span class="git-head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>\n<span style="color: #ff3333;">URL_STATUS = "404_NOT_FOUND";</span>\n<span style="color: #ff3333;">USER_STATE = "LOST_IN_SPACE";</span>\n<span class="git-middle">=======</span>\n<span style="color: #00ff33;">URL_STATUS = "200_OK";</span>\n<span style="color: #00ff33;">USER_STATE = "RETURNING_HOME";</span>\n<span class="git-incoming">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</span>';
           statusMsg.innerText = "Choose code resolution option:";
           interfaceBox.classList.remove('hidden');
         }, 2200);
-        
+
       } else {
         // Win option: The code updates to the clean home routing path configurations
         codeBox.innerHTML = '<span style="color: #00ff33;">URL_STATUS = "200_OK";\nUSER_STATE = "RETURNING_HOME";</span>';
@@ -171,4 +192,5 @@
   </script>
 
 </body>
+
 </html>

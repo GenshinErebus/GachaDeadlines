@@ -26,18 +26,18 @@
 
     .container {
       text-align: center;
-      max-width: 650px;
-      width: 100%;
+ width: 100vw;
+  height: 100vh;
     }
 
     .header-text {
       margin-bottom: 15px;
       line-height: 1.4;
-      font-size: 0.9rem;
+      font-size: clamp(1.5rem, 2.7vw, 2.7rem);
     }
 
     .score-board {
-      font-size: 1.2rem;
+    font-size: clamp(1.5rem, 2.9vw, 2.9rem);
       margin-bottom: 10px;
     }
 
@@ -60,7 +60,7 @@
       color: #00ff33;
       padding: 10px 20px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: clamp(1.4rem, 2.7vw, 2.7rem);
       cursor: pointer;
       margin: 10px;
       border-radius: 4px;

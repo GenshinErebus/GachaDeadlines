@@ -23,15 +23,23 @@
     }
 
     .container {
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
+  width: 100vw;
+  height: 100vh;  
+  /* Reset margins and ensure padding doesn't cause hidden scrollbars */
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Perfect center alignment */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
     }
 
     .header-text {
       margin-bottom: 15px;
       line-height: 1.4;
-      font-size: 0.9rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
     }
 
     /* Maze Grid Layout - Fully Responsive */
@@ -102,7 +110,7 @@
       background: #111;
       border: 2px solid #00ff33;
       color: #00ff33;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
       font-weight: bold;
       margin: 4px;
       border-radius: 8px;
@@ -133,7 +141,7 @@
       color: #00ff33;
       padding: 10px 20px;
       font-family: inherit;
-      font-size: 1rem;
+     font-size: clamp(1rem, 2.5vw, 2.5rem);
       cursor: pointer;
       margin: 10px;
       border-radius: 4px;
