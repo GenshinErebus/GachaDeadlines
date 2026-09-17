@@ -349,6 +349,11 @@ const eventDatabase = {
             }
         ],
         events: [
+             {
+                id: "dna_001",
+                name: "Immersive Theatre - Ensemble Act",
+                endDate: "2026-10-18T16:00:00Z"
+            },
             {
                 id: "dna_002",
                 name: "Opulent Rebate",

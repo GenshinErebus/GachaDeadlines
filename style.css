@@ -184,7 +184,7 @@ h1 {
 .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(21.875rem, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 1rem;
 }
 
