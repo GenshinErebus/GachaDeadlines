@@ -556,6 +556,39 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     outline-offset: 2px;
 }
 
+/* Gaming Icons Link Styling */
+.gaming-icons-link {
+    color: var(--matrix-light-green);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.gaming-icons-link:hover {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.gaming-icons-link:focus {
+    outline: 2px solid var(--matrix-dim-green);
+    outline-offset: 2px;
+}
+
+/* Light mode Anpassung */
+body.light-mode .gaming-icons-link {
+    color: var(--matrix-light-green);
+}
+
+body.light-mode .gaming-icons-link:hover {
+    color: var(--matrix-green);
+    text-shadow: none;
+}
+
 /* ============================================
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
@@ -751,8 +784,15 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
     }
 
     #disclaimer {
-        margin-left: -30px;
-        }
+        margin-left: -20px;
+    }
+    
+    .gaming-icons-link {
+        margin-left: 0px;
+    }
+     .encrypted-link {
+        margin-left: 65px;
+    }
 }
 
 /* ==========================================================================
@@ -793,9 +833,17 @@ div.event-card.has-expired-timer[class*="event-card"] .event-name {
         width: 15px;
         height: 15px;
     }
-        #disclaimer {
-        margin-left: -25px;
-        }
+
+    #disclaimer {
+        margin-left: -10px;
+    }
+    
+    .gaming-icons-link {
+        margin-left: 10px;
+    }
+     .encrypted-link {
+        margin-left: 75px;
+    }
 }
 
 /* Case 2: Widths between 350px and 375px */

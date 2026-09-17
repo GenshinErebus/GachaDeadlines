@@ -324,15 +324,20 @@ const eventDatabase = {
                 name: "AIC Support: Chubby Lung Attacks",
                 endDate: "2026-09-30T21:00:00Z"
             },
+             {
+                id: "ark_007",
+                name: "Sanity Supply",
+                endDate: "2026-09-24T09:00:00Z"
+            },
             // Banner
             {
-                id: "ark_007",
+                id: "ark_008",
                 name: "WINTER HUNT",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
             },
             {
-                id: "ark_008",
+                id: "ark_009",
                 name: "Military Grade Issue",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
@@ -435,70 +440,75 @@ const eventDatabase = {
         ],
         events: [
             {
-                id: "nte_000",
+                id: "nte_001",
                 name: "Runaway Echoes",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_001",
+                id: "nte_002",
                 name: "Summertime",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_002",
+                id: "nte_003",
                 name: "Circle gift",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_003",
+                id: "nte_004",
                 name: "Market Opening Rehearsal",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_004",
+                id: "nte_005",
                 name: "Hunter's Crucible",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_005",
+                id: "nte_006",
                 name: "Volley Star",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_006",
+                id: "nte_007",
                 name: "Surf Breaker",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_007",
+                id: "nte_008",
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-09-23T21:00:00Z"
             },
             {
-                id: "nte_008",
+                id: "nte_009",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
             },
             {
-                id: "nte_009",
+                id: "nte_010",
                 name: "Pixel Surge",
                 endDate: "2026-09-21T03:00:00Z"
             },
+            {
+                id: "nte_011",
+                name: "Breezy Ride",
+                endDate: "2026-09-29T22:00:00Z"
+            },
             // Banner
             {
-                id: "nte_010",
+                id: "nte_012",
                 name: "Surfing All Channels!",
                 endDate: "2026-09-29T22:00:00Z",
                 banner: true
             },
             {
-                id: "nte_011",
+                id: "nte_013",
                 name: "Misty Tipsy Style",
                 endDate: "2026-09-29T22:00:00Z",
                 banner: true
             },
             {
-                id: "nte_012",
+                id: "nte_014",
                 name: "Soundscape Special",
                 endDate: "2026-09-29T22:00:00Z",
                 banner: true
@@ -664,14 +674,19 @@ const eventDatabase = {
                 endDate: "2026-09-29T11:00:00Z"
             },
             {
-                id: "wuwa_009",
+                id: "wuwa_008",
                 name: "The Strings Remember",
                 endDate: "2026-09-21T03:00:00Z"
             },
             {
-                id: "wuwa_010",
+                id: "wuwa_009",
                 name: "Acendant Aces",
                 endDate: "2026-09-29T11:00:00Z"
+            },
+            {
+                id: "wuwa_010",
+                name: "Wuthering Exploration",
+                endDate: "2026-09-29T03:00:00Z"
             },
             // Banner
             {
@@ -767,6 +782,7 @@ function createStatusBar() {
             <span id="serverTime">LOADING...</span>
         </div>
         <div class="connection-status">
+            <a href="404.html" class="gaming-icons-link" title="Random 404 Easter Egg">🎮🕹️</a>
             <span>CONNECTION: </span>
             <a href="research.html" class="encrypted-link">ENCRYPTED</a>
         </div>
