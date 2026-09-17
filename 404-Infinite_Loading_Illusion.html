@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Resolving Path...</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 30px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* Pulsing loading spinner styling */
+    .loader-glow {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 30px 0;
+      color: #ffcc00;
+      text-shadow: 0 0 8px #ffcc00;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    #confession-text {
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.5;
+      margin-top: 20px;
+      min-height: 50px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>📡 MAINFRAME_DECRYPTION_LOG (404)</h1>
+    
+    <!-- The endless loading state line -->
+    <div class="loader-glow" id="spinner-line">⏳ RESOLVING PATH: 99%</div>
+
+    <div id="confession-text">Connecting to target sector packets...</div>
+
+    <div>
+      <a href="/" class="btn hidden" id="escape-link">🚀 ABANDON PROTOCOL &amp; GO HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const confessionField = document.getElementById("confession-text");
+    const escapeBtn = document.getElementById("escape-link");
+    const spinner = document.getElementById("spinner-line");
+
+    function revealTheTruth() {
+      // Change spinner text to freeze it at 99% confession state
+      spinner.innerText = "❌ DECRYPTION_STUCK: 99%";
+      spinner.style.color = "#ff3333";
+      spinner.style.textShadow = "0 0 8px #ff3333";
+      
+      // Update info box confession message strings
+      confessionField.innerText = "Alright, let's be honest. This is taking way too long. The page you are looking for is just completely gone. Tap below to give up.";
+      
+      // Unhide the exit routing link
+      escapeBtn.classList.remove('hidden');
+    }
+
+    // Trigger the honesty fallback event after exactly 5.5 seconds of fake loading time
+    setTimeout(revealTheTruth, 5500);
+  </script>
+
+</body>
+</html>

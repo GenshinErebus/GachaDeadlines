@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Firewall Trivia Challenge</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 580px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.7rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .question-screen {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 20px;
+      border-radius: 4px;
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.5;
+      margin: 20px 0;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      min-height: 25px;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .escape-btn {
+      border: 2px solid #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>🔒 SECURITY_CHALLENGE: BASH_TRIVIA</h1>
+    <p style="color: #888; font-size: 0.9rem;">The target route is blocked by a root firewall. Answer the system prompt correctly to unlock the compilation bridge.</p>
+    
+    <div class="question-screen" id="question-box">Loading security token challenge...</div>
+
+    <div class="status-panel" id="status-msg">Select the correct command statement:</div>
+
+    <div class="btn-row" id="interface-box">
+      <button class="btn" id="choice-0" onclick="verifyTriviaAnswer(0)">---</button>
+      <button class="btn" id="choice-1" onclick="verifyTriviaAnswer(1)">---</button>
+      <button class="btn" id="choice-2" onclick="verifyTriviaAnswer(2)">---</button>
+    </div>
+
+    <div>
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 ACCESS_GRANTED: RETURN TO MAIN BASE</a>
+    </div>
+  </div>
+
+  <script>
+    const questionBox = document.getElementById('question-box');
+    const statusMsg = document.getElementById('status-msg');
+    const interfaceBox = document.getElementById('interface-box');
+    const escapeLink = document.getElementById('escape-link');
+
+    let currentQuestion = null;
+    let shuffledChoices = [];
+    let isGameActive = true;
+
+    const triviaPool = [
+      {
+        q: "Which command forces a recursive deletion of a directory and all its contents without asking?",
+        a: "rm -rf", decoy1: "rmdir", decoy2: "delete -all"
+      },
+      {
+        q: "Which terminal command is used to completely change file read/write/execute permissions?",
+        a: "chmod", decoy1: "chown", decoy2: "setperm"
+      },
+      {
+        q: "Which utility command allows you to view system log file updates in real-time as they print?",
+        a: "tail -f", decoy1: "cat -live", decoy2: "watch -log"
+      }
+    ];
+
+    function initTriviaChallenge() {
+      isGameActive = true;
+      statusMsg.innerText = "Select the correct command statement:";
+      escapeLink.classList.add('hidden');
+      interfaceBox.classList.remove('hidden');
+
+      const seedModifier = Date.now() + Math.random();
+      const questionIndex = Math.floor((seedModifier * 5) % triviaPool.length);
+      currentQuestion = triviaPool[questionIndex];
+
+      questionBox.innerText = currentQuestion.q;
+
+      // FIXED: Correctly shuffles the distinct choices using Fisher-Yates method
+      let choicesList = [currentQuestion.a, currentQuestion.decoy1, currentQuestion.decoy2];
+      
+      for (let i = choicesList.length - 1; i > 0; i--) {
+        const j = Math.floor((seedModifier * (i + 1)) % choicesList.length);
+        const temp = choicesList[i];
+        choicesList[i] = choicesList[j];
+        choicesList[j] = temp;
+      }
+      
+      shuffledChoices = choicesList;
+
+      for (let i = 0; i < 3; i++) {
+        document.getElementById("choice-" + i).innerText = shuffledChoices[i];
+      }
+    }
+
+    function verifyTriviaAnswer(selectedIndex) {
+      if (!isGameActive) return;
+
+      const userChoice = shuffledChoices[selectedIndex];
+
+      if (userChoice === currentQuestion.a) {
+        isGameActive = false;
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>ACCESS_GRANTED: Signature verified!</span>";
+        interfaceBox.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+      } else {
+        statusMsg.innerHTML = "<span style='color: #ff3333;'>SIGNATURE_REJECTED: Security wall triggered. Resetting token...</span>";
+        isGameActive = false;
+        setTimeout(initTriviaChallenge, 1300);
+      }
+    }
+
+    initTriviaChallenge();
+  </script>
+
+</body>
+</html>

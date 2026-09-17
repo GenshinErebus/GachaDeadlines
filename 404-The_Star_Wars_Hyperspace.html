@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Lost in Hyperspace</title>
+  <style>
+    /* Fullscreen Sci-Fi Canvas */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      overflow: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      user-select: none;
+      touch-action: none; /* Stops mobile screen bouncing while dragging stars */
+    }
+
+    #space-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Floating retro console panel card */
+    .interface-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(5, 5, 5, 0.85);
+      border: 2px solid #00ff33;
+      border-radius: 6px;
+      padding: 25px;
+      text-align: center;
+      z-index: 10;
+      box-shadow: 0 0 25px rgba(0, 255, 51, 0.3);
+      max-width: 90vw;
+      width: 360px;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      color: #00ff33;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #000;
+      box-shadow: 0 0 20px #00ff33;
+    }
+  </style>
+</head>
+<body>
+
+  <div #id="space-container">
+    <canvas id="starfieldCanvas"></canvas>
+    
+    <!-- Central Sci-Fi Terminal Interface Overlaid -->
+    <div class="interface-overlay">
+      <div style="font-weight: bold; margin-bottom: 10px; font-size: 1.2rem;">⚠️ WARP_FACTOR_404</div>
+      <div style="color: #ffffff; font-size: 0.9rem; line-height: 1.5; text-shadow: none;">
+        Navigation index database error. Sector route is completely unmapped.<br>
+        <span style="color: #00ff33;">[Move pointer / Drag screen to initiate lightspeed navigation override]</span>
+      </div>
+      <a href="/" class="btn">🚀 EXIT HYPERSPACE &amp; RETURN</a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('starfieldCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeContainer() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeContainer();
+    window.addEventListener('resize', resizeContainer);
+
+    const totalStars = 150;
+    let starsList = [];
+    let speedFactor = 1;      // Regular flight velocity
+    let targetSpeedFactor = 1; // Transitions into hyperspace multiplier speed
+    let animationActive = true;
+
+    // Generate randomized space vectors particles positions
+    function initStarfieldGrid() {
+      starsList = [];
+      for (let i = 0; i < totalStars; i++) {
+        starsList.push({
+          x: Math.random() * canvas.width - canvas.width / 2,
+          y: Math.random() * canvas.height - canvas.height / 2,
+          z: Math.random() * canvas.width,
+          color: "rgba(255, 255, 255, " + (Math.random() * 0.5 + 0.5) + ")"
+        });
+      }
+    }
+
+    // Input handlers linking interactions triggers
+    function activateWarpSpeed() {
+      targetSpeedFactor = 25; // Accelerates depth scaling vector lines
+    }
+
+    function deactivateWarpSpeed() {
+      targetSpeedFactor = 1;  // Resets momentum back to baseline cruise speed
+    }
+
+    // DESKTOP Pointer tracking binds
+    window.addEventListener('mousedown', activateWarpSpeed);
+    window.addEventListener('mouseup', deactivateWarpSpeed);
+    window.addEventListener('mouseenter', activateWarpSpeed);
+    window.addEventListener('mouseleave', deactivateWarpSpeed);
+
+    // SMARTPHONE Mobile gesture tracking hooks
+    window.addEventListener('touchstart', function(e) {
+      if (e.target.tagName !== 'A') {
+        activateWarpSpeed();
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', deactivateWarpSpeed);
+
+    // Render loop cycle executing math coordinates paths transformations
+    function renderCosmicMotion() {
+      if (!animationActive) return;
+
+      // Dark shadow background wash loop
+      ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Smooth inertia speed easing transitions interpolation
+      speedFactor += (targetSpeedFactor - speedFactor) * 0.08;
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      for (let i = 0; i < starsList.length; i++) {
+        let s = starsList[i];
+        
+        // Accumulate depth scaling changes offset shifts
+        s.z -= speedFactor;
+
+        // Reset particle coordinates once it expands past visibility bounds
+        if (s.z <= 0) {
+          s.x = Math.random() * canvas.width - centerX;
+          s.y = Math.random() * canvas.height - centerY;
+          s.z = canvas.width;
+        }
+
+        // Perspective 3D rendering projection calculations
+        const px = (s.x / s.z) * centerX + centerX;
+        const py = (s.y / s.z) * centerY + centerY;
+
+        // Calculate tail tracking positions to simulate streak warp lines vectors
+        const tailZ = s.z + speedFactor * 2;
+        const tx = (s.x / tailZ) * centerX + centerX;
+        const ty = (s.y / tailZ) * centerY + centerY;
+
+        // Render lightspeed path vector trails
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = Math.max(1, (1 - s.z / canvas.width) * 3);
+        ctx.beginPath();
+        ctx.moveTo(tx, ty);
+        ctx.lineTo(px, py);
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(renderCosmicMotion);
+    }
+
+    // Launch application configuration environment configurations
+    initStarfieldGrid();
+    renderCosmicMotion();
+  </script>
+
+</body>
+</html>

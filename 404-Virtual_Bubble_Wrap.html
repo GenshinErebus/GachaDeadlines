@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Stress Relief Panel</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 500px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* Bubble wrap grid layout (6 Columns) */
+    .bubble-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      max-width: 320px;
+      margin: 25px auto;
+    }
+
+    /* Individual Bubble styling */
+    .bubble {
+      aspect-ratio: 1 / 1;
+      border: 2px solid #00ff33;
+      border-radius: 50%;
+      background-color: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.1s ease;
+    }
+
+    .bubble:hover {
+      background-color: #0c2c0e;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    /* Popped state */
+    .bubble.popped {
+      background-color: #222;
+      border-color: rgba(0, 255, 51, 0.3);
+      color: rgba(0, 255, 51, 0.4);
+      box-shadow: none;
+      text-shadow: none;
+      cursor: default;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 15px 0;
+      min-height: 25px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>🫧 ROUTE_NOT_FOUND: STRESS_RELIEF</h1>
+    <p style="color: #888; font-size: 0.9rem;">The page is gone. Pop the virtual buffer bubbles to reduce core frustration levels while we re-index the server.</p>
+    
+    <div class="status-panel" id="status-msg">Bubbles remaining: 24</div>
+
+    <!-- The interactive 24-bubble grid field -->
+    <div class="bubble-grid" id="wrap-field"></div>
+
+    <div>
+      <a href="/" class="btn">🚀 DISCONNECT &amp; GO HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const field = document.getElementById('wrap-field');
+    const msg = document.getElementById('status-msg');
+
+    const totalBubbles = 24;
+    let bubblesLeft = totalBubbles;
+    let audioCtx = null;
+
+    // Generates a satisfying mechanical electronic pop sound purely via Web Audio API
+    function playPopSound() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let osc = audioCtx.createOscillator();
+        let gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(600 + Math.random() * 200, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch(e) {}
+    }
+
+    function createBubbleWrap() {
+      field.innerHTML = '';
+      for (let i = 0; i < totalBubbles; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.innerText = 'O';
+        
+        // Single pop execution handler
+        const popAction = function() {
+          if (bubble.classList.contains('popped')) return;
+          
+          bubble.classList.add('popped');
+          bubble.innerText = 'X';
+          playPopSound();
+          
+          bubblesLeft--;
+          if (bubblesLeft > 0) {
+            msg.innerText = "Bubbles remaining: " + bubblesLeft;
+          } else {
+            msg.innerHTML = "<span style='color:#00ff33;font-weight:bold;'>MAX_ZEN_ACHIEVED: Frustration cleared!</span>";
+          }
+        };
+
+        bubble.addEventListener('click', popAction);
+        bubble.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          popAction();
+        }, { passive: false });
+
+        field.appendChild(bubble);
+      }
+    }
+
+    // Launch configuration layout
+    createBubbleWrap();
+  </script>
+
+</body>
+</html>

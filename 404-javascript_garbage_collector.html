@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Garbage Collector Protocol</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      overflow: hidden;
+      touch-action: none; /* Stops mobile background screen bouncing while tapping variables */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 550px;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .header-text {
+      margin-bottom: 12px;
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    .score-board {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    /* The interactive container box acting as the heap playground memory area */
+    .heap-sandbox {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.2);
+      margin: 15px auto;
+      overflow: hidden;
+    }
+
+    /* Floating dead code text elements variables styling */
+    .trash-variable {
+      position: absolute;
+      color: #ff3333;
+      text-shadow: 0 0 5px #ff3333;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      padding: 12px 8px; /* Greatly expands tap hitboxes on smartphones */
+      transform: translate(-50%, -50%);
+      transition: top 0.05s linear;
+    }
+
+    .trash-variable:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffffff;
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      min-height: 25px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 8px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [MEMORY_LEAK_ALERT] HEAP OVERFLOW DETECTED (404)</div>
+      <div>Unused variables are floating in the broken routing link layer.</div>
+      <div>Controls: Tap or Click the red code strings to activate the garbage collector.</div>
+    </div>
+
+    <div class="score-board">
+      MEMORY RECLAIMED: <span id="cleared-count">0</span> / 8 sectors
+    </div>
+
+    <!-- The interactive sandbox playground simulating heap memory -->
+    <div class="heap-sandbox" id="heap-zone"></div>
+
+    <div class="status-panel" id="terminal-msg">Collector state: IDLE // Awaiting input...</div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="rebootCollectorEngine()">REBOOT ENGINE</button>
+      <a href="/" class="btn hidden" id="escape-link">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const sandbox = document.getElementById('heap-zone');
+    const clearedEl = document.getElementById('cleared-count');
+    const msgEl = document.getElementById('terminal-msg');
+    const escapeLink = document.getElementById('escape-link');
+    const resetBtn = document.getElementById('reset-btn');
+
+    let score = 0;
+    let isGameOver = false;
+    let activeTrash = [];
+    let spawnClock;
+    let physicsClock;
+
+    // Technical strings representing typical unreferenced memory waste trash objects
+    const deadCodePool = [
+      "let undefined_var;",
+      "var useless_array = [];",
+      "const dead_ptr = null;",
+      "function unreferenced() {}",
+      "this.lost_context = {}",
+      "new MemoryLeakLeak()",
+      "while(true){broken_loop}",
+      "window.orphaned_data = 1"
+    ];
+
+    function startCollectorEngine() {
+      score = 0;
+      isGameOver = false;
+      activeTrash = [];
+      
+      clearedEl.innerText = score;
+      msgEl.innerText = "Collector state: ACTIVE // Purging system buffer...";
+      
+      escapeLink.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      sandbox.innerHTML = '';
+
+      // Set up simple system interval clock steps
+      spawnClock = setInterval(spawnLeakVariable, 1800);
+      physicsClock = setInterval(updatePhysicsLoop, 40); // 25 fps grid updates
+    }
+
+    function spawnLeakVariable() {
+      if (isGameOver || activeTrash.length >= 6) return;
+
+      const randomText = deadCodePool[Math.floor(Math.random() * deadCodePool.length)];
+      
+      const el = document.createElement('div');
+      el.className = 'trash-variable';
+      el.innerText = randomText;
+      
+      // Calculate random horizontal spawn column alignment securely within bounding frame edges
+      const maxWidth = sandbox.clientWidth;
+      const xPos = Math.floor(Math.random() * (maxWidth - 180)) + 90;
+      
+      el.style.left = xPos + 'px';
+      el.style.top = '0px';
+
+      // Connect interaction bindings tracking click events
+      el.addEventListener('click', function() {
+        collectTrashItem(el);
+      });
+      el.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        collectTrashItem(el);
+      }, { passive: false });
+
+      sandbox.appendChild(el);
+      activeTrash.push({ element: el, y: 0, speed: 1.2 + Math.random() * 0.8 });
+    }
+
+    function updatePhysicsLoop() {
+      if (isGameOver) return;
+
+      const maxHeight = sandbox.clientHeight;
+
+      for (let i = activeTrash.length - 1; i >= 0; i--) {
+        let trash = activeTrash[i];
+        trash.y += trash.speed;
+        trash.element.style.top = trash.y + 'px';
+
+        // Check if trash falls past the bottom border boundary trigger area
+        if (trash.y >= maxHeight - 15) {
+          triggerMemoryLeakCrash();
+          break;
+        }
+      }
+    }
+
+    function collectTrashItem(element) {
+      if (isGameOver) return;
+
+      // Extract entry out of processing tracking array loop
+      activeTrash = activeTrash.filter(item => item.element !== element);
+      
+      // Create temporary visual collection blink effect
+      element.style.color = '#ffffff';
+      element.style.textShadow = '0 0 10px #00ff33';
+      setTimeout(function() { element.remove(); }, 80);
+
+      score++;
+      clearedEl.innerText = score;
+
+      if (score >= 8) {
+        triggerWinState();
+      } else {
+        msgEl.innerText = "Log: Reclaimed dead reference sector successfully.";
+      }
+    }
+
+    function triggerMemoryLeakCrash() {
+      isGameOver = true;
+      clearInterval(spawnClock);
+      clearInterval(physicsClock);
+      
+      resetBtn.classList.remove('hidden');
+      msgEl.innerHTML = "<span style='color: #ff3333;'>FATAL_ERROR: HEAP_OVERFLOW! Garbage collection stack frozen.</span>";
+    }
+
+    function triggerWinState() {
+      isGameOver = true;
+      clearInterval(spawnClock);
+      clearInterval(physicsClock);
+      
+      // Clean up remaining leaks smoothly
+      activeTrash.forEach(item => item.element.remove());
+      activeTrash = [];
+
+      escapeLink.classList.remove('hidden');
+      msgEl.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>HEAP_STABILIZED: Buffer sync complete. Bridge opened!</span>";
+    }
+
+    function rebootCollectorEngine() {
+      startCollectorEngine();
+    }
+
+    // Launch configuration engine setup execution instantly on loading
+    startCollectorEngine();
+  </script>
+</body>
+</html>

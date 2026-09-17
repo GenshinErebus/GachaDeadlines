@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Quest Board</title>
+  <style>
+    /* Retro Terminal Look */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .quest-box {
+      max-width: 550px;
+      width: 100%;
+      border: 2px dashed #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+      color: #ffffff;
+    }
+
+    /* Adventure story dialogue line display */
+    .story-display {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 20px;
+      border-radius: 4px;
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.5;
+      margin: 20px 0;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .btn-escape {
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      box-shadow: 0 0 8px #ffcc00;
+    }
+    .btn-escape:hover {
+      background: #ffcc00;
+      color: #050505;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quest-box">
+    <h1>⚔️ QUEST_LOG: SECTOR_404</h1>
+    <p style="color: #888; font-size: 0.9rem;">Current location: Missing URL index. An anomaly blocks the path forward.</p>
+    
+    <!-- Central text field for our adventure steps -->
+    <div class="story-display" id="story-field">
+      You wander into an empty data lane. Suddenly, a wild LEVEL 404 GLITCH encounters you! It blocks your route completely.
+    </div>
+
+    <!-- Interface Action Buttons rows -->
+    <div class="btn-row" id="choices-panel">
+      <button class="btn" onclick="advanceAdventureStep('attack')">⚔️ ATTACK GLITCH</button>
+      <button class="btn" onclick="advanceAdventureStep('flee')">🏃 FLEE BACKWARDS</button>
+    </div>
+
+    <div class="btn-row">
+      <a href="/" class="btn btn-escape hidden" id="escape-link">🏆 CLAIM XP &amp; RETURN HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const storyField = document.getElementById('story-field');
+    const choicesPanel = document.getElementById('choices-panel');
+    const escapeLink = document.getElementById('escape-link');
+
+    let turnCounter = 0;
+
+    function advanceAdventureStep(actionType) {
+      turnCounter++;
+
+      if (actionType === 'flee') {
+        // Punish player if they choose to run away
+        storyField.innerText = "You tried to flee, but the broken URL layout wraps around infinitely! You run in a loop and land right back in front of the glitch.";
+        return;
+      }
+
+      // Progression tracking based on attack counters
+      if (turnCounter === 1) {
+        storyField.innerText = "You swing your mechanical keyboard. Your attack bounces off the firewall! You deal 0 damage. The glitch looks highly unimpressed.";
+      } else if (turnCounter === 2) {
+        storyField.innerText = "You unleash a localized script exploit! The glitch's health bar drops by 50%. It panics and begins throwing buffer allocation warnings at you!";
+      } else {
+        // Success final phase transition
+        choicesPanel.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+        
+        storyField.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>CRITICAL_HIT! The glitch collapses into unallocated heap memory. Level Up! The link is clear.</span>";
+      }
+    }
+  </script>
+
+</body>
+</html>

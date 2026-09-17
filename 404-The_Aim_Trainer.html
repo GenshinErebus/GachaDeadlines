@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Aim Trainer Node Sync</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      overflow: hidden;
+      touch-action: none; /* Prevents mobile viewport zooming or dragging during training */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 550px;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .header-text {
+      margin-bottom: 12px;
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    .score-board {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    /* Sandbox sandbox grid acting as the target tracking field range */
+    .aim-range {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.2);
+      margin: 15px auto;
+      overflow: hidden;
+    }
+
+    /* Neon green target nodes configurations */
+    .aim-target {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-color: #050505;
+      border: 3px solid #00ff33;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ff33;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+      animation: targetSpawn 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Center core tracking dot */
+    .aim-target::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: #00ff33;
+      border-radius: 50%;
+    }
+
+    @keyframes targetSpawn {
+      from { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .status-panel {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      min-height: 25px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 8px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .escape-btn {
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      box-shadow: 0 0 10px #ffcc00;
+      text-shadow: 0 0 5px #ffcc00;
+    }
+    .escape-btn:hover {
+      background: #ffcc00;
+      color: #050505;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [DESYNC_ALERT] INTERCEPT_LATENCY_ERROR_404</div>
+      <div>Mainframe link desynchronized. Click or tap the tracking nodes to align calibration array.</div>
+    </div>
+
+    <div class="score-board">
+      NODES INTERCEPTED: <span id="hit-count">0</span> / 5
+    </div>
+
+    <!-- Tapping playground sandbox field range -->
+    <div class="aim-range" id="aim-zone"></div>
+
+    <div class="status-panel" id="terminal-msg">Tracking hardware state: AWAITING_CALIBRATION...</div>
+
+    <div>
+      <button class="btn hidden" id="reset-btn" onclick="restartWarmupEngine()">REBOOT CORES</button>
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 SYNCED: LAUNCH HOME_GATEWAY.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const rangeZone = document.getElementById('aim-zone');
+    const hitEl = document.getElementById('hit-count');
+    const msgEl = document.getElementById('terminal-msg');
+    const escapeLink = document.getElementById('escape-link');
+    const resetBtn = document.getElementById('reset-btn');
+
+    let hits = 0;
+    let isGameOver = false;
+    let activeTarget = null;
+    let despawnTimeout;
+
+    function startWarmupEngine() {
+      hits = 0;
+      isGameOver = false;
+      activeTarget = null;
+      
+      hitEl.innerText = hits;
+      msgEl.innerText = "Tracking sensor array active. Calibrating targeting grids...";
+      
+      escapeLink.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      rangeZone.innerHTML = '';
+
+      spawnNewTrackingTarget();
+    }
+
+    function spawnNewTrackingTarget() {
+      if (isGameOver) return;
+
+      // Clean old node target out if it exists
+      if (activeTarget) activeTarget.remove();
+
+      const el = document.createElement('div');
+      el.className = 'aim-target';
+
+      // Compute completely random grid locations inside container boundaries
+      const maxWidth = rangeZone.clientWidth;
+      const maxHeight = rangeZone.clientHeight;
+      
+      const xPos = Math.floor(Math.random() * (maxWidth - 60)) + 30;
+      const yPos = Math.floor(Math.random() * (maxHeight - 60)) + 30;
+
+      el.style.left = xPos + 'px';
+      el.style.top = yPos + 'px';
+
+      // Attach responsive dual input click interactions bindings directly
+      el.addEventListener('mousedown', registerTargetHit);
+      el.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Annuls touch delay layers instantly
+        registerTargetHit();
+      }, { passive: false });
+
+      rangeZone.appendChild(el);
+      activeTarget = el;
+
+      // Setup dynamic lifetime scaling. Despawns automatically faster as player scores points
+      const despawnDelay = Math.max(700, 1600 - (hits * 150));
+      despawnTimeout = setTimeout(handleTargetDespawn, despawnDelay);
+    }
+
+    function registerTargetHit() {
+      if (isGameOver) return;
+
+      clearTimeout(despawnTimeout);
+      hits++;
+      hitEl.innerText = hits;
+
+      if (hits >= 5) {
+        triggerWinState();
+      } else {
+        msgEl.innerText = "Log: Node lock captured. Sequence index moving...";
+        spawnNewTrackingTarget();
+      }
+    }
+
+    function handleTargetDespawn() {
+      if (isGameOver) return;
+      // Miss event penalty: Instant core lock crash if player reaction time drops too slow
+      triggerCoresCrash();
+    }
+
+    function triggerCoresCrash() {
+      isGameOver = true;
+      clearTimeout(despawnTimeout);
+      if (activeTarget) {
+        activeTarget.style.borderColor = '#ff3333';
+        activeTrash = null;
+      }
+      resetBtn.classList.remove('hidden');
+      msgEl.innerHTML = "<span style='color: #ff3333;'>CALIBRATION_FAILED: Target tracking lost. Synchronization dropped.</span>";
+    }
+
+    function triggerWinState() {
+      isGameOver = true;
+      clearTimeout(despawnTimeout);
+      if (activeTarget) activeTarget.remove();
+      
+      escapeLink.classList.remove('hidden');
+      msgEl.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>CALIBRATION_COMPLETE: Index aligned perfectly! Core stable.</span>";
+    }
+
+    function restartWarmupEngine() {
+      startWarmupEngine();
+    }
+
+    // Launch engine initialization structures
+    startWarmupEngine();
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Connection Disrupted</title>
+  <style>
+    /* Neon Cyberpunk Aesthetic Layout */
+    body {
+      background-color: #030305;
+      color: #00ffcc;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ffcc;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .dialog-frame {
+      max-width: 600px;
+      width: 100%;
+      background-color: #0b0b12;
+      border: 2px solid #ff0055;
+      border-radius: 4px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.25);
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Warning label ribbon styling */
+    .alert-tag {
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background-color: #ff0055;
+      color: #030305;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 2px 10px;
+      text-shadow: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .system-prompt {
+      min-height: 100px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+      color: #ffffff;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
+    .choices-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    /* Dialogue list button nodes styling */
+    .dialog-btn {
+      background: rgba(0, 255, 204, 0.03);
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      text-shadow: 0 0 3px #00ffcc;
+    }
+
+    .dialog-btn:hover {
+      background: #00ffcc;
+      color: #030305;
+      box-shadow: 0 0 15px #00ffcc;
+      font-weight: bold;
+      text-shadow: none;
+    }
+
+    /* Special coloration variations for specific lore choices */
+    .corp-btn { border-color: #00ffcc; color: #00ffcc; }
+    .runner-btn { border-color: #ffcc00; color: #ffcc00; text-shadow: 0 0 3px #ffcc00; }
+    .runner-btn:hover { background: #ffcc00; color: #030305; box-shadow: 0 0 15px #ffcc00; }
+    
+    .street-btn { border-color: #ff0055; color: #ff0055; text-shadow: 0 0 3px #ff0055; }
+    .street-btn:hover { background: #ff0055; color: #030305; box-shadow: 0 0 15px #ff0055; }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .log-subtext {
+      font-size: 0.8rem;
+      color: #555577;
+      margin-top: 15px;
+      text-shadow: none;
+      border-top: 1px dashed rgba(85, 85, 119, 0.3);
+      padding-top: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dialog-frame">
+    <div class="alert-tag">SYS_BREACH: DETECTED</div>
+    
+    <!-- Central display containing the narrative state content -->
+    <div class="system-prompt" id="prompt-display">
+      [SIGNAL_LOST] Mainframe diagnostic routing error 404.<br>
+      You have strayed into an uncompiled sector of the regional subnet. Local security protocols are demanding a verification pathway execution. How do you respond?
+    </div>
+
+    <!-- The interactive lifepath choices selection box -->
+    <div class="choices-stack" id="input-selector">
+      <button class="dialog-btn corp-btn" onclick="selectDialogueOption('corp')">➔ [CORPORATE] Deploy official subnet bypass handshake licenses.</button>
+      <button class="dialog-btn runner-btn" onclick="selectDialogueOption('runner')">➔ [NETRUNNER] Brute-force the data gateway with a custom daemon exploit.</button>
+      <button class="dialog-btn street-btn" onclick="selectDialogueOption('street')">➔ [STREET_KID] Kick the ventilation unit until the primary server connection clicks.</button>
+    </div>
+
+    <!-- Final escape route compiled trigger button link -->
+    <div class="choices-stack">
+      <a href="/" class="dialog-btn hidden" id="escape-link" style="text-align: center; border-color: #ffffff; color: #ffffff; text-shadow: 0 0 5px #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.2);">🚀 COMPLETE LOG_OUT // DISCONNECT AND GO HOME</a>
+    </div>
+
+    <div class="log-subtext" id="log-footer">Subnet trace status: PENDING // Node index: UNRESOLVED</div>
+  </div>
+
+  <script>
+    const promptDisplay = document.getElementById('prompt-display');
+    const inputSelector = document.getElementById('input-selector');
+    const escapeLink = document.getElementById('escape-link');
+    const logFooter = document.getElementById('log-footer');
+
+    function selectDialogueOption(lifepathKey) {
+      inputSelector.classList.add('hidden');
+
+      // Individual text response pipelines tailored to match choices layout theme
+      if (lifepathKey === 'corp') {
+        promptDisplay.innerHTML = "Corporate credentials processed. Arasaka-level data handshake verification accepted.<br>" +
+                                   "<span style='color: #00ffcc;'>'Thank you for traveling premium tier. Clearing connection pipeline lanes now.'</span>";
+        logFooter.innerText = "Subnet trace status: CORPORATE_OVERRIDE // Code: 200_OK";
+      } else if (lifepathKey === 'runner') {
+        promptDisplay.innerHTML = "Uploading icebreaker daemon... Matrix sequence injected. Firewall node completely subverted.<br>" +
+                                   "<span style='color: #ffcc00;'>'Nice exploit, kid. The mainframe didn't even notice the backdoor compile.'</span>";
+        logFooter.innerText = "Subnet trace status: CYBER_EXPLOIT_COMPILED // Code: 200_OK";
+      } else {
+        promptDisplay.innerHTML = "Hardware structural impact registered. Server rack fan rattling loudly... Spark emitted.<br>" +
+                                   "<span style='color: #ff0055;'>'Huh, incredible. Physical percussive maintenance actually worked. The routing rail snapped back into place.'</span>";
+        logFooter.innerText = "Subnet trace status: HARDWARE_FORCED_REBOOT // Code: 200_OK";
+      }
+
+      // Smooth link release delay window simulation
+      setTimeout(function() {
+        escapeLink.classList.remove('hidden');
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>

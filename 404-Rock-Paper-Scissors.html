@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - AI Duel Protocol</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 550px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.7rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .score-board {
+      font-size: 1.2rem;
+      margin: 15px 0;
+      color: #ffffff;
+    }
+
+    /* Live scrolling stream log */
+    .log-stream {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 15px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      text-align: left;
+      line-height: 1.5;
+      margin: 20px 0;
+      height: 120px;
+      overflow-y: auto;
+    }
+
+    .log-entry { margin-bottom: 6px; }
+    .log-win { color: #00ff33; font-weight: bold; }
+    .log-lose { color: #ff3333; text-shadow: 0 0 5px #ff3333; }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+      font-weight: bold;
+    }
+
+    .escape-btn {
+      border: 2px solid #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>⚔️ PROTOCOL_404: AI_GRID_DUEL</h1>
+    <p style="color: #888; font-size: 0.9rem;">The index is locked down. Defeat the arrogant server firewall in a classic hand-shake protocol duel to clear the routing path.</p>
+    
+    <div class="score-board">
+      HUMAN: <span id="human-score">0</span> | FIREWALL: <span id="ai-score">0</span>
+    </div>
+
+    <!-- Battle history stream logs -->
+    <div class="log-stream" id="log-box">
+      <div class="log-entry">[SYSTEM] Firewall active. Awaiting your Handshake package...</div>
+    </div>
+
+    <div class="btn-row" id="interface-box">
+      <button class="btn" onclick="playRound('rock')">✊ ROCK.EXE</button>
+      <button class="btn" onclick="playRound('paper')">✋ PAPER.EXE</button>
+      <button class="btn" onclick="playRound('scissors')">✌️ SCISSORS.EXE</button>
+    </div>
+
+    <div class="btn-row">
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 LINK OVERRIDDEN: BYPASS TO HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const logBox = document.getElementById('log-box');
+    const interfaceBox = document.getElementById('interface-box');
+    const escapeLink = document.getElementById('escape-link');
+    const humanScoreEl = document.getElementById('human-score');
+    const aiScoreEl = document.getElementById('ai-score');
+
+    let humanScore = 0;
+    let aiScore = 0;
+    let isGameOver = false;
+
+    const choices = ["rock", "paper", "scissors"];
+
+    // Sarcastic commentary blocks based on game events
+    const winInsults = [
+      "AI: Beginner's luck. My neural path suffered a minor cache lag.",
+      "AI: You won that hand, but your biological computing power remains inferior.",
+      "AI: Impossible. Did you inspect my source variables?!"
+    ];
+
+    const loseInsults = [
+      "AI: Human intelligence is highly overrated. Rock beats scissors effortlessly.",
+      "AI: Outsmarted by a standard math equation. Pathetic.",
+      "AI: Handshake failed. I read your synaptic pathways like an open config file."
+    ];
+
+    function printLogLine(text, styleClass) {
+      const entry = document.createElement('div');
+      entry.className = "log-entry " + (styleClass || "");
+      entry.innerText = text;
+      logBox.appendChild(entry);
+      logBox.scrollTop = logBox.scrollHeight; // Keep log focus anchored downwards
+    }
+
+    function playRound(humanChoice) {
+      if (isGameOver) return;
+
+      // AI picking its logical counter move randomly
+      const aiChoice = choices[Math.floor(Math.random() * choices.length)];
+      
+      printLogLine("You deployed: " + humanChoice.toUpperCase() + " // AI deployed: " + aiChoice.toUpperCase());
+
+      if (humanChoice === aiChoice) {
+        printLogLine("RESULT: Grid synchronized. It is a tie protocol.", "color: #ffcc00;");
+      } else if (
+        (humanChoice === "rock" && aiChoice === "scissors") ||
+        (humanChoice === "paper" && aiChoice === "rock") ||
+        (humanChoice === "scissors" && aiChoice === "paper")
+      ) {
+        // Human wins round step
+        humanScore++;
+        humanScoreEl.innerText = humanScore;
+        const insult = winInsults[Math.floor(Math.random() * winInsults.length)];
+        printLogLine(insult, "log-win");
+      } else {
+        // AI wins round step
+        aiScore++;
+        aiScoreEl.innerText = aiScore;
+        const insult = loseInsults[Math.floor(Math.random() * loseInsults.length)];
+        printLogLine(insult, "log-lose");
+      }
+
+      checkMatchEnd();
+    }
+
+    function checkMatchEnd() {
+      if (humanScore >= 3) {
+        isGameOver = true;
+        interfaceBox.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+        printLogLine("🤖 AI: CRITICAL FAILURE... Security shield collapsed. Bypassing directory walls...", "log-win");
+      } else if (aiScore >= 3) {
+        printLogLine("🤖 AI: Match point achieved. Re-indexing field... Try again, human.", "log-lose");
+        // Reset scoreboard progress on loss to force the player to actually win 3 rounds
+        humanScore = 0;
+        aiScore = 0;
+        humanScoreEl.innerText = humanScore;
+        aiScoreEl.innerText = aiScore;
+      }
+    }
+  </script>
+
+</body>
+</html>

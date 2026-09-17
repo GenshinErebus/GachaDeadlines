@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - DNS Connection Error</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 550px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.8rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* Live scrolling network trace terminal stream log */
+    .log-terminal {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 15px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      text-align: left;
+      line-height: 1.5;
+      margin: 20px 0;
+      height: 150px;
+      overflow-y: auto;
+    }
+
+    .log-entry { margin-bottom: 6px; }
+    .log-fail { color: #ff3333; text-shadow: 0 0 5px #ff3333; }
+    .log-success { color: #00ff33; font-weight: bold; }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-decoration: none;
+      transition: all 0.1s ease;
+    }
+
+    /* Active click button push flash feedback state */
+    .btn:active {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .escape-btn {
+      border: 2px solid #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1>📡 DNS_PROBE_FINISHED_NXDOMAIN (404)</h1>
+    <p style="color: #888; font-size: 0.9rem;">The gateway is completely unresponsive. Flood the domain lookup index with packet queries to forcefully wake up the node.</p>
+    
+    <!-- Logging buffer panel stream -->
+    <div class="log-terminal" id="log-box">
+      <div class="log-entry">[SYSTEM] Interface online. Connection state: TIMEOUT.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="ping-btn" onclick="floodPingQuery()">⚡ FLOOD_PING.EXE</button>
+      <a href="/" class="btn escape-btn hidden" id="escape-link">🚀 RETURNING_HOME.EXE</a>
+    </div>
+  </div>
+
+  <script>
+    const logBox = document.getElementById('log-box');
+    const pingBtn = document.getElementById('ping-btn');
+    const escapeLink = document.getElementById('escape-link');
+
+    let pingCount = 0;
+    let isFinished = false;
+
+    // A collection of humorous server irritation logs
+    const networkResponses = [
+      "PING deineseite.io: packet loss 100% (gateway unreachable)",
+      "PING deineseite.io: timeout! Request expired on hop 14.",
+      "WARN: Server load high. Stop multi-threading requests.",
+      "ALERT: Packet flood detected! Security wall warning generated.",
+      "CRITICAL: Router thread cache buffer full. Core melting.",
+      "FINE! Stop spamming the gateway button. Take the link..."
+    ];
+
+    function printLogLine(text, statusClass) {
+      const line = document.createElement('div');
+      line.className = "log-entry " + (statusClass || "");
+      line.innerText = "[" + new Date().toLocaleTimeString() + "] " + text;
+      logBox.appendChild(line);
+      logBox.scrollTop = logBox.scrollHeight; // Keep dynamic focus snapped down
+    }
+
+    function floodPingQuery() {
+      if (isFinished) return;
+
+      pingCount++;
+
+      if (pingCount < 8) {
+        // Log connection failure drops to trigger gamer irritation loops
+        const responseIdx = Math.min(pingCount - 1, networkResponses.length - 2);
+        printLogLine(networkResponses[responseIdx], "log-fail");
+      } else {
+        // Success breakpoint passed
+        isFinished = true;
+        pingBtn.classList.add('hidden');
+        escapeLink.classList.remove('hidden');
+
+        printLogLine(networkResponses[networkResponses.length - 1], "log-success");
+        printLogLine("STATUS_200: Temporary bypass route established successfully.", "log-success");
+      }
+    }
+  </script>
+
+</body>
+</html>

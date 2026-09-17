@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Wikipedia Rabbit Hole</title>
+  <style>
+    /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal-box {
+      max-width: 600px;
+      width: 100%;
+      border: 2px solid #00ff33;
+      padding: 25px;
+      border-radius: 6px;
+      background-color: #111;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+      box-sizing: border-box;
+    }
+
+    h1 { 
+      font-size: 1.6rem; 
+      margin-top: 0; 
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+      padding-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .article-display {
+      background-color: #050505;
+      border: 1px solid rgba(0, 255, 51, 0.4);
+      padding: 20px;
+      border-radius: 4px;
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.6;
+      margin: 20px 0;
+      min-height: 140px;
+      text-align: left;
+    }
+
+    .wiki-link {
+      color: #00ff33;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 2px 4px;
+      display: inline-block;
+    }
+
+    .wiki-link:hover {
+      background-color: #00ff33;
+      color: #050505;
+      text-decoration: none;
+      box-shadow: 0 0 8px #00ff33;
+    }
+
+    .status-panel {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #ffcc00;
+      box-shadow: 0 0 5px rgba(255, 204, 0, 0.2);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ffcc00;
+      color: #050505;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-box">
+    <h1 id="title-field">📚 WIKIPEDIA_INDEX: ARTICLE_404</h1>
+    
+    <div class="article-display" id="article-field">Loading database stream...</div>
+
+    <div class="status-panel" id="status-msg">Click-hole depth: 0/6</div>
+
+    <div style="margin-top: 20px;">
+      <a href="/" class="btn hidden" id="escape-link">🚀 ABORT LOOKUP &amp; RETURN HOME</a>
+    </div>
+  </div>
+
+  <script>
+    const titleField = document.getElementById('title-field');
+    const articleField = document.getElementById('article-field');
+    const statusMsg = document.getElementById('status-msg');
+    const escapeLink = document.getElementById('escape-link');
+
+    let clickDepth = 0;
+    const maxDepthLimit = 6;
+
+    // EXPANDED: Balanced dictionary tree map preventing premature dead ends
+    const wikiArticles = {
+      start: {
+        title: "📚 Wiki: Link Dematerialization",
+        html: "The requested URL has suffered an unexpected case of <b>Link Dematerialization</b>. This occurs when a network packet wanders off into the <span class='wiki-link' onclick='jumpToWikiArticle(\"void\")'>Mainframe Void</span>, often chased by rogue <span class='wiki-link' onclick='jumpToWikiArticle(\"gnomes\")'>Server Gnomes</span> who hoard strings of loose code."
+      },
+      void: {
+        title: "🌌 Wiki: Mainframe Void",
+        html: "The <b>Mainframe Void</b> is an unallocated digital space located somewhere between your local browser cache and an angry router stack. It is theorized that unclosed semicolons collapse here, generating localized <span class='wiki-link' onclick='jumpToWikiArticle(\"paradox\")'>Quantum Paradoxes</span> that dissolve front-end styles."
+      },
+      gnomes: {
+        title: "🍄 Wiki: Server Gnomes",
+        html: "<b>Server Gnomes</b> are microscopic carbon-silicon entities living inside legacy database racks. They are notorious for dragging unindexed directory paths into their underground tunnels. To appease them, engineers must broadcast a signal to the mythical <span class='wiki-link' onclick='jumpToWikiArticle(\"mainframe\")'>Destiny Mainframe</span>."
+      },
+      paradox: {
+        title: "⏳ Wiki: Quantum Paradox",
+        html: "A <b>Quantum Paradox</b> in web infrastructure manifests when a user simultaneously exists on a webpage and does not exist on it (Error 404). This breaks the laws of physics, forcing the hardware layers to consult the ancient <span class='wiki-link' onclick='jumpToWikiArticle(\"mainframe\")'>Destiny Mainframe</span>."
+      },
+      mainframe: {
+        title: "🔮 Wiki: Destiny Mainframe",
+        html: "The <b>Destiny Mainframe</b> is a legendary computing core rumored to be fueled entirely by spilled cold brew coffee and unapproved pull requests. Legend says it holds the master directory to all lost file indexes, guarded closely by the feared <span class='wiki-link' onclick='jumpToWikiArticle(\"cat\")'>Keyboard Cat</span> or deep inside the <span class='wiki-link' onclick='jumpToWikiArticle(\"archive\")'>StackOverflow Archive</span>."
+      },
+      cat: {
+        title: "🐈 Wiki: Keyboard Cat",
+        html: "<b>Keyboard Cat</b> is the localized guardian manifestations shell script patrolling the mainframe layers. It handles active buffer dumps by playing an upbeat 8-bit melody that rhythmically flushes corrupted sectors into the <span class='wiki-link' onclick='jumpToWikiArticle(\"void\")'>Mainframe Void</span>."
+      },
+      archive: {
+        title: "💾 Wiki: StackOverflow Archive",
+        html: "The <b>StackOverflow Archive</b> is a digital vault enclosing solutions to problems that haven't even been invented yet. It is mostly visited by desperate carbon-units hunting down answers posted by a user named 'CyberGuru99' who was last seen active in the <span class='wiki-link' onclick='jumpToWikiArticle(\"start\")'>First Terminal Era</span>."
+      }
+    };
+
+    function jumpToWikiArticle(targetKey) {
+      clickDepth++;
+
+      // Trigger structural termination sequence only at click #6
+      if (clickDepth >= maxDepthLimit) {
+        titleField.innerText = "⚠️ SYSTEM_ABORT: DEPTH_CRITICAL";
+        titleField.style.color = "#ff3333";
+        titleField.style.textShadow = "0 0 5px #ff3333";
+        
+        articleField.innerHTML = "<span style='color: #ff3333; font-weight: bold;'>[ACCESS_DENIED]</span><br><br>Warning: You are tumbling too deep into the web rabbit hole. Mainframe buffer capacity reached. Aborting data query to prevent brain-index corruption.";
+        articleField.style.borderColor = "#ff3333";
+        
+        statusMsg.innerHTML = "<span style='color: #ff3333;'>Depth limit exceeded! Safely disconnect immediately.</span>";
+        escapeLink.classList.remove('hidden');
+        return;
+      }
+
+      const targetArticle = wikiArticles[targetKey];
+      if (targetArticle) {
+        titleField.innerText = targetArticle.title;
+        articleField.innerHTML = targetArticle.html;
+        statusMsg.innerText = "Click-hole depth: " + clickDepth + "/" + maxDepthLimit;
+      }
+    }
+
+    window.onload = function() {
+      titleField.innerText = wikiArticles.start.title;
+      articleField.innerHTML = wikiArticles.start.html;
+      statusMsg.innerText = "Click-hole depth: 0/" + maxDepthLimit;
+    };
+  </script>
+
+</body>
+</html>
