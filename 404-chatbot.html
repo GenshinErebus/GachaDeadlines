@@ -24,14 +24,16 @@
     }
 
     .terminal-box {
-      width: 95vw;
-      height: 95vh;
+      width: 70vw;
+      height: 70vh;
       background-color: #111;
       border: 2px solid #00ff33;
       border-radius: 6px;
       padding: 25px;
       box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
     }
 
     .header-bar {
@@ -40,13 +42,19 @@
       margin-bottom: 20px;
       font-size: clamp(0.8rem, 2.3vw, 2.3rem);
       color: #ffffff;
+      flex-shrink: 0;
     }
 
     .chat-history {
       min-height: 180px;
+      max-height: 55vh;
       margin-bottom: 25px;
       font-size: clamp(0.7rem, 2.2vw, 2.2rem);
       line-height: 1.5;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-grow: 1;
+      flex-shrink: 1;
     }
 
     .bot-line {
@@ -73,6 +81,8 @@
       gap: 10px;
       justify-content: center;
       width: 100%;
+      flex-shrink: 0;
+      margin-top: auto;
     }
 
     .choice-btn {
@@ -117,6 +127,31 @@
       font-size: clamp(0.7rem, 2.2vw, 2.2rem);
       margin-top: 10px;
       animation: pulse 1s infinite;
+    }
+
+    /* ============================================
+   DESKTOP LAYOUT (Screens > 768px)
+   ============================================ */
+    @media (min-width: 48.0625rem) {}
+
+    /* ============================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   ============================================ */
+    @media (max-width: 48rem) {
+      .terminal-box {
+        width: 92vw;
+        height: 88vh;
+      }
+    }
+
+    /* ==========================================================================
+       ULTRA-MOBILE RESOLUTIONS (Nested inside max-width: 768px)
+       ========================================================================== */
+    @media (max-width: 21.8125rem) {
+      .terminal-box {
+        width: 96vw;
+        height: 90vh;
+      }
     }
 
     @keyframes pulse {

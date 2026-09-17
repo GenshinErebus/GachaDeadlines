@@ -526,32 +526,32 @@ const eventDatabase = {
         ],
         events: [
             {
-                id: "rev_000",
+                id: "rev_001",
                 name: "Return of a Special Guest",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_001",
+                id: "rev_002",
                 name: "On Another's Sorrow",
                 endDate: "2026-09-21T10:00:00Z"
             },
             {
-                id: "rev_002",
+                id: "rev_003",
                 name: "The You That's Meant to Be",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_003",
+                id: "rev_004",
                 name: "Mane's Bulletin",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
-                id: "rev_004",
+                id: "rev_005",
                 name: "Limbo",
                 endDate: "2026-10-16T10:00:00Z"
             },
             {
-                id: "rev_005",
+                id: "rev_006",
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
             },
@@ -583,6 +583,11 @@ const eventDatabase = {
             {
                 id: "rev_012",
                 name: "Break Time Activity",
+                endDate: "2026-09-24T10:00:00Z"
+            },
+            {
+                id: "rev_013",
+                name: "UTTU Scouting Trip",
                 endDate: "2026-09-24T10:00:00Z"
             },
             {
