@@ -2,56 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>404 - Garbage Collector Protocol</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    /* ============================================
+       BASE STYLES (Desktop & Large Screens ≥768px)
+       ============================================ */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
       text-shadow: 0 0 5px #00ff33;
       text-align: center;
       overflow: hidden;
-      touch-action: none; /* Stops mobile background screen bouncing while tapping variables */
+      touch-action: none;
       user-select: none;
     }
 
     .container {
       text-align: center;
-      max-width: 550px;
-      width: 100%;
-      z-index: 10;
+      width: 75vw;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .header-text {
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       line-height: 1.4;
-      font-size: 0.85rem;
+      font-size: 1.05rem;
+      width: 100%;
     }
 
     .score-board {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1px solid rgba(0, 255, 51, 0.3);
+      border-radius: 4px;
+      background-color: rgba(17, 17, 17, 0.7);
     }
 
     /* The interactive container box acting as the heap playground memory area */
     .heap-sandbox {
       position: relative;
-      width: 100%;
-      height: 300px;
+      width: 95%;
+      height: 500px;
+      max-width: 900px;
       background-color: #111;
       border: 3px solid #00ff33;
-      border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 255, 51, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 255, 51, 0.3);
       margin: 15px auto;
       overflow: hidden;
     }
@@ -60,25 +73,32 @@
     .trash-variable {
       position: absolute;
       color: #ff3333;
-      text-shadow: 0 0 5px #ff3333;
-      font-size: 0.95rem;
+      text-shadow: 0 0 8px #ff3333;
+      font-size: 0.9rem;
       font-weight: bold;
       cursor: pointer;
       white-space: nowrap;
-      padding: 12px 8px; /* Greatly expands tap hitboxes on smartphones */
+      padding: 15px 12px;
       transform: translate(-50%, -50%);
-      transition: top 0.05s linear;
+      transition: transform 0.1s ease, color 0.1s ease;
+      z-index: 10;
     }
 
     .trash-variable:hover {
       color: #ffffff;
-      text-shadow: 0 0 10px #ffffff;
+      text-shadow: 0 0 15px #ffffff;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .trash-variable:active {
+      transform: translate(-50%, -50%) scale(0.95);
     }
 
     .status-panel {
-      font-size: 1.1rem;
-      margin: 10px 0;
-      min-height: 25px;
+      font-size: 1.05rem;
+      margin: 15px 0;
+      min-height: 28px;
+      padding: 8px;
     }
 
     /* Action Buttons */
@@ -86,28 +106,275 @@
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 14px 28px;
       font-family: inherit;
       font-size: 1rem;
       cursor: pointer;
       margin: 8px;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 6px #00ff33;
       transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      min-width: 140px;
+      flex-shrink: 0;
     }
 
     .btn:hover {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 20px #00ff33;
       font-weight: bold;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .hidden {
       display: none !important;
+    }
+
+    /* ============================================
+       TABLET / LARGE MOBILE (480px - 768px)
+       ============================================ */
+    @media (min-width: 480px) and (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+
+      .container {
+        width: 85vw;
+      }
+
+      .header-text {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+      }
+
+      .score-board {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        padding: 6px 12px;
+      }
+
+      .heap-sandbox {
+        width: 90%;
+        height: 400px;
+        border-width: 2.5px;
+      }
+
+      .trash-variable {
+        font-size: 0.8rem;
+        padding: 12px 10px;
+      }
+
+      .status-panel {
+        font-size: 0.95rem;
+        margin: 12px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        min-height: 48px;
+        min-width: 130px;
+      }
+    }
+
+    /* ============================================
+       MOBILE LAYOUT (321px - 479px Width)
+       ============================================ */
+    @media (max-width: 479px) and (min-width: 321px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        width: 95vw;
+      }
+
+      .header-text {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+      }
+
+      .header-text div {
+        margin-bottom: 3px;
+      }
+
+      .score-board {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+      }
+
+      .heap-sandbox {
+        width: 98%;
+        height: 350px;
+        border-width: 2px;
+      }
+
+      .trash-variable {
+        font-size: 0.75rem;
+        padding: 10px 8px;
+        min-height: 36px;
+        min-width: 100px;
+      }
+
+      .status-panel {
+        font-size: 0.85rem;
+        margin: 10px 0;
+        min-height: 24px;
+      }
+
+      .btn {
+        padding: 11px 20px;
+        font-size: 0.85rem;
+        min-height: 46px;
+        min-width: 130px;
+        margin: 4px;
+      }
+
+      .btn-row {
+        gap: 8px;
+        margin-top: 8px;
+      }
+    }
+
+    /* ============================================
+       COMPACT MODE (≤320px Width AND ≤450px Height)
+       EXTREME optimization - Sandbox reduziert für Button-Platz
+       ============================================ */
+    @media (max-width: 320px) and (max-height: 450px) {
+      body {
+        padding: 3px;
+      }
+
+      .container {
+        width: 100vw;
+        padding: 5px;
+      }
+
+      .header-text {
+        font-size: 0.65rem;
+        margin-bottom: 5px;
+        width: 100%;
+      }
+
+      .header-text div:nth-child(2),
+      .header-text div:nth-child(3) {
+        display: none;
+      }
+
+      .score-board {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+        padding: 3px 6px;
+        width: 100%;
+      }
+
+      /* CRITICAL: Sandbox um ~40% reduziert für Button-Platz */
+      .heap-sandbox {
+        width: 100%;
+        height: 180px;
+        border-width: 1.5px;
+        border-radius: 3px;
+        margin: 4px 0;
+      }
+
+      .trash-variable {
+        font-size: 0.65rem;
+        padding: 8px 6px;
+        min-height: 32px;
+        min-width: 70px;
+        border-radius: 2px;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+        margin: 4px 0;
+        min-height: 20px;
+        padding: 4px;
+      }
+
+      .btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        min-height: 44px;
+        min-width: 160px;
+        width: 85%;
+        margin: 2px 0;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        margin-top: 4px;
+        width: 100%;
+      }
+
+      #reset-btn {
+        border-color: #ff3333;
+        color: #ff3333;
+        order: 2;
+      }
+
+      #escape-link {
+        order: 1;
+        background: #00ff33;
+        color: #050505;
+        font-weight: bold;
+      }
+    }
+
+    /* ============================================
+       ULTRA-COMPACT (≤320px Width AND ≤400px Height)
+       Absolute Minimum - alle Elemente skaliert
+       ============================================ */
+    @media (max-width: 320px) and (max-height: 400px) {
+      .heap-sandbox {
+        height: 160px;
+      }
+
+      .header-text {
+        margin-bottom: 3px;
+        font-size: 0.6rem;
+      }
+
+      .score-board {
+        margin-bottom: 4px;
+        font-size: 0.65rem;
+      }
+
+      .status-panel {
+        margin: 3px 0;
+        font-size: 0.6rem;
+      }
+
+      .btn {
+        min-height: 42px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Scale fallback for very short screens */
+    @media (max-height: 380px) {
+      .heap-sandbox {
+        transform: scale(0.85);
+        transform-origin: top center;
+        margin-bottom: -8px;
+      }
     }
   </style>
 </head>
@@ -115,23 +382,22 @@
 
   <div class="container">
     <div class="header-text">
-      <div>⚠️ [MEMORY_LEAK_ALERT] HEAP OVERFLOW DETECTED (404)</div>
-      <div>Unused variables are floating in the broken routing link layer.</div>
-      <div>Controls: Tap or Click the red code strings to activate the garbage collector.</div>
+      <div>⚠️ [MEMORY_LEAK_ALERT] HEAP OVERFLOW (404)</div>
+      <div>Tap red code strings to activate garbage collector.</div>
     </div>
 
     <div class="score-board">
-      MEMORY RECLAIMED: <span id="cleared-count">0</span> / 8 sectors
+      MEMORY: <span id="cleared-count">0</span> / 8
     </div>
 
     <!-- The interactive sandbox playground simulating heap memory -->
     <div class="heap-sandbox" id="heap-zone"></div>
 
-    <div class="status-panel" id="terminal-msg">Collector state: IDLE // Awaiting input...</div>
+    <div class="status-panel" id="terminal-msg">Collector: ACTIVE // Purging...</div>
 
-    <div>
-      <button class="btn hidden" id="reset-btn" onclick="rebootCollectorEngine()">REBOOT ENGINE</button>
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-link">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    <div class="btn-row">
+      <button class="btn hidden" id="reset-btn" onclick="rebootCollectorEngine()">REBOOT</button>
+      <a href="/GachaDeadlines/" class="btn hidden" id="escape-link">🚀 ESCAPE</a>
     </div>
   </div>
 
@@ -148,7 +414,6 @@
     let spawnClock;
     let physicsClock;
 
-    // Technical strings representing typical unreferenced memory waste trash objects
     const deadCodePool = [
       "let undefined_var;",
       "var useless_array = [];",
@@ -166,15 +431,17 @@
       activeTrash = [];
       
       clearedEl.innerText = score;
-      msgEl.innerText = "Collector state: ACTIVE // Purging system buffer...";
+      msgEl.innerText = "Collector: ACTIVE // Purging...";
       
       escapeLink.classList.add('hidden');
       resetBtn.classList.add('hidden');
       sandbox.innerHTML = '';
 
-      // Set up simple system interval clock steps
-      spawnClock = setInterval(spawnLeakVariable, 1800);
-      physicsClock = setInterval(updatePhysicsLoop, 40); // 25 fps grid updates
+      const spawnRate = window.innerWidth < 480 ? 1400 : 1800;
+      const physicsRate = window.innerWidth < 480 ? 50 : 40;
+
+      spawnClock = setInterval(spawnLeakVariable, spawnRate);
+      physicsClock = setInterval(updatePhysicsLoop, physicsRate);
     }
 
     function spawnLeakVariable() {
@@ -186,24 +453,24 @@
       el.className = 'trash-variable';
       el.innerText = randomText;
       
-      // Calculate random horizontal spawn column alignment securely within bounding frame edges
       const maxWidth = sandbox.clientWidth;
-      const xPos = Math.floor(Math.random() * (maxWidth - 180)) + 90;
+      const xPos = Math.floor(Math.random() * (maxWidth - 120)) + 60;
       
       el.style.left = xPos + 'px';
       el.style.top = '0px';
 
-      // Connect interaction bindings tracking click events
-      el.addEventListener('click', function() {
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
         collectTrashItem(el);
       });
       el.addEventListener('touchstart', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         collectTrashItem(el);
       }, { passive: false });
 
       sandbox.appendChild(el);
-      activeTrash.push({ element: el, y: 0, speed: 1.2 + Math.random() * 0.8 });
+      activeTrash.push({ element: el, y: 0, speed: 0.8 + Math.random() * 0.5 });
     }
 
     function updatePhysicsLoop() {
@@ -216,8 +483,7 @@
         trash.y += trash.speed;
         trash.element.style.top = trash.y + 'px';
 
-        // Check if trash falls past the bottom border boundary trigger area
-        if (trash.y >= maxHeight - 15) {
+        if (trash.y >= maxHeight - 8) {
           triggerMemoryLeakCrash();
           break;
         }
@@ -227,13 +493,11 @@
     function collectTrashItem(element) {
       if (isGameOver) return;
 
-      // Extract entry out of processing tracking array loop
       activeTrash = activeTrash.filter(item => item.element !== element);
       
-      // Create temporary visual collection blink effect
       element.style.color = '#ffffff';
-      element.style.textShadow = '0 0 10px #00ff33';
-      setTimeout(function() { element.remove(); }, 80);
+      element.style.textShadow = '0 0 15px #00ff33';
+      setTimeout(function() { element.remove(); }, 60);
 
       score++;
       clearedEl.innerText = score;
@@ -241,7 +505,7 @@
       if (score >= 8) {
         triggerWinState();
       } else {
-        msgEl.innerText = "Log: Reclaimed dead reference sector successfully.";
+        msgEl.innerText = "Sector reclaimed successfully.";
       }
     }
 
@@ -251,7 +515,7 @@
       clearInterval(physicsClock);
       
       resetBtn.classList.remove('hidden');
-      msgEl.innerHTML = "<span style='color: #ff3333;'>FATAL_ERROR: HEAP_OVERFLOW! Garbage collection stack frozen.</span>";
+      msgEl.innerHTML = "<span style='color:#ff3333'>FATAL: HEAP_OVERFLOW! Stack frozen.</span>";
     }
 
     function triggerWinState() {
@@ -259,19 +523,17 @@
       clearInterval(spawnClock);
       clearInterval(physicsClock);
       
-      // Clean up remaining leaks smoothly
       activeTrash.forEach(item => item.element.remove());
       activeTrash = [];
 
       escapeLink.classList.remove('hidden');
-      msgEl.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>HEAP_STABILIZED: Buffer sync complete. Bridge opened!</span>";
+      msgEl.innerHTML = "<span style='color:#00ff33;font-weight:bold'>HEAP_STABILIZED! Bridge opened!</span>";
     }
 
     function rebootCollectorEngine() {
       startCollectorEngine();
     }
 
-    // Launch configuration engine setup execution instantly on loading
     startCollectorEngine();
   </script>
 </body>

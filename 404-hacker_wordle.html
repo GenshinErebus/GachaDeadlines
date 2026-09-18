@@ -3,92 +3,104 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>404 - Password Cracker (Wordle)</title>
   <style>
-    /* Retro Terminal Look */
+    /* ============================================
+       BASE STYLES (Desktop & Large Screens ≥768px)
+       ============================================ */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 10px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
       text-shadow: 0 0 5px #00ff33;
       user-select: none;
       touch-action: manipulation;
+      overflow: hidden;
     }
 
     .container {
-      /* Forces the container to take up 100% of the screen width and height */
-      width: 100vw;
-      height: 100vh;
-      /* Reset margins and ensure padding doesn't cause hidden scrollbars */
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-      /* Perfect center alignment for your games */
+      width: 75vw;
+      max-width: 1000px;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 30px;
     }
 
     .header-text {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       line-height: 1.4;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .header-text div:first-child {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+
+    .header-text div:nth-child(2) {
+      font-size: 1.1rem;
     }
 
     /* Wordle 6x5 Grid */
     .grid {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       margin: 15px auto;
     }
 
     .word-row {
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .letter-box {
-      width: 50px;
-      height: 50px;
-      border: 2px solid #00ff33;
-      border-radius: 4px;
+      width: 70px;
+      height: 70px;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
       background-color: #111;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      font-size: 2rem;
       font-weight: bold;
       color: #00ff33;
-      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      box-shadow: 0 0 8px rgba(0, 255, 51, 0.3);
       text-transform: uppercase;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
-    /* Wordle Status Colors Mapping States Safely */
     .letter-box.correct {
       background-color: #0c2c0e;
       border-color: #00ff33;
-      box-shadow: 0 0 10px #00ff33;
+      box-shadow: 0 0 15px #00ff33;
     }
 
     .letter-box.present {
       background-color: #3a3000;
       border-color: #ffcc00;
       color: #ffcc00;
-      text-shadow: 0 0 5px #ffcc00;
-      box-shadow: 0 0 10px #ffcc00;
+      text-shadow: 0 0 8px #ffcc00;
+      box-shadow: 0 0 15px #ffcc00;
     }
 
     .letter-box.absent {
@@ -100,17 +112,18 @@
     }
 
     .status-panel {
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      margin: 10px 0;
-      min-height: 25px;
+      font-size: 1.1rem;
+      margin: 12px 0;
+      min-height: 28px;
+      text-align: center;
     }
 
-    /* Custom Virtual Keyboard Grid Layout */
+    /* Custom Virtual Keyboard */
     .keyboard {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-width: 700px;
+      max-width: 800px;
       margin: 15px auto;
       width: 100%;
     }
@@ -118,64 +131,327 @@
     .kb-row {
       display: flex;
       justify-content: center;
-      gap: 4px;
+      gap: 5px;
       width: 100%;
     }
 
     .key {
       background-color: #111;
-      border: 1px solid #00ff33;
+      border: 2px solid #00ff33;
       color: #00ff33;
       font-family: inherit;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      padding: 10px 0;
+      font-size: 1rem;
+      padding: 12px 0;
       flex: 1;
       border-radius: 4px;
       cursor: pointer;
-      box-shadow: 0 0 3px rgba(0, 255, 51, 0.3);
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.3);
       transition: all 0.1s;
       text-align: center;
+      min-width: 45px;
+      min-height: 50px;
+      text-transform: uppercase;
     }
 
     .key:active,
     .key:hover {
       background-color: #00ff33;
       color: #050505;
-      box-shadow: 0 0 12px #00ff33;
+      box-shadow: 0 0 15px #00ff33;
       font-weight: bold;
     }
 
     .key.wide {
-      flex: 1.5;
-      font-size: clamp(0.9rem, 1.9vw, 1.5rem);
+      flex: 1.8;
+      font-size: 1.1rem;
     }
 
     /* Action Buttons */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 15px;
+      width: 100%;
+    }
+
     .btn {
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 14px 28px;
       font-family: inherit;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      font-size: 0.95rem;
       cursor: pointer;
-      margin: 8px;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 6px #00ff33;
       transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      min-width: 140px;
     }
 
     .btn:hover {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 20px #00ff33;
     }
 
     .hidden {
-      display: none;
+      display: none !important;
+    }
+
+    /* ============================================
+       TABLET / LARGE MOBILE (480px - 768px)
+       ============================================ */
+    @media (min-width: 480px) and (max-width: 768px) {
+      .container {
+        width: 85vw;
+        padding: 20px;
+      }
+
+      .header-text {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+
+      .header-text div:first-child {
+        font-size: 0.85rem;
+      }
+
+      .header-text div:nth-child(2) {
+        font-size: 0.95rem;
+      }
+
+      .letter-box {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+        border-width: 2.5px;
+      }
+
+      .grid {
+        gap: 6px;
+        margin: 12px auto;
+      }
+
+      .word-row {
+        gap: 6px;
+      }
+
+      .key {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        min-width: 38px;
+        min-height: 46px;
+      }
+
+      .key.wide {
+        font-size: 1rem;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        padding: 12px 22px;
+        min-height: 48px;
+        min-width: 120px;
+      }
+    }
+
+    /* ============================================
+       MOBILE LAYOUT (321px - 479px Width)
+       ============================================ */
+    @media (max-width: 479px) and (min-width: 321px) {
+      body {
+        padding: 8px;
+      }
+
+      .container {
+        width: 98vw;
+        padding: 12px;
+      }
+
+      .header-text {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+      }
+
+      .header-text div:first-child {
+        font-size: 0.7rem;
+      }
+
+      .letter-box {
+        width: 38px;
+        height: 38px;
+        font-size: 0.85rem;
+        border-width: 1.5px;
+      }
+
+      .grid {
+        gap: 4px;
+        margin: 8px auto;
+      }
+
+      .word-row {
+        gap: 4px;
+      }
+
+      .status-panel {
+        font-size: 0.8rem;
+        margin: 6px 0;
+      }
+
+      .keyboard {
+        margin: 8px auto;
+        gap: 3px;
+      }
+
+      .key {
+        font-size: 0.75rem;
+        padding: 6px 0;
+        min-width: 30px;
+        min-height: 44px;
+        border-width: 1.5px;
+      }
+
+      .key.wide {
+        font-size: 0.85rem;
+        flex: 1.4;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        padding: 11px 18px;
+        min-height: 46px;
+        min-width: 130px;
+        margin: 2px;
+      }
+
+      .btn-row {
+        gap: 8px;
+        margin-top: 10px;
+      }
+    }
+
+    /* ============================================
+       COMPACT MODE (≤320px Width AND ≤450px Height)
+       Extreme optimization with BIGGER BUTTONS
+       ============================================ */
+    @media (max-width: 320px) and (max-height: 450px) {
+      body {
+        padding: 4px;
+      }
+
+      .container {
+        width: 100vw;
+        padding: 8px;
+      }
+
+      .header-text {
+        font-size: 0.65rem;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+
+      .header-text div:nth-child(2) {
+        display: none;
+      }
+
+      .header-text div:first-child {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+      }
+
+      .letter-box {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+        border-width: 1.5px;
+        border-radius: 3px;
+      }
+
+      .grid {
+        gap: 3px;
+        margin: 5px auto;
+      }
+
+      .word-row {
+        gap: 3px;
+      }
+
+      .status-panel {
+        font-size: 0.7rem;
+        margin: 5px 0;
+        min-height: 20px;
+      }
+
+      .keyboard {
+        margin: 5px auto;
+        gap: 3px;
+      }
+
+      .key {
+        font-size: 0.65rem;
+        padding: 5px 0;
+        min-width: 24px;
+        min-height: 42px;
+        border-width: 1.5px;
+      }
+
+      .key.wide {
+        font-size: 0.75rem;
+        flex: 1.3;
+      }
+
+      .btn-row {
+        margin-top: 8px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 13px 16px;
+        min-height: 50px;
+        min-width: 200px;
+        width: 90%;
+        margin: 2px 0;
+      }
+
+      #reset-btn {
+        order: 2;
+        border-color: #ff3333;
+        color: #ff3333;
+      }
+
+      #escape-btn {
+        order: 1;
+        font-size: 1.05rem;
+        padding: 15px 16px;
+        min-width: 220px;
+        background: #00ff33;
+        color: #050505;
+      }
+    }
+
+    /* Scale fallback for very short screens */
+    @media (max-height: 400px) {
+      .keyboard {
+        transform: scale(0.78);
+        transform-origin: top center;
+        margin-bottom: -6px;
+      }
+
+      .letter-box {
+        transform: scale(0.82);
+        transform-origin: center;
+      }
     }
   </style>
 </head>
@@ -184,8 +460,8 @@
 
   <div class="container">
     <div class="header-text">
-      <div>⚠️ [AUTHENTICATION_REQUIRED] SYSTEM LOCKOUT 404</div>
-      <div>Crack the 5-letter cryptographic password mainframe token.</div>
+      <div>[AUTH_REQUIRED] SYSTEM LOCKOUT 404</div>
+      <div>Crack the 5-letter cryptographic password token.</div>
     </div>
 
     <!-- 6 Rows x 5 Letters Grid Layout -->
@@ -208,17 +484,16 @@
           class="key">L</button>
       </div>
       <div class="kb-row">
-        <button class="key wide" id="key-del">DEL</button>
-        <button class="key">Y</button><button class="key">X</button><button class="key">C</button><button
-          class="key">V</button>
+        <button class="key wide" id="key-del">DEL</button><button class="key">Y</button><button class="key">X</button><button
+          class="key">C</button><button class="key">V</button>
         <button class="key">B</button><button class="key">N</button><button class="key">M</button>
         <button class="key wide" id="key-ent">ENTER</button>
       </div>
     </div>
 
-    <div>
+    <div class="btn-row">
       <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN ESCAPE.EXE</button>
     </div>
   </div>
 
@@ -343,7 +618,7 @@
 
       if (rowStatuses.every(status => status === 'correct')) {
         gameActive = false;
-        statusMsg.innerHTML = "<span style='color:#00ff33;font-weight:bold;'>ACCESS_GRANTED: Decryption Successful!</span>";
+        statusMsg.innerHTML = "<span style='color:#00ff33;font-weight:bold;'>ACCESS_GRANTED! Decryption Successful!</span>";
         escapeBtn.classList.remove('hidden');
         keyboard.classList.add('hidden');
       } else {

@@ -2,66 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>404 - Network Maze</title>
   <style>
-    /* Retro Terminal Styling */
+    /* ============================================
+       BASE STYLES (Desktop & Large Screens ≥768px)
+       ============================================ */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
       text-shadow: 0 0 5px #00ff33;
-      user-select: none; /* Prevents text selection while tapping buttons */
+      user-select: none;
+      touch-action: manipulation;
+      overflow: hidden;
     }
 
     .container {
-  width: 100vw;
-  height: 100vh;  
-  /* Reset margins and ensure padding doesn't cause hidden scrollbars */
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  /* Perfect center alignment */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+      width: 75vw;
+      max-width: 1000px;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
 
     .header-text {
       margin-bottom: 15px;
       line-height: 1.4;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: 1.3rem;
+      text-align: center;
+      width: 100%;
     }
 
-    /* Maze Grid Layout - Fully Responsive */
     .maze-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1px;
+      gap: 2px;
       justify-content: center;
       background-color: #222;
-      padding: 5px;
+      padding: 8px;
       border: 3px solid #00ff33;
       border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+      box-shadow: 0 0 30px rgba(0, 255, 51, 0.3);
       margin: 15px auto;
-      max-width: 380px; /* Limits size on big screens */
-      width: 90vw; /* Scales with smartphone screen widths */
+      max-width: 600px;
+      width: 85vw;
     }
 
-    /* Cell Types scaling proportionally */
     .cell {
       aspect-ratio: 1 / 1;
-      box-sizing: border-box;
+      border-radius: 2px;
     }
 
     .wall {
@@ -75,24 +79,30 @@
 
     .player {
       background-color: #00ff33;
-      box-shadow: 0 0 10px #00ff33;
+      box-shadow: 0 0 12px #00ff33;
       border-radius: 3px;
     }
 
     .goal {
       background-color: #ff3333;
-      box-shadow: 0 0 10px #ff3333;
+      box-shadow: 0 0 12px #ff3333;
       border-radius: 3px;
       animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
-      0% { opacity: 0.6; }
+      0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
-      100% { opacity: 0.6; }
     }
 
-    /* Touch Controls Container (Visible only on mobile devices) */
+    #status {
+      min-height: 30px;
+      margin: 15px 0;
+      font-size: 1.05rem;
+      text-align: center;
+      width: 100%;
+    }
+
     .dpad-container {
       display: flex;
       flex-direction: column;
@@ -102,15 +112,16 @@
 
     .dpad-row {
       display: flex;
+      justify-content: center;
     }
 
     .dpad-btn {
-      width: 55px;
-      height: 55px;
+      width: 60px;
+      height: 60px;
       background: #111;
       border: 2px solid #00ff33;
       color: #00ff33;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: 1.5rem;
       font-weight: bold;
       margin: 4px;
       border-radius: 8px;
@@ -119,47 +130,244 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 0 5px rgba(0, 255, 51, 0.3);
+      transition: all 0.1s;
     }
 
-    .dpad-btn:active {
+    .dpad-btn:active,
+    .dpad-btn:hover {
       background: #00ff33;
       color: #050505;
       box-shadow: 0 0 15px #00ff33;
     }
 
-    /* Hide D-Pad on large desktop screens where keyboard is available */
     @media (min-width: 768px) {
       .dpad-container {
         display: none;
       }
     }
 
-    /* Action Buttons */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
     .btn {
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 14px 28px;
       font-family: inherit;
-     font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: 1rem;
       cursor: pointer;
-      margin: 10px;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 6px #00ff33;
       transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      min-width: 140px;
     }
 
     .btn:hover {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 20px #00ff33;
     }
 
     .hidden {
-      display: none;
+      display: none !important;
+    }
+
+    @media (min-width: 480px) and (max-width: 768px) {
+      .container {
+        width: 85vw;
+        padding: 15px;
+      }
+
+      .header-text {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+
+      .maze-grid {
+        width: 90vw;
+        max-width: 450px;
+        padding: 6px;
+        gap: 1.5px;
+      }
+
+      .dpad-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+        min-height: 48px;
+        min-width: 130px;
+      }
+
+      #status {
+        font-size: 0.95rem;
+        margin: 12px 0;
+      }
+    }
+
+    @media (max-width: 479px) and (min-width: 321px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        width: 95vw;
+        padding: 12px;
+        min-height: 90vh;
+      }
+
+      .header-text {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .maze-grid {
+        width: 98vw;
+        max-width: 320px;
+        padding: 5px;
+        gap: 1px;
+      }
+
+      .dpad-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+        margin: 3px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 11px 22px;
+        min-height: 46px;
+        min-width: 130px;
+      }
+
+      #status {
+        font-size: 0.85rem;
+        margin: 10px 0;
+        min-height: 26px;
+      }
+    }
+
+    @media (max-width: 320px) and (max-height: 450px) {
+      body {
+        padding: 2px;
+      }
+
+      .container {
+        width: 100vw;
+        padding: 5px;
+        min-height: 100vh;
+        gap: 3px;
+      }
+
+      .header-text {
+        font-size: 0.7rem;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+
+      .header-text div:nth-child(2) {
+        display: none;
+      }
+
+      .maze-grid {
+        width: 100%;
+        max-width: 240px;
+        padding: 3px;
+        gap: 1px;
+        margin: 4px auto;
+        border-width: 2px;
+      }
+
+      .cell {
+        border-radius: 1px;
+      }
+
+      #status {
+        font-size: 0.65rem;
+        margin: 4px 0;
+        min-height: 20px;
+        display: none;
+      }
+
+      .dpad-container {
+        margin: 4px auto;
+      }
+
+      .dpad-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+        margin: 2px;
+        border-width: 1.5px;
+      }
+
+      .dpad-row {
+        gap: 2px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        min-height: 40px;
+        width: 85%;
+        order: 1;
+        background: #00ff33;
+        color: #050505;
+        font-weight: bold;
+      }
+    }
+
+    @media (max-width: 320px) and (max-height: 400px) {
+      .maze-grid {
+        max-width: 220px;
+        padding: 2px;
+      }
+
+      .dpad-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        min-height: 38px;
+        padding: 6px 12px;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-height: 380px) {
+      .maze-grid {
+        transform: scale(0.85);
+        transform-origin: center;
+        margin-bottom: -6px;
+      }
     }
   </style>
 </head>
@@ -168,15 +376,13 @@
   <div class="container">
     <div class="header-text">
       <div>⚠️ [CRITICAL] 404_ROUTE_NOT_FOUND</div>
-      <div>The path is blocked. Guide the data packet to the exit node.</div>
+      <div>Guide the data packet to the exit node.</div>
     </div>
 
-    <!-- 12x12 Maze Container -->
     <div class="maze-grid" id="maze"></div>
 
-    <div id="status" style="min-height: 25px;"></div>
+    <div id="status"></div>
 
-    <!-- On-Screen Mobile Joystick Controller (D-Pad) -->
     <div class="dpad-container">
       <div class="dpad-row">
         <button class="dpad-btn" id="btn-up">▲</button>
@@ -188,8 +394,9 @@
       </div>
     </div>
 
-    <div>
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
+    <div class="btn-row">
+      <button class="btn hidden" id="reset-btn" onclick="generateNewMaze()">🔄 NEW MAZE</button>
+      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 ESCAPE</a>
     </div>
   </div>
 
@@ -197,104 +404,258 @@
     const mazeContainer = document.getElementById('maze');
     const statusText = document.getElementById('status');
     const escapeBtn = document.getElementById('escape-btn');
+    const resetBtn = document.getElementById('reset-btn');
 
     const width = 12;
     const height = 12;
     
-    // 0 = Path, 1 = Wall, 2 = Start (Player), 3 = Goal (Exit)
-    const layout = [
-      1,1,1,1,1,1,1,1,1,1,1,1,
-      2,0,0,0,1,0,0,0,0,0,0,1,
-      1,1,1,0,1,0,1,1,1,1,0,1,
-      1,0,0,0,0,0,1,0,0,1,0,1,
-      1,0,1,1,1,1,1,0,1,1,0,1,
-      1,0,1,0,0,0,0,0,1,0,0,1,
-      1,0,1,0,1,1,1,1,1,0,1,1,
-      1,0,0,0,1,0,0,0,0,0,0,1,
-      1,1,1,1,1,0,1,1,1,1,0,1,
-      1,0,0,0,0,0,1,0,0,0,0,1,
-      1,0,1,1,1,1,1,0,1,1,0,3,
-      1,1,1,1,1,1,1,1,1,1,1,1
-    ];
-
-    let playerIndex = layout.indexOf(2);
-    let goalIndex = layout.indexOf(3);
+    let layout = [];
+    let playerIndex = 0;
+    let goalIndex = 0;
     let gameActive = true;
 
-    // Render the grid elements dynamically
-    function createMaze() {
-      mazeContainer.innerHTML = '';
-      layout.forEach((cellType, index) => {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        
-        if (cellType === 1) cell.classList.add('wall');
-        else if (cellType === 0) cell.classList.add('path');
-        else if (cellType === 2) cell.classList.add('path', 'player');
-        else if (cellType === 3) cell.classList.add('path', 'goal');
-        
-        mazeContainer.appendChild(cell);
-      });
+    // ===========================================
+    // GUARANTEED SOLVABLE MAZE GENERATOR
+    // ===========================================
+    function generateSolvedMaze() {
+      // Step 1: Initialize full walls
+      layout = new Array(width * height).fill(1);
+
+      // Step 2: Recursive Backtracking (creates PERFECT maze)
+      carvePassages(1, 1);
+
+      // Step 3: Set start position (top-left inside border)
+      playerIndex = 1 * width + 1;
+      layout[playerIndex] = 0;
+
+      // Step 4: Find valid goal position in bottom-right area
+      goalIndex = findValidGoalPosition();
+      layout[goalIndex] = 0;
+
+      // Step 5: Verify path exists with BFS
+      const pathExists = verifyPathExists(playerIndex, goalIndex);
+      
+      if (!pathExists) {
+        console.error('Maze generation failed - no path exists');
+        return false;
+      }
+
+      return true;
     }
 
-    // Single central movement function
+    // DFS-based recursive backtracking
+    function carvePassages(x, y) {
+      layout[y * width + x] = 0;
+
+      const directions = [
+        { dx: 0, dy: -2 },
+        { dx: 2, dy: 0 },
+        { dx: 0, dy: 2 },
+        { dx: -2, dy: 0 }
+      ];
+
+      shuffleArray(directions);
+
+      for (const dir of directions) {
+        const nx = x + dir.dx;
+        const ny = y + dir.dy;
+
+        if (nx > 0 && nx < width - 1 && ny > 0 && ny < height - 1) {
+          if (layout[ny * width + nx] === 1) {
+            layout[(y + dir.dy / 2) * width + (x + dir.dx / 2)] = 0;
+            carvePassages(nx, ny);
+          }
+        }
+      }
+    }
+
+    function findValidGoalPosition() {
+      const candidates = [];
+      
+      // Search bottom-right quadrant first
+      for (let y = height - 3; y >= Math.floor(height / 2); y--) {
+        for (let x = width - 3; x >= Math.floor(width / 2); x--) {
+          const idx = y * width + x;
+          if (layout[idx] === 0 && !(x === 1 && y === 1)) {
+            candidates.push(idx);
+          }
+        }
+      }
+
+      // Fallback: any path cell except start
+      if (candidates.length === 0) {
+        for (let i = layout.length - 1; i >= 0; i--) {
+          if (layout[i] === 0 && i !== playerIndex) {
+            candidates.push(i);
+          }
+        }
+      }
+
+      return candidates.length > 0 
+        ? candidates[Math.floor(Math.random() * candidates.length)]
+        : (width - 2) * width + (width - 2);
+    }
+
+    function verifyPathExists(startIdx, goalIdx) {
+      if (layout[startIdx] === 1 || layout[goalIdx] === 1) return false;
+
+      const visited = new Array(layout.length).fill(false);
+      const queue = [startIdx];
+      visited[startIdx] = true;
+
+      while (queue.length > 0) {
+        const current = queue.shift();
+
+        if (current === goalIdx) return true;
+
+        const cx = current % width;
+        const cy = Math.floor(current / width);
+
+        const neighbors = [
+          { dx: 0, dy: -1 },
+          { dx: 0, dy: 1 },
+          { dx: -1, dy: 0 },
+          { dx: 1, dy: 0 }
+        ];
+
+        for (const { dx, dy } of neighbors) {
+          const nx = cx + dx;
+          const ny = cy + dy;
+
+          if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+            const neighborIdx = ny * width + nx;
+            if (!visited[neighborIdx] && layout[neighborIdx] === 0) {
+              visited[neighborIdx] = true;
+              queue.push(neighborIdx);
+            }
+          }
+        }
+      }
+
+      return false;
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // ===========================================
+    // RENDER MAZE (FIXED!)
+    // ===========================================
+    function renderMaze() {
+      console.log('Rendering maze:', layout.length, 'cells');
+      mazeContainer.innerHTML = '';
+      
+      for (let i = 0; i < layout.length; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        if (i === playerIndex) {
+          cell.classList.add('path', 'player');
+          console.log('Player at:', i);
+        } else if (i === goalIndex) {
+          cell.classList.add('path', 'goal');
+          console.log('Goal at:', i);
+        } else if (layout[i] === 1) {
+          cell.classList.add('wall');
+        } else {
+          cell.classList.add('path');
+        }
+
+        mazeContainer.appendChild(cell);
+      }
+      
+      console.log('Maze rendered successfully');
+    }
+
+    // ===========================================
+    // PLAYER MOVEMENT
+    // ===========================================
     function movePlayer(direction) {
       if (!gameActive) return;
 
       let newIndex = playerIndex;
 
-      if (direction === 'up') newIndex = playerIndex - width;
-      else if (direction === 'down') newIndex = playerIndex + width;
-      else if (direction === 'left') newIndex = playerIndex - 1;
-      else if (direction === 'right') newIndex = playerIndex + 1;
+      switch (direction) {
+        case 'up':    newIndex = playerIndex - width; break;
+        case 'down':  newIndex = playerIndex + width; break;
+        case 'left':  newIndex = playerIndex - 1; break;
+        case 'right': newIndex = playerIndex + 1; break;
+      }
 
-      // Check bounds and wall collisions
       if (newIndex >= 0 && newIndex < layout.length && layout[newIndex] !== 1) {
         const cells = document.querySelectorAll('.cell');
         cells[playerIndex].classList.remove('player');
-        
+
         playerIndex = newIndex;
         cells[playerIndex].classList.add('player');
-        
+
         checkWin();
       }
     }
 
-    // Keyboard controls handler
-    document.addEventListener('keydown', (e) => {
-      const key = e.key.toLowerCase();
-      if (key === 'arrowup' || key === 'w') movePlayer('up');
-      if (key === 'arrowdown' || key === 's') movePlayer('down');
-      if (key === 'arrowleft' || key === 'a') movePlayer('left');
-      if (key === 'arrowright' || key === 'd') movePlayer('right');
-
-      if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(e.key)) {
-        e.preventDefault(); // Stop page scrolling
-      }
-    });
-
-    // Touch Event Listeners for mobile D-Pad Buttons
-    document.getElementById('btn-up').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('up'); });
-    document.getElementById('btn-down').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('down'); });
-    document.getElementById('btn-left').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('left'); });
-    document.getElementById('btn-right').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer('right'); });
-
-    // Fallback click handlers for testing responsive view on Desktop computers
-    document.getElementById('btn-up').addEventListener('click', () => movePlayer('up'));
-    document.getElementById('btn-down').addEventListener('click', () => movePlayer('down'));
-    document.getElementById('btn-left').addEventListener('click', () => movePlayer('left'));
-    document.getElementById('btn-right').addEventListener('click', () => movePlayer('right'));
-
     function checkWin() {
       if (playerIndex === goalIndex) {
         gameActive = false;
-        statusText.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>ROUTE_ESTABLISHED: Link unlocked!</span>";
+        statusText.innerHTML = "<span style='color:#00ff33;font-weight:bold'>✓ ROUTE_ESTABLISHED!</span>";
         escapeBtn.classList.remove('hidden');
+        resetBtn.classList.remove('hidden');
       }
     }
 
-    createMaze();
-  </script>
+    function generateNewMaze() {
+      statusText.innerHTML = "Generating maze...";
+      escapeBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      
+      // Generate the maze
+      const success = generateSolvedMaze();
+      
+      if (!success) {
+        statusText.innerHTML = "<span style='color:#ff3333'>ERROR: Failed to generate</span>";
+        console.error('Maze generation failed!');
+        return;
+      }
+      
+      // CRITICAL: Render the maze AFTER generation
+      gameActive = true;
+      renderMaze();
+      statusText.innerHTML = "<span style='color:#00ff33'>Maze ready - Navigate to red goal!</span>";
+    }
 
+    // ===========================================
+    // EVENT LISTENERS
+    // ===========================================
+    document.addEventListener('keydown', (e) => {
+      if (!gameActive) return;
+      
+      const key = e.key.toLowerCase();
+      if (key === 'arrowup' || key === 'w') { movePlayer('up'); e.preventDefault(); }
+      if (key === 'arrowdown' || key === 's') { movePlayer('down'); e.preventDefault(); }
+      if (key === 'arrowleft' || key === 'a') { movePlayer('left'); e.preventDefault(); }
+      if (key === 'arrowright' || key === 'd') { movePlayer('right'); e.preventDefault(); }
+    });
+
+    ['btn-up', 'btn-down', 'btn-left', 'btn-right'].forEach(id => {
+      const btn = document.getElementById(id);
+      const direction = id.replace('btn-', '');
+      
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        movePlayer(direction);
+      }, { passive: false });
+      
+      btn.addEventListener('click', () => movePlayer(direction));
+    });
+
+    // ===========================================
+    // INITIALIZATION (FIXED - Direct call)
+    // ===========================================
+    console.log('Initializing maze...');
+    generateNewMaze();
+  </script>
 </body>
 </html>
