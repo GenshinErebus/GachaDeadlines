@@ -1,163 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Data Stream Protocol</title>
-  <style>
-    /* Retro Terminal Styling */
+<style>
+  /* Retro Terminal Styling */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #050505;
+    color: #00ff33;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto; /* FIX: 100vh entfernt */
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow: 0 0 5px #00ff33;
+    overflow-x: hidden;
+    overflow-y: auto; /* Erlaubt Scrollen wenn nötig */
+    touch-action: manipulation;
+    user-select: none;
+    outline: none;
+  }
+
+  .container {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .header-text {
+    margin-bottom: 10px;
+    line-height: 1.3;
+    font-size: clamp(0.9rem, 2.7vw, 2rem);
+  }
+
+  .score-board {
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    margin-bottom: 8px;
+  }
+
+  /* Game Window Container */
+  .game-window {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4/3;
+    background-color: #111;
+    border: 3px solid #00ff33;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+    margin: 8px auto;
+    overflow: hidden;
+  }
+
+  /* The 3 falling tracks */
+  .tracks-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 60px; /* Platz für Buttons lassen */
+    box-sizing: border-box;
+  }
+
+  .track {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    border-right: 1px dashed rgba(0, 255, 51, 0.2);
+  }
+
+  .track:last-child {
+    border-right: none;
+  }
+
+  /* Falling Data Nodes */
+  .node {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 20px;
+    background-color: #00ff33;
+    box-shadow: 0 0 10px #00ff33;
+    border-radius: 4px;
+  }
+
+  /* Target / Hit Zone at the bottom */
+  .hit-zone-line {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    height: 25px;
+    border-top: 2px solid #ff3333;
+    border-bottom: 2px solid #ff3333;
+    background-color: rgba(255, 51, 51, 0.1);
+    pointer-events: none;
+  }
+
+  /* Mobile Friendly Touch / Click Buttons at the bottom */
+  .button-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    background-color: #0a0a0a;
+    border-top: 2px solid #00ff33;
+    z-index: 10;
+  }
+
+  .lane-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #00ff33;
+    font-family: inherit;
+    font-size: clamp(1.3rem, 4vw, 2.2rem);
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.1s;
+    border-right: 1px solid rgba(0, 255, 51, 0.3);
+    padding: 5px 0;
+  }
+
+  .lane-btn:last-child {
+    border-right: none;
+  }
+
+  /* Flash effect when a button is pressed */
+  .lane-btn:active {
+    background-color: rgba(0, 255, 51, 0.4);
+    color: #050505;
+  }
+
+  /* Action Buttons Container */
+  .action-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Action Buttons */
+  .btn {
+    background: transparent;
+    border: 2px solid #00ff33;
+    color: #00ff33;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 4px;
+    text-shadow: 0 0 5px #00ff33;
+    box-shadow: 0 0 5px #00ff33;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 100px;
+  }
+
+  .btn:hover {
+    background: #00ff33;
+    color: #050505;
+    box-shadow: 0 0 15px #00ff33;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* ============================================
+     DESKTOP LAYOUT (Screens > 768px / 48rem)
+     ============================================ */
+  @media (min-width: 48.0625rem) {
     body {
-      background-color: #050505;
-      color: #00ff33;
-      font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 20px;
       min-height: 100vh;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
-      overflow: hidden;
-      touch-action: none; /* Prevents scrolling or zooming on smartphones while tapping */
-      user-select: none;
+      justify-content: center;
     }
-
+    
     .container {
-      text-align: center;
- width: 100vw;
-  height: 100vh;
+      width: 480px;
     }
-
+    
     .header-text {
-      margin-bottom: 15px;
-      line-height: 1.4;
-      font-size: clamp(1.2rem, 2.7vw, 2.7rem);
+      font-size: 1.4rem;
     }
-
+    
     .score-board {
-      font-size: clamp(1.4rem, 2.9vw, 2.9rem);
-      margin-bottom: 10px;
+      font-size: 1.5rem;
     }
-
-    /* Game Window Container */
+    
     .game-window {
-      position: relative;
-      width: 100%;
-      max-width: 550px;
+      aspect-ratio: auto;
+      width: 420px;
       height: 380px;
-      background-color: #111;
-      border: 3px solid #00ff33;
-      border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
-      margin: 15px auto;
-      overflow: hidden;
     }
-
-    /* The 3 falling tracks */
-    .tracks-container {
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
-
-    .track {
-      flex: 1;
-      height: 100%;
-      position: relative;
-      border-right: 1px dashed rgba(0, 255, 51, 0.2);
-    }
-    .track:last-child {
-      border-right: none;
-    }
-
-    /* Falling Data Nodes */
-    .node {
-      position: absolute;
-      width: 80%;
-      left: 10%;
-      height: 20px;
-      background-color: #00ff33;
-      box-shadow: 0 0 10px #00ff33;
-      border-radius: 4px;
-    }
-
-    /* Target / Hit Zone at the bottom */
-    .hit-zone-line {
-      position: absolute;
-      bottom: 60px;
-      width: 100%;
-      height: 25px;
-      border-top: 2px solid #ff3333;
-      border-bottom: 2px solid #ff3333;
-      background-color: rgba(255, 51, 51, 0.1);
-      pointer-events: none;
-    }
-
-    /* Mobile Friendly Touch / Click Buttons at the bottom */
+    
     .button-container {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 60px;
-      display: flex;
-      background-color: #0a0a0a;
-      border-top: 2px solid #00ff33;
+      height: 65px;
     }
-
+    
     .lane-btn {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: #00ff33;
-      font-family: inherit;
-     font-size: clamp(1.1rem, 2.6vw, 2.6rem);
-      font-weight: bold;
-      cursor: pointer;
-      outline: none;
-      transition: background 0.1s;
-      border-right: 1px solid rgba(0, 255, 51, 0.3);
+      font-size: 2.2rem;
     }
-    .lane-btn:last-child {
-      border-right: none;
-    }
-
-    /* Flash effect when a button is pressed */
-    .lane-btn:active {
-      background-color: rgba(0, 255, 51, 0.4);
-      color: #050505;
-    }
-
-    /* Action Buttons */
+    
     .btn {
-      background: transparent;
-      border: 2px solid #00ff33;
-      color: #00ff33;
+      font-size: 1rem;
       padding: 10px 20px;
-      font-family: inherit;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
-      cursor: pointer;
-      margin: 10px;
-      border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
     }
+  }
 
-    .btn:hover {
-      background: #00ff33;
-      color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+  /* ============================================
+     TABLET / LARGE MOBILE (480px - 768px)
+     ============================================ */
+  @media (min-width: 30rem) and (max-width: 48rem) {
+    .container {
+      width: 92vw;
     }
+    
+    .game-window {
+      width: 94%;
+    }
+    
+    .header-text {
+      font-size: 1rem;
+    }
+    
+    .score-board {
+      font-size: 1.2rem;
+    }
+    
+    .button-container {
+      height: 58px;
+    }
+    
+    .lane-btn {
+      font-size: 1.6rem;
+    }
+    
+    .btn {
+      font-size: 0.85rem;
+      padding: 8px 14px;
+    }
+  }
 
-    .hidden {
-      display: none;
+  /* ============================================
+     MOBILE LAYOUT (Screens ≤ 480px / 30rem)
+     ============================================ */
+  @media (max-width: 30rem) {
+    body {
+      padding: 8px;
     }
-  </style>
+    
+    .container {
+      width: 96vw;
+    }
+    
+    .game-window {
+      width: 98%;
+    }
+    
+    .header-text {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    
+    .score-board {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    
+    .game-window {
+      margin: 6px auto;
+    }
+    
+    .button-container {
+      height: 52px;
+    }
+    
+    .lane-btn {
+      font-size: 1.4rem;
+    }
+    
+    .btn {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      min-width: 90px;
+    }
+    
+    .action-buttons {
+      margin-top: 6px;
+      gap: 4px;
+    }
+  }
+
+  /* ============================================
+     ULTRA-MOBILE (Screens ≤ 320px / 20rem)
+     ============================================ */
+  @media (max-width: 20rem) {
+    body {
+      padding: 4px; /* Minimal padding für ultra-mobile */
+    }
+    
+    .container {
+      width: 98vw;
+    }
+    
+    .header-text {
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+    
+    .header-text div {
+      margin: 2px 0;
+    }
+    
+    .score-board {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    
+    .game-window {
+      margin: 4px auto;
+    }
+    
+    .button-container {
+      height: 48px;
+    }
+    
+    .lane-btn {
+      font-size: 1.5rem;
+      padding: 3px 0;
+    }
+    
+    .btn {
+      font-size: 0.7rem;
+      padding: 5px 10px;
+      min-width: 80px;
+    }
+    
+    #status-msg {
+      font-size: 0.8rem;
+      margin: 4px 0;
+    }
+  }
+</style>
 </head>
+
 <body>
 
   <div class="container">
@@ -178,15 +379,15 @@
         <div class="track" id="track-1"></div>
         <div class="track" id="track-2"></div>
       </div>
-      
-      <!-- Visual Timing target overlay -->
+
+      <!-- Visual timing target overlay -->
       <div class="hit-zone-line"></div>
 
-      <!-- Smartphone Touch Buttons Layer -->
+      <!-- Smartphone Touch Buttons Layer - tabindex="-1" prevents focus stealing -->
       <div class="button-container">
-        <button class="lane-btn" id="btn-0">A</button>
-        <button class="lane-btn" id="btn-1">S</button>
-        <button class="lane-btn" id="btn-2">D</button>
+        <button class="lane-btn" id="btn-0" tabindex="-1">A</button>
+        <button class="lane-btn" id="btn-1" tabindex="-1">S</button>
+        <button class="lane-btn" id="btn-2" tabindex="-1">D</button>
       </div>
     </div>
 
@@ -203,7 +404,7 @@
     const statusMsg = document.getElementById('status-msg');
     const escapeBtn = document.getElementById('escape-btn');
     const resetBtn = document.getElementById('reset-btn');
-    
+
     const tracks = [
       document.getElementById('track-0'),
       document.getElementById('track-1'),
@@ -215,23 +416,23 @@
     let nodes = [];
     let spawnTimer;
     let gameInterval;
-    
+
     // Core settings
     const nodeSpeed = 4; // Falling pixels per frame step
     const targetMinY = 270; // Adjusted hit boundaries
-    const targetMaxY = 320; 
+    const targetMaxY = 320;
     const targetGoal = 25; // Points needed to pass
 
     function spawnNode() {
       if (!gameActive) return;
-      
+
       const trackIdx = Math.floor(Math.random() * 3);
-      
+
       const nodeEl = document.createElement('div');
       nodeEl.className = 'node';
       nodeEl.style.top = '0px';
       tracks[trackIdx].appendChild(nodeEl);
-      
+
       nodes.push({
         element: nodeEl,
         track: trackIdx,
@@ -263,18 +464,18 @@
       if (!gameActive) return;
 
       const laneNodes = nodes.filter(n => n.track === trackIdx);
-      
+
       if (laneNodes.length > 0) {
-        // FIXED: Now properly selects the lowest/first node in that specific lane
-        const targetNode = laneNodes[0]; 
-        
+        // Select the lowest/first node in that specific lane
+        const targetNode = laneNodes[0];
+
         if (targetNode.y >= targetMinY && targetNode.y <= targetMaxY) {
           score++;
           scoreEl.innerText = score;
-          
+
           targetNode.element.style.backgroundColor = '#ffffff';
           setTimeout(() => targetNode.element.remove(), 50);
-          
+
           nodes = nodes.filter(n => n !== targetNode);
           checkWinCondition();
         } else {
@@ -295,28 +496,35 @@
         gameActive = false;
         clearInterval(spawnTimer);
         clearInterval(gameInterval);
-        
+
         nodes.forEach(n => n.element.remove());
         nodes = [];
-        
+
         statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>GRID_SYNC_COMPLETE: Stream Restored!</span>";
         escapeBtn.classList.remove('hidden');
       }
     }
 
-    // DESKTOP: Keyboard inputs
+    // DESKTOP: Keyboard inputs - FIX: Use capture phase and prevent default
     document.addEventListener('keydown', (e) => {
+      if (!gameActive) return;
+
+      // Prevent browser shortcuts for these keys
+      if (['a', 's', 'd'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+
       if (e.key.toLowerCase() === 'a') triggerHitAttempt(0);
       if (e.key.toLowerCase() === 's') triggerHitAttempt(1);
       if (e.key.toLowerCase() === 'd') triggerHitAttempt(2);
-    });
+    }, { capture: true });
 
     // SMARTPHONE: Touch inputs
     for (let i = 0; i < 3; i++) {
       const btn = document.getElementById(`btn-${i}`);
-      
+
       btn.addEventListener('touchstart', (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         triggerHitAttempt(i);
       }, { passive: false });
 
@@ -330,8 +538,8 @@
       statusMsg.innerText = '';
       escapeBtn.classList.add('hidden');
       resetBtn.classList.add('hidden');
-      
-      gameInterval = setInterval(updateEngine, 1000 / 60); 
+
+      gameInterval = setInterval(updateEngine, 1000 / 60);
       spawnTimer = setInterval(spawnNode, 500);
     }
 
@@ -347,4 +555,5 @@
   </script>
 
 </body>
+
 </html>

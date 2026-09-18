@@ -116,7 +116,8 @@
     .hidden {
       display: none;
     }
-        /* ============================================
+
+    /* ============================================
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
     @media (min-width: 48.0625rem) {}
@@ -124,40 +125,51 @@
     /* ============================================
    MOBILE LAYOUT (Screens ≤ 768px)
    ============================================ */
-@media (max-width: 48rem) {
-  .board {
-    width: 85vw;        /* Make the board significantly wider on mobile screens */
-    max-width: 450px;   /* Prevent the grid from stretching too much */
-    gap: 4px;           /* Reduce spacing between slots slightly for mobile */
-    padding: 6px;       /* Scale down padding to save screen space */
-  }
+    @media (max-width: 48rem) {
+      .board {
+        width: 85vw;
+        /* Make the board significantly wider on mobile screens */
+        max-width: 450px;
+        /* Prevent the grid from stretching too much */
+        gap: 4px;
+        /* Reduce spacing between slots slightly for mobile */
+        padding: 6px;
+        /* Scale down padding to save screen space */
+      }
 
-  .container {
-    height: auto;       /* Avoid content cutoff if layout expands vertically */
-    min-height: 98vh;
-  }
-}
+      .container {
+        height: auto;
+        /* Avoid content cutoff if layout expands vertically */
+        min-height: 98vh;
+      }
+    }
 
 
     /* ==========================================================================
        ULTRA-MOBILE RESOLUTIONS (Nested inside max-width: 768px)
        ========================================================================== */
     @media (max-width: 21.8125rem) {
-   .board {
-    margin-top: -20px;
-    width: 80vw;        /* Make the board significantly wider on mobile screens */
-    max-width: 450px;   /* Prevent the grid from stretching too much */
-    gap: 4px;           /* Reduce spacing between slots slightly for mobile */
-    padding: 6px;       /* Scale down padding to save screen space */
-  }
+      .board {
+        margin-top: -20px;
+        width: 80vw;
+        /* Make the board significantly wider on mobile screens */
+        max-width: 450px;
+        /* Prevent the grid from stretching too much */
+        gap: 4px;
+        /* Reduce spacing between slots slightly for mobile */
+        padding: 6px;
+        /* Scale down padding to save screen space */
+      }
 
-  .container {
-    height: 95vh;       /* Avoid content cutoff if layout expands vertically */
-    min-height: 95vh;
-  }
-  .status-panel {
-    font-size: 13px;
-  }
+      .container {
+        height: 95vh;
+        /* Avoid content cutoff if layout expands vertically */
+        min-height: 95vh;
+      }
+
+      .status-panel {
+        font-size: 13px;
+      }
   </style>
 </head>
 

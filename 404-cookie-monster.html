@@ -113,6 +113,54 @@
     .hidden {
       display: none !important;
     }
+
+    /* ============================================
+   DESKTOP LAYOUT (Screens > 768px)
+   ============================================ */
+    @media (min-width: 48.0625rem) {}
+
+    /* ============================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   ============================================ */
+    @media (max-width: 48rem) {
+      .monster-container {
+        width: 50vw;
+        max-width: 700px;
+        margin-left: 70px;
+        gap: 4px;
+        padding: 6px;
+      }
+
+      .terminal-box {
+        height: auto;
+        min-height: 98vh;
+      }
+    }
+
+
+    /* ==========================================================================
+       ULTRA-MOBILE RESOLUTIONS (Nested inside max-width: 768px)
+       ========================================================================== */
+    @media (max-width: 21.8125rem) {
+      .monster-container {
+        width: 40vw;
+        margin-left: 55px;
+        min-height: 20vh;
+      }
+
+      .log-panel {
+        font-size: clamp(0.9rem, 2vw, 2rem);
+      }
+
+      h1 {
+        margin-top: -20px;
+      }
+
+      .btn {
+        margin-top: -5px;
+        border: 0.3px solid #00ff33;
+      }
+    }
   </style>
 </head>
 
