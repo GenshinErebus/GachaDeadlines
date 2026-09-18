@@ -173,7 +173,7 @@ const eventDatabase = {
                 name: "Minuscule Great Adventure",
                 endDate: "2026-09-27T20:00:00Z"
             },
-            // Trial
+            // Trials
             {
                 id: "hsr_012",
                 name: "Aptitude Showcase",
