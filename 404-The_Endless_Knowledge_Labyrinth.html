@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Wikipedia Rabbit Hole</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    /* Retro Terminal Aesthetic - Fully Responsive */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,14 +29,15 @@
     }
 
     .terminal-box {
-      max-width: 600px;
       width: 100%;
       border: 2px solid #00ff33;
-      padding: 25px;
+      padding: 20px;
       border-radius: 6px;
       background-color: #111;
       box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
     }
 
     h1 { 
@@ -41,19 +46,24 @@
       border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
       padding-bottom: 10px;
       text-transform: uppercase;
+      flex-shrink: 0;
+      word-wrap: break-word;
     }
 
     .article-display {
       background-color: #050505;
       border: 1px solid rgba(0, 255, 51, 0.4);
-      padding: 20px;
+      padding: 15px;
       border-radius: 4px;
-      font-size: 1.05rem;
+      font-size: 0.9rem;
       color: #ffffff;
       line-height: 1.6;
-      margin: 20px 0;
-      min-height: 140px;
+      margin: 15px 0;
+      min-height: 120px;
       text-align: left;
+      flex-grow: 1;
+      flex-shrink: 0;
+      word-wrap: break-word;
     }
 
     .wiki-link {
@@ -63,6 +73,7 @@
       font-weight: bold;
       padding: 2px 4px;
       display: inline-block;
+      min-width: 1px;
     }
 
     .wiki-link:hover {
@@ -73,28 +84,34 @@
     }
 
     .status-panel {
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: #888;
-      margin-top: 15px;
+      margin-top: 12px;
       min-height: 20px;
+      flex-shrink: 0;
     }
 
     .btn {
       background: transparent;
       border: 2px solid #ffcc00;
       color: #ffcc00;
-      padding: 12px 24px;
+      padding: 10px 20px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.85rem;
       font-weight: bold;
       cursor: pointer;
       border-radius: 4px;
       text-shadow: 0 0 5px #ffcc00;
       box-shadow: 0 0 5px rgba(255, 204, 0, 0.2);
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       margin-top: 15px;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
+      min-height: 40px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn:hover {
@@ -106,8 +123,263 @@
     .hidden {
       display: none !important;
     }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      body {
+        padding: 4px;
+      }
+
+      .terminal-box {
+        padding: 12px;
+        border-width: 1px;
+      }
+
+      h1 {
+        font-size: 0.8rem;
+        padding-bottom: 6px;
+      }
+
+      .article-display {
+        font-size: 0.65rem;
+        padding: 10px 12px;
+        min-height: 100px;
+        margin: 10px 0;
+        line-height: 1.45;
+      }
+
+      .status-panel {
+        font-size: 0.6rem;
+        margin-top: 10px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+        min-height: 38px;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 6px;
+      }
+
+      .terminal-box {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 0.95rem;
+        padding-bottom: 8px;
+      }
+
+      .article-display {
+        font-size: 0.75rem;
+        padding: 12px 14px;
+        min-height: 110px;
+        margin: 12px 0;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+        margin-top: 12px;
+      }
+
+      .btn {
+        padding: 9px 18px;
+        font-size: 0.75rem;
+        min-height: 40px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      .terminal-box {
+        padding: 20px;
+        max-width: min(700px, 95vw);
+      }
+
+      h1 {
+        font-size: 1.2rem;
+        padding-bottom: 10px;
+      }
+
+      .article-display {
+        font-size: 0.85rem;
+        padding: 15px 18px;
+        min-height: 130px;
+        margin: 15px 0;
+      }
+
+      .status-panel {
+        font-size: 0.75rem;
+        margin-top: 14px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 42px;
+      }
+    }
+
+    /* Desktop (769px+) - RESPONSIVE BREITE */
+    @media (min-width: 769px) {
+      body {
+        padding: 24px;
+      }
+
+      .terminal-box {
+        padding: 28px;
+        max-width: min(900px, 90vw);
+      }
+
+      h1 {
+        font-size: clamp(1.3rem, 2vw, 1.8rem);
+        padding-bottom: 12px;
+      }
+
+      .article-display {
+        font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+        padding: 18px 22px;
+        min-height: 150px;
+        margin: 18px 0;
+        line-height: 1.65;
+      }
+
+      .status-panel {
+        font-size: clamp(0.75rem, 1vw, 0.9rem);
+        margin-top: 16px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+        min-height: 46px;
+      }
+    }
+
+    /* Large Desktop (1200px+) - NOCH BREITER */
+    @media (min-width: 1200px) {
+      body {
+        padding: 36px;
+      }
+
+      .terminal-box {
+        padding: 36px;
+        max-width: min(1100px, 88vw);
+      }
+
+      h1 {
+        font-size: clamp(1.5rem, 1.8vw, 2.2rem);
+        padding-bottom: 14px;
+      }
+
+      .article-display {
+        font-size: clamp(1rem, 1.2vw, 1.25rem);
+        padding: 22px 26px;
+        min-height: 180px;
+        margin: 22px 0;
+        line-height: 1.7;
+      }
+
+      .status-panel {
+        font-size: clamp(0.85rem, 1vw, 1rem);
+        margin-top: 20px;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+        min-height: 50px;
+      }
+    }
+
+    /* Extra Large Desktop (1600px+) - Maximale Ausnutzung */
+    @media (min-width: 1600px) {
+      body {
+        padding: 48px;
+      }
+
+      .terminal-box {
+        padding: 44px;
+        max-width: min(1300px, 85vw);
+      }
+
+      h1 {
+        font-size: clamp(1.7rem, 1.5vw, 2.5rem);
+        padding-bottom: 16px;
+      }
+
+      .article-display {
+        font-size: clamp(1.1rem, 1vw, 1.4rem);
+        padding: 26px 32px;
+        min-height: 200px;
+        margin: 26px 0;
+        line-height: 1.75;
+      }
+
+      .status-panel {
+        font-size: clamp(0.9rem, 0.9vw, 1.1rem);
+        margin-top: 24px;
+      }
+
+      .btn {
+        padding: 16px 32px;
+        font-size: clamp(1.05rem, 1vw, 1.25rem);
+        min-height: 54px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      body {
+        padding: 8px;
+      }
+
+      .terminal-box {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 1rem;
+        padding-bottom: 6px;
+      }
+
+      .article-display {
+        font-size: 0.8rem;
+        padding: 12px 16px;
+        min-height: 100px;
+        margin: 12px 0;
+      }
+
+      .status-panel {
+        font-size: 0.7rem;
+        margin-top: 10px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+        min-height: 40px;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="terminal-box">
@@ -117,7 +389,7 @@
 
     <div class="status-panel" id="status-msg">Click-hole depth: 0/6</div>
 
-    <div style="margin-top: 20px;">
+    <div class="button-area">
       <a href="/GachaDeadlines/" class="btn hidden" id="escape-link">🚀 ABORT LOOKUP &amp; RETURN HOME</a>
     </div>
   </div>
@@ -131,7 +403,6 @@
     let clickDepth = 0;
     const maxDepthLimit = 6;
 
-    // EXPANDED: Balanced dictionary tree map preventing premature dead ends
     const wikiArticles = {
       start: {
         title: "📚 Wiki: Link Dematerialization",
@@ -166,7 +437,6 @@
     function jumpToWikiArticle(targetKey) {
       clickDepth++;
 
-      // Trigger structural termination sequence only at click #6
       if (clickDepth >= maxDepthLimit) {
         titleField.innerText = "⚠️ SYSTEM_ABORT: DEPTH_CRITICAL";
         titleField.style.color = "#ff3333";

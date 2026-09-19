@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Aim Trainer Node Sync</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,46 +24,48 @@
       text-shadow: 0 0 5px #00ff33;
       text-align: center;
       overflow: hidden;
-      touch-action: none; /* Prevents mobile viewport zooming or dragging during training */
+      touch-action: none;
       user-select: none;
     }
 
     .container {
       text-align: center;
-      max-width: 550px;
       width: 100%;
       z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .header-text {
-      margin-bottom: 12px;
-      line-height: 1.4;
-      font-size: 0.85rem;
+      margin-bottom: 8px;
+      line-height: 1.35;
+      font-size: 0.58rem;
+      word-wrap: break-word;
+      flex-shrink: 0;
     }
 
     .score-board {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+      flex-shrink: 0;
     }
 
-    /* Sandbox sandbox grid acting as the target tracking field range */
     .aim-range {
       position: relative;
       width: 100%;
-      height: 320px;
       background-color: #111;
-      border: 3px solid #00ff33;
-      border-radius: 6px;
-      box-shadow: 0 0 20px rgba(0, 255, 51, 0.2);
-      margin: 15px auto;
+      border: 2px solid #00ff33;
+      border-radius: 4px;
+      box-shadow: 0 0 15px rgba(0, 255, 51, 0.2);
+      margin: 8px auto;
       overflow: hidden;
+      flex-grow: 1;
+      min-height: 200px;
     }
 
-    /* Neon green target nodes configurations */
     .aim-target {
       position: absolute;
-      width: 32px;
-      height: 32px;
       background-color: #050505;
       border: 3px solid #00ff33;
       border-radius: 50%;
@@ -71,9 +76,9 @@
       justify-content: center;
       transform: translate(-50%, -50%);
       animation: targetSpawn 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      touch-action: manipulation;
     }
 
-    /* Center core tracking dot */
     .aim-target::after {
       content: '';
       width: 6px;
@@ -88,28 +93,33 @@
     }
 
     .status-panel {
-      font-size: 1.1rem;
-      margin: 10px 0;
-      min-height: 25px;
+      font-size: 0.75rem;
+      margin: 8px 0;
+      min-height: 20px;
+      word-wrap: break-word;
+      flex-shrink: 0;
     }
 
-    /* Action Buttons */
     .btn {
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 8px 16px;
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 0.7rem;
       font-weight: bold;
       cursor: pointer;
-      margin: 8px;
+      margin: 4px;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
       box-shadow: 0 0 5px #00ff33;
-      transition: all 0.3s;
+      transition: all 0.2s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      white-space: nowrap;
     }
 
     .btn:hover {
@@ -134,8 +144,404 @@
     .hidden {
       display: none !important;
     }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      body {
+        padding: 4px;
+      }
+
+      .container {
+        padding: 4px;
+      }
+
+      .header-text {
+        font-size: 0.5rem;
+        margin-bottom: 6px;
+        line-height: 1.25;
+      }
+
+      .score-board {
+        font-size: 0.6rem;
+        margin-bottom: 6px;
+      }
+
+      .aim-range {
+        border-width: 1px;
+        min-height: 180px;
+        margin: 6px auto;
+      }
+
+      .aim-target {
+        width: 28px;
+        height: 28px;
+        border-width: 2px;
+      }
+
+      .aim-target::after {
+        width: 5px;
+        height: 5px;
+      }
+
+      .status-panel {
+        font-size: 0.58rem;
+        margin: 6px 0;
+        min-height: 18px;
+      }
+
+      .btn {
+        padding: 6px 12px;
+        font-size: 0.62rem;
+        margin: 4px;
+        min-height: 34px;
+      }
+
+      .button-area {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .button-area .btn {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 6px;
+      }
+
+      .container {
+        padding: 6px;
+      }
+
+      .header-text {
+        font-size: 0.55rem;
+        margin-bottom: 8px;
+      }
+
+      .score-board {
+        font-size: 0.65rem;
+        margin-bottom: 8px;
+      }
+
+      .aim-range {
+        min-height: 200px;
+        margin: 8px auto;
+      }
+
+      .aim-target {
+        width: 30px;
+        height: 30px;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+        margin: 8px 0;
+      }
+
+      .btn {
+        padding: 7px 14px;
+        font-size: 0.68rem;
+        min-height: 36px;
+      }
+
+      .button-area {
+        flex-direction: column;
+      }
+
+      .button-area .btn {
+        width: 100%;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+
+      .header-text {
+        font-size: 0.7rem;
+        margin-bottom: 10px;
+      }
+
+      .score-board {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+      }
+
+      .aim-range {
+        border-width: 2px;
+        min-height: 260px;
+        margin: 10px auto;
+      }
+
+      .aim-target {
+        width: 34px;
+        height: 34px;
+      }
+
+      .status-panel {
+        font-size: 0.8rem;
+        margin: 10px 0;
+      }
+
+      .btn {
+        padding: 9px 18px;
+        font-size: 0.8rem;
+        min-height: 40px;
+      }
+
+      .button-area {
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .button-area .btn {
+        min-width: 150px;
+      }
+    }
+
+    /* Desktop (769px+) - DEUTLICH BREITER für bessere Ausnutzung */
+    @media (min-width: 769px) {
+      body {
+        padding: 24px;
+      }
+
+      .container {
+        padding: 24px;
+        width: min(1200px, 95vw);
+        max-width: 100%;
+      }
+
+      .header-text {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        margin-bottom: 16px;
+      }
+
+      .score-board {
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        margin-bottom: 20px;
+      }
+
+      .aim-range {
+        border-width: 3px;
+        width: min(900px, 92vw);
+        height: min(500px, 65vh);
+        margin: 16px auto;
+      }
+
+      .aim-target {
+        width: clamp(35px, 6vw, 55px);
+        height: clamp(35px, 6vw, 55px);
+        border-width: 4px;
+      }
+
+      .aim-target::after {
+        width: 8px;
+        height: 8px;
+      }
+
+      .status-panel {
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        margin: 16px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        min-height: 48px;
+      }
+
+      .button-area {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      .button-area .btn {
+        min-width: 220px;
+      }
+    }
+
+    /* Large Desktop (1200px+) - NOCH BREITER */
+    @media (min-width: 1200px) {
+      body {
+        padding: 36px;
+      }
+
+      .container {
+        padding: 36px;
+        width: min(1400px, 96vw);
+      }
+
+      .header-text {
+        font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+        margin-bottom: 20px;
+      }
+
+      .score-board {
+        font-size: clamp(1.3rem, 1.5vw, 1.7rem);
+        margin-bottom: 24px;
+      }
+
+      .aim-range {
+        border-width: 4px;
+        width: min(1100px, 90vw);
+        height: min(600px, 70vh);
+        margin: 20px auto;
+      }
+
+      .aim-target {
+        width: clamp(40px, 7vw, 65px);
+        height: clamp(40px, 7vw, 65px);
+        border-width: 5px;
+      }
+
+      .aim-target::after {
+        width: 10px;
+        height: 10px;
+      }
+
+      .status-panel {
+        font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+        margin: 20px 0;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+        min-height: 52px;
+      }
+
+      .button-area {
+        gap: 20px;
+      }
+
+      .button-area .btn {
+        min-width: 260px;
+      }
+    }
+
+    /* Extra Large Desktop (1600px+) - Maximale Ausnutzung */
+    @media (min-width: 1600px) {
+      body {
+        padding: 48px;
+      }
+
+      .container {
+        padding: 48px;
+        width: min(1600px, 98vw);
+      }
+
+      .header-text {
+        font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+        margin-bottom: 24px;
+      }
+
+      .score-board {
+        font-size: clamp(1.5rem, 1.3vw, 1.9rem);
+        margin-bottom: 28px;
+      }
+
+      .aim-range {
+        border-width: 4px;
+        width: min(1300px, 92vw);
+        height: min(700px, 75vh);
+        margin: 24px auto;
+      }
+
+      .aim-target {
+        width: clamp(45px, 7.5vw, 75px);
+        height: clamp(45px, 7.5vw, 75px);
+        border-width: 5px;
+      }
+
+      .aim-target::after {
+        width: 12px;
+        height: 12px;
+      }
+
+      .status-panel {
+        font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+        margin: 24px 0;
+      }
+
+      .btn {
+        padding: 16px 32px;
+        font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+        min-height: 56px;
+      }
+
+      .button-area {
+        gap: 24px;
+      }
+
+      .button-area .btn {
+        min-width: 300px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      body {
+        padding: 8px;
+      }
+
+      .container {
+        padding: 8px;
+      }
+
+      .header-text {
+        font-size: 0.65rem;
+        margin-bottom: 6px;
+      }
+
+      .score-board {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+      }
+
+      .aim-range {
+        min-height: 160px;
+        margin: 6px auto;
+      }
+
+      .aim-target {
+        width: 26px;
+        height: 26px;
+      }
+
+      .status-panel {
+        font-size: 0.7rem;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+        min-height: 38px;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none;
+      }
+      .aim-target {
+        animation: none;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="container">
@@ -153,7 +559,7 @@
 
     <div class="status-panel" id="terminal-msg">Tracking hardware state: AWAITING_CALIBRATION...</div>
 
-    <div>
+    <div class="button-area">
       <button class="btn hidden" id="reset-btn" onclick="restartWarmupEngine()">REBOOT CORES</button>
       <a href="/GachaDeadlines/" class="btn escape-btn hidden" id="escape-link">🚀 SYNCED: LAUNCH HOME_GATEWAY.EXE</a>
     </div>
@@ -189,13 +595,11 @@
     function spawnNewTrackingTarget() {
       if (isGameOver) return;
 
-      // Clean old node target out if it exists
       if (activeTarget) activeTarget.remove();
 
       const el = document.createElement('div');
       el.className = 'aim-target';
 
-      // Compute completely random grid locations inside container boundaries
       const maxWidth = rangeZone.clientWidth;
       const maxHeight = rangeZone.clientHeight;
       
@@ -205,17 +609,15 @@
       el.style.left = xPos + 'px';
       el.style.top = yPos + 'px';
 
-      // Attach responsive dual input click interactions bindings directly
       el.addEventListener('mousedown', registerTargetHit);
       el.addEventListener('touchstart', function(e) {
-        e.preventDefault(); // Annuls touch delay layers instantly
+        e.preventDefault();
         registerTargetHit();
       }, { passive: false });
 
       rangeZone.appendChild(el);
       activeTarget = el;
 
-      // Setup dynamic lifetime scaling. Despawns automatically faster as player scores points
       const despawnDelay = Math.max(700, 1600 - (hits * 150));
       despawnTimeout = setTimeout(handleTargetDespawn, despawnDelay);
     }
@@ -237,7 +639,6 @@
 
     function handleTargetDespawn() {
       if (isGameOver) return;
-      // Miss event penalty: Instant core lock crash if player reaction time drops too slow
       triggerCoresCrash();
     }
 
@@ -246,7 +647,7 @@
       clearTimeout(despawnTimeout);
       if (activeTarget) {
         activeTarget.style.borderColor = '#ff3333';
-        activeTrash = null;
+        activeTarget = null;
       }
       resetBtn.classList.remove('hidden');
       msgEl.innerHTML = "<span style='color: #ff3333;'>CALIBRATION_FAILED: Target tracking lost. Synchronization dropped.</span>";
@@ -265,7 +666,6 @@
       startWarmupEngine();
     }
 
-    // Launch engine initialization structures
     startWarmupEngine();
   </script>
 </body>

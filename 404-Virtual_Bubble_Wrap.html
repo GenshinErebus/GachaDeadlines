@@ -5,53 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Stress Relief Panel</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
       text-shadow: 0 0 5px #00ff33;
-      text-align: center;
       user-select: none;
       touch-action: manipulation;
+      overflow-x: hidden;
     }
 
     .terminal-box {
-      max-width: 500px;
       width: 100%;
+      max-width: 500px;
+      padding: clamp(10px, 3vw, 25px);
       border: 2px solid #00ff33;
-      padding: 25px;
       border-radius: 6px;
       background-color: #111;
       box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
-      box-sizing: border-box;
+      margin: clamp(5px, 2vw, 20px);
     }
 
-    h1 { 
-      font-size: 1.8rem; 
-      margin-top: 0; 
+    h1 {
+      font-size: clamp(0.9rem, 5vw, 1.8rem);
+      margin: 0 0 clamp(5px, 2vw, 10px) 0;
       border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
-      padding-bottom: 10px;
+      padding-bottom: clamp(3px, 1.5vw, 10px);
+      line-height: 1.3;
+      word-wrap: break-word;
     }
 
-    /* Bubble wrap grid layout (6 Columns) */
+    .subtitle {
+      font-size: clamp(0.5rem, 2.5vw, 0.85rem);
+      color: #888;
+      line-height: 1.3;
+      margin-bottom: clamp(5px, 2vw, 15px);
+      padding: 0 clamp(5px, 2vw, 10px);
+    }
+
+    /* Bubble wrap grid - responsive */
     .bubble-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      max-width: 320px;
-      margin: 25px auto;
+      gap: clamp(3px, 2vw, 10px);
+      width: 100%;
+      margin: 0 auto clamp(5px, 2vw, 15px) auto;
+      aspect-ratio: 6 / 4;
     }
 
-    /* Individual Bubble styling */
     .bubble {
       aspect-ratio: 1 / 1;
       border: 2px solid #00ff33;
@@ -60,19 +71,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: clamp(0.6rem, 4vw, 1rem);
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
       transition: all 0.1s ease;
+      user-select: none;
     }
 
-    .bubble:hover {
+    .bubble:hover:not(.popped) {
       background-color: #0c2c0e;
       box-shadow: 0 0 10px #00ff33;
     }
 
-    /* Popped state */
     .bubble.popped {
       background-color: #222;
       border-color: rgba(0, 255, 51, 0.3);
@@ -83,26 +94,38 @@
     }
 
     .status-panel {
-      font-size: 1.1rem;
-      margin: 15px 0;
-      min-height: 25px;
+      font-size: clamp(0.6rem, 3vw, 1rem);
+      margin: clamp(5px, 2vw, 15px) 0;
+      min-height: 1.2em;
+      text-align: center;
+      padding: 0 10px;
+      word-wrap: break-word;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .btn {
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 12px 24px;
+      padding: clamp(6px, 2.5vw, 12px) clamp(12px, 3vw, 24px);
       font-family: inherit;
-      font-size: 1rem;
+      font-size: clamp(0.65rem, 3vw, 1rem);
       font-weight: bold;
       cursor: pointer;
       border-radius: 4px;
       text-shadow: 0 0 5px #00ff33;
       box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
       text-decoration: none;
-      display: inline-block;
       transition: all 0.3s;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.2;
+      text-align: center;
     }
 
     .btn:hover {
@@ -110,20 +133,146 @@
       color: #050505;
       box-shadow: 0 0 15px #00ff33;
     }
+
+    /* Ultra Small Mobile (<380px height or <350px width) */
+    @media (max-height: 380px), (max-width: 350px) {
+      .terminal-box {
+        padding: 8px;
+        margin: 5px;
+        border-width: 1.5px;
+      }
+
+      h1 {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+        padding-bottom: 3px;
+      }
+
+      .subtitle {
+        font-size: 0.48rem;
+        margin-bottom: 5px;
+        display: none;
+      }
+
+      .bubble-grid {
+        gap: 2px;
+        aspect-ratio: 6 / 4;
+        max-width: 240px;
+      }
+
+      .bubble {
+        border-width: 1px;
+        font-size: 0.6rem;
+      }
+
+      .status-panel {
+        font-size: 0.55rem;
+        min-height: 1em;
+        margin: 3px 0;
+      }
+
+      .button-group {
+        margin-top: 5px;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        font-size: 0.6rem;
+        max-width: 90%;
+        border-width: 1.5px;
+      }
+    }
+
+    /* Small Mobile (381-480px height) */
+    @media (min-height: 381px) and (max-height: 480px) {
+      .terminal-box {
+        padding: 12px;
+      }
+
+      .subtitle {
+        display: none;
+      }
+
+      .bubble-grid {
+        max-width: 280px;
+      }
+
+      .btn {
+        padding: 8px 15px;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Medium Mobile (481-700px height) */
+    @media (min-height: 481px) and (max-width: 600px) {
+      .terminal-box {
+        padding: 18px;
+      }
+
+      .bubble-grid {
+        max-width: 340px;
+      }
+
+      .subtitle {
+        display: block;
+      }
+    }
+
+    /* Tablet */
+    @media (min-width: 601px) and (max-width: 1023px) {
+      .terminal-box {
+        padding: 22px;
+        margin: 20px auto;
+      }
+
+      .bubble-grid {
+        max-width: 380px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .terminal-box {
+        padding: 25px;
+        margin: 30px auto;
+      }
+
+      .bubble-grid {
+        max-width: 420px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Large Desktop */
+    @media (min-width: 1440px) {
+      .bubble-grid {
+        max-width: 500px;
+      }
+
+      .terminal-box {
+        max-width: 600px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="terminal-box">
     <h1>🫧 ROUTE_NOT_FOUND: STRESS_RELIEF</h1>
-    <p style="color: #888; font-size: 0.9rem;">The page is gone. Pop the virtual buffer bubbles to reduce core frustration levels while we re-index the server.</p>
+    <p class="subtitle">Page is gone. Pop bubbles to reduce frustration while re-indexing server.</p>
     
     <div class="status-panel" id="status-msg">Bubbles remaining: 24</div>
 
-    <!-- The interactive 24-bubble grid field -->
     <div class="bubble-grid" id="wrap-field"></div>
 
-    <div>
+    <div class="button-group">
       <a href="/GachaDeadlines/" class="btn">🚀 DISCONNECT &amp; GO HOME</a>
     </div>
   </div>
@@ -136,7 +285,6 @@
     let bubblesLeft = totalBubbles;
     let audioCtx = null;
 
-    // Generates a satisfying mechanical electronic pop sound purely via Web Audio API
     function playPopSound() {
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -160,7 +308,6 @@
         bubble.className = 'bubble';
         bubble.innerText = 'O';
         
-        // Single pop execution handler
         const popAction = function() {
           if (bubble.classList.contains('popped')) return;
           
@@ -186,7 +333,6 @@
       }
     }
 
-    // Launch configuration layout
     createBubbleWrap();
   </script>
 
