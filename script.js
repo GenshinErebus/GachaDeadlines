@@ -114,92 +114,97 @@ const eventDatabase = {
         ],
         events: [
             {
-                id: "hsr_000",
+                id: "hsr_001",
                 name: "Overdrive: Whirlwind Grand Prix",
                 endDate: "2026-09-27T20:00:00Z"
             },
             {
-                id: "hsr_001",
+                id: "hsr_002",
                 name: "Gift of Odyssey",
                 endDate: "2026-09-27T20:00:00Z"
             },
             {
-                id: "hsr_002",
+                id: "hsr_003",
                 name: "Anomaly Arbitration (Period)",
                 endDate: "2026-09-27T22:00:00Z"
             },
             {
-                id: "hsr_003",
+                id: "hsr_004",
                 name: "Memory of Chaos (Period)",
                 endDate: "2026-09-28T03:00:00Z"
             },
             {
-                id: "hsr_004",
+                id: "hsr_005",
                 name: "Pure Fiction (Period)",
                 endDate: "2026-10-19T03:00:00Z"
             },
             {
-                id: "hsr_005",
+                id: "hsr_006",
                 name: "Apocalyptic Shadow (Period)",
                 endDate: "2026-10-05T03:00:00Z"
             },
             {
-                id: "hsr_006",
+                id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
                 endDate: "2026-09-21T03:00:00Z"
             },
             {
-                id: "hsr_007",
+                id: "hsr_008",
                 name: "Currency Wars: Zero-Sum Game (Expansion)",
                 endDate: "2026-11-10T22:00:00Z"
             },
             {
-                id: "hsr_008",
+                id: "hsr_009",
                 name: "Divergent Universe: Arcadian Chronicles (Expansion)",
                 endDate: "2027-03-16T22:00:00Z"
             },
             {
-                id: "hsr_009",
+                id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-09-21T03:00:00Z"
             },
             {
-                id: "hsr_010",
+                id: "hsr_011",
                 name: "Planar Fissure",
                 endDate: "2026-09-21T03:00:00Z"
             },
             {
-                id: "hsr_011",
+                id: "hsr_012",
                 name: "Minuscule Great Adventure",
+                endDate: "2026-09-27T20:00:00Z"
+            },
+            {
+                id: "hsr_013",
+                name: "Realm of the Strange",
                 endDate: "2026-09-27T20:00:00Z"
             },
             // Trials
             {
-                id: "hsr_012",
+                id: "hsr_014",
                 name: "Aptitude Showcase",
                 endDate: "2026-09-27T20:00:00Z"
             },
             // Banner
             {
-                id: "hsr_013",
+                id: "hsr_015",
                 name: "Character Event Warp",
                 endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
-                id: "hsr_014",
+                id: "hsr_016",
                 name: "Character Event Warp (Rerun)",
                 endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
-                id: "hsr_015",
+                id: "hsr_017",
                 name: "Light Cone Event Warp",
                 endDate: "2026-09-27T20:00:00Z",
                 banner: true
             },
             {
-                id: "hsr_016",
+                id: "hsr_018",
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-09-27T20:00:00Z",
                 banner: true

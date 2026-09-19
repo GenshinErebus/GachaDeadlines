@@ -5,160 +5,429 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Memory Leak</title>
   <style>
-    /* Retro Terminal Aesthetics */
+    /* Retro Terminal Aesthetics - Fully Responsive */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 15px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
+      text-shadow: 0 0 3px #00ff33;
       user-select: none;
-      touch-action: manipulation; /* Optimizes tap delays on smartphones */
-    }
-
-    .container {
-  /* Forces the container to take up 100% of the screen width and height */
-  width: 100vw;
-  height: 100vh;  
-  /* Reset margins and ensure padding doesn't cause hidden scrollbars */
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  /* Perfect center alignment */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+      touch-action: manipulation;
     }
 
     .header-text {
-      margin-bottom: 15px;
-      line-height: 1.4;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      margin-bottom: 6px;
+      line-height: 1.25;
+      font-size: 0.65rem;
+      text-align: center;
+      max-width: 95vw;
     }
 
-    /* 4x4 Grid - Responsively scales on smartphones using viewport units */
+    .header-text div {
+      line-height: 1.2;
+    }
+
+    /* 4x4 Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin: 20px auto;
-      max-width: 460px;
-      width: 85vw;
+      gap: 3px;
+      margin: 4px auto;
+      width: 100%;
+      max-width: 290px;
     }
 
-    /* Card Styling */
+    /* Card Wrapper */
     .card {
       aspect-ratio: 1 / 1;
-      background-color: #111;
-      border: 2px solid #00ff33;
-      border-radius: 6px;
+      perspective: 1000px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Card Inner for flip animation */
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    /* Common styles for both faces */
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      font-weight: bold;
-      color: transparent; /* Hidden by default */
-      cursor: pointer;
-      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
-      transition: all 0.2s ease-in-out;
+      border: 1.5px solid #00ff33;
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.2);
+      top: 0;
+      left: 0;
     }
 
-    /* Card Backside visual indicator */
-    .card::before {
-      content: "[?]";
+    /* Card Front (face down - shows ?) */
+    .card-front {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      z-index: 2;
+    }
+
+    .card-front::after {
+      content: "?";
       color: #00ff33;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      font-size: 1rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #00ff33;
     }
 
-    .card:hover {
-      box-shadow: 0 0 12px #00ff33;
-      background-color: #0c2c0e;
+    .card:not(.flipped):not(.matched):hover .card-inner {
+      transform: rotateY(-5deg);
     }
 
-    /* Card Face Up/Flipped active state */
-    .card.flipped {
+    /* Card Back (content) */
+    .card-back {
+      background-color: #050505;
+      transform: rotateY(180deg);
+    }
+
+    .card-back .card-content {
+      color: #00ff33;
+      text-align: center;
+      font-weight: bold;
+      line-height: 1;
+      text-shadow: 0 0 3px #00ff33;
+      padding: 2px;
+      font-size: 0.7rem;
+      word-break: break-word;
+    }
+
+    /* Flipped state */
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card.flipped .card-front {
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .card.flipped .card-back {
       background-color: #00ff33;
-      color: #050505 !important;
-      box-shadow: 0 0 15px #00ff33;
-      text-shadow: none;
-      cursor: default;
-    }
-    .card.flipped::before {
-      display: none; /* Hide the [?] symbol */
+      border-color: #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+      z-index: 2;
     }
 
-    /* Card Matched permanently solved state */
-    .card.matched {
+    .card.flipped .card-back .card-content {
+      color: #050505;
+      text-shadow: none;
+    }
+
+    /* Matched state */
+    .card.matched .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card.matched .card-front {
+      opacity: 0;
+    }
+
+    .card.matched .card-back {
       background-color: #0c2c0e;
-      color: #00ff33 !important;
       border-color: rgba(0, 255, 51, 0.4);
       box-shadow: none;
-      text-shadow: 0 0 3px #00ff33;
-      cursor: default;
     }
-    .card.matched::before {
-      display: none;
+
+    .card.matched .card-back .card-content {
+      color: #00ff33;
+      text-shadow: 0 0 2px #00ff33;
     }
 
     .status-panel {
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      margin-top: 10px;
-      min-height: 25px;
+      font-size: 0.7rem;
+      margin: 3px 0;
+      min-height: 1.2em;
+      margin-top: 6px;
     }
 
-    /* Action Buttons */
+    .btn-row {
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+
     .btn {
       background: transparent;
-      border: 2px solid #00ff33;
+      border: 1.5px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 8px 12px;
       font-family: inherit;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+      font-size: 0.7rem;
       cursor: pointer;
-      margin: 10px;
-      border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
+      border-radius: 3px;
+      text-shadow: 0 0 3px #00ff33;
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.3);
       transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      white-space: nowrap;
     }
 
-    .btn:hover {
+    .btn:hover, .btn:active {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 10px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
     }
 
     .hidden {
       display: none;
     }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      .header-text {
+        font-size: 0.6rem;
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        gap: 2px;
+        max-width: calc(100vw - 12px);
+        margin: 2px auto;
+      }
+
+      .card-front::after {
+        font-size: 0.85rem;
+      }
+
+      .card-back .card-content {
+        font-size: 0.65rem;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+      }
+
+      .btn {
+        font-size: 0.65rem;
+        min-height: 30px;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .header-text {
+        font-size: 0.75rem;
+      }
+
+      .grid {
+        gap: 4px;
+        max-width: calc(100vw - 20px);
+        margin: 4px auto;
+      }
+
+      .card-front::after {
+        font-size: 1rem;
+      }
+
+      .card-back .card-content {
+        font-size: 0.75rem;
+      }
+
+      .status-panel {
+        font-size: 0.75rem;
+      }
+
+      .btn {
+        font-size: 0.8rem;
+        min-height: 36px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .header-text {
+        font-size: 0.95rem;
+      }
+
+      .grid {
+        gap: 8px;
+        max-width: min(90vw, 65vh);
+        margin: 10px auto;
+      }
+
+      .card-front::after {
+        font-size: 1.4rem;
+      }
+
+      .card-back .card-content {
+        font-size: 0.95rem;
+      }
+
+      .status-panel {
+        font-size: 0.95rem;
+        margin-top: 10px;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        min-height: 44px;
+      }
+    }
+
+    /* Desktop (769px+) - Grid wächst mit der Viewport-HÖHE */
+    @media (min-width: 769px) {
+      body {
+        padding: 24px;
+      }
+
+      .header-text {
+        font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+        margin-bottom: 12px;
+      }
+
+      /* Der entscheidende Fix: max-width an die Bildschirmhöhe gekoppelt.
+         Auf 1080p: min(~65% Breite, ~70% Höhe) -> Grid füllt den Screen */
+      .grid {
+        gap: 12px;
+        max-width: min(640px, 88vw, 74vh);
+        margin: 12px auto;
+      }
+
+      .card-front::after {
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      }
+
+      .card-back .card-content {
+        font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+      }
+
+      .status-panel {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        margin-top: 12px;
+      }
+
+      .btn-row {
+        margin-top: 10px;
+      }
+
+      .btn {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        min-width: 320px;
+        min-height: 54px;
+        padding: 14px 26px;
+      }
+    }
+
+    /* Large Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      body {
+        padding: 32px;
+      }
+
+      .header-text {
+        font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+        margin-bottom: 16px;
+      }
+
+      .grid {
+        gap: 16px;
+        max-width: min(760px, 80vw, 74vh);
+        margin: 16px auto;
+      }
+
+      .card-front::after {
+        font-size: clamp(2rem, 3vw, 2.8rem);
+      }
+
+      .card-back .card-content {
+        font-size: clamp(1.4rem, 2vw, 2rem);
+      }
+
+      .status-panel {
+        font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+        margin-top: 16px;
+      }
+
+      .btn {
+        min-width: 380px;
+        min-height: 60px;
+        padding: 16px 32px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .header-text {
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        margin: 4px auto;
+        gap: 3px;
+      }
+
+      .status-panel {
+        margin: 3px 0;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .card-inner {
+        transition: none !important;
+      }
+
+      .btn {
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header-text">
-      <div>⚠️ [CRITICAL] 404_MEMORY_LEAK_DETECTED</div>
-      <div>RAM sectors corrupted. Pair the terminal code blocks to rebuild the index.</div>
-    </div>
+  <div class="header-text">
+    <div>⚠️ [CRITICAL] 404_MEMORY_LEAK_DETECTED</div>
+    <div>RAM sectors corrupted. Pair the terminal code blocks to rebuild the index.</div>
+  </div>
 
-    <!-- 4x4 Game Matrix -->
-    <div class="grid" id="game-grid"></div>
+  <!-- 4x4 Game Matrix -->
+  <div class="grid" id="game-grid"></div>
 
-    <div class="status-panel" id="status-msg">Tries: 0</div>
+  <div class="status-panel" id="status-msg">Tries: 0</div>
 
-    <div>
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
-    </div>
+  <div class="btn-row">
+    <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
   </div>
 
   <script>
@@ -196,23 +465,38 @@
     function initializeGame() {
       const shuffledIcons = shuffle([...cardIcons]);
       gridContainer.innerHTML = '';
-      
-      shuffledIcons.forEach((icon, index) => {
+
+      shuffledIcons.forEach((icon) => {
         const card = document.createElement('div');
         card.classList.add('card');
         card.dataset.icon = icon;
-        card.innerText = icon;
-        
-        // Touchstart and Click combo optimized for all screens
+
+        const cardInner = document.createElement('div');
+        cardInner.classList.add('card-inner');
+
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-face', 'card-front');
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-face', 'card-back');
+
+        const contentDiv = document.createElement('span');
+        contentDiv.classList.add('card-content');
+        contentDiv.textContent = icon;
+        cardBack.appendChild(contentDiv);
+
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.appendChild(cardInner);
+
         card.addEventListener('click', flipCard);
-        
         gridContainer.appendChild(card);
       });
     }
 
     function flipCard() {
       if (lockBoard) return;
-      if (this === flippedCards[0]) return; // Stop double clicking same card
+      if (this === flippedCards[0]) return;
       if (this.classList.contains('matched') || this.classList.contains('flipped')) return;
 
       this.classList.add('flipped');
@@ -239,11 +523,10 @@
     function disableCards() {
       flippedCards[0].classList.add('matched');
       flippedCards[1].classList.add('matched');
-      
+
       matchedPairsCount++;
       resetTracker();
 
-      // Check win state
       if (matchedPairsCount === cardIcons.length / 2) {
         statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>INDEX_REBUILT: System Stabilized!</span>";
         escapeBtn.classList.remove('hidden');
@@ -252,7 +535,6 @@
 
     function unflipCards() {
       lockBoard = true;
-      // Brief delay so the user can memorize the position
       setTimeout(() => {
         flippedCards[0].classList.remove('flipped');
         flippedCards[1].classList.remove('flipped');
@@ -265,7 +547,6 @@
       lockBoard = false;
     }
 
-    // Fire engine up
     initializeGame();
   </script>
 

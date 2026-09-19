@@ -5,100 +5,381 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Firewall Trivia Challenge</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    /* Retro Terminal Aesthetic - Fully Responsive */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 15px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
+      text-shadow: 0 0 3px #00ff33;
       text-align: center;
       user-select: none;
       touch-action: manipulation;
     }
 
     .terminal-box {
-      max-width: 580px;
       width: 100%;
       border: 2px solid #00ff33;
-      padding: 25px;
+      padding: 20px;
       border-radius: 6px;
       background-color: #111;
       box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
-      box-sizing: border-box;
     }
 
     h1 { 
-      font-size: 1.7rem; 
-      margin-top: 0; 
+      font-size: 0.8rem;
+      margin: 0 0 10px 0;
       border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
-      padding-bottom: 10px;
+      padding-bottom: 8px;
+      word-wrap: break-word;
+      line-height: 1.2;
+    }
+
+    .intro-text {
+      color: #aaa;
+      font-size: 0.65rem;
+      margin: 0 0 15px 0;
+      line-height: 1.4;
+      text-shadow: none;
+      max-width: 95vw;
     }
 
     .question-screen {
       background-color: #050505;
       border: 1px solid rgba(0, 255, 51, 0.4);
-      padding: 20px;
+      padding: 12px 15px;
       border-radius: 4px;
-      font-size: 1.05rem;
+      font-size: 0.7rem;
       color: #ffffff;
-      line-height: 1.5;
-      margin: 20px 0;
-      min-height: 70px;
+      line-height: 1.45;
+      margin: 10px 0;
+      min-height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
+      word-wrap: break-word;
+      hyphens: auto;
     }
 
     .status-panel {
-      font-size: 1.1rem;
-      margin: 10px 0;
-      min-height: 25px;
+      font-size: 0.7rem;
+      margin: 8px 0;
+      min-height: 1.2em;
     }
 
     .btn-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 15px;
+      margin-top: 12px;
     }
 
     .btn {
       background: transparent;
       border: 1px solid #00ff33;
       color: #00ff33;
-      padding: 12px 20px;
+      padding: 10px 16px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.7rem;
       font-weight: bold;
       cursor: pointer;
       border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      text-shadow: 0 0 3px #00ff33;
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.2);
       transition: all 0.2s ease;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
 
     .btn:hover {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 12px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
     }
 
     .escape-btn {
       border: 2px solid #00ff33;
-      box-shadow: 0 0 10px #00ff33;
+      box-shadow: 0 0 8px #00ff33;
     }
 
     .hidden {
       display: none !important;
+    }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      body {
+        padding: 5px;
+        padding-bottom: 8px;
+      }
+
+      .terminal-box {
+        padding: 12px;
+        border-width: 1px;
+      }
+
+      h1 {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+      }
+
+      .intro-text {
+        font-size: 0.55rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .question-screen {
+        padding: 8px 10px;
+        font-size: 0.62rem;
+        min-height: 40px;
+      }
+
+      .status-panel {
+        font-size: 0.58rem;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 8px 12px;
+        font-size: 0.62rem;
+        min-height: 34px;
+      }
+
+      .btn-row {
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: column;
+      }
+
+      .btn-row#interface-box .btn {
+        width: 100%;
+      }
+
+      .escape-btn {
+        font-size: 0.6rem;
+        padding: 8px 12px;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 8px;
+      }
+
+      .terminal-box {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 0.8rem;
+      }
+
+      .intro-text {
+        font-size: 0.65rem;
+      }
+
+      .question-screen {
+        font-size: 0.7rem;
+        min-height: 42px;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+      }
+
+      .btn {
+        font-size: 0.7rem;
+        min-height: 36px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: column;
+      }
+
+      .btn-row#interface-box .btn {
+        width: 100%;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .terminal-box {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1rem;
+      }
+
+      .intro-text {
+        font-size: 0.85rem;
+      }
+
+      .question-screen {
+        font-size: 0.9rem;
+        min-height: 50px;
+      }
+
+      .status-panel {
+        font-size: 0.85rem;
+      }
+
+      .btn {
+        font-size: 0.85rem;
+        min-height: 40px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: row;
+      }
+
+      .btn-row#interface-box .btn {
+        min-width: 140px;
+      }
+    }
+
+    /* Desktop (769px+) - Box füllt jetzt viel mehr vom Screen */
+    @media (min-width: 769px) {
+      body {
+        padding: 24px;
+      }
+
+      .terminal-box {
+        padding: 40px;
+        max-width: min(980px, 90vw, 78vh);
+      }
+
+      h1 {
+        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+      }
+
+      .intro-text {
+        font-size: clamp(1rem, 2.2vw, 1.4rem);
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
+
+      .question-screen {
+        font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+        padding: 20px 24px;
+        min-height: 75px;
+      }
+
+      .status-panel {
+        font-size: clamp(1rem, 2.2vw, 1.3rem);
+        margin: 12px 0;
+      }
+
+      .btn {
+        font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+        padding: 16px 28px;
+        min-height: 55px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: row;
+      }
+
+      .btn-row#interface-box .btn {
+        min-width: 200px;
+      }
+
+      .escape-btn {
+        font-size: clamp(1.05rem, 2vw, 1.4rem);
+        padding: 16px 26px;
+      }
+    }
+
+    /* Large Desktop (1200px+) - Maximale Ausnutzung */
+    @media (min-width: 1200px) {
+      body {
+        padding: 36px;
+      }
+
+      .terminal-box {
+        padding: 50px;
+        max-width: min(1100px, 88vw, 75vh);
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      }
+
+      .intro-text {
+        font-size: clamp(1.2rem, 2vw, 1.7rem);
+      }
+
+      .question-screen {
+        font-size: clamp(1.3rem, 2vw, 1.9rem);
+        min-height: 90px;
+      }
+
+      .status-panel {
+        font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+      }
+
+      .btn {
+        font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+        min-height: 65px;
+        min-width: 240px;
+        padding: 18px 32px;
+      }
+
+      .btn-row#interface-box .btn {
+        min-width: 240px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .terminal-box {
+        padding: 20px;
+      }
+
+      .question-screen {
+        min-height: 50px;
+      }
+
+      .btn {
+        min-height: 42px;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -106,7 +387,7 @@
 
   <div class="terminal-box">
     <h1>🔒 SECURITY_CHALLENGE: BASH_TRIVIA</h1>
-    <p style="color: #888; font-size: 0.9rem;">The target route is blocked by a root firewall. Answer the system prompt correctly to unlock the compilation bridge.</p>
+    <p class="intro-text">The target route is blocked by a root firewall. Answer correctly to unlock the bridge.</p>
     
     <div class="question-screen" id="question-box">Loading security token challenge...</div>
 
@@ -118,8 +399,8 @@
       <button class="btn" id="choice-2" onclick="verifyTriviaAnswer(2)">---</button>
     </div>
 
-    <div>
-      <a href="/GachaDeadlines/" class="btn escape-btn hidden" id="escape-link">🚀 ACCESS_GRANTED: RETURN TO MAIN BASE</a>
+    <div class="btn-row">
+      <a href="/GachaDeadlines/" class="btn escape-btn hidden" id="escape-link">🚀 ACCESS_GRANTED</a>
     </div>
   </div>
 
@@ -133,6 +414,7 @@
     let shuffledChoices = [];
     let isGameActive = true;
 
+    // 13 Fragen insgesamt (3 original + 10 neue)
     const triviaPool = [
       {
         q: "Which command forces a recursive deletion of a directory and all its contents without asking?",
@@ -145,6 +427,54 @@
       {
         q: "Which utility command allows you to view system log file updates in real-time as they print?",
         a: "tail -f", decoy1: "cat -live", decoy2: "watch -log"
+      },
+      {
+        q: "What command displays the current working directory path?",
+        a: "pwd", decoy1: "cd", decoy2: "dir"
+      },
+      {
+        q: "Which command lists files including hidden ones (starting with a dot)?",
+        a: "ls -la", decoy1: "ls -all", decoy2: "dir -hidden"
+      },
+      {
+        q: "What command switches to another user account in Linux?",
+        a: "su", decoy1: "sudo", decoy2: "userswitch"
+      },
+      {
+        q: "Which command shows the first lines of a file?",
+        a: "head", decoy1: "top", decoy2: "begin"
+      },
+      {
+        q: "What command searches for a pattern in files recursively?",
+        a: "grep -r", decoy1: "search -all", decoy2: "find -match"
+      },
+      {
+        q: "Which command creates a new directory?",
+        a: "mkdir", decoy1: "mkfolder", decoy2: "newdir"
+      },
+      {
+        q: "What command shows running processes on the system?",
+        a: "ps aux", decoy1: "process list", decoy2: "show -tasks"
+      },
+      {
+        q: "Which command terminates a running process by PID?",
+        a: "kill", decoy1: "stop", decoy2: "terminate"
+      },
+      {
+        q: "What command downloads a file from a URL in the terminal?",
+        a: "curl -O", decoy1: "wget save", decoy2: "download -url"
+      },
+      {
+        q: "Which command finds the location of an executable in PATH?",
+        a: "which", decoy1: "locate", decoy2: "whereis"
+      },
+      {
+        q: "What command compresses a file using gzip?",
+        a: "gzip", decoy1: "zipfile", decoy2: "compress"
+      },
+      {
+        q: "Which command shows disk usage of files and directories?",
+        a: "du -sh", decoy1: "disk -size", decoy2: "usage -report"
       }
     ];
 
@@ -154,17 +484,15 @@
       escapeLink.classList.add('hidden');
       interfaceBox.classList.remove('hidden');
 
-      const seedModifier = Date.now() + Math.random();
-      const questionIndex = Math.floor((seedModifier * 5) % triviaPool.length);
-      currentQuestion = triviaPool[questionIndex];
+      const randomIndex = Math.floor(Math.random() * triviaPool.length);
+      currentQuestion = triviaPool[randomIndex];
 
       questionBox.innerText = currentQuestion.q;
 
-      // FIXED: Correctly shuffles the distinct choices using Fisher-Yates method
       let choicesList = [currentQuestion.a, currentQuestion.decoy1, currentQuestion.decoy2];
       
       for (let i = choicesList.length - 1; i > 0; i--) {
-        const j = Math.floor((seedModifier * (i + 1)) % choicesList.length);
+        const j = Math.floor(Math.random() * (i + 1));
         const temp = choicesList[i];
         choicesList[i] = choicesList[j];
         choicesList[j] = temp;
@@ -188,7 +516,7 @@
         interfaceBox.classList.add('hidden');
         escapeLink.classList.remove('hidden');
       } else {
-        statusMsg.innerHTML = "<span style='color: #ff3333;'>SIGNATURE_REJECTED: Security wall triggered. Resetting token...</span>";
+        statusMsg.innerHTML = "<span style='color: #ff3333;'>SIGNATURE_REJECTED: Security wall triggered. Resetting...</span>";
         isGameActive = false;
         setTimeout(initTriviaChallenge, 1300);
       }
@@ -196,6 +524,5 @@
 
     initTriviaChallenge();
   </script>
-
 </body>
 </html>

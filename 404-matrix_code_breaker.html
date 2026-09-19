@@ -5,105 +5,315 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Matrix Code-Breaker</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    /* Retro Terminal Aesthetic - Fully Responsive Design */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
-      padding: 15px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
+      text-shadow: 0 0 4px #00ff33;
       text-align: center;
       user-select: none;
       touch-action: manipulation;
     }
 
     .terminal-box {
-      max-width: 600px;
       width: 100%;
       border: 2px solid #00ff33;
-      padding: 25px;
-      border-radius: 6px;
+      padding: 30px;
+      border-radius: 8px;
       background-color: #111;
-      box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
-      box-sizing: border-box;
+      box-shadow: 0 0 25px rgba(0, 255, 51, 0.3);
+      overflow: hidden;
     }
 
     h1 { 
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
-      margin-top: 0; 
-      border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
-      padding-bottom: 10px;
+      font-size: clamp(1rem, 3vw, 2.2rem);
+      margin: 0 0 12px 0;
+      border-bottom: 1px dashed rgba(0, 255, 51, 0.4);
+      padding-bottom: 12px;
+      word-wrap: break-word;
+      line-height: 1.3;
+      text-shadow: 0 0 4px #00ff33;
     }
 
-    /* Container for the binary text block */
+    .intro-text {
+      color: #aaa;
+      font-size: clamp(0.85rem, 2vw, 1.1rem);
+      margin: 0 0 20px 0;
+      line-height: 1.5;
+      text-shadow: none;
+    }
+
+    /* Container for the binary text block - default: umbruchbar (mobile-safe) */
     .binary-stream {
       background-color: #050505;
-      border: 1px solid rgba(0, 255, 51, 0.4);
-      padding: 15px;
-      border-radius: 4px;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      border: 1px solid rgba(0, 255, 51, 0.5);
+      padding: 15px 20px;
+      border-radius: 5px;
+      font-size: clamp(1rem, 2vw, 1.5rem);
       color: #ffffff;
-      word-break: break-all;
-      letter-spacing: 1px;
+      text-shadow: none;
+      letter-spacing: 3px;
       margin: 20px 0;
-      min-height: 50px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      line-height: 1.6;
+      white-space: normal;
+      word-break: break-all;
+      overflow: hidden;
+      font-weight: bold;
     }
 
     .status-panel {
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
       margin: 15px 0;
-      min-height: 25px;
+      min-height: 1.5em;
+      line-height: 1.4;
+      font-weight: bold;
     }
 
     /* Button area layout styling */
     .btn-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 15px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .btn {
       background: transparent;
-      border: 1px solid #00ff33;
+      border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 12px 24px;
+      padding: 14px 28px;
       font-family: inherit;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
       font-weight: bold;
       cursor: pointer;
-      border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+      border-radius: 5px;
+      text-shadow: 0 0 4px #00ff33;
+      box-shadow: 0 0 8px rgba(0, 255, 51, 0.3);
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      letter-spacing: 1px;
     }
 
-    .btn:hover {
+    .btn:hover, .btn:active {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 25px #00ff33;
       font-weight: bold;
+      text-shadow: none;
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
     }
 
     .escape-btn {
-      border: 2px solid #00ff33;
-      box-shadow: 0 0 10px #00ff33;
+      border: 3px solid #00ff33;
+      box-shadow: 0 0 15px #00ff33;
     }
 
     .hidden {
       display: none !important;
+    }
+
+    /* Ultra Small Mobile (< 360px) */
+    @media (max-width: 359px) {
+      body {
+        padding: 8px;
+      }
+
+      .terminal-box {
+        padding: 12px;
+        border-width: 1px;
+      }
+
+      h1 {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        padding-bottom: 8px;
+      }
+
+      .intro-text {
+        font-size: 0.7rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .binary-stream {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        min-height: 32px;
+      }
+
+      .status-panel {
+        font-size: 0.8rem;
+        margin: 6px 0;
+        min-height: 1.2em;
+      }
+
+      .btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        min-height: 40px;
+        letter-spacing: 0;
+      }
+
+      .btn-row {
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: column;
+      }
+
+      .btn-row#interface-box .btn {
+        width: 100%;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+
+      .terminal-box {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 1rem;
+      }
+
+      .binary-stream {
+        padding: 8px;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        min-height: 35px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: column;
+      }
+
+      .btn-row#interface-box .btn {
+        width: 100%;
+        min-height: 42px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+
+      .terminal-box {
+        padding: 25px;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: row;
+      }
+
+      .btn {
+        min-width: 120px;
+        min-height: 48px;
+      }
+    }
+
+    /* Desktop (769px+) */
+    @media (min-width: 769px) {
+      body {
+        padding: 40px;
+      }
+
+      .terminal-box {
+        padding: 45px;
+        max-width: 65vw;
+      }
+
+      /* Erst auf Desktop: Binär-Text einzeilig lassen, dort passt er locker */
+      .binary-stream {
+        white-space: nowrap;
+      }
+
+      .btn-row#interface-box {
+        flex-direction: row;
+      }
+
+      .btn {
+        min-width: 160px;
+        min-height: 55px;
+      }
+    }
+
+    /* Large Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      body {
+        padding: 50px;
+      }
+
+      .terminal-box {
+        padding: 55px;
+        max-width: 55vw;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .binary-stream {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+        padding: 20px 30px;
+      }
+
+      .btn {
+        font-size: 1.5rem;
+        min-width: 180px;
+        min-height: 60px;
+        padding: 18px 35px;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .btn, * {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
@@ -111,7 +321,7 @@
 
   <div class="terminal-box">
     <h1>🔐 DECRYPTION_KEY_REQUIRED (404)</h1>
-    <p style="color: #888; font-size: 0.9rem;">The requested database link is encrypted. Decode the binary stream to bypass the firewall.</p>
+    <p class="intro-text">Decode the binary stream to bypass the firewall.</p>
     
     <!-- Visual area where the zeros and ones are printed -->
     <div class="binary-stream" id="binary-display">00000000</div>
@@ -137,35 +347,27 @@
     const interfaceBox = document.getElementById('interface-box');
     const escapeLink = document.getElementById('escape-link');
 
-    // Safe core vocabulary database (All exactly 4 letters to keep layout perfectly aligned)
     const wordPool = ["HOME", "EXIT", "LINK", "NODE", "SUDO", "ROOT", "DATA", "CODE", "HOST", "PORT", "GRID"];
     
     let correctAnswer = "";
     let choices = [];
     let gameActive = true;
 
-    // Helper engine to transform string text letters into real 8-bit binary representation strings
     function convertTextToBinary(text) {
       let output = [];
       for (let i = 0; i < text.length; i++) {
         let bin = text.charCodeAt(i).toString(2);
-        // Pad zeros to guarantee clean 8-bit alignment blocks
         let padded = "00000000".substring(bin.length) + bin;
         output.push(padded);
       }
-      // Joined with clear empty spaces for responsive reading wrap patterns
       return output.join(" ");
     }
 
-    // Shuffle implementation logic using seed modifiers to bypass browser cache completely
     function FisherYatesShuffle(array) {
       let currentIndex = array.length;
-      const seed = Date.now() + Math.random();
-      
       while (currentIndex !== 0) {
-        let randomIndex = Math.floor((seed * currentIndex) % array.length);
+        let randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-        // Swap elements around inside array track
         let temp = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temp;
@@ -179,23 +381,17 @@
       escapeLink.classList.add('hidden');
       interfaceBox.classList.remove('hidden');
 
-      // 1. Pick a random correct solution keyword
-      const randomSeed = Date.now() + Math.random();
-      const poolIndex = Math.floor((randomSeed * 11) % wordPool.length);
-      correctAnswer = wordPool[poolIndex];
+      const randomIndex = Math.floor(Math.random() * wordPool.length);
+      correctAnswer = wordPool[randomIndex];
 
-      // 2. Generate encrypted binary blocks stream representation
       binaryDisplay.innerText = convertTextToBinary(correctAnswer);
 
-      // 3. Collect wrong decoy answers from remaining pool
       let decoys = wordPool.filter(w => w !== correctAnswer);
       decoys = FisherYatesShuffle(decoys);
 
-      // 4. Group final 3 choice structures together
       choices = [correctAnswer, decoys[0], decoys[1]];
       choices = FisherYatesShuffle(choices);
 
-      // 5. Inject text strings dynamically inside button nodes
       for (let i = 0; i < 3; i++) {
         document.getElementById("choice-" + i).innerText = choices[i];
       }
@@ -208,18 +404,16 @@
 
       if (userChoice === correctAnswer) {
         gameActive = false;
-        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>DECRYPTION_SUCCESS: Mainframe unlocked!</span>";
+        statusMsg.innerHTML = "<span style='color: #00ff33; font-weight: bold;'>DECRYPTION_SUCCESS: Unlocked!</span>";
         interfaceBox.classList.add('hidden');
         escapeLink.classList.remove('hidden');
       } else {
-        // Punish player on mistake by instantly re-rolling a whole new cipher puzzle challenge
-        statusMsg.innerHTML = "<span style='color: #ff3333;'>CIPHER_MISMATCH: Firewall triggered! Re-routing...</span>";
+        statusMsg.innerHTML = "<span style='color: #ff3333;'>CIPHER_MISMATCH: Re-routing...</span>";
         gameActive = false;
         setTimeout(initCodeBreaker, 1200);
       }
     }
 
-    // Launch application configuration environment setups instantly
     initCodeBreaker();
   </script>
 

@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Wake up, Neo...</title>
   <style>
-    /* Absolute Fullscreen Matrix Look */
+    /* Absolute Fullscreen Matrix Look - Responsive Design */
+    * {
+      box-sizing: border-box;
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -15,10 +19,9 @@
       overflow: hidden;
       font-family: 'Courier New', Courier, monospace;
       user-select: none;
-      touch-action: none; /* Prevents zooming/scrolling while tapping the Matrix */
+      touch-action: none;
     }
 
-    /* Container for the interactive clickable words hidden in the matrix */
     #matrix-container {
       position: relative;
       width: 100%;
@@ -36,14 +39,14 @@
     .hidden-word {
       position: absolute;
       color: #00ff33;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: clamp(1rem, 4vw, 1.8rem);
       font-weight: bold;
       cursor: pointer;
       z-index: 10;
       white-space: nowrap;
       text-shadow: 0 0 8px #00ff33;
       transform: translate(-50%, -50%);
-      padding: 10px; /* Expands touch target area on smartphones */
+      padding: clamp(8px, 2vw, 14px); /* Expanded touch target area */
     }
 
     .hidden-word:hover {
@@ -57,46 +60,146 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: rgba(5, 5, 5, 0.9);
+      background-color: rgba(5, 5, 5, 0.93);
       border: 2px solid #00ff33;
       border-radius: 6px;
-      padding: 25px;
+      padding: clamp(16px, 4vw, 30px);
       text-align: center;
       z-index: 100;
       box-shadow: 0 0 25px rgba(0, 255, 51, 0.4);
-      max-width: 90vw;
-      width: 320px;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
+      max-width: min(90vw, 480px);
+      width: 100%;
+      text-shadow: 0 0 4px #00ff33;
       color: #00ff33;
+    }
+
+    .panel-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: clamp(0.95rem, 3.5vw, 1.4rem);
+      line-height: 1.3;
+      word-wrap: break-word;
+    }
+
+    .panel-text {
+      color: #ffffff;
+      font-size: clamp(0.8rem, 2.8vw, 1rem);
+      line-height: 1.4;
+      word-wrap: break-word;
+      text-shadow: none;
     }
 
     .btn {
       background: transparent;
       border: 2px solid #00ff33;
       color: #00ff33;
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-family: inherit;
-      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      font-size: clamp(0.85rem, 3vw, 1.15rem);
       cursor: pointer;
       margin-top: 15px;
       border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
+      text-shadow: 0 0 4px #00ff33;
       box-shadow: 0 0 5px #00ff33;
       transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      white-space: nowrap;
     }
 
-    .btn:hover {
+    .btn:hover, .btn:active {
       background: #00ff33;
       color: #000;
       box-shadow: 0 0 15px #00ff33;
       font-weight: bold;
+      text-shadow: none;
     }
 
     .hidden {
       display: none !important;
+    }
+
+    /* Hint for players, positioned safely at the bottom */
+    .game-hint {
+      position: absolute;
+      bottom: max(12px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      color: rgba(0, 255, 51, 0.55);
+      font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+      text-shadow: 0 0 3px #00ff33;
+      pointer-events: none;
+      white-space: nowrap;
+      max-width: 94vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Ultra Small Mobile (< 360px) */
+    @media (max-width: 359px) {
+      .overlay-panel {
+        max-width: 96vw;
+        padding: 14px 12px;
+      }
+
+      .panel-title {
+        font-size: 0.85rem;
+      }
+
+      .panel-text {
+        font-size: 0.7rem;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .overlay-panel {
+        max-width: 440px;
+      }
+
+      .btn {
+        min-width: 260px;
+      }
+    }
+
+    /* Very short landscape screens (e.g. phones sideways) */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .overlay-panel {
+        padding: 12px;
+      }
+
+      .panel-text {
+        display: none; /* Save vertical space, title + button are enough */
+      }
+
+      .btn {
+        margin-top: 8px;
+        min-height: 38px;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .btn {
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -106,12 +209,13 @@
     <canvas id="matrixCanvas"></canvas>
     <!-- Hidden word element generated dynamically by JavaScript -->
     <div id="target-word" class="hidden-word"></div>
+    <div class="game-hint">Find the highlighted word in the code rain...</div>
   </div>
 
   <!-- Escape overlay panel revealed only when word is clicked -->
   <div class="overlay-panel hidden" id="win-screen">
-    <div style="font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">⚡ MATRIX_BREACH_SUCCESS ⚡</div>
-    <div style="color: #ffffff; font-size: 0.9rem; line-height: 1.4;">You found the anomaly in the code. The system pathway is open.</div>
+    <div class="panel-title">⚡ MATRIX_BREACH_SUCCESS ⚡</div>
+    <div class="panel-text">You found the anomaly in the code. The system pathway is open.</div>
     <a href="/GachaDeadlines/" class="btn">🚀 RUN RETURNING_HOME.EXE</a>
   </div>
 
@@ -122,53 +226,102 @@
     const targetWordEl = document.getElementById('target-word');
     const winScreen = document.getElementById('win-screen');
 
-    // Make canvas fully responsive to fill viewport screen dimensions
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-/<>[]{}";
+
+    // Rain scale: smaller screens get slightly denser, finer rain
+    function getRainFontSize() {
+      return window.innerWidth < 360 ? 13 : 16;
+    }
+
+    let fontSize = getRainFontSize();
+    let columns = 0;
+    let rainDrops = [];
+
+    const secretKeywords = ["HOME", "EXIT", "BACK", "404", "NEO", "GATEWAY", "ESCAPE"];
+    let activeWord = "";
+    let wordRect = null; // Live bounding box of the target word, kept in sync with the DOM
+    let isGameOver = false;
+    let wordTimer = null;
+
+    // Make canvas fully responsive AND recompute the rain grid on every resize
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+
+      fontSize = getRainFontSize();
+      columns = Math.max(1, Math.floor(canvas.width / fontSize));
+
+      // Preserve relative progress of drops so the rain keeps flowing naturally
+      const oldDrops = rainDrops;
+      rainDrops = Array.from({ length: columns }, (_, i) =>
+        oldDrops.length ? oldDrops[Math.min(i, oldDrops.length - 1)] : Math.floor(Math.random() * (canvas.height / fontSize))
+      );
+
+      // Re-clamp the active word into the new viewport
+      if (!isGameOver) repositionWord(false);
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Matrix characters mapping strings safely
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-/<>[]{}";
-    const fontSize = 16;
-    const columns = Math.floor(canvas.width / fontSize) + 1;
-    const rainDrops = Array(columns).fill(1);
-
-    // Target tracking keywords database
-    const secretKeywords = ["HOME", "EXIT", "BACK", "404", "NEO", "GATEWAY", "ESCAPE"];
-    let activeWord = "";
-    let wordX = 0;
-    let wordY = 0;
-    let isGameOver = false;
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      syncWordRect();
+    });
 
     function generateNewTargetWord() {
       if (isGameOver) return;
-      
-      activeWord = secretKeywords[Math.floor(Math.random() * secretKeywords.length)];
-      
-      // Compute random grid column and vertical boundaries safely
-      const randomCol = Math.floor(Math.random() * (columns - 4)) + 2;
-      wordX = randomCol * fontSize;
-      wordY = Math.floor(Math.random() * (canvas.height - 200)) + 100;
 
-      // Update structural element bindings
-      targetWordEl.innerText = activeWord;
-      targetWordEl.style.left = wordX + 'px';
-      targetWordEl.style.top = wordY + 'px';
-      targetWordEl.classList.remove('hidden');
+      activeWord = secretKeywords[Math.floor(Math.random() * secretKeywords.length)];
+      repositionWord(true);
+      syncWordRect();
 
       // Re-shuffle coordinates automatically every 4 seconds if not clicked
-      setTimeout(generateNewTargetWord, 4000);
+      clearTimeout(wordTimer);
+      wordTimer = setTimeout(generateNewTargetWord, 4000);
     }
 
-    // Connect interactions directly to the word link trigger
+    function repositionWord(isNewWord) {
+      if (isNewWord) {
+        targetWordEl.innerText = activeWord;
+        targetWordEl.classList.remove('hidden');
+      }
+
+      // Measure the word's real pixel size to keep it fully inside the viewport
+      const rect = targetWordEl.getBoundingClientRect();
+      const wordW = rect.width || 60;
+      const wordH = rect.height || 30;
+
+      const marginX = Math.max(wordW / 2 + 10, canvas.width * 0.04);
+      const marginY = Math.max(wordH / 2 + 10, canvas.height * 0.06);
+
+      // Random center point within safe boundaries (percentage based, works on every screen)
+      const minX = marginX, maxX = Math.max(minX + 1, canvas.width - marginX);
+      const minY = Math.max(marginY, canvas.height * 0.12); // Keep clear of top hint zone expectations
+      const maxY = Math.max(minY + 1, canvas.height - marginY - 40); // Keep clear of the bottom hint
+
+      const cx = Math.floor(minX + Math.random() * (maxX - minX));
+      const cy = Math.floor(minY + Math.random() * (maxY - minY));
+
+      targetWordEl.style.left = cx + 'px';
+      targetWordEl.style.top = cy + 'px';
+    }
+
+    // Cache the word's bounding box so the render loop can skip rain chars behind it
+    function syncWordRect() {
+      if (isGameOver || targetWordEl.classList.contains('hidden')) {
+        wordRect = null;
+        return;
+      }
+      const r = targetWordEl.getBoundingClientRect();
+      // Small padding keeps an aura of calm around the word for readability
+      wordRect = { left: r.left - 8, right: r.right + 8, top: r.top - 8, bottom: r.bottom + 8 };
+    }
+
     function handleWordDiscovery() {
       if (isGameOver) return;
       isGameOver = true;
-      
+      clearTimeout(wordTimer);
+
       targetWordEl.classList.add('hidden');
+      wordRect = null;
       winScreen.classList.remove('hidden');
 
       // Visual freeze matrix effect setup
@@ -186,7 +339,7 @@
     function renderMatrixStream() {
       if (isGameOver) return;
 
-      // Creates trailing fade out shadow blur overlay layer
+      // Creates trailing fade out overlay layer
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -198,15 +351,16 @@
         const x = i * fontSize;
         const y = rainDrops[i] * fontSize;
 
-        // Skip rendering regular characters inside the secret word bounding box area
-        const isInsideWordWidth = x >= (wordX - 40) && x <= (wordX + 40);
-        const isInsideWordHeight = y >= (wordY - 15) && y <= (wordY + 15);
+        // Skip rendering characters inside the secret word bounding box
+        const covered = wordRect &&
+          x >= wordRect.left && x <= wordRect.right &&
+          y >= wordRect.top && y <= wordRect.bottom;
 
-        if (!(isInsideWordWidth && isInsideWordHeight)) {
+        if (!covered) {
           ctx.fillText(text, x, y);
         }
 
-        // Reset drop tracking loop once it hits bottom screen thresholds randomly
+        // Reset drop once it passes the bottom of the screen
         if (y > canvas.height && Math.random() * 100 > 97.5) {
           rainDrops[i] = 0;
         }

@@ -5,79 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Network Miner</title>
   <style>
-    /* Retro Terminal Aesthetic */
+    /* Retro Terminal Aesthetic - Fully Responsive */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
     body {
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 10px;
+      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
-      text-shadow: 0 0 5px #00ff33;
-      overflow-x: hidden;
-      touch-action: manipulation; /* Removes double-tap lag on mobile */
+      text-shadow: 0 0 3px #00ff33;
+      touch-action: manipulation;
       user-select: none;
     }
 
-    .container {
-  /* Forces the container to take up 100% of the screen width and height */
-  width: 100vw;
-  height: 100vh;  
-  /* Reset margins and ensure padding doesn't cause hidden scrollbars */
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  /* Perfect center alignment */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    .header-text {
+      margin-bottom: 6px;
+      line-height: 1.25;
+      font-size: 0.65rem;
+      text-align: center;
+      max-width: 95vw;
     }
 
-    .header-text {
-      margin-bottom: 15px;
-      line-height: 1.4;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    .header-text div {
+      line-height: 1.2;
     }
 
     .status-panel {
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      margin-bottom: 10px;
-      min-height: 25px;
+      font-size: 0.7rem;
+      margin: 3px 0;
+      min-height: 1.2em;
     }
 
-    /* 8x8 Grid Board Layout */
+    /* 8x8 Grid - Adaptive sizing per viewport */
     .grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
-      gap: 4px;
-      margin: 15px auto;
-      max-width: 440px;
-      width: 85vw;
+      gap: 2px;
+      margin: 4px auto;
+      width: 100%;
+      max-width: 300px;
     }
 
-    /* Cell Nodes */
+    /* Cell Styling */
     .cell {
       aspect-ratio: 1 / 1;
       background-color: #111;
-      border: 1px solid #00ff33;
-      border-radius: 4px;
+      border: 1.5px solid #00ff33;
+      border-radius: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 0 3px rgba(0, 255, 51, 0.2);
       transition: background 0.1s;
+      font-size: 0.7rem;
+      padding: 1px;
     }
 
-    .cell:hover {
+    .cell:hover:not(.revealed) {
       background-color: #0c2c0e;
       box-shadow: 0 0 8px #00ff33;
     }
@@ -105,65 +105,383 @@
       box-shadow: 0 0 15px #ff3333;
     }
 
-    /* Action & Mode Buttons */
-    .btn {
-      background: transparent;
-      border: 2px solid #00ff33;
+    .cell.revealed .cell-content {
       color: #00ff33;
-      padding: 10px 20px;
-      font-family: inherit;
-      font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-      cursor: pointer;
-      margin: 6px;
-      border-radius: 4px;
-      text-shadow: 0 0 5px #00ff33;
-      box-shadow: 0 0 5px #00ff33;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
+      text-shadow: 0 0 3px #00ff33;
     }
 
-    .btn:hover {
+    /* Mode Toggle Buttons */
+    .mode-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1.5px solid #00ff33;
+      color: #00ff33;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 0.7rem;
+      cursor: pointer;
+      border-radius: 3px;
+      text-shadow: 0 0 3px #00ff33;
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.3);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      white-space: nowrap;
+    }
+
+    .btn:hover, .btn:active {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 15px #00ff33;
+      box-shadow: 0 0 12px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
     }
 
     .btn.active-mode {
       background: #00ff33;
       color: #050505;
-      box-shadow: 0 0 12px #00ff33;
+      box-shadow: 0 0 10px #00ff33;
       font-weight: bold;
+      text-shadow: none;
     }
 
     .hidden {
       display: none;
     }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      body {
+        padding: 5px;
+        padding-bottom: 8px;
+      }
+
+      .header-text {
+        font-size: 0.55rem;
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        gap: 1px;
+        max-width: calc(100vw - 10px);
+        margin: 2px auto;
+      }
+
+      .cell {
+        font-size: 0.55rem;
+        border-width: 1px;
+        min-height: 30px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 0.6rem;
+      }
+
+      .status-panel {
+        font-size: 0.55rem;
+        margin: 2px 0;
+      }
+
+      .mode-row {
+        gap: 4px;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 6px 10px;
+        font-size: 0.6rem;
+        min-height: 30px;
+      }
+
+      .btn-row-actions {
+        margin-top: 6px;
+        margin-bottom: 4px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.58rem;
+        min-height: 32px;
+        padding: 6px 12px;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 8px;
+        padding-bottom: 10px;
+      }
+
+      .header-text {
+        font-size: 0.65rem;
+        margin-bottom: 5px;
+      }
+
+      .grid {
+        gap: 2px;
+        max-width: calc(100vw - 16px);
+        margin: 4px auto;
+      }
+
+      .cell {
+        font-size: 0.65rem;
+        border-width: 1.2px;
+        min-height: 32px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 0.7rem;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+        margin: 3px 0;
+      }
+
+      .mode-row {
+        gap: 6px;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 7px 12px;
+        font-size: 0.68rem;
+        min-height: 32px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.7rem;
+        min-height: 34px;
+        padding: 7px 14px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      body {
+        padding: 14px;
+      }
+
+      .header-text {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .grid {
+        gap: 3px;
+        max-width: min(90vw, 400px);
+        margin: 6px auto;
+      }
+
+      .cell {
+        font-size: 0.85rem;
+        border-width: 1.5px;
+        min-height: 36px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 1rem;
+      }
+
+      .status-panel {
+        font-size: 0.9rem;
+        margin: 4px 0;
+      }
+
+      .mode-row {
+        gap: 8px;
+        margin: 8px 0;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-height: 38px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.9rem;
+        min-height: 40px;
+        padding: 9px 18px;
+      }
+    }
+
+    /* Desktop (769px+) - Grid wächst mit Viewport-Höhe */
+    @media (min-width: 769px) {
+      body {
+        padding: 20px;
+      }
+
+      .header-text {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        margin-bottom: 10px;
+        max-width: 90vw;
+      }
+
+      /* Grid füllt maximalen Platz, begrenzt durch Höhe */
+      .grid {
+        gap: 4px;
+        max-width: min(680px, 92vw, 72vh);
+        margin: 8px auto;
+      }
+
+      .cell {
+        font-size: clamp(0.9rem, 2vw, 1.3rem);
+        border-width: 1.5px;
+        min-height: 40px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: clamp(1rem, 2.2vw, 1.5rem);
+      }
+
+      .status-panel {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        margin: 6px 0;
+        min-height: 1.4em;
+      }
+
+      .mode-row {
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        min-height: 44px;
+        min-width: 140px;
+      }
+
+      .btn-row-actions {
+        margin-top: 10px;
+        margin-bottom: 8px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: clamp(0.95rem, 2vw, 1.25rem);
+        min-height: 46px;
+        min-width: 160px;
+        padding: 11px 22px;
+      }
+    }
+
+    /* Large Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      body {
+        padding: 28px;
+      }
+
+      .header-text {
+        font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+        margin-bottom: 14px;
+      }
+
+      .grid {
+        gap: 6px;
+        max-width: min(780px, 88vw, 70vh);
+        margin: 12px auto;
+      }
+
+      .cell {
+        font-size: clamp(1.1rem, 2vw, 1.6rem);
+        min-height: 46px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      }
+
+      .status-panel {
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        margin: 8px 0;
+      }
+
+      .mode-row {
+        gap: 12px;
+        margin: 12px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        min-height: 50px;
+        min-width: 170px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        min-height: 54px;
+        min-width: 200px;
+        padding: 14px 28px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      body {
+        padding: 8px;
+      }
+
+      .header-text {
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        margin: 4px auto;
+        gap: 2px;
+      }
+
+      .status-panel {
+        margin: 3px 0;
+      }
+
+      .mode-row {
+        gap: 6px;
+        margin: 6px 0;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .cell, .btn {
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header-text">
-      <div>⚠️ [SECTOR_BREACH] CORRUPTED_NETWORK_NODES</div>
-      <div>Detect and isolate malicious data packets without triggering a crash.</div>
-    </div>
+  <div class="header-text">
+    <div>⚠️ [SECTOR_BREACH] CORRUPTED_NETWORK_NODES</div>
+    <div>Detect and isolate malicious data packets without triggering a crash.</div>
+  </div>
 
-    <div class="status-panel" id="status-msg">Safe sectors left: 54</div>
+  <div class="status-panel" id="status-msg">Safe sectors left: 54</div>
 
-    <!-- The 8x8 Grid Map -->
-    <div class="grid" id="minefield"></div>
+  <!-- The 8x8 Grid Map -->
+  <div class="grid" id="minefield"></div>
 
-    <!-- Mobile Navigation Tools toggle -->
-    <div>
-      <button class="btn active-mode" id="mode-reveal-btn">🔍 REVEAL</button>
-      <button class="btn" id="mode-flag-btn">🚩 FLAG VIRUS</button>
-    </div>
+  <!-- Mode Toggle Buttons -->
+  <div class="mode-row">
+    <button class="btn active-mode" id="mode-reveal-btn">🔍 REVEAL</button>
+    <button class="btn" id="mode-flag-btn">🚩 FLAG VIRUS</button>
+  </div>
 
-    <div>
-      <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
-      <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
-    </div>
+  <!-- Action Buttons (Reset + Escape) -->
+  <div class="mode-row btn-row-actions">
+    <button class="btn hidden" id="reset-btn" onclick="resetGame()">REBOOT INTERFACE</button>
+    <a href="/GachaDeadlines/" class="btn hidden" id="escape-btn">🚀 RUN EMERGENCY_ESCAPE.EXE</a>
   </div>
 
   <script>
@@ -176,13 +494,12 @@
 
     const SIZE = 8;
     const MINE_COUNT = 10;
-    
+
     let board = [];
     let gameActive = true;
-    let currentMode = 'reveal'; // 'reveal' or 'flag'
+    let currentMode = 'reveal';
     let safeCellsLeft = (SIZE * SIZE) - MINE_COUNT;
 
-    // Connect smartphone mode toggle keys
     modeRevealBtn.addEventListener('click', () => setMode('reveal'));
     modeFlagBtn.addEventListener('click', () => setMode('flag'));
 
@@ -206,7 +523,7 @@
         neighborMines: 0
       })));
 
-      // Plant mine packets randomly
+      // Plant mines randomly
       let planted = 0;
       while (planted < MINE_COUNT) {
         const r = Math.floor(Math.random() * SIZE);
@@ -217,7 +534,7 @@
         }
       }
 
-      // Calculate numeric proximities mapping neighbors
+      // Calculate neighbor mines
       for (let r = 0; r < SIZE; r++) {
         for (let c = 0; c < SIZE; c++) {
           if (board[r][c].isMine) continue;
@@ -233,15 +550,18 @@
         }
       }
 
-      // Render cells systematically
+      // Render cells
       for (let r = 0; r < SIZE; r++) {
         for (let c = 0; c < SIZE; c++) {
           const cellEl = document.createElement('div');
           cellEl.className = 'cell';
           cellEl.id = `cell-${r}-${c}`;
-          
+
+          const contentSpan = document.createElement('span');
+          contentSpan.className = 'cell-content';
+          cellEl.appendChild(contentSpan);
+
           cellEl.addEventListener('click', () => handleCellClick(r, c));
-          // Desktop comfort right-click context menu integration toggle
           cellEl.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             if (gameActive) handleFlag(r, c);
@@ -267,7 +587,8 @@
 
       cell.isFlagged = !cell.isFlagged;
       const el = document.getElementById(`cell-${r}-${c}`);
-      el.innerText = cell.isFlagged ? '🚩' : '';
+      const contentSpan = el.querySelector('.cell-content');
+      contentSpan.innerText = cell.isFlagged ? '🚩' : '';
       el.classList.toggle('flagged', cell.isFlagged);
     }
 
@@ -277,6 +598,7 @@
 
       cell.isRevealed = true;
       const el = document.getElementById(`cell-${r}-${c}`);
+      const contentSpan = el.querySelector('.cell-content');
       el.classList.add('revealed');
 
       if (cell.isMine) {
@@ -288,9 +610,9 @@
       statusMsg.innerText = `Safe sectors left: ${safeCellsLeft}`;
 
       if (cell.neighborMines > 0) {
-        el.innerText = cell.neighborMines;
+        contentSpan.innerText = cell.neighborMines;
       } else {
-        // Flood fill empty zone propagation mechanics recursive chains
+        // Flood fill recursion
         for (let i = -1; i <= 1; i++) {
           for (let j = -1; j <= 1; j++) {
             if (r + i >= 0 && r + i < SIZE && c + j >= 0 && c + j < SIZE) {
@@ -308,12 +630,12 @@
       resetBtn.classList.remove('hidden');
       statusMsg.innerHTML = "<span style='color: #ff3333;'>FATAL_ERROR: Packet detonated! Buffer dump.</span>";
 
-      // Show all mine locations
       for (let r = 0; r < SIZE; r++) {
         for (let c = 0; c < SIZE; c++) {
           if (board[r][c].isMine) {
             const el = document.getElementById(`cell-${r}-${c}`);
-            el.innerText = '👾';
+            const contentSpan = el.querySelector('.cell-content');
+            contentSpan.innerText = '👾';
             el.classList.add('mine');
           }
         }
@@ -338,7 +660,6 @@
       initBoard();
     }
 
-    // Launch configuration engine setup
     initBoard();
   </script>
 </body>
