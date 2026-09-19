@@ -559,12 +559,7 @@ const eventDatabase = {
                 id: "rev_006",
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
-            },
-            {
-                id: "rev_007",
-                name: "Laplace Aesthetics",
-                endDate: "2026-09-19T10:00:00Z"
-            },
+            },            
             {
                 id: "rev_008",
                 name: "8-Bit Arcade Remix",
