@@ -519,12 +519,7 @@ const eventDatabase = {
                 id: "rev_001",
                 name: "Return of a Special Guest",
                 endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_002",
-                name: "On Another's Sorrow",
-                endDate: "2026-09-21T10:00:00Z"
-            },
+            },           
             {
                 id: "rev_003",
                 name: "The You That's Meant to Be",

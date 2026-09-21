@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Redirecting...</title>
     <script>
+        // Prevent browser caching to ensure fresh execution on every visit
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        
         const gamePages = [
             '404-chatbot.html',
             '404-code_breaker.html',
@@ -47,17 +55,28 @@
             '404-Infinite_Loading_Illusion.html'
         ];
         
-        // 1. Pick a random game from the list
-        const randomGame = gamePages[Math.floor(Math.random() * gamePages.length)];
+        // Fisher-Yates shuffle algorithm for better randomness distribution
+        function shuffleArray(array) {
+            const shuffled = [...array]; // Create a copy to avoid modifying original
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
         
-        // 2. Dynamically extract 'GachaDeadlines' from your URL path
+        // Pick a truly random game using enhanced shuffling method
+        const shuffledGames = shuffleArray(gamePages);
+        const randomGame = shuffledGames[0];
+        
+        // Extract repository name from URL path dynamically
         const pathSegments = window.location.pathname.split('/');
-        const repoName = pathSegments[1]; // Grabs 'GachaDeadlines' correctly
+        const repoName = pathSegments[1]; // Grabs the correct repo name
         
-        // 3. Construct the flawless absolute URL
+        // Build the final absolute redirect URL
         const finalUrl = window.location.origin + '/' + repoName + '/' + randomGame;
         
-        // 4. Fire the redirect instantly
+        // Execute instant redirect without caching
         window.location.replace(finalUrl);
     </script>
 </head>
