@@ -30,12 +30,7 @@ const eventDatabase = {
                 endDate: "2026-09-23T03:00:00Z"
             }
        */ ],
-        events: [
-            {
-                id: "gi_001",
-                name: "Overflowing Abundance",
-                endDate: "2026-09-21T03:00:00Z"
-            },
+        events: [            
             {
                 id: "gi_002",
                 name: "Everwinter Without Mercy",
@@ -60,12 +55,7 @@ const eventDatabase = {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-10-16T03:00:00Z"
-            },
-            {
-                id: "gi_007",
-                name: "Wonderland Treasures: Phantasmagoric Discourse",
-                endDate: "2026-09-21T03:00:00Z"
-            },
+            },            
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
@@ -146,7 +136,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-09-21T03:00:00Z"
+                endDate: "2026-09-28T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -161,13 +151,8 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-09-21T03:00:00Z"
-            },
-            {
-                id: "hsr_011",
-                name: "Planar Fissure",
-                endDate: "2026-09-21T03:00:00Z"
-            },
+                endDate: "2026-09-28T03:00:00Z"
+            },            
             {
                 id: "hsr_012",
                 name: "Minuscule Great Adventure",
@@ -491,8 +476,8 @@ const eventDatabase = {
             },
             {
                 id: "nte_010",
-                name: "Pixel Surge",
-                endDate: "2026-09-21T03:00:00Z"
+                name: "Fons Rush",
+                endDate: "2026-09-28T03:00:00Z"
             },
             {
                 id: "nte_011",
@@ -677,12 +662,7 @@ const eventDatabase = {
                 id: "wuwa_007",
                 name: "Resonance Sim Realm",
                 endDate: "2026-09-29T11:00:00Z"
-            },
-            {
-                id: "wuwa_008",
-                name: "The Strings Remember",
-                endDate: "2026-09-21T03:00:00Z"
-            },
+            },            
             {
                 id: "wuwa_009",
                 name: "Acendant Aces",
