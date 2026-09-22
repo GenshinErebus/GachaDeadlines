@@ -30,17 +30,7 @@ const eventDatabase = {
                 endDate: "2026-09-23T03:00:00Z"
             }
        */ ],
-        events: [            
-            {
-                id: "gi_002",
-                name: "Everwinter Without Mercy",
-                endDate: "2026-09-22T14:00:00Z"
-            },
-            {
-                id: "gi_003",
-                name: "When We Look Up at the Moon",
-                endDate: "2026-09-22T14:00:00Z"
-            },
+        events: [             
             {
                 id: "gi_004",
                 name: "The Godforsaken Frostlands",
@@ -60,7 +50,7 @@ const eventDatabase = {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-10-01T03:00:00Z"
-            },            
+            } /* ,            
             // Trial
             {
                 id: "gi_012",
@@ -85,7 +75,7 @@ const eventDatabase = {
                 name: "Weapon Event Wish",
                 endDate: "2026-09-22T14:00:00Z",
                 banner: true
-            }
+            }   */
         ]
     },
     hsr: {
@@ -1736,7 +1726,7 @@ function initTimestampClick() {
         timestampEl.title = 'Click to view calculator';
 
         timestampEl.addEventListener('click', () => {
-            window.location.href = 'Calculator.html';
+            window.location.href = 'calc.html';
         });
     }
 }
