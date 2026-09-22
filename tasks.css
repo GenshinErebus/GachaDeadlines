@@ -1,0 +1,166 @@
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-top: 0px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 38px;
+        }
+
+        h2.section-title {
+            color: #ffffff;
+            font-size: 28px;
+            margin: 40px 0 5px 0;
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .reset-info {
+            color: #909090;
+            font-size: 14px;
+            margin: 0 0 15px 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .game-card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2d2d2d;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .weekly-card {
+            border: 1px solid #4c3a8f;
+        }
+
+        .game-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+        }
+
+        .status {
+            font-size: 20px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .not-checked {
+            background-color: #3d1d1d;
+            color: #ff8787;
+        }
+
+        .checked {
+            background-color: #1b3322;
+            color: #81e694;
+        }
+
+        button {
+            background-color: #3b5bdb;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4c6ef5;
+        }
+
+        button:disabled {
+            background-color: #2d2d2d;
+            color: #707070;
+            cursor: not-allowed;
+            border: 1px solid #3d3d3d;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+            border-radius: 0;
+            text-decoration: none;
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-left: 30px;
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 50px;
+        }
+
+        .back:hover {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 11px;
+            }
+
+            .status {
+                font-size: 10px;
+            }
+
+            h1 {
+                font-size: 19px;
+            }
+
+            .back {
+                font-size: 25px;
+            }
+
+            h2.section-title {
+                font-size: 14px;
+            }
+
+            .reset-info {
+                font-size: 7px;
+
+            }
+        }
