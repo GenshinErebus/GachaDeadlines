@@ -587,13 +587,7 @@ const eventDatabase = {
                 name: "Event Banner",
                 endDate: "2026-09-24T10:00:00Z",
                 banner: true
-            },
-            {
-                id: "rev_018",
-                name: "The Mourner's Eulogy",
-                endDate: "2026-09-22T10:00:00Z",
-                banner: true
-            },
+            },            
             {
                 id: "rev_019",
                 name: "Ripples on the Water",

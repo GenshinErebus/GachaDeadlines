@@ -1,0 +1,296 @@
+    /* Retro Cyber Terminal Styling */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #050505;
+        color: #00ff33;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: auto;
+        width: 100%;
+        text-shadow: 0 0 5px #00ff33;
+        touch-action: manipulation;
+        overflow-x: hidden;
+        overflow-y: auto;
+        user-select: none;
+    }
+
+    .terminal-box {
+        width: 90vw;
+        background-color: #111;
+        border: 2px solid #00ff33;
+        border-radius: 6px;
+        padding: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 51, 0.25);
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-bar {
+        border-bottom: 1px dashed rgba(0, 255, 51, 0.3);
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        color: #ffffff;
+        flex-shrink: 0;
+    }
+
+    .chat-history {
+        min-height: 150px;
+        margin-bottom: 12px;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        overflow-y: auto;
+        overflow-x: hidden;
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 8px;
+        background-color: #0a0a0a;
+        border: 1px solid rgba(0, 255, 51, 0.2);
+        border-radius: 4px;
+    }
+
+    .bot-line {
+        color: #00ff33;
+        margin-bottom: 10px;
+    }
+
+    .user-line {
+        color: #ffcc00;
+        text-shadow: 0 0 5px #ffcc00;
+        margin-bottom: 10px;
+    }
+
+    .system-log {
+        color: #888;
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+        text-shadow: none;
+    }
+
+    .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        width: 100%;
+        flex-shrink: 0;
+        margin-top: 8px;
+    }
+
+    .choice-btn {
+        background: transparent;
+        border: 1px solid #00ff33;
+        color: #00ff33;
+        padding: 6px 12px;
+        font-family: inherit;
+        font-size: 0.8rem;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0, 255, 51, 0.2);
+        transition: all 0.2s;
+        min-width: 120px;
+    }
+
+    .choice-btn:hover {
+        background-color: #00ff33;
+        color: #050505;
+        box-shadow: 0 0 15px #00ff33;
+        font-weight: bold;
+    }
+
+    .escape-btn {
+        border: 2px solid #ff3333;
+        color: #ff3333;
+        box-shadow: 0 0 5px #ff3333;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .escape-btn:hover {
+        background-color: #ff3333;
+        color: #050505;
+        box-shadow: 0 0 15px #ff3333;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    .computing-text {
+        color: #ffcc00;
+        font-size: 0.8rem;
+        margin-top: 8px;
+        animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    /* ============================================
+       DESKTOP LAYOUT (Screens > 768px / 48rem)
+       Maximum width utilization
+       ============================================ */
+    @media (min-width: 48.0625rem) {
+        body {
+            min-height: 100vh;
+            padding: 30px 80px;
+        }
+
+        .terminal-box {
+            width: 92vw;
+            max-width: 1000px;
+            padding: 35px;
+            margin: 20px auto;
+        }
+
+        .header-bar {
+            font-size: 1.3rem;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        .chat-history {
+            min-height: 250px;
+            font-size: 1.1rem;
+            padding: 15px;
+            margin-bottom: 18px;
+        }
+
+        .bot-line,
+        .system-log {
+            margin-bottom: 15px;
+        }
+
+        .system-log {
+            font-size: 0.95rem;
+        }
+
+        .choice-btn {
+            padding: 12px 22px;
+            font-size: 1rem;
+            min-width: 180px;
+        }
+
+        .btn-row {
+            gap: 12px;
+            margin-top: 15px;
+        }
+    }
+
+    /* ============================================
+       TABLET / LARGE MOBILE (480px - 768px)
+       ============================================ */
+    @media (min-width: 30rem) and (max-width: 48rem) {
+        body {
+            padding: 12px;
+        }
+
+        .terminal-box {
+            width: 94vw;
+            padding: 22px;
+        }
+
+        .header-bar {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .chat-history {
+            min-height: 200px;
+            font-size: 0.95rem;
+            padding: 12px;
+        }
+
+        .choice-btn {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+    }
+
+    /* ============================================
+       MOBILE LAYOUT (Screens ≤ 480px / 30rem)
+       No scroll needed - fits in viewport
+       ============================================ */
+    @media (max-width: 30rem) {
+        body {
+            padding: 4px;
+            height: 100vh;
+        }
+
+        .terminal-box {
+            width: 96vw;
+            padding: 14px;
+            margin: 4px auto;
+        }
+
+        .header-bar {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .chat-history {
+            min-height: 140px;
+            font-size: 0.75rem;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .choice-btn {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            min-width: 130px;
+        }
+    }
+
+    /* ============================================
+       ULTRA-MOBILE / MINI (Screens ≤ 320px / 20rem)
+       Compact layout - no scrolling
+       ============================================ */
+    @media (max-width: 20rem) {
+        body {
+            padding: 2px;
+            height: 100vh;
+        }
+
+        .terminal-box {
+            width: 98vw;
+            padding: 10px;
+            margin: 2px auto;
+        }
+
+        .header-bar {
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .chat-history {
+            min-height: 120px;
+            font-size: 0.7rem;
+            padding: 6px;
+        }
+
+        .choice-btn {
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            min-width: 110px;
+        }
+    }

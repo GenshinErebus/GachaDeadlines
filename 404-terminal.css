@@ -1,0 +1,204 @@
+    /* Retro Terminal Styling */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 0;
+      margin: 0;
+      text-shadow: 0 0 5px #00ff33;
+      min-height: auto;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .terminal {
+      width: 90vw;
+      margin: 10px auto;
+      font-size: 0.85rem;
+      padding: 15px;
+    }
+
+    .output-line {
+      margin: 4px 0;
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+
+    .input-area {
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(0, 255, 51, 0.3);
+    }
+
+    .prompt {
+      margin-right: 8px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Invisible input field that styles nicely */
+    #terminal-input {
+      background: transparent;
+      border: none;
+      color: #00ff33;
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      flex-grow: 1;
+      text-shadow: 0 0 5px #00ff33;
+    }
+
+    /* Custom Selection Styling */
+    ::selection {
+      background: #00ff33;
+      color: #050505;
+    }
+
+    /* ============================================
+       DESKTOP LAYOUT (Screens > 768px / 48rem)
+       Maximum width utilization
+       ============================================ */
+    @media (min-width: 48.0625rem) {
+      body {
+        min-height: 100vh;
+        padding: 30px 80px;
+      }
+
+      .terminal {
+        width: 92vw;
+        max-width: 1200px;
+        font-size: 1.2rem;
+        padding: 30px;
+        margin: 20px auto;
+      }
+
+      .output-line {
+        margin: 6px 0;
+        line-height: 1.5;
+      }
+
+      .input-area {
+        margin-top: 20px;
+        padding-top: 15px;
+      }
+
+      .prompt {
+        margin-right: 12px;
+        font-size: 1.1rem;
+      }
+
+      #terminal-input {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* ============================================
+       TABLET / LARGE MOBILE (480px - 768px)
+       ============================================ */
+    @media (min-width: 30rem) and (max-width: 48rem) {
+      body {
+        padding: 12px;
+      }
+
+      .terminal {
+        width: 94vw;
+        font-size: 0.95rem;
+        padding: 20px;
+      }
+
+      .output-line {
+        margin: 5px 0;
+      }
+
+      .input-area {
+        margin-top: 15px;
+        padding-top: 12px;
+      }
+
+      .prompt {
+        margin-right: 10px;
+      }
+    }
+
+    /* ============================================
+       MOBILE LAYOUT (Screens ≤ 480px / 30rem)
+       No scroll needed - fits in viewport
+       ============================================ */
+    @media (max-width: 30rem) {
+      body {
+        padding: 4px;
+        height: 100vh;
+      }
+
+      .terminal {
+        width: 96vw;
+        font-size: 0.8rem;
+        padding: 12px;
+        margin: 4px auto;
+      }
+
+      .output-line {
+        margin: 3px 0;
+        font-size: 0.75rem;
+      }
+
+      .input-area {
+        margin-top: 10px;
+        padding-top: 10px;
+      }
+
+      .prompt {
+        margin-right: 6px;
+        font-size: 0.75rem;
+      }
+
+      #terminal-input {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ============================================
+       ULTRA-MOBILE / MINI (Screens ≤ 320px / 20rem)
+       Compact layout - no scrolling
+       ============================================ */
+    @media (max-width: 20rem) {
+      body {
+        padding: 2px;
+        height: 100vh;
+      }
+
+      .terminal {
+        width: 98vw;
+        font-size: 0.7rem;
+        padding: 8px;
+        margin: 2px auto;
+      }
+
+      .output-line {
+        margin: 2px 0;
+        font-size: 0.65rem;
+      }
+
+      .input-area {
+        margin-top: 6px;
+        padding-top: 8px;
+      }
+
+      .prompt {
+        margin-right: 4px;
+        font-size: 0.65rem;
+      }
+
+      #terminal-input {
+        font-size: 0.7rem;
+      }
+    }

@@ -1,0 +1,257 @@
+    /* ============================================
+       BASE STYLES (Desktop & Large Screens ≥768px)
+       ============================================ */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-shadow: 0 0 5px #00ff33;
+      text-align: center;
+      user-select: none;
+      touch-action: manipulation;
+      overflow: hidden;
+    }
+
+    .terminal-box {
+      width: 75vw;
+      max-width: 900px;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid #00ff33;
+      padding: 40px;
+      border-radius: 8px;
+      background-color: #111;
+      box-shadow: 0 0 30px rgba(0, 255, 51, 0.3);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 25px;
+      border-bottom: 2px dashed rgba(0, 255, 51, 0.4);
+      padding-bottom: 15px;
+      width: 100%;
+    }
+
+    /* Pulsing loading spinner styling */
+    .loader-glow {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 35px 0;
+      color: #ffcc00;
+      text-shadow: 0 0 12px #ffcc00;
+      animation: pulse 1.2s infinite;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    #confession-text {
+      font-size: 1.1rem;
+      color: #ffffff;
+      line-height: 1.6;
+      margin-top: 20px;
+      margin-bottom: 25px;
+      min-height: 60px;
+      max-width: 80%;
+      text-shadow: none;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 14px 30px;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 6px #00ff33;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      min-height: 52px;
+      min-width: 200px;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 20px #00ff33;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ============================================
+       TABLET / LARGE MOBILE (480px - 768px)
+       ============================================ */
+    @media (min-width: 480px) and (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+
+      .terminal-box {
+        width: 85vw;
+        padding: 30px;
+        min-height: 70vh;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+      }
+
+      .loader-glow {
+        font-size: 1.5rem;
+        margin: 25px 0;
+      }
+
+      #confession-text {
+        font-size: 1rem;
+        max-width: 90%;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        min-height: 48px;
+        min-width: 180px;
+      }
+    }
+
+    /* ============================================
+       MOBILE LAYOUT (321px - 479px Width)
+       ============================================ */
+    @media (max-width: 479px) and (min-width: 321px) {
+      body {
+        padding: 10px;
+      }
+
+      .terminal-box {
+        width: 95vw;
+        padding: 20px;
+        min-height: 80vh;
+        border-width: 2px;
+      }
+
+      h1 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+      }
+
+      .loader-glow {
+        font-size: 1.2rem;
+        margin: 20px 0;
+        letter-spacing: 0;
+      }
+
+      #confession-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        max-width: 100%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        min-height: 50px;
+      }
+
+      .btn {
+        padding: 11px 20px;
+        font-size: 0.85rem;
+        min-height: 46px;
+        min-width: 160px;
+      }
+    }
+
+    /* ============================================
+       COMPACT MODE (≤320px Width AND ≤450px Height)
+       Extreme optimization - NO SCROLLING
+       ============================================ */
+    @media (max-width: 320px) and (max-height: 450px) {
+      body {
+        padding: 4px;
+      }
+
+      .terminal-box {
+        width: 100vw;
+        padding: 12px;
+        min-height: 100vh;
+        border-width: 1px;
+        border-radius: 0;
+      }
+
+      h1 {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        word-wrap: break-word;
+      }
+
+      .loader-glow {
+        font-size: 0.95rem;
+        margin: 12px 0;
+        letter-spacing: 0;
+      }
+
+      #confession-text {
+        font-size: 0.7rem;
+        line-height: 1.4;
+        max-width: 100%;
+        margin-top: 10px;
+        margin-bottom: 12px;
+        min-height: 40px;
+      }
+
+      .btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        min-height: 48px;
+        min-width: 200px;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+      }
+
+      /* Stack buttons vertically on compact */
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    /* Scale fallback for very short screens */
+    @media (max-height: 400px) {
+      .loader-glow {
+        transform: scale(0.9);
+        transform-origin: center;
+      }
+
+      .terminal-box {
+        padding: 10px;
+      }
+    }

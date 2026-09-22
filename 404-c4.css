@@ -1,0 +1,164 @@
+   /* Retro Terminal Aesthetic */
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      text-shadow: 0 0 5px #00ff33;
+      overflow-x: hidden;
+      touch-action: manipulation;
+      /* Optimizes mobile click responsiveness */
+      user-select: none;
+    }
+
+    .container {
+      text-align: center;
+      width: 100vw;
+      height: 98vh;
+    }
+
+    .header-text {
+      margin-bottom: 15px;
+      line-height: 1.4;
+      font-size: clamp(0.8rem, 2.3vw, 2.3rem);
+    }
+
+    .status-panel {
+      font-size: clamp(0.9rem, 2.4vw, 2.4rem);
+      margin-bottom: 15px;
+      min-height: 25px;
+    }
+
+    /* 4-in-a-row Grid Board Layout (7 Columns x 6 Rows) */
+    .board {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      background-color: #111;
+      border: 3px solid #00ff33;
+      border-radius: 6px;
+      padding: 8px;
+      margin: 15px auto;
+      width: 35vw;
+      box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+    }
+
+    /* Circle Slots */
+    .slot {
+      aspect-ratio: 1 / 1;
+      border: 2px solid rgba(0, 255, 51, 0.4);
+      border-radius: 50%;
+      background-color: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .slot:hover {
+      border-color: #00ff33;
+      box-shadow: 0 0 8px rgba(0, 255, 51, 0.4);
+    }
+
+    /* Player chips colors mapping states safely */
+    .slot.player1 {
+      background-color: #00ff33;
+      border-color: #00ff33;
+      box-shadow: 0 0 12px #00ff33;
+    }
+
+    .slot.player2 {
+      background-color: #ff3333;
+      border-color: #ff3333;
+      box-shadow: 0 0 12px #ff3333;
+    }
+
+    /* Action Buttons */
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: clamp(0.9rem, 2.4vw, 2.4rem);
+      cursor: pointer;
+      margin: 8px;
+      border-radius: 4px;
+      text-shadow: 0 0 5px #00ff33;
+      box-shadow: 0 0 5px #00ff33;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 15px #00ff33;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ============================================
+   DESKTOP LAYOUT (Screens > 768px)
+   ============================================ */
+    @media (min-width: 48.0625rem) {}
+
+    /* ============================================
+   MOBILE LAYOUT (Screens ≤ 768px)
+   ============================================ */
+    @media (max-width: 48rem) {
+      .board {
+        width: 85vw;
+        /* Make the board significantly wider on mobile screens */
+        max-width: 450px;
+        /* Prevent the grid from stretching too much */
+        gap: 4px;
+        /* Reduce spacing between slots slightly for mobile */
+        padding: 6px;
+        /* Scale down padding to save screen space */
+      }
+
+      .container {
+        height: auto;
+        /* Avoid content cutoff if layout expands vertically */
+        min-height: 98vh;
+      }
+    }
+
+
+    /* ==========================================================================
+       ULTRA-MOBILE RESOLUTIONS (Nested inside max-width: 768px)
+       ========================================================================== */
+    @media (max-width: 21.8125rem) {
+      .board {
+        margin-top: -20px;
+        width: 80vw;
+        /* Make the board significantly wider on mobile screens */
+        max-width: 450px;
+        /* Prevent the grid from stretching too much */
+        gap: 4px;
+        /* Reduce spacing between slots slightly for mobile */
+        padding: 6px;
+        /* Scale down padding to save screen space */
+      }
+
+      .container {
+        height: 95vh;
+        /* Avoid content cutoff if layout expands vertically */
+        min-height: 95vh;
+      }
+
+      .status-panel {
+        font-size: 13px;
+      }

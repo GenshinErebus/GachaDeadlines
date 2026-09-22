@@ -1,0 +1,213 @@
+    /* Dark Terminal Theme - Responsive Design */
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #030303;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    /* The Flashlight Mask overlay layer */
+    #flashlight-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle 80px at 50% 50%, transparent 100%, rgba(3, 3, 3, 0.98) 100%);
+      pointer-events: none;
+      z-index: 999;
+      transition: background 0.05s ease-out;
+    }
+
+    /* Content Area hidden in the dark */
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .error-header {
+      font-size: clamp(0.9rem, 3vw, 2rem);
+      text-shadow: 0 0 3px #00ff33;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    /* Scattered fake server logs */
+    .corrupted-log {
+      position: absolute;
+      opacity: 0.35;
+      font-size: clamp(0.7rem, 2vw, 1rem);
+      user-select: none;
+      word-wrap: break-word;
+      max-width: 200px;
+      white-space: nowrap;
+    }
+
+    /* Hidden Escape Button Layout */
+    .hidden-gate {
+      position: absolute;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #00ff33;
+      color: #00ff33;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: clamp(0.85rem, 3vw, 1.2rem);
+      cursor: pointer;
+      border-radius: 4px;
+      text-shadow: 0 0 3px #00ff33;
+      box-shadow: 0 0 8px rgba(0, 255, 51, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      min-width: 140px;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+
+    .btn:hover, .btn:active {
+      background: #00ff33;
+      color: #030303;
+      box-shadow: 0 0 25px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
+    }
+
+    /* Hint text for users */
+    .hint-text {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+      color: #666;
+      text-shadow: none;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Ultra Small Mobile (< 360px) */
+    @media (max-width: 359px) {
+      .content {
+        padding: 15px;
+      }
+
+      #flashlight-overlay {
+        background: radial-gradient(circle 50px at 50% 50%, transparent 100%, rgba(3, 3, 3, 0.98) 100%);
+      }
+
+      .corrupted-log {
+        display: none;
+      }
+
+      .hidden-gate {
+        /* On ultra-small screens, make the search easier */
+        left: 25% !important;
+        top: 40% !important;
+      }
+
+      .btn {
+        min-width: 100px;
+        padding: 14px 12px;
+      }
+
+      .hint-text {
+        display: none;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      .content {
+        padding: 15px;
+      }
+
+      #flashlight-overlay {
+        background: radial-gradient(circle 60px at 50% 50%, transparent 100%, rgba(3, 3, 3, 0.98) 100%);
+      }
+
+      .corrupted-log {
+        opacity: 0.25;
+        font-size: 0.75rem;
+        max-width: 150px;
+      }
+
+      .hidden-gate {
+        left: 30% !important;
+        top: 35% !important;
+      }
+    }
+
+    /* Tablet & larger mobile */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .content {
+        padding: 25px;
+      }
+
+      #flashlight-overlay {
+        background: radial-gradient(circle 70px at 50% 50%, transparent 100%, rgba(3, 3, 3, 0.98) 100%);
+      }
+
+      .corrupted-log {
+        opacity: 0.3;
+        font-size: 0.8rem;
+        max-width: 180px;
+      }
+
+      .hidden-gate {
+        left: 35% !important;
+        top: 40% !important;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 769px) {
+      .content {
+        padding: 40px;
+      }
+
+      #flashlight-overlay {
+        background: radial-gradient(circle 120px at 50% 50%, transparent 100%, rgba(3, 3, 3, 0.98) 100%);
+      }
+
+      .corrupted-log {
+        opacity: 0.4;
+        font-size: 1rem;
+        max-width: 250px;
+      }
+
+      .hidden-gate {
+        /* Random positioning works well on desktop */
+        left: auto !important;
+        top: auto !important;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      #flashlight-overlay {
+        transition: none;
+      }
+
+      .btn, * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }

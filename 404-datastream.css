@@ -1,0 +1,350 @@
+  /* Retro Terminal Styling */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #050505;
+    color: #00ff33;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto; /* FIX: 100vh entfernt */
+    width: 100%;
+    box-sizing: border-box;
+    text-shadow: 0 0 5px #00ff33;
+    overflow-x: hidden;
+    overflow-y: auto; /* Erlaubt Scrollen wenn nötig */
+    touch-action: manipulation;
+    user-select: none;
+    outline: none;
+  }
+
+  .container {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .header-text {
+    margin-bottom: 10px;
+    line-height: 1.3;
+    font-size: clamp(0.9rem, 2.7vw, 2rem);
+  }
+
+  .score-board {
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    margin-bottom: 8px;
+  }
+
+  /* Game Window Container */
+  .game-window {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4/3;
+    background-color: #111;
+    border: 3px solid #00ff33;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 51, 0.3);
+    margin: 8px auto;
+    overflow: hidden;
+  }
+
+  /* The 3 falling tracks */
+  .tracks-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 60px; /* Platz für Buttons lassen */
+    box-sizing: border-box;
+  }
+
+  .track {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    border-right: 1px dashed rgba(0, 255, 51, 0.2);
+  }
+
+  .track:last-child {
+    border-right: none;
+  }
+
+  /* Falling Data Nodes */
+  .node {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 20px;
+    background-color: #00ff33;
+    box-shadow: 0 0 10px #00ff33;
+    border-radius: 4px;
+  }
+
+  /* Target / Hit Zone at the bottom */
+  .hit-zone-line {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    height: 25px;
+    border-top: 2px solid #ff3333;
+    border-bottom: 2px solid #ff3333;
+    background-color: rgba(255, 51, 51, 0.1);
+    pointer-events: none;
+  }
+
+  /* Mobile Friendly Touch / Click Buttons at the bottom */
+  .button-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    background-color: #0a0a0a;
+    border-top: 2px solid #00ff33;
+    z-index: 10;
+  }
+
+  .lane-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #00ff33;
+    font-family: inherit;
+    font-size: clamp(1.3rem, 4vw, 2.2rem);
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.1s;
+    border-right: 1px solid rgba(0, 255, 51, 0.3);
+    padding: 5px 0;
+  }
+
+  .lane-btn:last-child {
+    border-right: none;
+  }
+
+  /* Flash effect when a button is pressed */
+  .lane-btn:active {
+    background-color: rgba(0, 255, 51, 0.4);
+    color: #050505;
+  }
+
+  /* Action Buttons Container */
+  .action-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* Action Buttons */
+  .btn {
+    background: transparent;
+    border: 2px solid #00ff33;
+    color: #00ff33;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 4px;
+    border-radius: 4px;
+    text-shadow: 0 0 5px #00ff33;
+    box-shadow: 0 0 5px #00ff33;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 100px;
+  }
+
+  .btn:hover {
+    background: #00ff33;
+    color: #050505;
+    box-shadow: 0 0 15px #00ff33;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* ============================================
+     DESKTOP LAYOUT (Screens > 768px / 48rem)
+     ============================================ */
+  @media (min-width: 48.0625rem) {
+    body {
+      padding: 20px;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    
+    .container {
+      width: 480px;
+    }
+    
+    .header-text {
+      font-size: 1.4rem;
+    }
+    
+    .score-board {
+      font-size: 1.5rem;
+    }
+    
+    .game-window {
+      aspect-ratio: auto;
+      width: 420px;
+      height: 380px;
+    }
+    
+    .button-container {
+      height: 65px;
+    }
+    
+    .lane-btn {
+      font-size: 2.2rem;
+    }
+    
+    .btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+
+  /* ============================================
+     TABLET / LARGE MOBILE (480px - 768px)
+     ============================================ */
+  @media (min-width: 30rem) and (max-width: 48rem) {
+    .container {
+      width: 92vw;
+    }
+    
+    .game-window {
+      width: 94%;
+    }
+    
+    .header-text {
+      font-size: 1rem;
+    }
+    
+    .score-board {
+      font-size: 1.2rem;
+    }
+    
+    .button-container {
+      height: 58px;
+    }
+    
+    .lane-btn {
+      font-size: 1.6rem;
+    }
+    
+    .btn {
+      font-size: 0.85rem;
+      padding: 8px 14px;
+    }
+  }
+
+  /* ============================================
+     MOBILE LAYOUT (Screens ≤ 480px / 30rem)
+     ============================================ */
+  @media (max-width: 30rem) {
+    body {
+      padding: 8px;
+    }
+    
+    .container {
+      width: 96vw;
+    }
+    
+    .game-window {
+      width: 98%;
+    }
+    
+    .header-text {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    
+    .score-board {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    
+    .game-window {
+      margin: 6px auto;
+    }
+    
+    .button-container {
+      height: 52px;
+    }
+    
+    .lane-btn {
+      font-size: 1.4rem;
+    }
+    
+    .btn {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+      min-width: 90px;
+    }
+    
+    .action-buttons {
+      margin-top: 6px;
+      gap: 4px;
+    }
+  }
+
+  /* ============================================
+     ULTRA-MOBILE (Screens ≤ 320px / 20rem)
+     ============================================ */
+  @media (max-width: 20rem) {
+    body {
+      padding: 4px; /* Minimal padding für ultra-mobile */
+    }
+    
+    .container {
+      width: 98vw;
+    }
+    
+    .header-text {
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+    
+    .header-text div {
+      margin: 2px 0;
+    }
+    
+    .score-board {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    
+    .game-window {
+      margin: 4px auto;
+    }
+    
+    .button-container {
+      height: 48px;
+    }
+    
+    .lane-btn {
+      font-size: 1.5rem;
+      padding: 3px 0;
+    }
+    
+    .btn {
+      font-size: 0.7rem;
+      padding: 5px 10px;
+      min-width: 80px;
+    }
+    
+    #status-msg {
+      font-size: 0.8rem;
+      margin: 4px 0;
+    }
+  }

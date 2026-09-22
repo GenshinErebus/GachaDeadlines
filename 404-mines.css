@@ -1,0 +1,453 @@
+   /* Retro Terminal Aesthetic - Fully Responsive */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    body {
+      background-color: #050505;
+      color: #00ff33;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-shadow: 0 0 3px #00ff33;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .header-text {
+      margin-bottom: 6px;
+      line-height: 1.25;
+      font-size: 0.65rem;
+      text-align: center;
+      max-width: 95vw;
+    }
+
+    .header-text div {
+      line-height: 1.2;
+    }
+
+    .status-panel {
+      font-size: 0.7rem;
+      margin: 3px 0;
+      min-height: 1.2em;
+    }
+
+    /* 8x8 Grid - Adaptive sizing per viewport */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 2px;
+      margin: 4px auto;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    /* Cell Styling */
+    .cell {
+      aspect-ratio: 1 / 1;
+      background-color: #111;
+      border: 1.5px solid #00ff33;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0, 255, 51, 0.2);
+      transition: background 0.1s;
+      font-size: 0.7rem;
+      padding: 1px;
+    }
+
+    .cell:hover:not(.revealed) {
+      background-color: #0c2c0e;
+      box-shadow: 0 0 8px #00ff33;
+    }
+
+    /* Flipped / Safe cell state */
+    .cell.revealed {
+      background-color: #0c2c0e;
+      border-color: rgba(0, 255, 51, 0.3);
+      cursor: default;
+      box-shadow: none;
+    }
+
+    /* Flagged infected state */
+    .cell.flagged {
+      color: #ff3333;
+      text-shadow: 0 0 5px #ff3333;
+    }
+
+    /* Exploded mine state */
+    .cell.mine {
+      background-color: #ff3333;
+      color: #050505;
+      border-color: #ff3333;
+      text-shadow: none;
+      box-shadow: 0 0 15px #ff3333;
+    }
+
+    .cell.revealed .cell-content {
+      color: #00ff33;
+      text-shadow: 0 0 3px #00ff33;
+    }
+
+    /* Mode Toggle Buttons */
+    .mode-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1.5px solid #00ff33;
+      color: #00ff33;
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 0.7rem;
+      cursor: pointer;
+      border-radius: 3px;
+      text-shadow: 0 0 3px #00ff33;
+      box-shadow: 0 0 4px rgba(0, 255, 51, 0.3);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      white-space: nowrap;
+    }
+
+    .btn:hover, .btn:active {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 12px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
+    }
+
+    .btn.active-mode {
+      background: #00ff33;
+      color: #050505;
+      box-shadow: 0 0 10px #00ff33;
+      font-weight: bold;
+      text-shadow: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Ultra Small Mobile (< 360px or height < 500px) */
+    @media (max-width: 359px) or (max-height: 499px) {
+      body {
+        padding: 5px;
+        padding-bottom: 8px;
+      }
+
+      .header-text {
+        font-size: 0.55rem;
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        gap: 1px;
+        max-width: calc(100vw - 10px);
+        margin: 2px auto;
+      }
+
+      .cell {
+        font-size: 0.55rem;
+        border-width: 1px;
+        min-height: 30px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 0.6rem;
+      }
+
+      .status-panel {
+        font-size: 0.55rem;
+        margin: 2px 0;
+      }
+
+      .mode-row {
+        gap: 4px;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 6px 10px;
+        font-size: 0.6rem;
+        min-height: 30px;
+      }
+
+      .btn-row-actions {
+        margin-top: 6px;
+        margin-bottom: 4px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.58rem;
+        min-height: 32px;
+        padding: 6px 12px;
+      }
+    }
+
+    /* Small Mobile (360px - 480px) */
+    @media (min-width: 360px) and (max-width: 480px) {
+      body {
+        padding: 8px;
+        padding-bottom: 10px;
+      }
+
+      .header-text {
+        font-size: 0.65rem;
+        margin-bottom: 5px;
+      }
+
+      .grid {
+        gap: 2px;
+        max-width: calc(100vw - 16px);
+        margin: 4px auto;
+      }
+
+      .cell {
+        font-size: 0.65rem;
+        border-width: 1.2px;
+        min-height: 32px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 0.7rem;
+      }
+
+      .status-panel {
+        font-size: 0.65rem;
+        margin: 3px 0;
+      }
+
+      .mode-row {
+        gap: 6px;
+        margin: 6px 0;
+      }
+
+      .btn {
+        padding: 7px 12px;
+        font-size: 0.68rem;
+        min-height: 32px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.7rem;
+        min-height: 34px;
+        padding: 7px 14px;
+      }
+    }
+
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      body {
+        padding: 14px;
+      }
+
+      .header-text {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      .grid {
+        gap: 3px;
+        max-width: min(90vw, 400px);
+        margin: 6px auto;
+      }
+
+      .cell {
+        font-size: 0.85rem;
+        border-width: 1.5px;
+        min-height: 36px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: 1rem;
+      }
+
+      .status-panel {
+        font-size: 0.9rem;
+        margin: 4px 0;
+      }
+
+      .mode-row {
+        gap: 8px;
+        margin: 8px 0;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-height: 38px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: 0.9rem;
+        min-height: 40px;
+        padding: 9px 18px;
+      }
+    }
+
+    /* Desktop (769px+) - Grid wächst mit Viewport-Höhe */
+    @media (min-width: 769px) {
+      body {
+        padding: 20px;
+      }
+
+      .header-text {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        margin-bottom: 10px;
+        max-width: 90vw;
+      }
+
+      /* Grid füllt maximalen Platz, begrenzt durch Höhe */
+      .grid {
+        gap: 4px;
+        max-width: min(680px, 92vw, 72vh);
+        margin: 8px auto;
+      }
+
+      .cell {
+        font-size: clamp(0.9rem, 2vw, 1.3rem);
+        border-width: 1.5px;
+        min-height: 40px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: clamp(1rem, 2.2vw, 1.5rem);
+      }
+
+      .status-panel {
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        margin: 6px 0;
+        min-height: 1.4em;
+      }
+
+      .mode-row {
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        min-height: 44px;
+        min-width: 140px;
+      }
+
+      .btn-row-actions {
+        margin-top: 10px;
+        margin-bottom: 8px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: clamp(0.95rem, 2vw, 1.25rem);
+        min-height: 46px;
+        min-width: 160px;
+        padding: 11px 22px;
+      }
+    }
+
+    /* Large Desktop (1200px+) */
+    @media (min-width: 1200px) {
+      body {
+        padding: 28px;
+      }
+
+      .header-text {
+        font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+        margin-bottom: 14px;
+      }
+
+      .grid {
+        gap: 6px;
+        max-width: min(780px, 88vw, 70vh);
+        margin: 12px auto;
+      }
+
+      .cell {
+        font-size: clamp(1.1rem, 2vw, 1.6rem);
+        min-height: 46px;
+      }
+
+      .cell.revealed .cell-content {
+        font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      }
+
+      .status-panel {
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        margin: 8px 0;
+      }
+
+      .mode-row {
+        gap: 12px;
+        margin: 12px 0;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        min-height: 50px;
+        min-width: 170px;
+      }
+
+      .btn-row-actions .btn {
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        min-height: 54px;
+        min-width: 200px;
+        padding: 14px 28px;
+      }
+    }
+
+    /* Short landscape viewports */
+    @media (max-height: 500px) and (orientation: landscape) {
+      body {
+        padding: 8px;
+      }
+
+      .header-text {
+        margin-bottom: 4px;
+      }
+
+      .grid {
+        margin: 4px auto;
+        gap: 2px;
+      }
+
+      .status-panel {
+        margin: 3px 0;
+      }
+
+      .mode-row {
+        gap: 6px;
+        margin: 6px 0;
+      }
+    }
+
+    /* Reduce motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .cell, .btn {
+        transition: none !important;
+      }
+    }
