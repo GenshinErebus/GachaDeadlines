@@ -61,11 +61,6 @@ const eventDatabase = {
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-10-01T03:00:00Z"
             },            
-            {
-                id: "gi_011",
-                name: "Stygan Onslaught",
-                endDate: "2026-09-22T03:00:00Z"
-            },
             // Trial
             {
                 id: "gi_012",
