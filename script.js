@@ -30,7 +30,22 @@ const eventDatabase = {
                 endDate: "2026-09-23T03:00:00Z"
             }
        */ ],
-        events: [             
+        events: [
+            {
+                id: "gi_001",
+                name: "Tabletop Troupe: A Gathering on Adventure's Eve",
+                endDate: "2026-11-03T14:00:00Z"
+            },
+             {
+                id: "gi_002",
+                name: "Across the Frozen Wilds, Honing One's Edge",
+                endDate: "2026-11-03T14:00:00Z"
+            }, 
+             {
+                id: "gi_003",
+                name: "Starlit Gala",
+                endDate: "2026-11-02T20:00:00Z"
+            },                
             {
                 id: "gi_004",
                 name: "The Godforsaken Frostlands",
@@ -45,37 +60,52 @@ const eventDatabase = {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-10-16T03:00:00Z"
-            },            
+            },
+            {
+                id: "gi_007",
+                name: "Rainbow's End: Resplendent Starlight",
+                endDate: "2026-10-19T03:00:00Z"
+            },
+             {
+                id: "gi_008",
+                name: "A Rekviem for the Underground",
+                endDate: "2026-11-03T14:00:00Z"
+            },                
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-10-01T03:00:00Z"
-            } /* ,            
+            },
+             {
+                id: "gi_010",
+                name: "Wonderland Treasures: Moonlight After the Rain",
+                endDate: "2026-11-02T03:00:00Z"
+            },                  
             // Trial
             {
                 id: "gi_012",
                 name: "Test Run",
-                endDate: "2026-09-22T14:00:00Z"
+                endDate: "2026-10-13T17:00:00Z"
             },
             // Banner
             {
                 id: "gi_013",
                 name: "Character Event Wish",
-                endDate: "2026-09-22T14:00:00Z",
+                endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
                 id: "gi_014",
                 name: "Character Event Wish-2",
-                endDate: "2026-09-22T14:00:00Z",
+                endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
                 id: "gi_015",
                 name: "Weapon Event Wish",
-                endDate: "2026-09-22T14:00:00Z",
+                endDate: "2026-10-13T17:00:00Z",
                 banner: true
-            }   */
+            }   
         ]
     },
     hsr: {
@@ -735,7 +765,7 @@ function createStatusBar() {
                class="system-online-link">
                 SYSTEM ONLINE
             </a>
-            <a id="disclaimer" href="https://genshinerebus.github.io/GachaDeadlines/DISCLAIMER.html" class="disclaimer-link" title="Disclaimer">📄⚠️</a>
+            <a id="disclaimer" href="https://genshinerebus.github.io/GachaDeadlines/disclaimer.html" class="disclaimer-link" title="Disclaimer">📄⚠️</a>
         </div>
         <div class="timestamp">
             <span id="serverTime">LOADING...</span>
