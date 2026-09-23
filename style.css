@@ -556,6 +556,57 @@ body.light-mode .gaming-icons-link:hover {
 }
 
 /* ============================================
+   NAVIGATION TOGGLE BUTTON
+   ============================================ */
+
+/* Desktop base styles */
+.nav-toggle {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    background: transparent;
+    border: 1px solid var(--matrix-dim-green);
+    color: var(--matrix-dim-green);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 110;
+}
+
+.nav-toggle:hover {
+    border-color: var(--matrix-light-green);
+    color: var(--matrix-light-green);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.toggle-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.nav-toggle.collapsed .toggle-icon {
+    transform: rotate(-90deg);
+}
+
+/* ============================================
+   NAV CONTENT WRAPPER 
+   ============================================ */
+.nav-content-wrapper {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-content-wrapper.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* ============================================
    DESKTOP LAYOUT (Screens > 768px)
    ============================================ */
 @media (min-width: 48.0625rem) {
@@ -595,7 +646,7 @@ body.light-mode .gaming-icons-link:hover {
 
     .terminal-clock-btn {
         top: 0.3125rem;
-        left: 0px;
+        left: 10px;
     }
 }
 
@@ -641,7 +692,7 @@ body.light-mode .gaming-icons-link:hover {
         max-width: calc(100% - 80px);
         width: auto;
         min-width: 16.25rem;
-        margin-left: -20px;
+        margin-left: 0px;
         font-size: 0.85rem;
         padding: 0.5rem 1rem;
     }
@@ -746,7 +797,7 @@ body.light-mode .gaming-icons-link:hover {
 
     .terminal-clock-btn {
         top: 0.3875rem;
-        left: -5px;
+        left: 5px;
     }
 
     #disclaimer {
@@ -758,6 +809,49 @@ body.light-mode .gaming-icons-link:hover {
     }
      .encrypted-link {
         margin-left: 65px;
+    }
+
+    /* NAVIGATION TOGGLE BUTTON */
+    .nav-toggle {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 28px;
+        height: 28px;
+        z-index: 10001;
+        background: var(--matrix-dark-green);
+        border: 1px solid var(--matrix-dim-green);
+        color: var(--matrix-dim-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .nav-toggle:hover {
+        border-color: var(--matrix-light-green);
+        color: var(--matrix-light-green);
+    }
+    
+    .toggle-icon {
+        width: 16px;
+        height: 16px;
+        display: block;
+    }
+    
+    .nav-toggle.collapsed .toggle-icon {
+        transform: rotate(-90deg);
+    }
+    
+    .game-selector {
+        position: relative;
+    }
+
+        .nav-content-wrapper {
+        margin-left: -30px;
+        padding-left: 30px;
     }
 }
 
@@ -809,6 +903,13 @@ body.light-mode .gaming-icons-link:hover {
     }
      .encrypted-link {
         margin-left: 75px;
+    }
+        .nav-toggle {
+        top: 0px;
+        left: 0px !important;
+        width: 24px;
+        height: 24px;
+        z-index: 10002;
     }
 }
 
@@ -1366,26 +1467,29 @@ body.light-mode .event-card.golden-banner {
 @media (max-width: 768px) {
     .report-btn {
         position: absolute;
-        top: 95px;
-        right: 15px;
+        top: 0px;
+        right: 80px;
         left: auto;
-        z-index: 50;
+        z-index: 150;
         bottom: auto;
-        padding: 0.6rem 0.75rem;
+        padding: 0.4rem 0.4rem;
         font-size: 0.5rem;
+    }
+       .report-btn-text {
+        display: none;
     }
 }
 
 @media (max-width: 349px) {
     .report-btn {
         position: fixed;
-        top: 5px;
-        right: 60px;
+       top: 0px;
+        right: 55px;
         left: auto;
-        z-index: 200;
+        z-index: 150;
         bottom: auto;
-        padding: 0.5rem 0.6rem;
-        font-size: 0.4rem;
+        padding: 0.4rem 0.4rem;
+        font-size: 0.5rem;
     }
 
     .loading {

@@ -257,6 +257,16 @@ const eventDatabase = {
                 name: "Shadow Chase Showdown",
                 endDate: "2026-10-05T03:00:00Z"
             },
+             {
+                id: "zzz_008",
+                name: "Suprise Screening Plan",
+                endDate: "2026-10-20T03:00:00Z"
+            },
+             {
+                id: "zzz_009",
+                name: "Advanced Bounty: Area Patrol",
+                endDate: "2026-09-28T03:00:00Z"
+            },
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
@@ -1854,4 +1864,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (zoomInBtn) zoomInBtn.addEventListener('click', () => changeTileZoom(1));
     if (zoomOutBtn) zoomOutBtn.addEventListener('click', () => changeTileZoom(-1));
+});
+
+/* ============================================
+   NAVIGATION TOGGLE LOGIC
+   Collapses/expands the navigation bar content
+   ============================================ */
+function initNavToggle() {
+    const toggleBtn = document.getElementById('navToggle');
+    const nav = document.querySelector('.game-selector');
+    
+    if (!toggleBtn || !nav) return;
+    
+    // Find or create wrapper for collapsible content
+    let contentWrapper = nav.querySelector('.nav-content-wrapper');
+    if (!contentWrapper) {
+        contentWrapper = document.createElement('div');
+        contentWrapper.className = 'nav-content-wrapper';
+        
+        // Move all nav children except toggle button into wrapper
+        Array.from(nav.children).forEach(child => {
+            if (child !== toggleBtn) {
+                contentWrapper.appendChild(child);
+            }
+        });
+        
+        nav.appendChild(contentWrapper);
+    }
+    
+    // Toggle functionality
+    toggleBtn.addEventListener('click', () => {
+        contentWrapper.classList.toggle('collapsed');
+        toggleBtn.classList.toggle('collapsed');
+        
+        // Save state to localStorage
+        const isCollapsed = contentWrapper.classList.contains('collapsed');
+        localStorage.setItem('navigationCollapsed', isCollapsed);
+    });
+    
+    // Restore saved state on load
+    const savedState = localStorage.getItem('navigationCollapsed');
+    if (savedState === 'true') {
+        contentWrapper.classList.add('collapsed');
+        toggleBtn.classList.add('collapsed');
+    }
+}
+
+/* Hook into existing DOMContentLoaded */
+document.addEventListener('DOMContentLoaded', () => {
+    initNavToggle();
 });
