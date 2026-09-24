@@ -492,7 +492,7 @@ const eventDatabase = {
             {
                 id: "nte_008",
                 name: "Beyond the Rails (Period)",
-                endDate: "2026-09-23T21:00:00Z"
+                endDate: "2026-10-07T21:00:00Z"
             },
             {
                 id: "nte_009",
