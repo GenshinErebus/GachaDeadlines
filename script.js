@@ -343,16 +343,26 @@ const eventDatabase = {
                 id: "ark_006",
                 name: "AIC Support: Chubby Lung Attacks",
                 endDate: "2026-09-30T21:00:00Z"
-            },             
+            },
+             {
+                id: "ark_007",
+                name: "Purry Big Feline! RAWR!",
+                endDate: "2026-10-14T22:00:00Z"
+            },
+             {
+                id: "ark_008",
+                name: "Echoing Bell of an Old City",
+                endDate: "2026-10-14T22:00:00Z"
+            },                      
             // Banner
             {
-                id: "ark_008",
+                id: "ark_009",
                 name: "WINTER HUNT",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
             },
             {
-                id: "ark_009",
+                id: "ark_010",
                 name: "Military Grade Issue",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
@@ -423,7 +433,12 @@ const eventDatabase = {
                 id: "dna_012",
                 name: "Paradise's 22nd White Bunny",
                 endDate: "2026-10-14T04:00:00Z"
-            },           
+            },
+             {
+                id: "dna_013",
+                name: "Starry Gleanings I",
+                endDate: "2026-10-12T04:00:00Z"
+            },             
             {
                 id: "dna_014",
                 name: "Moments in Frames",
