@@ -80,7 +80,12 @@ const eventDatabase = {
                 id: "gi_010",
                 name: "Wonderland Treasures: Moonlight After the Rain",
                 endDate: "2026-11-02T03:00:00Z"
-            },                  
+            },    
+            {
+                id: "gi_011",
+                name: "Silverwing in Pursuit of the Moon",
+                endDate: "2026-10-12T03:00:00Z"
+            },                
             // Trial
             {
                 id: "gi_012",
@@ -338,12 +343,7 @@ const eventDatabase = {
                 id: "ark_006",
                 name: "AIC Support: Chubby Lung Attacks",
                 endDate: "2026-09-30T21:00:00Z"
-            },
-             {
-                id: "ark_007",
-                name: "Sanity Supply",
-                endDate: "2026-09-24T09:00:00Z"
-            },
+            },             
             // Banner
             {
                 id: "ark_008",
@@ -542,18 +542,18 @@ const eventDatabase = {
         events: [
             {
                 id: "rev_001",
-                name: "Return of a Special Guest",
-                endDate: "2026-09-24T10:00:00Z"
+                name: "The Temporal Scale",
+                endDate: "2026-11-02T10:00:00Z"
             },           
             {
                 id: "rev_003",
-                name: "The You That's Meant to Be",
-                endDate: "2026-09-24T10:00:00Z"
+                name: "A Fledgling's Brave Fall",
+                endDate: "2026-10-15T10:00:00Z"
             },
             {
                 id: "rev_004",
                 name: "Mane's Bulletin",
-                endDate: "2026-09-24T10:00:00Z"
+                endDate: "2026-11-05T10:00:00Z"
             },
             {
                 id: "rev_005",
@@ -565,69 +565,23 @@ const eventDatabase = {
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
             },            
-            {
-                id: "rev_008",
-                name: "8-Bit Arcade Remix",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_009",
-                name: "The Syndrone of Silence",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_010",
-                name: "Truth a Posteriori",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_011",
-                name: "Focused Flashback",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_012",
-                name: "Break Time Activity",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_013",
-                name: "UTTU Scouting Trip",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_014",
-                name: "On Another's Sorrow",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            {
-                id: "rev_015",
-                name: "A Stranger to Memory Lane",
-                endDate: "2026-09-24T10:00:00Z"
-            },
-            // Banner
-            {
-                id: "rev_016",
-                name: "Limited Banner",
-                endDate: "2026-09-24T10:00:00Z",
-                banner: true
-            },
+            // Banner           
             {
                 id: "rev_017",
                 name: "Event Banner",
-                endDate: "2026-09-24T10:00:00Z",
+                endDate: "2026-10-15T10:00:00Z",
                 banner: true
             },            
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
-                endDate: "2026-09-24T10:00:00Z",
+                endDate: "2026-11-05T10:00:00Z",
                 banner: true
             },
             {
                 id: "rev_020",
                 name: "Rerun Banner",
-                endDate: "2026-09-24T10:00:00Z",
+                endDate: "2026-10-06T10:00:00Z",
                 banner: true
             }
         ]
@@ -738,14 +692,19 @@ document.addEventListener('DOMContentLoaded', () => {
         currentRegion = savedRegion;
         updateRegionButtons();
     }
+    
+    // Restore saved game selection
+    const savedGame = localStorage.getItem('selectedGame');
+    if (savedGame) {
+        const select = document.getElementById('gameSelect');
+        if (select) {
+            select.value = savedGame;
+        }
+    }
 
     initUI();
 
-    const select = document.getElementById('gameSelect');
-    if (select) {
-        select.value = "";
-    }
-
+    // Load events with saved game selection (don't reset to empty)
     loadGameEvents();
 });
 
@@ -841,7 +800,14 @@ function updateRegionButtons() {
 function loadGameEvents() {
     const select = document.getElementById('gameSelect');
     const gameKey = select.value;
+    
+    // Save game selection to localStorage
+    if (gameKey) {
+        localStorage.setItem('selectedGame', gameKey);
+    }
+    
     const container = document.querySelector('.container');
+    // ... rest stays the same
 
     if (countdownInterval) {
         clearInterval(countdownInterval);
