@@ -1,4 +1,4 @@
-   * {
+* {
       box-sizing: border-box;
     }
 
@@ -6,8 +6,6 @@
       background-color: #050505;
       color: #00ff33;
       font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -19,6 +17,14 @@
       touch-action: none;
       user-select: none;
     }
+
+    html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
     .container {
       width: 100%;
@@ -290,7 +296,7 @@
       }
     }
 
-    /* Desktop (769px+) - VIEL BREITER für besseren Screen-Ausnutzen */
+    /* Desktop (769px+) */
     @media (min-width: 769px) {
       body {
         padding: 24px;
@@ -341,7 +347,7 @@
       }
     }
 
-    /* Large Desktop (1200px+) - Noch breiter und höher */
+    /* Large Desktop (1200px+) */
     @media (min-width: 1200px) {
       body {
         padding: 36px;
@@ -385,7 +391,7 @@
       }
     }
 
-    /* Extra Large Desktop (1600px+) - Maximale Ausnutzung */
+    /* Extra Large Desktop (1600px+) */
     @media (min-width: 1600px) {
       body {
         padding: 48px;

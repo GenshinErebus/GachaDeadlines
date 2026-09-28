@@ -549,7 +549,12 @@ const eventDatabase = {
                 id: "rev_001",
                 name: "The Temporal Scale",
                 endDate: "2026-11-02T10:00:00Z"
-            },           
+            },
+            {
+                id: "rev_002",
+                name: "The Year Bkornblume Talks About",
+                endDate: "2026-10-12T10:00:00Z"
+            },             
             {
                 id: "rev_003",
                 name: "A Fledgling's Brave Fall",
