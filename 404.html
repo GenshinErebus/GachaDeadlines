@@ -1,85 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Redirecting...</title>
-    <script>
-        // Prevent browser caching to ensure fresh execution on every visit
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-        
-        const gamePages = [
-            '404-aim.html',
-            '404-bubble.html',
-            '404-c4.html',
-            '404-cat.html',
-            '404-chatbot.html',
-            '404-cipher.html',
-            '404-compiler.html',
-            '404-cookie.html',
-            '404-cyperpunk.html',
-            '404-datastream.html',
-            '404-dns.html',
-            '404-excuse.html',
-            '404-flappy.html',
-            '404-fortune.html',
-            '404-gacha.html',
-            '404-garbage.html',
-            '404-git.html',
-            '404-hacker.html',
-            '404-hyperspace.html',
-            '404-invaders.html',
-            '404-labyrinth.html',
-            '404-loading.html',
-            '404-magnifier.html',
-            '404-maze.html',
-            '404-memory.html',
-            '404-mines.html',
-            '404-pong.html',
-            '404-rain.html',
-            '404-rickroll.html',
-            '404-rpg.html',
-            '404-rps.html',
-            '404-runner.html',
-            '404-snake.html',
-            '404-steam.html',
-            '404-td.html',
-            '404-terminal.html',
-            '404-tetris.html',
-            '404-trivia.html',
-            '404-ttt.html',
-            '404-wordle.html'
-        ];
-        
-        // Fisher-Yates shuffle algorithm for better randomness distribution
-        function shuffleArray(array) {
-            const shuffled = [...array]; // Create a copy to avoid modifying original
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-        
-        // Pick a truly random game using enhanced shuffling method
-        const shuffledGames = shuffleArray(gamePages);
-        const randomGame = shuffledGames[0];
-        
-        // Extract repository name from URL path dynamically
-        const pathSegments = window.location.pathname.split('/');
-        const repoName = pathSegments[1]; // Grabs the correct repo name
-        
-        // Build the final absolute redirect URL
-        const finalUrl = window.location.origin + '/' + repoName + '/' + randomGame;
-        
-        // Execute instant redirect without caching
-        window.location.replace(finalUrl);
-    </script>
+<meta charset="UTF-8">
+<title>404</title>
 </head>
-<body>
+<body bgcolor="#0a0a1a" text="#ffffff" style="font-family:monospace;display:flex;justify-content:center;align-items:center;min-height:100vh">
+<script>
+(function() {
+    var games = [
+        '404-aim.html',
+        '404-bubble.html',
+        '404-c4.html',
+        '404-cat.html',
+        '404-chatbot.html',
+        '404-cipher.html',
+        '404-cookie.html',
+        '404-cyperpunk.html',
+        '404-datastream.html',
+        '404-dns.html',
+        '404-excuse.html',
+        '404-flappy.html',
+        '404-fortune.html',
+        '404-gacha.html',
+        '404-garbage.html',
+        '404-git.html',
+        '404-hacker.html',
+        '404-hyperspace.html',
+        '404-labyrinth.html',
+        '404-loading.html',
+        '404-magnifier.html',
+        '404-maze.html',
+        '404-memory.html',
+        '404-mines.html',
+        '404-pong.html',
+        '404-rain.html',
+        '404-rickroll.html',
+        '404-rpg.html',
+        '404-rps.html',
+        '404-runner.html',
+        '404-snake.html',
+        '404-steam.html',
+        '404-td.html',
+        '404-terminal.html',
+        '404-tetris.html',
+        '404-trivia.html',
+        '404-ttt.html',
+        '404-wordle.html'
+    ];
+
+    // Fisher-Yates shuffle - guaranteed true randomness
+    function shuffle(array) {
+        var arr = array.slice();
+        var n = arr.length;
+        while (n > 1) {
+            var k = Math.floor(Math.random() * n);
+            n--;
+            var tmp = arr[n];
+            arr[n] = arr[k];
+            arr[k] = tmp;
+        }
+        return arr;
+    }
+
+    // Load the first game in our shuffled list
+    function loadGame(index) {
+        if (!index) index = 0;
+        
+        var gameFile = games[index];
+        console.log('🎲 Trying:', gameFile);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', gameFile + '?' + new Date().getTime(), false);
+        xhr.setRequestHeader('Cache-Control', 'no-cache');
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 && xhr.responseText.length > 500) {
+                    console.log('✅ LOADED:', gameFile);
+                    document.write(xhr.responseText);
+                    document.close();
+                } else {
+                    console.warn('❌ Failed:', gameFile, 'Status:', xhr.status);
+                    // Try next random game
+                    var shuffled = shuffle(games);
+                    var nextIdx = Math.floor(Math.random() * games.length);
+                    loadGame(nextIdx);
+                }
+            }
+        };
+        
+        xhr.send();
+    }
+
+    // Clear localStorage to prevent cached selection
+    try { localStorage.removeItem('last_404_game'); } catch(e) {}
+
+    // Start with a random game
+    var shuffled = shuffle(games);
+    var randomStart = Math.floor(Math.random() * shuffled.length);
+    
+    console.log('🎯 Starting with:', shuffled[randomStart]);
+    loadGame(randomStart);
+})();
+</script>
 </body>
 </html>
