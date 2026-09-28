@@ -122,16 +122,26 @@ const eventDatabase = {
                 endDate: "2026-08-26T03:00:00Z"
             } */
         ],
-        events: [             
+        events: [     
+             {
+                id: "hsr_001",
+                name: "Wishpower UP! Down with Voracity",
+                endDate: "2026-11-10T22:00:00Z"
+            }, 
+            {
+                id: "hsr_002",
+                name: "Gift of Odyssey",
+                endDate: "2026-11-10T03:00:00Z"
+            },         
             {
                 id: "hsr_003",
                 name: "Anomaly Arbitration (Period)",
-                endDate: "2026-09-27T22:00:00Z"
+                endDate: "2026-11-10T22:00:00Z"
             },
             {
                 id: "hsr_004",
                 name: "Memory of Chaos (Period)",
-                endDate: "2026-09-28T03:00:00Z"
+                endDate: "2026-11-02T03:00:00Z"
             },
             {
                 id: "hsr_005",
@@ -146,7 +156,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-09-28T03:00:00Z"
+                endDate: "2026-10-05T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -161,40 +171,49 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-09-28T03:00:00Z"
-            },            
-             /* 
+                endDate: "2026-10-05T03:00:00Z"
+            },  
+            {
+                id: "hsr_011",
+                name: "Love, Ghosts & Robots",
+                endDate: "2026-11-10T20:00:00Z"
+            }, 
+             {
+                id: "hsr_012",
+                name: "Astral Imagea Park",
+                endDate: "2026-11-10T20:00:00Z"
+            },              
             // Trials
             {
                 id: "hsr_014",
                 name: "Aptitude Showcase",
-                endDate: "2026-09-27T20:00:00Z"
+                endDate: "2026-10-21T11:00:00Z"
             },
             // Banner
             {
                 id: "hsr_015",
                 name: "Character Event Warp",
-                endDate: "2026-09-27T20:00:00Z",
+                endDate: "2026-11-10T14:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_016",
                 name: "Character Event Warp (Rerun)",
-                endDate: "2026-09-27T20:00:00Z",
+                endDate: "2026-10-21T11:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_017",
                 name: "Light Cone Event Warp",
-                endDate: "2026-09-27T20:00:00Z",
+                endDate: "2026-11-10T14:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_018",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-09-27T20:00:00Z",
+                endDate: "2026-10-21T11:00:00Z",
                 banner: true
-            } */
+            } 
         ]
     },
     zzz: {
@@ -247,12 +266,7 @@ const eventDatabase = {
                 id: "zzz_008",
                 name: "Suprise Screening Plan",
                 endDate: "2026-10-20T03:00:00Z"
-            },
-             {
-                id: "zzz_009",
-                name: "Advanced Bounty: Area Patrol",
-                endDate: "2026-09-28T03:00:00Z"
-            },
+            },             
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
@@ -494,12 +508,7 @@ const eventDatabase = {
                 id: "nte_009",
                 name: "Shipwreck Salvage",
                 endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_010",
-                name: "Fons Rush",
-                endDate: "2026-09-28T03:00:00Z"
-            },
+            },            
             {
                 id: "nte_011",
                 name: "Breezy Ride",
@@ -620,7 +629,7 @@ const eventDatabase = {
             {
                 id: "wuwa_005",
                 name: "Whimpering Wastes (Period)",
-                endDate: "2026-09-28T03:00:00Z"
+                endDate: "2026-10-26T03:00:00Z"
             },
             {
                 id: "wuwa_006",
