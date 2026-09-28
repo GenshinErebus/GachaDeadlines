@@ -215,20 +215,20 @@
   }
 
   .header-text {
-    margin-bottom: 8px;
-    font-size: clamp(0.55rem, 1.8vw, 1rem);
+    margin-bottom: 2px;
+    font-size: clamp(0.6rem, 1.8vw, 1rem);
   }
 
   .attempts-container {
-    gap: 4px;           /* Reduced from 6px */
-    margin: 6px auto;   /* Reduced from 10px */
-    max-height: none;   /* Remove any height limits */
+    gap: 4px;           /
+    margin: 6px auto;   
+    max-height: none;   
   }
 
   .digit-box {
     width: calc((100vw - 50px) / 4);  /* Wider boxes = shorter overall grid */
     min-width: 36px;
-    font-size: clamp(0.8rem, 3.5vw, 1.4rem);  /* Smaller text */
+    font-size: clamp(2rem, 3.5vw, 1.4rem);  /* Smaller text */
   }
 
   .status-panel {
@@ -238,27 +238,27 @@
   }
 
   .keypad {
-    gap: 4px;           /* Reduced from 6px */
-    width: 85%;         /* Slightly narrower keypad */
-    margin: 6px auto;
+    gap: 4px;          
+    width: 85%;         
+    margin: 2px auto;
     padding: 5px 0;
   }
 
   .key {
     aspect-ratio: 1.1 / 1;  /* Shorter keys */
-    font-size: clamp(0.65rem, 2.5vw, 1.2rem);
+    font-size: clamp(2rem, 2.5vw, 1.2rem);
   }
 
   .btn-row {
     margin-top: auto;
     padding-top: 5px;   /* Reduced from 10px */
-    gap: 5px;
+    gap: 2px;
   }
 
   .btn {
     padding: 5px 10px;  /* Smaller buttons */
     margin: 2px;
-    font-size: clamp(0.6rem, 1.5vw, 1rem);
+    font-size: clamp(3rem, 1.5vw, 1rem);
   }
 }
 
@@ -279,7 +279,7 @@
 
   /* Shrunk header for mobile */
   .header-text {
-    font-size: 0.35rem;
+    font-size: 0.5rem;
     margin-bottom: 3px;
     line-height: 1.1;
     flex-shrink: 0;
@@ -322,7 +322,7 @@
   .key {
     width: 75px;       /* Smaller buttons */
     height: 42px;      /* More compact */
-    font-size: 0.55rem;
+    font-size: 1rem;
     border-radius: 4px;
   }
 
@@ -339,7 +339,7 @@
   .btn {
     min-width: 90px;  /* Ensures button doesn't collapse */
     padding: 6px 10px;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     flex-shrink: 0;
   }
 }

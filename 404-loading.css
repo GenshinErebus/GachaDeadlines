@@ -154,7 +154,7 @@
       .terminal-box {
         width: 95vw;
         padding: 20px;
-        min-height: 80vh;
+        min-height: 70vh;
         border-width: 2px;
       }
 
@@ -199,7 +199,7 @@
       .terminal-box {
         width: 100vw;
         padding: 12px;
-        min-height: 100vh;
+        min-height: 99vh;
         border-width: 1px;
         border-radius: 0;
       }
