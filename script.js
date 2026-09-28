@@ -122,17 +122,7 @@ const eventDatabase = {
                 endDate: "2026-08-26T03:00:00Z"
             } */
         ],
-        events: [
-            {
-                id: "hsr_001",
-                name: "Overdrive: Whirlwind Grand Prix",
-                endDate: "2026-09-27T20:00:00Z"
-            },
-            {
-                id: "hsr_002",
-                name: "Gift of Odyssey",
-                endDate: "2026-09-27T20:00:00Z"
-            },
+        events: [             
             {
                 id: "hsr_003",
                 name: "Anomaly Arbitration (Period)",
@@ -173,16 +163,7 @@ const eventDatabase = {
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
                 endDate: "2026-09-28T03:00:00Z"
             },            
-            {
-                id: "hsr_012",
-                name: "Minuscule Great Adventure",
-                endDate: "2026-09-27T20:00:00Z"
-            },
-            {
-                id: "hsr_013",
-                name: "Realm of the Strange",
-                endDate: "2026-09-27T20:00:00Z"
-            },
+             /* 
             // Trials
             {
                 id: "hsr_014",
@@ -213,7 +194,7 @@ const eventDatabase = {
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-09-27T20:00:00Z",
                 banner: true
-            }
+            } */
         ]
     },
     zzz: {
@@ -579,7 +560,12 @@ const eventDatabase = {
                 id: "rev_006",
                 name: "Lucidscape",
                 endDate: "2026-10-01T10:00:00Z"
-            },            
+            },
+            {
+                id: "rev_007",
+                name: "Focused Flashback",
+                endDate: "2026-11-05T10:00:00Z"
+            },              
             // Banner           
             {
                 id: "rev_017",
