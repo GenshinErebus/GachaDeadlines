@@ -393,7 +393,12 @@ const eventDatabase = {
                 id: "dna_004",
                 name: "Vibrant Strokes",
                 endDate: "2026-10-19T16:00:00Z"
-            },           
+            },
+             {
+                id: "dna_005",
+                name: "Capriccio of Whimsy",
+                endDate: "2026-11-09T16:00:00Z"
+            },            
             {
                 id: "dna_006",
                 name: "Parade Itinerary",
@@ -407,7 +412,7 @@ const eventDatabase = {
             {
                 id: "dna_009",
                 name: "Immersive Theatre",
-                endDate: "2026-09-29T09:00:00Z"
+                endDate: "2026-10-19T16:00:00Z"
             },
             {
                 id: "dna_010",
@@ -610,12 +615,7 @@ const eventDatabase = {
                 id: "wuwa_006",
                 name: "Hazard Revisited (Period)",
                 endDate: "2026-10-12T03:00:00Z"
-            },
-            {
-                id: "wuwa_007",
-                name: "Resonance Sim Realm",
-                endDate: "2026-09-29T11:00:00Z"
-            },            
+            } /* ,                    
             {
                 id: "wuwa_009",
                 name: "Acendant Aces",
@@ -657,7 +657,7 @@ const eventDatabase = {
                 name: "Featured Weapon Convene Rerun 2",
                 endDate: "2026-09-29T11:00:00Z",
                 banner: true
-            }
+            } */
         ]
     }
 };
