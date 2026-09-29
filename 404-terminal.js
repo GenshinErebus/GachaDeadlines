@@ -1,5 +1,6 @@
 const inputField = document.getElementById('terminal-input');
 const historyContainer = document.getElementById('history');
+const terminalElement = document.getElementById('terminal');
 
 // Keep input field focused even if user clicks elsewhere on the page
 document.addEventListener('click', () => inputField.focus());
@@ -7,6 +8,16 @@ document.addEventListener('click', () => inputField.focus());
 // Command history for arrow up/down navigation
 let commandHistory = [];
 let historyIndex = -1;
+
+// Auto-scroll helper function - scrolls terminal to show latest output
+function scrollToBottom() {
+  terminalElement.scrollTop = terminalElement.scrollHeight;
+}
+
+// Scroll to bottom after initial page loads to show latest boot message
+window.addEventListener('load', () => {
+  scrollToBottom();
+});
 
 // Handle user inputs
 inputField.addEventListener('keydown', function (event) {
@@ -25,9 +36,9 @@ inputField.addEventListener('keydown', function (event) {
     // Process the command
     processCommand(command);
 
-    // Reset input and scroll down
+    // Reset input and scroll down to show newest output
     this.value = '';
-    window.scrollTo(0, document.body.scrollHeight);
+    scrollToBottom();
   }
 });
 
@@ -85,6 +96,7 @@ function processCommand(cmd) {
       break;
     case 'clear':
       historyContainer.innerHTML = '';
+      scrollToBottom();
       break;
     case 'joke':
       const topJokes = [
@@ -512,10 +524,13 @@ function processCommand(cmd) {
   }
 }
 
-// Helper function to append text blocks
+// Helper function to append text blocks and auto-scroll to latest output
 function printLine(text) {
   const line = document.createElement('div');
   line.className = 'output-line';
   line.innerText = text;
   historyContainer.appendChild(line);
+  
+  // Automatically scroll to show the newest output
+  scrollToBottom();
 }

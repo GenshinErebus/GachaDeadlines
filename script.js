@@ -393,12 +393,7 @@ const eventDatabase = {
                 id: "dna_004",
                 name: "Vibrant Strokes",
                 endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_005",
-                name: "Better Luno than Never",
-                endDate: "2026-09-29T04:00:00Z"
-            },
+            },           
             {
                 id: "dna_006",
                 name: "Parade Itinerary",
@@ -408,12 +403,7 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Through the Inferno",
                 endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_008",
-                name: "Crimson Mirage",
-                endDate: "2026-09-29T04:00:00Z"
-            },
+            },            
             {
                 id: "dna_009",
                 name: "Immersive Theatre",
@@ -433,12 +423,7 @@ const eventDatabase = {
                 id: "dna_013",
                 name: "Starry Gleanings I",
                 endDate: "2026-10-12T04:00:00Z"
-            },             
-            {
-                id: "dna_014",
-                name: "Moments in Frames",
-                endDate: "2026-09-29T04:00:00Z"
-            },
+            },            
             // Banner 
             {
                 id: "dna_015",
@@ -610,22 +595,7 @@ const eventDatabase = {
                 endDate: "2026-09-30T11:00:00Z"
             } */
         ],
-        events: [
-            {
-                id: "wuwa_001",
-                name: "Gifts of Drifting Mist",
-                endDate: "2026-09-29T03:00:00Z"
-            },
-            {
-                id: "wuwa_002",
-                name: "If Dreams Still Reverberate",
-                endDate: "2026-09-29T03:00:00Z"
-            },
-            {
-                id: "wuwa_003",
-                name: "Tactical Hologram: Simulation",
-                endDate: "2026-09-29T03:00:00Z"
-            },
+        events: [             
             {
                 id: "wuwa_004",
                 name: "Endstate Matrix (Period)",
@@ -650,12 +620,7 @@ const eventDatabase = {
                 id: "wuwa_009",
                 name: "Acendant Aces",
                 endDate: "2026-09-29T11:00:00Z"
-            },
-            {
-                id: "wuwa_010",
-                name: "Wuthering Exploration",
-                endDate: "2026-09-29T03:00:00Z"
-            },
+            },           
             // Banner
             {
                 id: "wuwa_015",

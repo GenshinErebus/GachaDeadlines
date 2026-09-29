@@ -1,4 +1,4 @@
-   /* Retro Terminal Aesthetic - Fully Responsive */
+/* Retro Terminal Aesthetic - Fully Responsive */
     * {
       box-sizing: border-box;
     }
@@ -74,6 +74,13 @@
       font-size: 0.7rem;
       margin: 8px 0;
       min-height: 1.2em;
+    }
+
+    #score-display {
+      font-size: 0.8rem;
+      margin: 10px 0;
+      min-height: 1.5em;
+      font-weight: bold;
     }
 
     .btn-row {
@@ -156,6 +163,11 @@
         margin: 6px 0;
       }
 
+      #score-display {
+        font-size: 0.62rem;
+        margin: 8px 0;
+      }
+
       .btn {
         padding: 8px 12px;
         font-size: 0.62rem;
@@ -208,6 +220,11 @@
         font-size: 0.65rem;
       }
 
+      #score-display {
+        font-size: 0.68rem;
+        margin: 8px 0;
+      }
+
       .btn {
         font-size: 0.7rem;
         min-height: 36px;
@@ -243,6 +260,11 @@
 
       .status-panel {
         font-size: 0.85rem;
+      }
+
+      #score-display {
+        font-size: 0.9rem;
+        margin: 10px 0;
       }
 
       .btn {
@@ -289,6 +311,11 @@
       }
 
       .status-panel {
+        font-size: clamp(1rem, 2.2vw, 1.3rem);
+        margin: 12px 0;
+      }
+
+      #score-display {
         font-size: clamp(1rem, 2.2vw, 1.3rem);
         margin: 12px 0;
       }
@@ -341,6 +368,11 @@
         font-size: clamp(1.2rem, 1.8vw, 1.6rem);
       }
 
+      #score-display {
+        font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+        margin: 12px 0;
+      }
+
       .btn {
         font-size: clamp(1.2rem, 1.8vw, 1.7rem);
         min-height: 65px;
@@ -350,6 +382,11 @@
 
       .btn-row#interface-box .btn {
         min-width: 240px;
+      }
+
+      .escape-btn {
+        font-size: clamp(1.05rem, 2vw, 1.4rem);
+        padding: 16px 26px;
       }
     }
 

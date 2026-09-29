@@ -1,23 +1,130 @@
-    // Database of funny developer fortune teller quotes
-    const predictions = [
-      "Prediction: Your next pull request will be approved instantly without a single comment. (Highly rare event!)",
-      "Prediction: Avoid editing production code directly today. The server deities seem deeply displeased with your cache.",
-      "Prediction: A rogue semicolon is currently hiding in your code, waiting for you to deploy to production.",
-      "Prediction: You will soon find the stack overflow answer that solves your exact problem, written by an anonymous hero in 2014.",
-      "Prediction: The bug you have been chasing for three days is just a typo in a variable name. Check line 42.",
-      "Prediction: Your coffee levels are critically low. Replenish immediately to avoid compile-time syntax errors.",
-      "Prediction: A massive performance boost is coming to your local environment. Your RAM will thank you.",
-      "Prediction: Someone will praise your clean indentation structure in the near future. Keep spacing."
-    ];
+// Database of 100 developer fortune teller quotes
+const predictions = [
+  "Prediction: Your next pull request will be approved instantly without a single comment. (Highly rare event!)",
+  "Prediction: Avoid editing production code directly today. The server deities seem deeply displeased with your cache.",
+  "Prediction: A rogue semicolon is currently hiding in your code, waiting for you to deploy to production.",
+  "Prediction: You will soon find the Stack Overflow answer that solves your exact problem, written by an anonymous hero in 2014.",
+  "Prediction: The bug you have been chasing for three days is just a typo in a variable name. Check line 42.",
+  "Prediction: Your coffee levels are critically low. Replenish immediately to avoid compile-time syntax errors.",
+  "Prediction: A massive performance boost is coming to your local environment. Your RAM will thank you.",
+  "Prediction: Someone will praise your clean indentation structure in the near future. Keep spacing.",
+  "Prediction: Today is an excellent day to refactor legacy code. The gods of maintainability smile upon you.",
+  "Prediction: A dependency update will break exactly three things you didn't know were working.",
+  "Prediction: You will accidentally push a .env file to GitHub. Pray your CI doesn't notice.",
+  "Prediction: The senior developer reviewing your code will laugh at your variable naming conventions.",
+  "Prediction: A critical bug will manifest only on Friday afternoon. Embrace the chaos.",
+  "Prediction: Your Docker container will run perfectly locally but fail spectacularly in production.",
+  "Prediction: Someone will ask if you tried restarting the server. Try it anyway, just in case.",
+  "Prediction: You'll discover a commented-out block of code that has been haunting your team for years.",
+  "Prediction: The database migration script will execute flawlessly on the first try. Suspiciously lucky.",
+  "Prediction: An infinite loop is forming somewhere in your JavaScript. Your browser is already crying.",
+  "Prediction: A coworker will copy-paste your function without credit. It fuels their productivity.",
+  "Prediction: The API you depend on will return a 503 error during your most important demo.",
+  "Prediction: You will finally understand how Promises work. Mark this day in your calendar.",
+  "Prediction: A `console.log()` statement left in production will leak sensitive information. Or will it?",
+  "Prediction: Your git rebase will succeed without conflicts. This is a miracle.",
+  "Prediction: The CSS flexbox layout will finally align correctly after you touch it one more time.",
+  "Prediction: You will receive a ticket labeled 'urgent fix please' at 5 PM on a Friday.",
+  "Prediction: A mysterious package in your node_modules will consume 70% of your disk space.",
+  "Prediction: The junior developer you mentored will surpass your skills within twelve months.",
+  "Prediction: A security vulnerability will be discovered in your codebase tomorrow. Patch it tonight.",
+  "Prediction: The load balancer will route traffic to a dead instance. Again.",
+  "Prediction: You will solve a complex algorithmic challenge in under five minutes.",
+  "Prediction: Your IDE will suggest a refactor that actually improves your code. Trust it.",
+  "Prediction: A production server will run out of disk space because of debug logs. They always do.",
+  "Prediction: The client will ask for a feature that already exists. Point them gently.",
+  "Prediction: Your branch name will contain a typo that mocks you during every merge.",
+  "Prediction: An npm install will complete without warnings for once. Cherish this moment.",
+  "Prediction: The QA engineer will find a bug that only occurs when using Internet Explorer.",
+  "Prediction: You will accidentally delete your database. Luckily, backups exist. Hopefully.",
+  "Prediction: A deprecated library you rely on will reach end-of-life next quarter.",
+  "Prediction: The microservice architecture will simplify your deployment process dramatically.",
+  "Prediction: Your code coverage will increase after you add tests. Finally!",
+  "Prediction: The design team will approve your component on the first review attempt.",
+  "Prediction: A null pointer exception will appear at the worst possible moment tomorrow.",
+  "Prediction: You will remember the password you forgot three months ago. Pure luck.",
+  "Prediction: The Kubernetes pod will restart exactly when you start monitoring it.",
+  "Prediction: A third-party integration will fail due to timezone mismatches. It always does.",
+  "Prediction: Your optimization efforts will improve load times by exactly 2%. Worth it.",
+  "Prediction: The stakeholder meeting scheduled for tomorrow will be canceled last minute.",
+  "Prediction: You will find documentation for the undocumented API. Written by someone in 2017.",
+  "Prediction: A race condition will cause sporadic failures in your distributed system.",
+  "Prediction: Your commit message will be quoted in a post-mortem presentation.",
+  "Prediction: The CDN will purge incorrectly and serve stale assets worldwide.",
+  "Prediction: You will discover a secret feature flag enabled in production. Curious.",
+  "Prediction: The monitoring dashboard will show 100% health while the system is failing.",
+  "Prediction: Your refactored function will pass all unit tests. The integration tests will suffer.",
+  "Prediction: A coworker will introduce a variable named `data2`. Resist the urge to complain.",
+  "Prediction: The WebSocket connection will drop precisely when you're demonstrating it.",
+  "Prediction: You will finally migrate from jQuery to vanilla JS. Celebration imminent.",
+  "Prediction: The firewall will block your localhost port out of spite.",
+  "Prediction: A hidden character in your SQL query will cause silent data corruption.",
+  "Prediction: Your accessibility improvements will make the screen reader sing praises.",
+  "Prediction: The automated tests will pass locally but fail in CI. Environment differences again.",
+  "Prediction: You will write a regex that works on the first try. Document this anomaly.",
+  "Prediction: A memory leak in your Node.js app will grow slowly over weeks.",
+  "Prediction: The product owner will understand the concept of technical debt. Rare sighting.",
+  "Prediction: Your mobile responsive design will break on a tablet nobody owns.",
+  "Prediction: A forgotten callback will cause a function to execute twice unexpectedly.",
+  "Prediction: The logging infrastructure will capture exactly what you need to debug.",
+  "Prediction: You will accidentally commit `sudo` to a public repository. History forever.",
+  "Prediction: The GraphQL resolver will N+1 query itself into oblivion.",
+  "Prediction: Your CSS specificity war will be won by adding `!important`. Guilt accepted.",
+  "Prediction: A dependency will request a major version bump during crunch time.",
+  "Prediction: The webhook payload will arrive in unexpected JSON order. Chaos theory.",
+  "Prediction: Your TypeScript types will catch a runtime error before it happens.",
+  "Prediction: The load test will reveal that your cache invalidation logic is flawed.",
+  "Prediction: A coworker will accidentally deploy to staging instead of development.",
+  "Prediction: The SSL certificate will expire on your busiest day. Prepare accordingly.",
+  "Prediction: Your lazy loading implementation will significantly improve perceived speed.",
+  "Prediction: The database index you added will reduce query time by 95%.",
+  "Prediction: A feature branch will accumulate 47 commits before merging.",
+  "Prediction: You will find the memory dump that explains the mysterious crash.",
+  "Prediction: The CI pipeline will timeout right before completing successfully.",
+  "Prediction: Your input validation will prevent a SQL injection attack narrowly.",
+  "Prediction: A coworker will rename a variable without updating all references.",
+  "Prediction: The feature toggle will remain disabled indefinitely. Forgotten forever.",
+  "Prediction: Your API rate limiter will reject a legitimate user's request.",
+  "Prediction: The Docker volume mount will behave differently on Windows versus Linux.",
+  "Prediction: A circular import will cause your module system to collapse.",
+  "Prediction: Your performance audit score will reach 98+. Achievement unlocked.",
+  "Prediction: The production hotfix will work for 48 hours before regressions appear.",
+  "Prediction: You will finally understand closures properly. Enlightenment achieved.",
+  "Prediction: A third-party SDK will change its API without warning.",
+  "Prediction: Your error handling will catch an exception nobody anticipated.",
+  "Prediction: The staging environment will mirror production exactly this time.",
+  "Prediction: A colleague will appreciate the README documentation you wrote.",
+  "Prediction: Your async/await chain will be cleaner than the promise hell it replaced.",
+  "Prediction: The database backup restore will take three hours. Patience required.",
+  "Prediction: A subtle timezone bug will affect users in exactly one region.",
+  "Prediction: Your linting rules will prevent a formatting inconsistency today.",
+  "Prediction: The container orchestration will scale down prematurely during peak load.",
+  "Prediction: You will discover an unused endpoint that costs money to run.",
+  "Prediction: The security scanner will flag a false positive in your dependencies.",
+  "Prediction: Your code review comments will be addressed politely and quickly.",
+  "Prediction: A legacy function will finally be deprecated after ten years of service.",
+  "Prediction: The deployment pipeline will roll back automatically without manual intervention.",
+  "Prediction: You will write a comment that becomes the subject of team lore.",
+  "Prediction: The A/B test results will show no statistical significance. Another iteration.",
+  "Prediction: Your keyboard shortcut will clash with your browser extension unexpectedly.",
+  "Prediction: The CDN edge cache will invalidate correctly before the next release.",
+  "Prediction: A coworker will fix your bug before you report it. Humbling moment.",
+  "Prediction: Your database query optimization will reduce server CPU usage significantly.",
+  "Prediction: The feature launch will proceed without any incidents. Miraculous.",
+  "Prediction: You will finally upgrade to the latest framework version without drama.",
+  "Prediction: A production alert will trigger at 3 AM on Christmas Day.",
+  "Prediction: Your unit test coverage will reach 80%. The golden threshold achieved."
+];
 
-    function generatePrediction() {
-      const display = document.getElementById("fortune-text");
-      
-      const seed = Date.now() + Math.random();
-      const idx = Math.floor((seed * 7) % predictions.length);
-      
-      display.innerText = predictions[idx];
-    }
+function generatePrediction() {
+  const display = document.getElementById("fortune-text");
+  
+  // Use timestamp plus randomness for pseudo-random selection
+  const seed = Date.now() + Math.random();
+  const idx = Math.floor((seed * 7) % predictions.length);
+  
+  display.innerText = predictions[idx];
+}
 
-    // Initialize instantly on document loading
-    generatePrediction();
+// Initialize prediction instantly on document loading
+generatePrediction();
