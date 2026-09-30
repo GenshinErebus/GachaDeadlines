@@ -85,7 +85,12 @@ const eventDatabase = {
                 id: "gi_011",
                 name: "Silverwing in Pursuit of the Moon",
                 endDate: "2026-10-12T03:00:00Z"
-            },                
+            },
+            {
+                id: "gi_012",
+                name: "Stygian Onslaught",
+                endDate: "2026-11-03T03:00:00Z"
+            },                      
             // Trial
             {
                 id: "gi_012",
@@ -266,11 +271,21 @@ const eventDatabase = {
                 id: "zzz_008",
                 name: "Suprise Screening Plan",
                 endDate: "2026-10-20T03:00:00Z"
-            },             
+            },   
+             {
+                id: "zzz_009",
+                name: '"Eh Nah" Into Your Lap',
+                endDate: "2026-10-20T03:00:00Z"
+            },          
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
+            },
+            {
+                id: "zzz_011",
+                name: "Diary of an Orbie Parent",
+                endDate: "2026-10-19T03:00:00Z"
             },
             // Banner
             {
