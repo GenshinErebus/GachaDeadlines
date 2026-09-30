@@ -310,21 +310,6 @@ const eventDatabase = {
         ],
         events: [
             {
-                id: "ark_001",
-                name: "Fletched Irontip Sign-In",
-                endDate: "2026-09-30T17:00:00Z"
-            },
-            {
-                id: "ark_002",
-                name: "Snow Over Deep Woods",
-                endDate: "2026-09-30T17:00:00Z"
-            },
-            {
-                id: "ark_003",
-                name: "Combat Drills",
-                endDate: "2026-09-30T17:00:00Z"
-            },
-            {
                 id: "ark_004",
                 name: "A Winter Dream Fogged Deep in the Woods",
                 endDate: "2026-10-14T22:00:00Z"
