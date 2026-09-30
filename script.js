@@ -456,71 +456,72 @@ const eventDatabase = {
         events: [
             {
                 id: "nte_001",
-                name: "Runaway Echoes",
-                endDate: "2026-09-29T22:00:00Z"
+                name: "Circle gift",
+                endDate: "2026-11-10T22:00:00Z"
             },
             {
                 id: "nte_002",
-                name: "Summertime",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_003",
-                name: "Circle gift",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_004",
-                name: "Market Opening Rehearsal",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_005",
-                name: "Hunter's Crucible",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_006",
-                name: "Volley Star",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_007",
-                name: "Surf Breaker",
-                endDate: "2026-09-29T22:00:00Z"
-            },
-            {
-                id: "nte_008",
                 name: "Beyond the Rails (Period)",
                 endDate: "2026-10-07T21:00:00Z"
             },
             {
+                id: "nte_003",
+                name: "Born to Race Mystery Box",
+                endDate: "2026-11-10T22:00:00Z"
+            },
+             {
+                id: "nte_004",
+                name: "Everdriving",
+                endDate: "2026-11-10T22:00:00Z"
+            }, 
+             {
+                id: "nte_005",
+                name: "Terminal Depth",
+                endDate: "2026-11-10T22:00:00Z"
+            }, 
+             {
+                id: "nte_006",
+                name: "Pukaland Travelogue",
+                endDate: "2026-11-10T22:00:00Z"
+            }, 
+            {
+                id: "nte_007",
+                name: "Blackbird's Invitation",
+                endDate: "2026-11-10T22:00:00Z"
+            },
+             {
+                id: "nte_008",
+                name: "Divination Perks",
+                endDate: "2026-10-20T22:00:00Z"
+            },
+             {
                 id: "nte_009",
-                name: "Shipwreck Salvage",
-                endDate: "2026-09-29T22:00:00Z"
-            },            
+                name: "Daydream Perks",
+                endDate: "2026-10-20T22:00:00Z"
+            },    
+            // Trial
             {
                 id: "nte_011",
-                name: "Breezy Ride",
-                endDate: "2026-09-29T22:00:00Z"
-            },
+                name: "Market Opening Rehearsal",
+                endDate: "2026-10-20T22:00:00Z"
+            },                
             // Banner
             {
                 id: "nte_012",
-                name: "Surfing All Channels!",
-                endDate: "2026-09-29T22:00:00Z",
+                name: "Foretold Finale",
+                endDate: "2026-10-20T22:00:00Z",
                 banner: true
             },
             {
                 id: "nte_013",
-                name: "Misty Tipsy Style",
-                endDate: "2026-09-29T22:00:00Z",
+                name: "Fading Reverie",
+                endDate: "2026-10-20T22:00:00Z",
                 banner: true
             },
             {
                 id: "nte_014",
-                name: "Soundscape Special",
-                endDate: "2026-09-29T22:00:00Z",
+                name: "Nocturne Special",
+                endDate: "2026-10-20T22:00:00Z",
                 banner: true
             }
         ]
@@ -600,64 +601,90 @@ const eventDatabase = {
                 endDate: "2026-09-30T11:00:00Z"
             } */
         ],
-        events: [             
+        events: [
             {
-                id: "wuwa_004",
-                name: "Endstate Matrix (Period)",
-                endDate: "2026-09-29T20:00:00Z"
+                id: "wuwa_001",
+                name: "Cubie Wars",
+                endDate: "2026-11-11T11:00:00Z"
             },
             {
+                id: "wuwa_002",
+                name: "Moonlit Path",
+                endDate: "2026-11-11T11:00:00Z"
+            },
+            {
+                id: "wuwa_003",
+                name: "Dreams in the Capsule",
+                endDate: "2026-11-11T03:00:00Z"
+            },
+            {
+                id: "wuwa_004",
+                name: "Gifts of Waking Moon",
+                endDate: "2026-11-11T03:00:00Z"
+            },                 
+            {
                 id: "wuwa_005",
+                name: "Endstate Matrix (Period)",
+                endDate: "2026-11-11T20:00:00Z"
+            },
+            {
+                id: "wuwa_006",
                 name: "Whimpering Wastes (Period)",
                 endDate: "2026-10-26T03:00:00Z"
             },
             {
-                id: "wuwa_006",
+                id: "wuwa_007",
                 name: "Hazard Revisited (Period)",
                 endDate: "2026-10-12T03:00:00Z"
-            } /* ,                    
+            },
+            {
+                id: "wuwa_008",
+                name: "Back to Solaris",
+                endDate: "2026-11-11T16:00:00Z"
+            },
+            // Trial                    
             {
                 id: "wuwa_009",
                 name: "Acendant Aces",
-                endDate: "2026-09-29T11:00:00Z"
+                endDate: "2026-10-22T09:00:00Z"
             },           
             // Banner
             {
                 id: "wuwa_015",
                 name: "Featured Resonator Convene",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_016",
                 name: "Featured Resonator Convene Rerun",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_017",
                 name: "Featured Resonator Convene Rerun 2",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_018",
                 name: "Featured Weapon Convene",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_019",
                 name: "Featured Weapon Convene Rerun",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_020",
                 name: "Featured Weapon Convene Rerun 2",
-                endDate: "2026-09-29T11:00:00Z",
+                endDate: "2026-10-22T09:00:00Z",
                 banner: true
-            } */
+            } 
         ]
     }
 };
