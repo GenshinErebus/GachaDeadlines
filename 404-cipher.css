@@ -312,3 +312,49 @@
            transform: none !important;
        }
    }
+
+   /* =========================================
+   NEW BUTTON STYLES FOR HIGHSCORE SCREEN
+   ========================================= */
+
+   /* Continue button (next round) */
+   #next-round {
+       border: 3px solid #00ffff;
+       box-shadow: 0 0 15px #00ffff;
+   }
+
+   #next-round:hover,
+   #next-round:active {
+       background: #00ffff;
+       color: #050505;
+       box-shadow: 0 0 25px #00ffff;
+       font-weight: bold;
+       text-shadow: none;
+       transform: translateY(-2px);
+   }
+
+   /* Exit button (leave game) */
+   #leave-now {
+       border: 3px solid #ff3333;
+       box-shadow: 0 0 15px #ff3333;
+   }
+
+   #leave-now:hover,
+   #leave-now:active {
+       background: #ff3333;
+       color: #050505;
+       box-shadow: 0 0 25px #ff3333;
+       font-weight: bold;
+       text-shadow: none;
+       transform: translateY(-2px);
+   }
+
+   /* Responsive adjustments for new buttons */
+   @media (max-width: 480px) {
+
+       #next-round,
+       #leave-now {
+           width: 100%;
+           min-height: 48px;
+       }
+   }

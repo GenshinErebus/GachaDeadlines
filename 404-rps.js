@@ -1,74 +1,80 @@
-    const logBox = document.getElementById('log-box');
-    const interfaceBox = document.getElementById('interface-box');
-    const escapeLink = document.getElementById('escape-link');
-    const humanScoreEl = document.getElementById('human-score');
-    const aiScoreEl = document.getElementById('ai-score');
+const logBox = document.getElementById('log-box');
+const humanScoreEl = document.getElementById('human-score');
+const aiScoreEl = document.getElementById('ai-score');
+const interfaceBox = document.getElementById('interface-box');
+const escapeLink = document.getElementById('escape-link');
 
-    let humanScore = 0;
-    let aiScore = 0;
-    let isGameOver = false;
+const MOVES = { rock: '✊ ROCK', paper: '✋ PAPER', scissors: '✌️ SCISSORS' };
+const BEATS = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
+const WIN_TARGET = 3;
 
-    const choices = ["rock", "paper", "scissors"];
+let humanScore = 0;
+let aiScore = 0;
+let duelOver = false;
 
-    const winInsults = [
-      "AI: Beginner's luck. My neural path suffered a minor cache lag.",
-      "AI: You won that hand, but your biological computing remains inferior.",
-      "AI: Impossible. Did you inspect my source variables?!"
-    ];
+/* ===== AUTO-SCROLL =====
+   Hängt einen neuen Eintrag an den Log an und scrollt danach
+   automatisch ans Ende, damit immer die neueste Konversation
+   sichtbar ist. */
+function addLog(text, cssClass) {
+  const entry = document.createElement('div');
+  entry.className = 'log-entry' + (cssClass ? ' ' + cssClass : '');
+  entry.textContent = text;
+  logBox.appendChild(entry);
 
-    const loseInsults = [
-      "AI: Human intelligence is highly overrated. Rock beats scissors effortlessly.",
-      "AI: Outsmarted by a standard math equation. Pathetic.",
-      "AI: Handshake failed. I read your synaptic pathways like an open config file."
-    ];
+  // requestAnimationFrame: erst rendern lassen, DANN scrollen
+  requestAnimationFrame(() => {
+    logBox.scrollTop = logBox.scrollHeight;
+  });
+}
 
-    function printLogLine(text, styleClass) {
-      const entry = document.createElement('div');
-      entry.className = "log-entry " + (styleClass || "");
-      entry.innerText = text;
-      logBox.appendChild(entry);
-      logBox.scrollTop = logBox.scrollHeight;
+function updateScoreBoard() {
+  humanScoreEl.textContent = humanScore;
+  aiScoreEl.textContent = aiScore;
+}
+
+function endDuel() {
+  duelOver = true;
+  addLog('[VICTORY] Firewall integrity 0%. SYN-ACK accepted. Routing path cleared!', 'log-win');
+  interfaceBox.classList.add('hidden');
+  escapeLink.classList.remove('hidden');
+
+  // Escape-Button sicher in den Sichtbereich holen
+  requestAnimationFrame(() => {
+    escapeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+}
+
+function playRound(humanMove) {
+  if (duelOver) return;
+
+  const moves = Object.keys(MOVES);
+  const aiMove = moves[Math.floor(Math.random() * moves.length)];
+
+  addLog('> YOU transmit: ' + MOVES[humanMove]);
+  addLog('> FIREWALL counters: ' + MOVES[aiMove]);
+
+  if (humanMove === aiMove) {
+    addLog('[DRAW] Packets collide. No route established.');
+  } else if (BEATS[humanMove] === aiMove) {
+    humanScore++;
+    updateScoreBoard();
+    addLog('[WIN] Handshake accepted! Firewall packet dropped.', 'log-win');
+    if (humanScore >= WIN_TARGET) {
+      endDuel();
     }
-
-    function playRound(humanChoice) {
-      if (isGameOver) return;
-
-      const aiChoice = choices[Math.floor(Math.random() * choices.length)];
-      
-      printLogLine("You: " + humanChoice.toUpperCase() + " | AI: " + aiChoice.toUpperCase());
-
-      if (humanChoice === aiChoice) {
-        printLogLine("RESULT: Tie - Grid synchronized.", "color: #ffcc00;");
-      } else if (
-        (humanChoice === "rock" && aiChoice === "scissors") ||
-        (humanChoice === "paper" && aiChoice === "rock") ||
-        (humanChoice === "scissors" && aiChoice === "paper")
-      ) {
-        humanScore++;
-        humanScoreEl.innerText = humanScore;
-        const insult = winInsults[Math.floor(Math.random() * winInsults.length)];
-        printLogLine(insult, "log-win");
-      } else {
-        aiScore++;
-        aiScoreEl.innerText = aiScore;
-        const insult = loseInsults[Math.floor(Math.random() * loseInsults.length)];
-        printLogLine(insult, "log-lose");
-      }
-
-      checkMatchEnd();
+  } else {
+    aiScore++;
+    updateScoreBoard();
+    addLog('[ERROR] Packet rejected. Intrusion logged.', 'log-lose');
+    if (aiScore >= WIN_TARGET) {
+      humanScore = 0;
+      aiScore = 0;
+      updateScoreBoard();
+      addLog('[PURGE] Firewall wins the session and flushes all sockets. Protocol re-initialized...', 'log-lose');
     }
+  }
+}
 
-    function checkMatchEnd() {
-      if (humanScore >= 3) {
-        isGameOver = true;
-        interfaceBox.classList.add('hidden');
-        escapeLink.classList.remove('hidden');
-        printLogLine("🤖 AI: CRITICAL FAILURE... Security shield collapsed. Bypassing walls...", "log-win");
-      } else if (aiScore >= 3) {
-        printLogLine("🤖 AI: Match point. Re-indexing field... Try again.", "log-lose");
-        humanScore = 0;
-        aiScore = 0;
-        humanScoreEl.innerText = humanScore;
-        aiScoreEl.innerText = aiScore;
-      }
-    }
+// Falls der Log beim Laden schon gefüllt ist: direkt ans Ende springen
+logBox.scrollTop = logBox.scrollHeight;

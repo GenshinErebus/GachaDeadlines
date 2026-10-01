@@ -696,6 +696,15 @@ body.light-mode .gaming-icons-link:hover {
         padding: 0.5rem 1rem;
     }
 
+    #reportBtn {
+        position: fixed;
+        top: 0rm;
+        right: 5rem;
+        left: auto;
+        margin: 0;
+        z-index: 9999;
+    }
+
     /* Region selector */
     .region-selector {
         margin-top: 2px;
@@ -909,6 +918,14 @@ body.light-mode .gaming-icons-link:hover {
         width: 24px;
         height: 24px;
         z-index: 10002;
+    }
+        #reportBtn {
+        position: fixed;
+        top: 0rm;
+        right: 3.2rem;
+        left: auto;
+        margin: 0;
+        z-index: 9999;
     }
 }
 
