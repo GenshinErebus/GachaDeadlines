@@ -3,7 +3,11 @@ const historyContainer = document.getElementById('history');
 const terminalElement = document.getElementById('terminal');
 
 // Keep input field focused even if user clicks elsewhere on the page
-document.addEventListener('click', () => inputField.focus());
+document.addEventListener('click', (e) => {
+    if (e.target.id !== 'terminal-input') {
+        inputField.focus();
+    }
+});
 
 // Command history for arrow up/down navigation
 let commandHistory = [];

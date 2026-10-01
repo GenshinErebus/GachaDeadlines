@@ -74,7 +74,7 @@ const eventDatabase = {
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
-                endDate: "2026-10-01T03:00:00Z"
+                endDate: "2026-11-01T03:00:00Z"
             },
              {
                 id: "gi_010",
@@ -90,28 +90,33 @@ const eventDatabase = {
                 id: "gi_012",
                 name: "Stygian Onslaught",
                 endDate: "2026-11-03T03:00:00Z"
-            },                      
+            },
+                {
+                id: "gi_013",
+                name: "Rainbow's End: Resplendent Starlight",
+                endDate: "2026-10-19T03:00:00Z"
+            },                       
             // Trial
             {
-                id: "gi_012",
+                id: "gi_014",
                 name: "Test Run",
                 endDate: "2026-10-13T17:00:00Z"
             },
             // Banner
             {
-                id: "gi_013",
+                id: "gi_015",
                 name: "Character Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_014",
+                id: "gi_016",
                 name: "Character Event Wish-2",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_015",
+                id: "gi_017",
                 name: "Weapon Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
@@ -241,75 +246,74 @@ const eventDatabase = {
                 id: "zzz_002",
                 name: "Angels Support Operation",
                 endDate: "2026-11-30T03:00:00Z"
-            },
+            },            
             {
                 id: "zzz_003",
-                name: "The Final Callback",
-                endDate: "2026-10-01T03:00:00Z"
-            },
-            {
-                id: "zzz_004",
                 name: "Deadly Assault (Period)",
                 endDate: "2026-10-09T03:00:00Z"
             },
             {
-                id: "zzz_005",
+                id: "zzz_004",
                 name: "Potential Hypothesis: Reforged in Fire",
                 endDate: "2026-10-21T03:00:00Z"
             },
             {
-                id: "zzz_006",
+                id: "zzz_005",
                 name: "All-New Program",
                 endDate: "2026-10-20T03:00:00Z"
             },
             {
-                id: "zzz_007",
+                id: "zzz_006",
                 name: "Shadow Chase Showdown",
                 endDate: "2026-10-05T03:00:00Z"
             },
              {
-                id: "zzz_008",
+                id: "zzz_007",
                 name: "Suprise Screening Plan",
                 endDate: "2026-10-20T03:00:00Z"
             },   
              {
-                id: "zzz_009",
+                id: "zzz_008",
                 name: '"Eh Nah" Into Your Lap',
                 endDate: "2026-10-20T03:00:00Z"
             },          
             {
-                id: "zzz_010",
+                id: "zzz_009",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
             },
             {
-                id: "zzz_011",
+                id: "zzz_010",
                 name: "Diary of an Orbie Parent",
                 endDate: "2026-10-19T03:00:00Z"
+            },{
+                id: "zzz_011",
+                name: "The Final Callback",
+                endDate: "2026-10-21T03:00:00Z"
             },
             // Banner
             {
-                id: "zzz_015",
+                id: "zzz_012",
                 name: "Channel Exclusive",
-                endDate: "2026-10-01T03:00:00Z",
+                endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_016",
+                id: "zzz_013",
                 name: "Channel Exclusive 2",
-                endDate: "2026-10-01T03:00:00Z",
+                endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_018",
+                id: "zzz_014",
                 name: "Channel W-Engine",
-                endDate: "2026-10-01T03:00:00Z",
+                endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_019",
+                id: "zzz_015",
                 name: "Channel W-Engine 2",
-                endDate: "2026-10-01T03:00:00Z",
+                endDate: "2026-10-21T03:00:00Z",
                 banner: true
             }
         ]
@@ -334,11 +338,7 @@ const eventDatabase = {
                 name: "Trial of the Bow",
                 endDate: "2026-10-14T22:00:00Z"
             },
-            {
-                id: "ark_006",
-                name: "AIC Support: Chubby Lung Attacks",
-                endDate: "2026-09-30T21:00:00Z"
-            },
+            
              {
                 id: "ark_007",
                 name: "Purry Big Feline! RAWR!",
@@ -348,7 +348,7 @@ const eventDatabase = {
                 id: "ark_008",
                 name: "Echoing Bell of an Old City",
                 endDate: "2026-10-14T22:00:00Z"
-            },                      
+            } /* ,                      
             // Banner
             {
                 id: "ark_009",
@@ -361,7 +361,7 @@ const eventDatabase = {
                 name: "Military Grade Issue",
                 endDate: "2026-10-01T03:00:00Z",
                 banner: true
-            }
+            } */
         ]
     },
     duet: {

@@ -690,10 +690,9 @@ body.light-mode .gaming-icons-link:hover {
     /* Game selector */
     #gameSelect {
         max-width: calc(100% - 80px);
-        width: auto;
-        min-width: 16.25rem;
+        width: 14.3rem;
         margin-left: 0px;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         padding: 0.5rem 1rem;
     }
 
