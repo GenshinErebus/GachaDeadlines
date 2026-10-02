@@ -328,6 +328,21 @@ const eventDatabase = {
             }
         ],
         events: [
+             {
+                id: "ark_001",
+                name: "Ridgeline Flows of Autumn Sign-In",
+                endDate: "2026-10-14T22:00:00Z"
+            },
+            {
+                id: "ark_002",
+                name: "Runner's Steeplechase",
+                endDate: "2026-10-14T22:00:00Z"
+            },
+             {
+                id: "ark_003",
+                name: "OrbiPom! MERGE!",
+                endDate: "2026-10-14T22:00:00Z"
+            },
             {
                 id: "ark_004",
                 name: "A Winter Dream Fogged Deep in the Woods",
@@ -408,7 +423,12 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Through the Inferno",
                 endDate: "2026-10-19T16:00:00Z"
-            },            
+            },
+            {
+                id: "dna_008",
+                name: "Bountiful Day",
+                endDate: "2026-10-08T04:00:00Z"
+            },               
             {
                 id: "dna_009",
                 name: "Immersive Theatre",
@@ -418,6 +438,11 @@ const eventDatabase = {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
+            },
+            {
+                id: "dna_011",
+                name: "Treasured Remnants",
+                endDate: "2026-10-13T04:00:00Z"
             },
             {
                 id: "dna_012",
