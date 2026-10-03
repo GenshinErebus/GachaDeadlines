@@ -65,6 +65,73 @@ function FisherYatesShuffle(array) {
     return array;
 }
 
+// ========== HELP SYSTEM ==========
+const helpOverlay = document.createElement('div');
+helpOverlay.id = 'help-overlay';
+helpOverlay.className = 'hidden';
+helpOverlay.innerHTML = `
+  <div class="help-content">
+    <h2>📖 MANUAL: BINARY TO ASCII CONVERSION</h2>
+    <div class="help-body">
+<pre style="text-align:left;margin:0;white-space:pre-wrap;">
+===================================================================
+1. HOW TO READ BINARY (8-BIT BYTES)
+-------------------------------------------------------------------
+Each bit from right to left has a fixed decimal value (doubles each time).
+Only add up the values where you see a "1".
+
+[ 128 ] [ 64 ] [ 32 ] [ 16 ] [  8 ] [  4 ] [  2 ] [  1 ]
+
+   |      |      |      |      |      |      |      |
+   0      1      0      0      0      1      0      1  
+
+          |                           |             |
+         64    +                      4    +        1   =  [ 69 ]
+
+===================================================================
+2. ASCII REFERENCE TABLE (UPPERCASE)
+-------------------------------------------------------------------
+65 = A      71 = G      77 = M      83 = S      89 = Y
+66 = B      72 = H      78 = N      84 = T      90 = Z
+67 = C      73 = I      79 = O      85 = U
+68 = D      74 = J      80 = P      86 = V
+69 = E      75 = K      81 = Q      87 = W
+70 = F      76 = L      82 = R      88 = X
+===================================================================
+Press ESC or click outside to close
+</pre>
+    </div>
+  </div>
+`;
+document.body.appendChild(helpOverlay);
+
+function toggleHelp(show) {
+    if (show) {
+        helpOverlay.classList.remove('hidden');
+    } else {
+        helpOverlay.classList.add('hidden');
+    }
+}
+
+// F1 Key Listener
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F1') {
+        e.preventDefault();
+        toggleHelp(true);
+    }
+    if (e.key === 'Escape') {
+        toggleHelp(false);
+    }
+});
+
+// Click outside to close
+helpOverlay.addEventListener('click', (e) => {
+    if (e.target === helpOverlay) {
+        toggleHelp(false);
+    }
+});
+// ========== END HELP SYSTEM ==========
+
 // Initialize the code breaker round
 function initGameRound() {
     gameActive = true;
@@ -117,7 +184,7 @@ function verifyDecryption(selectedIndex) {
     } else {
         // Wrong answer
         statusMsg.innerHTML = `<span style='color: #ff3333;'>CIPHER_MISMATCH: Re-routing...</span>`;
-        setTimeout(() => {
+        setTimeout(() => () => {
             initGameRound();
         }, 1500);
     }

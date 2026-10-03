@@ -13,15 +13,17 @@
 
   <div class="terminal-box">
     <h1>🔐 DECRYPTION_KEY_REQUIRED (404)</h1>
+    <h2>⟳ F5 · 📱Pull → Another 404</h2>
     <p class="intro-text">Convert the binary bytes into letters to bypass the firewall.</p>
 
-    <!-- Visual area where the zeros and ones are printed -->
+    <!-- Visual area where the zeros and ones are displayed -->
     <div class="binary-stream" id="binary-display">00000000</div>
 
     <div class="status-panel" id="status-msg">Select the correct decryption cipher:</div>
 
     <!-- Interface area for interaction buttons -->
     <div class="btn-row" id="interface-box">
+      <button class="btn help-btn" id="help-trigger" onclick="toggleHelp(true)">❓ HELP (F1)</button>
       <button class="btn" id="choice-0" onclick="verifyDecryption(0)">---</button>
       <button class="btn" id="choice-1" onclick="verifyDecryption(1)">---</button>
       <button class="btn" id="choice-2" onclick="verifyDecryption(2)">---</button>

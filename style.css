@@ -702,6 +702,8 @@ body.light-mode .gaming-icons-link:hover {
         right: 5rem;
         left: auto;
         margin: 0;
+        width: 26px;
+        height: 26px;
         z-index: 9999;
     }
 
@@ -804,8 +806,8 @@ body.light-mode .gaming-icons-link:hover {
     }
 
     .terminal-clock-btn {
-        top: 0.3875rem;
-        left: 5px;
+        top: 0.8rem;
+        left:7px;
     }
 
     #disclaimer {
@@ -914,7 +916,7 @@ body.light-mode .gaming-icons-link:hover {
     }
         .nav-toggle {
         top: 0px;
-        left: 0px !important;
+        left: 0px;
         width: 24px;
         height: 24px;
         z-index: 10002;
@@ -922,10 +924,12 @@ body.light-mode .gaming-icons-link:hover {
         #reportBtn {
         position: fixed;
         top: 0rm;
-        right: 3.2rem;
+        right: 3.5rem;
         left: auto;
         margin: 0;
         z-index: 9999;
+        width: 20px;
+        height: 20px;
     }
 }
 
