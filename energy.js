@@ -20,8 +20,8 @@ const GAMES = {
   },
   arknights: {
     name: "Arknights Endfield",
-    maxEnergy: 240,
-    regenPerMinute: 1 / 6,
+    maxEnergy: 360,
+    regenPerMinute: 1 / 7.2,  //1 energy each 7min 12s
     storedKey: "energy_arknights"
   },
   neverness: {
@@ -84,35 +84,35 @@ class EnergyTracker {
 
   updateTimers() {
     const now = Date.now();
-    
+
     Object.keys(this.games).forEach(gameKey => {
       const timerElement = document.getElementById(`timer-${gameKey}`);
       if (!timerElement) return;
 
       const gameData = this.games[gameKey];
       const config = GAMES[gameKey];
-      
+
       if (!gameData || !config) return;
 
       const deficit = Math.max(0, config.maxEnergy - gameData.currentEnergy);
-      
+
       if (deficit <= 0) {
         timerElement.innerHTML = '<span class="full-energy-text">Fully Charged!</span>';
         return;
       }
-      
+
       const elapsedMinutes = (now - gameData.lastUpdate) / 60000;
       const elapsedPoints = elapsedMinutes * config.regenPerMinute;
       const effectiveDeficit = Math.max(0, deficit - elapsedPoints);
-      
+
       if (effectiveDeficit <= 0) {
         timerElement.innerHTML = '<span class="full-energy-text">Fully Charged!</span>';
         return;
       }
-      
+
       const minutesNeeded = effectiveDeficit / config.regenPerMinute;
       const millisecondsNeeded = minutesNeeded * 60 * 1000;
-      
+
       timerElement.innerHTML = `<span>${this.formatTime(millisecondsNeeded)}</span>`;
     });
   }
@@ -127,19 +127,19 @@ class EnergyTracker {
   updateEnergy(gameKey, value) {
     const game = GAMES[gameKey];
     let current = parseInt(value, 10);
-    
+
     if (isNaN(current) || !Number.isFinite(current)) {
       alert('Please enter a valid number');
       return;
     }
-    
+
     current = Math.min(Math.max(0, current), game.maxEnergy);
-    
+
     this.games[gameKey] = {
       currentEnergy: current,
       lastUpdate: Date.now()
     };
-    
+
     this.save(gameKey);
     this.render();
   }
@@ -148,16 +148,16 @@ class EnergyTracker {
     if (!ms || ms <= 0 || isNaN(ms) || !Number.isFinite(ms)) {
       return "Fully Charged!";
     }
-    
+
     const totalSeconds = Math.ceil(ms / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-    
+
     const paddedHours = String(hours).padStart(2, '0');
     const paddedMinutes = String(minutes).padStart(2, '0');
     const paddedSeconds = String(seconds).padStart(2, '0');
-    
+
     return `~${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
   }
 
@@ -167,16 +167,16 @@ class EnergyTracker {
 
     Object.entries(GAMES).forEach(([key, config]) => {
       const gameData = this.games[key];
-      
+
       if (!gameData || !config) return;
-      
+
       const deficit = Math.max(0, config.maxEnergy - gameData.currentEnergy);
       const isFull = deficit <= 0;
       const regenerationMinutes = Math.round(1 / config.regenPerMinute);
-      
+
       const card = document.createElement("div");
       card.className = "game-card";
-      
+
       card.innerHTML = `
         <div class="game-title">${config.name}</div>
         
@@ -212,7 +212,7 @@ class EnergyTracker {
           ${gameData.currentEnergy} / ${config.maxEnergy}
         </div>
       `;
-      
+
       grid.appendChild(card);
     });
   }
