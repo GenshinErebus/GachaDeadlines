@@ -1,166 +1,311 @@
-       body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h1 {
-            color: #ffffff;
-            margin-top: 0px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            font-size: 38px;
-        }
+/* =========================================
+   TASK TRACKER STYLES
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        h2.section-title {
-            color: #ffffff;
-            font-size: 28px;
-            margin: 40px 0 5px 0;
-            width: 100%;
-            max-width: 100%;
-            text-align: center;
-        }
+h1 {
+    color: #ffffff;
+    margin-top: 0px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 38px;
+}
 
-        .reset-info {
-            color: #909090;
-            font-size: 14px;
-            margin: 0 0 15px 0;
-            width: 100%;
-            text-align: left;
-        }
+h2.section-title {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 40px 0 5px 0;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 100%;
-            width: 100%;
-        }
+.reset-info {
+    color: #909090;
+    font-size: 14px;
+    margin: 0 0 15px 0;
+    width: 100%;
+    text-align: left;
+}
 
-        .game-card {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            border: 1px solid #2d2d2d;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+    width: 100%;
+}
 
-        .game-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
+.game-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2d2d2d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
-        .weekly-card {
-            border: 1px solid #4c3a8f;
-        }
+.game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
 
-        .game-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 0 0 15px 0;
-            color: #ffffff;
-        }
+.weekly-card {
+    border: 1px solid #4c3a8f;
+}
 
-        .status {
-            font-size: 20px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
+.game-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: #ffffff;
+}
 
-        .not-checked {
-            background-color: #3d1d1d;
-            color: #ff8787;
-        }
+.status {
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
 
-        .checked {
-            background-color: #1b3322;
-            color: #81e694;
-        }
+.not-checked {
+    background-color: #3d1d1d;
+    color: #ff8787;
+}
 
-        button {
-            background-color: #3b5bdb;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 22px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-            width: 100%;
-        }
+.checked {
+    background-color: #1b3322;
+    color: #81e694;
+}
 
-        button:hover {
-            background-color: #4c6ef5;
-        }
+button {
+    background-color: #3b5bdb;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    width: 100%;
+}
 
-        button:disabled {
-            background-color: #2d2d2d;
-            color: #707070;
-            cursor: not-allowed;
-            border: 1px solid #3d3d3d;
-        }
+button:hover {
+    background-color: #4c6ef5;
+}
 
-        .back {
-            display: inline-block;
-            padding: 10px 10px;
-            background-color: transparent;
-            color: var(--text-main);
-            border: 2px solid var(--text-main);
-            border-radius: 0;
-            text-decoration: none;
-            font-family: "Courier New", Courier, monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-left: 30px;
-            transition: background-color 0.2s, color 0.2s;
-            font-size: 50px;
-        }
+button:disabled {
+    background-color: #2d2d2d;
+    color: #707070;
+    cursor: not-allowed;
+    border: 1px solid #3d3d3d;
+}
 
-        .back:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
+.back {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    border-radius: 0;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-left: 30px;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 50px;
+}
 
-        @media (max-width: 768px) {
-            .game-title {
-                font-size: 12px;
-            }
+.back:hover {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+}
 
-            button {
-                font-size: 11px;
-            }
+/* =========================================
+   ENERGY TRACKER STYLES
+   ========================================= */
+.energy-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100%;
+    width: 100%;
+}
 
-            .status {
-                font-size: 10px;
-            }
+/* Using .energy-card to avoid conflict with .game-card */
+.energy-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #2a2a2a;
+    flex: 1 1 calc(14.28% - 20px);
+    min-width: 220px;
+}
 
-            h1 {
-                font-size: 19px;
-            }
+.energy-card .energy-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #fff;
+}
 
-            .back {
-                font-size: 25px;
-            }
+.energy-input-group {
+    margin-bottom: 15px;
+}
 
-            h2.section-title {
-                font-size: 14px;
-            }
+.energy-input-group label {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+    display: block;
+}
 
-            .reset-info {
-                font-size: 7px;
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2a2a2a;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
 
-            }
-        }
+input[type="number"]:focus {
+    outline: 2px solid #5b5bf5;
+}
+
+.timer-display {
+    background: #2a2a2a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.timer-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.full-energy-text {
+    color: #4ade80;
+}
+
+.timer-label {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #2a2a2a;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4ade80;
+    transition: width 0.3s ease;
+}
+
+.btn-update {
+    width: 100%;
+    padding: 12px;
+    background: #5b5bf5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+.btn-update:hover {
+    background: #4a4ae0;
+}
+
+.energy-count {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 11px;
+    }
+
+    .status {
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 19px;
+    }
+
+    .back {
+        font-size: 25px;
+    }
+
+    h2.section-title {
+        font-size: 14px;
+    }
+
+    .reset-info {
+        font-size: 7px;
+    }
+
+    /* Energy tracker responsive */
+    .energy-card {
+        flex: 1 1 100%;
+    }
+
+    .energy-card .energy-title {
+        font-size: 1.1rem;
+    }
+
+    .btn-update {
+        font-size: 1rem;
+    }
+}
