@@ -87,6 +87,9 @@ class EnergyTracker {
 
     Object.keys(this.games).forEach(gameKey => {
       const timerElement = document.getElementById(`timer-${gameKey}`);
+      const countElement = document.getElementById(`count-${gameKey}`);
+      const progressElement = document.getElementById(`progress-${gameKey}`);
+      
       if (!timerElement) return;
 
       const gameData = this.games[gameKey];
@@ -94,23 +97,43 @@ class EnergyTracker {
 
       if (!gameData || !config) return;
 
-      const deficit = Math.max(0, config.maxEnergy - gameData.currentEnergy);
-
-      if (deficit <= 0) {
-        timerElement.innerHTML = '<span class="full-energy-text">Fully Charged!</span>';
-        return;
-      }
-
+      // Effektive Energie = gespeicherter Wert + seitdem regenerierte Punkte
       const elapsedMinutes = (now - gameData.lastUpdate) / 60000;
-      const elapsedPoints = elapsedMinutes * config.regenPerMinute;
-      const effectiveDeficit = Math.max(0, deficit - elapsedPoints);
+      const regenerated = elapsedMinutes * config.regenPerMinute;
+      const effectiveEnergy = Math.min(config.maxEnergy,
+        gameData.currentEnergy + regenerated);
 
-      if (effectiveDeficit <= 0) {
+      // Zähler live hochzählen (abgerundet)
+      if (countElement) {
+        countElement.textContent = `${Math.floor(effectiveEnergy)} / ${config.maxEnergy}`;
+      }
+      
+      // Fortschrittsbalken aktualisieren
+      if (progressElement) {
+        progressElement.style.width =
+          `${Math.min(100, (effectiveEnergy / config.maxEnergy) * 100)}%`;
+      }
+
+      if (effectiveEnergy >= config.maxEnergy) {
         timerElement.innerHTML = '<span class="full-energy-text">Fully Charged!</span>';
+        
+        // Timer Label anpassen
+        const timerLabel = timerElement.nextElementSibling;
+        if (timerLabel && timerLabel.classList.contains('timer-label')) {
+          timerLabel.textContent = '';
+        }
+        
         return;
       }
 
-      const minutesNeeded = effectiveDeficit / config.regenPerMinute;
+      // Setze Text für Timer Label wieder wenn nicht voll
+      const timerLabel = timerElement.nextElementSibling;
+      if (timerLabel && timerLabel.classList.contains('timer-label')) {
+        timerLabel.textContent = 'Until Full Energy';
+      }
+
+      const deficit = config.maxEnergy - effectiveEnergy;
+      const minutesNeeded = deficit / config.regenPerMinute;
       const millisecondsNeeded = minutesNeeded * 60 * 1000;
 
       timerElement.innerHTML = `<span>${this.formatTime(millisecondsNeeded)}</span>`;
@@ -208,7 +231,7 @@ class EnergyTracker {
           <div class="progress-fill" id="progress-${key}" style="width: ${Math.min(100, Math.max(0, (gameData.currentEnergy / config.maxEnergy) * 100))}%"></div>
         </div>
         
-        <div class="energy-count">
+        <div class="energy-count" id="count-${key}">
           ${gameData.currentEnergy} / ${config.maxEnergy}
         </div>
       `;
