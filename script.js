@@ -161,12 +161,12 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Apocalyptic Shadow (Period)",
-                endDate: "2026-10-05T03:00:00Z"
+                endDate: "2026-11-16T03:00:00Z"
             },
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-10-05T03:00:00Z"
+                endDate: "2026-10-12T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -181,7 +181,7 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-10-05T03:00:00Z"
+                endDate: "2026-10-12T03:00:00Z"
             },  
             {
                 id: "hsr_011",
@@ -261,12 +261,7 @@ const eventDatabase = {
                 id: "zzz_005",
                 name: "All-New Program",
                 endDate: "2026-10-20T03:00:00Z"
-            },
-            {
-                id: "zzz_006",
-                name: "Shadow Chase Showdown",
-                endDate: "2026-10-05T03:00:00Z"
-            },
+            },            
              {
                 id: "zzz_007",
                 name: "Suprise Screening Plan",

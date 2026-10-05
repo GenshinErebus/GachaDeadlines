@@ -48,12 +48,24 @@
         '404-wordle.html'
     ];
 
-    // Fisher-Yates shuffle - guaranteed true randomness
-    function shuffle(array) {
+    // Cryptographically secure random integer generator (0 to max - 1)
+    function secureRandomInt(max) {
+        if (window.crypto && window.crypto.getRandomValues) {
+            const array = new Uint32Array(1);
+            window.crypto.getRandomValues(array);
+            return array[0] % max;
+        } else {
+            console.warn('⚠️ Crypto API not available, falling back to Math.random()');
+            return Math.floor(Math.random() * max);
+        }
+    }
+
+    // Fisher-Yates shuffle with cryptographically secure randomness
+    function secureShuffle(array) {
         var arr = array.slice();
         var n = arr.length;
         while (n > 1) {
-            var k = Math.floor(Math.random() * n);
+            var k = secureRandomInt(n);
             n--;
             var tmp = arr[n];
             arr[n] = arr[k];
@@ -62,45 +74,109 @@
         return arr;
     }
 
-    // Load the first game in our shuffled list
-    function loadGame(index) {
-        if (!index) index = 0;
-        
-        var gameFile = games[index];
-        console.log('🎲 Trying:', gameFile);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', gameFile + '?' + new Date().getTime(), false);
-        xhr.setRequestHeader('Cache-Control', 'no-cache');
-        
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200 && xhr.responseText.length > 500) {
-                    console.log('✅ LOADED:', gameFile);
-                    document.write(xhr.responseText);
-                    document.close();
-                } else {
-                    console.warn('❌ Failed:', gameFile, 'Status:', xhr.status);
-                    // Try next random game
-                    var shuffled = shuffle(games);
-                    var nextIdx = Math.floor(Math.random() * games.length);
-                    loadGame(nextIdx);
-                }
-            }
-        };
-        
-        xhr.send();
+    // Get games seen in recent visits (localStorage persists across sessions)
+    function getRecentlySeen() {
+        try {
+            var data = localStorage.getItem('404_seen_games_history');
+            return data ? JSON.parse(data) : [];
+        } catch(e) {
+            return [];
+        }
     }
 
-    // Clear localStorage to prevent cached selection
-    try { localStorage.removeItem('last_404_game'); } catch(e) {}
+    // Mark current game as seen, keep only last 5 unique entries
+    function markAsSeen(gameFile) {
+        try {
+            var seen = getRecentlySeen();
+            seen = seen.filter(function(g) { return g !== gameFile; });
+            seen.push(gameFile);
+            if (seen.length > 5) {
+                seen = seen.slice(seen.length - 5);
+            }
+            localStorage.setItem('404_seen_games_history', JSON.stringify(seen));
+            console.log('📝 Updated seen games:', seen);
+        } catch(e) {
+            // Storage quota exceeded or disabled
+        }
+    }
 
-    // Start with a random game
-    var shuffled = shuffle(games);
-    var randomStart = Math.floor(Math.random() * shuffled.length);
-    
-    console.log('🎯 Starting with:', shuffled[randomStart]);
-    loadGame(randomStart);
+    // Load a game with robust failover mechanism
+    function loadGame(initialIndex) {
+        var index = initialIndex || 0;
+        var gameFile = games[index];
+        var attemptCount = 0;
+        var MAX_ATTEMPTS = Math.min(games.length, 8);
+        var recentlySeen = getRecentlySeen();
+        
+        console.log('🎯 Games recently seen:', recentlySeen.length > 0 ? recentlySeen.length : 'none');
+
+        function tryNextAttempt() {
+            if (attemptCount >= MAX_ATTEMPTS) {
+                console.error('⚠️ All', MAX_ATTEMPTS, 'attempts failed.');
+                document.body.innerHTML = '<div style="text-align:center"><h1>404</h1><p>No games available right now.</p></div>';
+                return;
+            }
+            
+            // Prefer games NOT in recently seen list
+            var candidates = games.filter(function(g) { 
+                return recentlySeen.indexOf(g) === -1; 
+            });
+            
+            if (candidates.length > 0) {
+                // Pick from unseen games
+                index = secureRandomInt(candidates.length);
+                gameFile = candidates[index];
+            } else {
+                // Fallback: all games if too many recent visits
+                index = secureRandomInt(games.length);
+                gameFile = games[index];
+            }
+            
+            attemptCount++;
+            console.log('🔄 Attempt', attemptCount, '/ ' + MAX_ATTEMPTS + ':', gameFile);
+
+            var xhr = new XMLHttpRequest();
+            var timestamp = Date.now();
+            
+            xhr.open('GET', gameFile + '?_=' + timestamp, true);
+            xhr.setRequestHeader('Cache-Control', 'no-cache');
+            xhr.timeout = 5000;
+
+            xhr.onload = function() {
+                if (xhr.status === 200 && xhr.responseText.length > 500) {
+                    console.log('✅ SUCCESSFULLY LOADED:', gameFile);
+                    document.write(xhr.responseText);
+                    document.close();
+                    markAsSeen(gameFile); // Remember this was shown
+                } else {
+                    console.warn('❌ Failed:', gameFile, '- Status:', xhr.status);
+                    tryNextAttempt();
+                }
+            };
+
+            xhr.onerror = function() {
+                console.warn('⚡ Network error:', gameFile);
+                tryNextAttempt();
+            };
+
+            xhr.ontimeout = function() {
+                console.warn('⏱️ Timeout:', gameFile);
+                tryNextAttempt();
+            };
+
+            xhr.send();
+        }
+
+        // Start with truly randomized game
+        var shuffledGames = secureShuffle(games);
+        var randomStartIndex = secureRandomInt(shuffledGames.length);
+        
+        console.log('🎲 Shuffle starting at index:', randomStartIndex);
+        tryNextAttempt();
+    }
+
+    // Initialize the game loader
+    loadGame();
 })();
 </script>
 </body>

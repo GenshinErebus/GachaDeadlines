@@ -23,7 +23,7 @@ body {
 
 h1 {
     color: #ffffff;
-    margin-top: 0px;
+    margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 38px;
 }
@@ -31,18 +31,10 @@ h1 {
 h2.section-title {
     color: #ffffff;
     font-size: 28px;
-    margin: 40px 0 5px 0;
+    margin: 10px 0 15px 0;
     width: 100%;
     max-width: 100%;
     text-align: center;
-}
-
-.reset-info {
-    color: #909090;
-    font-size: 14px;
-    margin: 0 0 15px 0;
-    width: 100%;
-    text-align: left;
 }
 
 .games-grid {
@@ -290,10 +282,6 @@ input[type="number"]:focus {
 
     h2.section-title {
         font-size: 14px;
-    }
-
-    .reset-info {
-        font-size: 7px;
     }
 
     /* Energy tracker responsive */

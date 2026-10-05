@@ -131,7 +131,7 @@ h3 {
     color: var(--matrix-light-green);
     text-transform: uppercase;
     letter-spacing: 0.125rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1 rem;
     position: relative;
     text-shadow:
         0 0 10px rgba(0, 255, 0, 0.5),
