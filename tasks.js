@@ -136,9 +136,7 @@ function doCheckIn(name, type) {
 // PART 2: ENERGY TRACKER
 // ============================================================
 
-/**
- * Game Configuration with Energy Regeneration Rates
- */
+/**  Game Configuration with Energy Regeneration Rates  */
 const ENERGY_GAMES = {
     genshin: {
         name: "Genshin Impact",

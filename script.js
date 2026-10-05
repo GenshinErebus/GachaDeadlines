@@ -348,6 +348,11 @@ const eventDatabase = {
                 name: "Trial of the Bow",
                 endDate: "2026-10-14T22:00:00Z"
             },
+            {
+                id: "ark_006",
+                name: "Monumental Etching: Shadow Marked",
+                endDate: "2026-10-19T09:00:00Z"
+            },
             
              {
                 id: "ark_007",
@@ -518,7 +523,12 @@ const eventDatabase = {
                 id: "nte_009",
                 name: "Daydream Perks",
                 endDate: "2026-10-20T22:00:00Z"
-            },    
+            },
+            {
+                id: "nte_010",
+                name: "Stamina Recharge",
+                endDate: "2026-10-19T03:00:00Z"
+            },       
             // Trial
             {
                 id: "nte_011",
