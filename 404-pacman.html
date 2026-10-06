@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Lost in the Maze</title>
+  <link rel="stylesheet" href="404-pacman.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header-text">
+      <div>⚠️ [PATH_NOT_FOUND] YOU GOT LOST IN THE MAZE</div>
+      <div>Eat dots to find your way out and recover lost data packets.</div>
+    </div>
+
+    <div class="score-board">
+      SCORE: <span id="current-score">0</span> | 
+      HIGHSCORE: <span id="highscore">0</span><br>
+      LEVEL: <span id="level">1</span>
+    </div>
+
+    <canvas id="pacmanCanvas" width="400" height="400"></canvas>
+
+    <div class="controls-container">
+      <button class="ctrl-btn" id="up-btn">▲</button>
+      <div class="ctrl-row">
+        <button class="ctrl-btn" id="left-btn">◀</button>
+        <button class="ctrl-btn" id="down-btn">▼</button>
+        <button class="ctrl-btn" id="right-btn">▶</button>
+      </div>
+    </div>
+
+    <div class="button-area">
+      <button class="btn hidden" id="restart-btn" onclick="resetGame()">RESTART SYSTEM</button>
+      <a href="/" class="btn hidden" id="home-btn">🏠 RETURN TO HOMEPAGE</a>
+    </div>
+  </div>
+  <script src="404-pacman.js"></script>
+</body>
+</html>

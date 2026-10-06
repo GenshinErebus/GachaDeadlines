@@ -261,7 +261,12 @@ const eventDatabase = {
                 id: "zzz_005",
                 name: "All-New Program",
                 endDate: "2026-10-20T03:00:00Z"
-            },            
+            },
+            {
+                id: "zzz_006",
+                name: "Chronicles of the Hobbling Crow",
+                endDate: "2026-10-19T03:00:00Z"
+            },              
              {
                 id: "zzz_007",
                 name: "Suprise Screening Plan",
@@ -340,7 +345,7 @@ const eventDatabase = {
             },
             {
                 id: "ark_004",
-                name: "A Winter Dream Fogged Deep in the Woods",
+                name: "A Winter Dream Fogged Deep in the Woods",    
                 endDate: "2026-10-14T22:00:00Z"
             },
             {
@@ -621,8 +626,14 @@ const eventDatabase = {
             },
             {
                 id: "rev_020",
-                name: "Rerun Banner",
-                endDate: "2026-10-06T10:00:00Z",
+                name: "Yearning of the Water",
+                endDate: "2026-10-15T05:00:00Z",
+                banner: true
+            },
+            {
+                id: "rev_021",
+                name: "Witness of Iron and Blood",
+                endDate: "2026-10-20T10:00:00Z",
                 banner: true
             }
         ]
