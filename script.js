@@ -95,28 +95,38 @@ const eventDatabase = {
                 id: "gi_013",
                 name: "Rainbow's End: Resplendent Starlight",
                 endDate: "2026-10-19T03:00:00Z"
-            },                       
+            },
+               {
+                id: "gi_014",
+                name: "Participate in Starlit Gala",
+                endDate: "2026-10-21T03:00:00Z"
+            },  
+            {
+                id: "gi_015",
+                name: "Starlit Gala: Wonderland Selects",
+                endDate: "2026-10-21T03:00:00Z"
+            },                                     
             // Trial
             {
-                id: "gi_014",
+                id: "gi_016",
                 name: "Test Run",
                 endDate: "2026-10-13T17:00:00Z"
             },
             // Banner
             {
-                id: "gi_015",
+                id: "gi_017",
                 name: "Character Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_016",
+                id: "gi_018",
                 name: "Character Event Wish-2",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_017",
+                id: "gi_019",
                 name: "Weapon Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
@@ -458,7 +468,12 @@ const eventDatabase = {
                 id: "dna_013",
                 name: "Starry Gleanings I",
                 endDate: "2026-10-12T04:00:00Z"
-            },            
+            },
+            {
+                id: "dna_014",
+                name: "Phoxhunter Summit",
+                endDate: "2026-10-24T04:00:00Z"
+            },                     
             // Banner 
             {
                 id: "dna_015",
@@ -492,7 +507,7 @@ const eventDatabase = {
             {
                 id: "nte_002",
                 name: "Beyond the Rails (Period)",
-                endDate: "2026-10-07T21:00:00Z"
+                endDate: "2026-10-21T21:00:00Z"
             },
             {
                 id: "nte_003",
