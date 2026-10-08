@@ -438,12 +438,7 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Through the Inferno",
                 endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_008",
-                name: "Bountiful Day",
-                endDate: "2026-10-08T04:00:00Z"
-            },               
+            },            
             {
                 id: "dna_009",
                 name: "Immersive Theatre",
@@ -548,7 +543,12 @@ const eventDatabase = {
                 id: "nte_010",
                 name: "Stamina Recharge",
                 endDate: "2026-10-19T03:00:00Z"
-            },       
+            },
+            {
+                id: "nte_011",
+                name: "Coal Lump's Treasure",
+                endDate: "2026-11-10T22:00:00Z"
+            },            
             // Trial
             {
                 id: "nte_011",
