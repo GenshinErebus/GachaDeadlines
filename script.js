@@ -466,8 +466,8 @@ const eventDatabase = {
             },
             {
                 id: "dna_014",
-                name: "Phoxhunter Summit",
-                endDate: "2026-10-24T04:00:00Z"
+                name: "Phoxhunter Summit Group Stage B",
+                endDate: "2026-10-09T23:00:00Z"
             },                     
             // Banner 
             {
@@ -620,12 +620,7 @@ const eventDatabase = {
                 id: "rev_007",
                 name: "Focused Flashback",
                 endDate: "2026-11-05T10:00:00Z"
-            },    
-            {
-                id: "rev_008",
-                name: "Fluffs, Shells and Waves",
-                endDate: "2026-10-08T10:00:00Z"
-            },            
+            },                        
             // Banner           
             {
                 id: "rev_017",
