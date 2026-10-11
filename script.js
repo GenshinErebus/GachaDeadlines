@@ -105,28 +105,33 @@ const eventDatabase = {
                 id: "gi_015",
                 name: "Starlit Gala: Wonderland Selects",
                 endDate: "2026-10-21T03:00:00Z"
-            },                                     
-            // Trial
+            },
             {
                 id: "gi_016",
+                name: "Heated Battle Mode: Automatic Artistry",
+                endDate: "2026-10-26T03:00:00Z"
+            },                                          
+            // Trial
+            {
+                id: "gi_017",
                 name: "Test Run",
                 endDate: "2026-10-13T17:00:00Z"
             },
             // Banner
             {
-                id: "gi_017",
+                id: "gi_018",
                 name: "Character Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_018",
+                id: "gi_019",
                 name: "Character Event Wish-2",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
             },
             {
-                id: "gi_019",
+                id: "gi_020",
                 name: "Weapon Event Wish",
                 endDate: "2026-10-13T17:00:00Z",
                 banner: true
@@ -466,8 +471,8 @@ const eventDatabase = {
             },
             {
                 id: "dna_014",
-                name: "Phoxhunter Summit Group Stage B",
-                endDate: "2026-10-09T23:00:00Z"
+                name: "Phoxhunter Summit Apex Rankings",
+                endDate: "2026-10-16T23:00:00Z"
             },                     
             // Banner 
             {
