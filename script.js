@@ -83,8 +83,8 @@ const eventDatabase = {
             },    
             {
                 id: "gi_011",
-                name: "Silverwing in Pursuit of the Moon",
-                endDate: "2026-10-12T03:00:00Z"
+                name: "Predictive Victory Dynamics",
+                endDate: "2026-10-20T02:00:00Z"
             },
             {
                 id: "gi_012",
@@ -181,7 +181,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-10-12T03:00:00Z"
+                endDate: "2026-10-19T03:00:00Z" 
             },
             {
                 id: "hsr_008",
@@ -196,7 +196,7 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-10-12T03:00:00Z"
+                endDate: "2026-10-19T03:00:00Z"
             },  
             {
                 id: "hsr_011",
@@ -207,7 +207,12 @@ const eventDatabase = {
                 id: "hsr_012",
                 name: "Astral Imagea Park",
                 endDate: "2026-11-10T20:00:00Z"
-            },              
+            }, 
+             {
+                id: "hsr_013",
+                name: "Planar Fissure",
+                endDate: "2026-10-25T03:00:00Z"
+            },                   
             // Trials
             {
                 id: "hsr_014",
@@ -463,12 +468,7 @@ const eventDatabase = {
                 id: "dna_012",
                 name: "Paradise's 22nd White Bunny",
                 endDate: "2026-10-14T04:00:00Z"
-            },
-             {
-                id: "dna_013",
-                name: "Starry Gleanings I",
-                endDate: "2026-10-12T04:00:00Z"
-            },
+            },            
             {
                 id: "dna_014",
                 name: "Phoxhunter Summit Apex Rankings",
@@ -595,12 +595,7 @@ const eventDatabase = {
                 id: "rev_001",
                 name: "The Temporal Scale",
                 endDate: "2026-11-02T10:00:00Z"
-            },
-            {
-                id: "rev_002",
-                name: "The Year Bkornblume Talks About",
-                endDate: "2026-10-12T10:00:00Z"
-            },             
+            },                 
             {
                 id: "rev_003",
                 name: "A Fledgling's Brave Fall",
@@ -696,52 +691,57 @@ const eventDatabase = {
             {
                 id: "wuwa_007",
                 name: "Hazard Revisited (Period)",
-                endDate: "2026-10-12T03:00:00Z"
+                endDate: "2026-11-09T03:00:00Z"
             },
             {
                 id: "wuwa_008",
                 name: "Back to Solaris",
                 endDate: "2026-11-11T16:00:00Z"
             },
+             {
+                id: "wuwa_009",
+                name: "Artisan's Search",
+                endDate: "2026-10-26T03:00:00Z"
+            },
             // Trial                    
             {
-                id: "wuwa_009",
+                id: "wuwa_010",
                 name: "Acendant Aces",
                 endDate: "2026-10-22T09:00:00Z"
             },           
             // Banner
             {
-                id: "wuwa_015",
+                id: "wuwa_011",
                 name: "Featured Resonator Convene",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_016",
+                id: "wuwa_012",
                 name: "Featured Resonator Convene Rerun",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_017",
+                id: "wuwa_013",
                 name: "Featured Resonator Convene Rerun 2",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_018",
+                id: "wuwa_014",
                 name: "Featured Weapon Convene",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_019",
+                id: "wuwa_015",
                 name: "Featured Weapon Convene Rerun",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_020",
+                id: "wuwa_016",
                 name: "Featured Weapon Convene Rerun 2",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
