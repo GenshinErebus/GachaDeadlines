@@ -306,32 +306,38 @@ const eventDatabase = {
                 id: "zzz_010",
                 name: "Diary of an Orbie Parent",
                 endDate: "2026-10-19T03:00:00Z"
-            },{
+            },
+            {
                 id: "zzz_011",
                 name: "The Final Callback",
                 endDate: "2026-10-21T03:00:00Z"
             },
+             {
+                id: "zzz_012",
+                name: "Data Bounty: Combat Simulation",
+                endDate: "2026-10-19T03:00:00Z"
+            },
             // Banner
             {
-                id: "zzz_012",
+                id: "zzz_013",
                 name: "Channel Exclusive",
                 endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_013",
+                id: "zzz_014",
                 name: "Channel Exclusive 2",
                 endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_014",
+                id: "zzz_015",
                 name: "Channel W-Engine",
                 endDate: "2026-10-21T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_015",
+                id: "zzz_016",
                 name: "Channel W-Engine 2",
                 endDate: "2026-10-21T03:00:00Z",
                 banner: true
@@ -458,12 +464,7 @@ const eventDatabase = {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
-            },            
-            {
-                id: "dna_012",
-                name: "Paradise's 22nd White Bunny",
-                endDate: "2026-10-14T04:00:00Z"
-            },            
+            },                 
             {
                 id: "dna_014",
                 name: "Phoxhunter Summit Apex Rankings",
