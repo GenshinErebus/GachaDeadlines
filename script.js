@@ -356,58 +356,48 @@ const eventDatabase = {
         events: [
              {
                 id: "ark_001",
-                name: "Ridgeline Flows of Autumn Sign-In",
-                endDate: "2026-10-14T22:00:00Z"
+                name: "Spirit's Restoration Sign-In",
+                endDate: "2026-11-05T17:00:00Z"
             },
             {
                 id: "ark_002",
-                name: "Runner's Steeplechase",
-                endDate: "2026-10-14T22:00:00Z"
+                name: "All the Inky Hues",
+                endDate: "2026-11-05T17:00:00Z"
             },
              {
                 id: "ark_003",
-                name: "OrbiPom! MERGE!",
-                endDate: "2026-10-14T22:00:00Z"
+                name: "Yuanyuan's Blazing Stoves",
+                endDate: "2026-11-25T22:00:00Z"
             },
             {
                 id: "ark_004",
-                name: "A Winter Dream Fogged Deep in the Woods",    
-                endDate: "2026-10-14T22:00:00Z"
+                name: "Echoes of War",    
+                endDate: "2026-11-05T17:00:00Z"
             },
             {
                 id: "ark_005",
-                name: "Trial of the Bow",
-                endDate: "2026-10-14T22:00:00Z"
+                name: "Combat Drills",
+                endDate: "2026-11-05T17:00:00Z"
             },
             {
                 id: "ark_006",
                 name: "Monumental Etching: Shadow Marked",
                 endDate: "2026-10-19T09:00:00Z"
             },
-            
-             {
-                id: "ark_007",
-                name: "Purry Big Feline! RAWR!",
-                endDate: "2026-10-14T22:00:00Z"
-            },
-             {
-                id: "ark_008",
-                name: "Echoing Bell of an Old City",
-                endDate: "2026-10-14T22:00:00Z"
-            } /* ,                      
+                      
             // Banner
             {
                 id: "ark_009",
-                name: "WINTER HUNT",
-                endDate: "2026-10-01T03:00:00Z",
+                name: "Rejuvenation",
+                endDate: "2026-11-05T03:00:00Z",
                 banner: true
             },
             {
                 id: "ark_010",
-                name: "Military Grade Issue",
-                endDate: "2026-10-01T03:00:00Z",
+                name: "Beddazled Issue",
+                endDate: "2026-11-05T03:00:00Z",
                 banner: true
-            } */
+            } 
         ]
     },
     duet: {
@@ -591,11 +581,16 @@ const eventDatabase = {
                 id: "rev_001",
                 name: "The Temporal Scale",
                 endDate: "2026-11-02T10:00:00Z"
+            },
+             {
+                id: "rev_002",
+                name: "See you in the New World",
+                endDate: "2026-11-05T10:00:00Z"
             },                 
             {
                 id: "rev_003",
-                name: "A Fledgling's Brave Fall",
-                endDate: "2026-10-15T10:00:00Z"
+                name: "Friendly Match",
+                endDate: "2026-11-05T10:00:00Z"
             },
             {
                 id: "rev_004",
@@ -621,7 +616,7 @@ const eventDatabase = {
             {
                 id: "rev_017",
                 name: "Event Banner",
-                endDate: "2026-10-15T10:00:00Z",
+                endDate: "2026-11-05T10:00:00Z",
                 banner: true
             },            
             {
@@ -629,13 +624,7 @@ const eventDatabase = {
                 name: "Ripples on the Water",
                 endDate: "2026-11-05T10:00:00Z",
                 banner: true
-            },
-            {
-                id: "rev_020",
-                name: "Yearning of the Water",
-                endDate: "2026-10-15T05:00:00Z",
-                banner: true
-            },
+            },       
             {
                 id: "rev_021",
                 name: "Witness of Iron and Blood",
@@ -699,45 +688,55 @@ const eventDatabase = {
                 name: "Artisan's Search",
                 endDate: "2026-10-26T03:00:00Z"
             },
+             {
+                id: "wuwa_010",
+                name: "Bountiful Crescendo",
+                endDate: "2026-10-22T03:00:00Z"
+            },
+            {
+                id: "wuwa_011",
+                name: "Waking Moon Fishing",
+                endDate: "2026-11-01T02:00:00Z"
+            },
             // Trial                    
             {
-                id: "wuwa_010",
+                id: "wuwa_012",
                 name: "Acendant Aces",
                 endDate: "2026-10-22T09:00:00Z"
             },           
             // Banner
             {
-                id: "wuwa_011",
+                id: "wuwa_013",
                 name: "Featured Resonator Convene",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_012",
+                id: "wuwa_014",
                 name: "Featured Resonator Convene Rerun",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_013",
+                id: "wuwa_015",
                 name: "Featured Resonator Convene Rerun 2",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_014",
+                id: "wuwa_016",
                 name: "Featured Weapon Convene",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_015",
+                id: "wuwa_017",
                 name: "Featured Weapon Convene Rerun",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
             },
             {
-                id: "wuwa_016",
+                id: "wuwa_018",
                 name: "Featured Weapon Convene Rerun 2",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
