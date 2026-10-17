@@ -60,12 +60,7 @@ const eventDatabase = {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-11-16T03:00:00Z"
-            },
-            {
-                id: "gi_007",
-                name: "Rainbow's End: Resplendent Starlight",
-                endDate: "2026-10-19T03:00:00Z"
-            },
+            },            
              {
                 id: "gi_008",
                 name: "A Rekviem for the Underground",
