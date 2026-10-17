@@ -6,7 +6,7 @@ const serverResets = {
     genshin: { asia: "20:00", eu: "03:00", na: "09:00" },
     hsr: { asia: "20:00", eu: "03:00", na: "09:00" },
     zzz: { asia: "20:00", eu: "03:00", na: "09:00" },
-    arknights: { asia: "20:00", eu: "03:00", na: "03:00" },
+    arknights: { asia: "20:00", eu: "11:00", na: "11:00" },
     duet: { asia: "21:00", eu: "04:00", na: "10:00" },
     nte: { asia: "21:00", eu: "04:00", na: "10:00" },
     reverse1999: { asia: "10:00", eu: "10:00", na: "10:00" },
@@ -454,12 +454,7 @@ const eventDatabase = {
                 id: "dna_010",
                 name: "Traces in the Sand",
                 endDate: "2026-10-19T16:00:00Z"
-            },                 
-            {
-                id: "dna_014",
-                name: "Phoxhunter Summit Apex Rankings",
-                endDate: "2026-10-16T23:00:00Z"
-            },                     
+            },                            
             // Banner 
             {
                 id: "dna_015",
