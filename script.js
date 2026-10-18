@@ -404,12 +404,7 @@ const eventDatabase = {
                 endDate: "2026-09-08T07:00:00Z"
             }
         ],
-        events: [
-             {
-                id: "dna_001",
-                name: "Immersive Theatre - Ensemble Act",
-                endDate: "2026-10-18T16:00:00Z"
-            },
+        events: [             
             {
                 id: "dna_002",
                 name: "Opulent Rebate",
@@ -439,7 +434,12 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "Through the Inferno",
                 endDate: "2026-10-19T16:00:00Z"
-            },            
+            },
+            {
+                id: "dna_008",
+                name: "A Flame Rekindled",
+                endDate: "2026-10-27T04:00:00Z"
+            },             
             {
                 id: "dna_009",
                 name: "Immersive Theatre",
