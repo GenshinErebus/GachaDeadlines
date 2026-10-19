@@ -36,16 +36,16 @@ const eventDatabase = {
                 name: "Tabletop Troupe: A Gathering on Adventure's Eve",
                 endDate: "2026-11-03T14:00:00Z"
             },
-             {
+            {
                 id: "gi_002",
                 name: "Across the Frozen Wilds, Honing One's Edge",
                 endDate: "2026-11-03T14:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "gi_003",
                 name: "Starlit Gala",
                 endDate: "2026-11-02T20:00:00Z"
-            },                
+            },
             {
                 id: "gi_004",
                 name: "The Godforsaken Frostlands",
@@ -60,22 +60,22 @@ const eventDatabase = {
                 id: "gi_006",
                 name: "Spiral Abyss",
                 endDate: "2026-11-16T03:00:00Z"
-            },            
-             {
+            },
+            {
                 id: "gi_008",
                 name: "A Rekviem for the Underground",
                 endDate: "2026-11-03T14:00:00Z"
-            },                
+            },
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-11-01T03:00:00Z"
             },
-             {
+            {
                 id: "gi_010",
                 name: "Wonderland Treasures: Moonlight After the Rain",
                 endDate: "2026-11-02T03:00:00Z"
-            },    
+            },
             {
                 id: "gi_011",
                 name: "Predictive Victory Dynamics",
@@ -86,16 +86,11 @@ const eventDatabase = {
                 name: "Stygian Onslaught",
                 endDate: "2026-11-03T03:00:00Z"
             },
-                {
-                id: "gi_013",
-                name: "Rainbow's End: Resplendent Starlight",
-                endDate: "2026-10-19T03:00:00Z"
-            },
-               {
+            {
                 id: "gi_014",
                 name: "Participate in Starlit Gala",
                 endDate: "2026-10-21T03:00:00Z"
-            },  
+            },
             {
                 id: "gi_015",
                 name: "Starlit Gala: Wonderland Selects",
@@ -105,7 +100,7 @@ const eventDatabase = {
                 id: "gi_016",
                 name: "Heated Battle Mode: Automatic Artistry",
                 endDate: "2026-10-26T03:00:00Z"
-            },                                          
+            },
             // Trial
             {
                 id: "gi_017",
@@ -130,7 +125,7 @@ const eventDatabase = {
                 name: "Weapon Event Wish",
                 endDate: "2026-11-03T14:00:00Z",
                 banner: true
-            }   
+            }
         ]
     },
     hsr: {
@@ -142,17 +137,17 @@ const eventDatabase = {
                 endDate: "2026-08-26T03:00:00Z"
             } */
         ],
-        events: [     
-             {
+        events: [
+            {
                 id: "hsr_001",
                 name: "Wishpower UP! Down with Voracity",
                 endDate: "2026-11-10T22:00:00Z"
-            }, 
+            },
             {
                 id: "hsr_002",
                 name: "Gift of Odyssey",
                 endDate: "2026-11-10T03:00:00Z"
-            },         
+            },
             {
                 id: "hsr_003",
                 name: "Anomaly Arbitration (Period)",
@@ -166,7 +161,7 @@ const eventDatabase = {
             {
                 id: "hsr_005",
                 name: "Pure Fiction (Period)",
-                endDate: "2026-10-19T03:00:00Z"
+                endDate: "2026-11-30T03:00:00Z"
             },
             {
                 id: "hsr_006",
@@ -176,7 +171,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-10-19T03:00:00Z" 
+                endDate: "2026-10-26T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -191,23 +186,23 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-10-19T03:00:00Z"
-            },  
+                endDate: "2026-10-26T03:00:00Z"
+            },
             {
                 id: "hsr_011",
                 name: "Love, Ghosts & Robots",
                 endDate: "2026-11-10T20:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "hsr_012",
                 name: "Astral Imagea Park",
                 endDate: "2026-11-10T20:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "hsr_013",
                 name: "Planar Fissure",
                 endDate: "2026-10-25T03:00:00Z"
-            },                   
+            },
             // Trials
             {
                 id: "hsr_014",
@@ -238,7 +233,7 @@ const eventDatabase = {
                 name: "Light Cone Event Warp (Rerun)",
                 endDate: "2026-10-21T11:00:00Z",
                 banner: true
-            } 
+            }
         ]
     },
     zzz: {
@@ -253,15 +248,10 @@ const eventDatabase = {
         ],
         events: [
             {
-                id: "zzz_001",
-                name: "Clink, Clank, Pinball Knight!",
-                endDate: "2026-10-19T03:00:00Z"
-            },
-            {
                 id: "zzz_002",
                 name: "Angels Support Operation",
                 endDate: "2026-11-30T03:00:00Z"
-            },            
+            },
             {
                 id: "zzz_003",
                 name: "Deadly Assault (Period)",
@@ -278,39 +268,24 @@ const eventDatabase = {
                 endDate: "2026-10-20T03:00:00Z"
             },
             {
-                id: "zzz_006",
-                name: "Chronicles of the Hobbling Crow",
-                endDate: "2026-10-19T03:00:00Z"
-            },              
-             {
                 id: "zzz_007",
                 name: "Suprise Screening Plan",
                 endDate: "2026-10-20T03:00:00Z"
-            },   
-             {
+            },
+            {
                 id: "zzz_008",
                 name: '"Eh Nah" Into Your Lap',
                 endDate: "2026-10-20T03:00:00Z"
-            },          
+            },
             {
                 id: "zzz_009",
                 name: "Enigma of the Labyrinth: Operation Bagel",
                 endDate: "2026-10-21T03:00:00Z"
             },
             {
-                id: "zzz_010",
-                name: "Diary of an Orbie Parent",
-                endDate: "2026-10-19T03:00:00Z"
-            },
-            {
                 id: "zzz_011",
                 name: "The Final Callback",
                 endDate: "2026-10-21T03:00:00Z"
-            },
-             {
-                id: "zzz_012",
-                name: "Data Bounty: Combat Simulation",
-                endDate: "2026-10-19T03:00:00Z"
             },
             // Banner
             {
@@ -349,7 +324,7 @@ const eventDatabase = {
             }
         ],
         events: [
-             {
+            {
                 id: "ark_001",
                 name: "Spirit's Restoration Sign-In",
                 endDate: "2026-11-05T17:00:00Z"
@@ -359,14 +334,14 @@ const eventDatabase = {
                 name: "All the Inky Hues",
                 endDate: "2026-11-05T17:00:00Z"
             },
-             {
+            {
                 id: "ark_003",
                 name: "Yuanyuan's Blazing Stoves",
                 endDate: "2026-11-25T22:00:00Z"
             },
             {
                 id: "ark_004",
-                name: "Echoes of War",    
+                name: "Echoes of War",
                 endDate: "2026-11-05T17:00:00Z"
             },
             {
@@ -374,12 +349,6 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-11-05T17:00:00Z"
             },
-            {
-                id: "ark_006",
-                name: "Monumental Etching: Shadow Marked",
-                endDate: "2026-10-19T09:00:00Z"
-            },
-                      
             // Banner
             {
                 id: "ark_009",
@@ -392,7 +361,7 @@ const eventDatabase = {
                 name: "Beddazled Issue",
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
-            } 
+            }
         ]
     },
     duet: {
@@ -404,52 +373,17 @@ const eventDatabase = {
                 endDate: "2026-09-08T07:00:00Z"
             }
         ],
-        events: [             
+        events: [
             {
-                id: "dna_002",
-                name: "Opulent Rebate",
-                endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_003",
-                name: "Way of the Penitent",
-                endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_004",
-                name: "Vibrant Strokes",
-                endDate: "2026-10-19T16:00:00Z"
-            },
-             {
                 id: "dna_005",
                 name: "Capriccio of Whimsy",
                 endDate: "2026-11-09T16:00:00Z"
-            },            
-            {
-                id: "dna_006",
-                name: "Parade Itinerary",
-                endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_007",
-                name: "Through the Inferno",
-                endDate: "2026-10-19T16:00:00Z"
             },
             {
                 id: "dna_008",
                 name: "A Flame Rekindled",
                 endDate: "2026-10-27T04:00:00Z"
-            },             
-            {
-                id: "dna_009",
-                name: "Immersive Theatre",
-                endDate: "2026-10-19T16:00:00Z"
-            },
-            {
-                id: "dna_010",
-                name: "Traces in the Sand",
-                endDate: "2026-10-19T16:00:00Z"
-            },                            
+            } /*,           
             // Banner 
             {
                 id: "dna_015",
@@ -462,7 +396,7 @@ const eventDatabase = {
                 name: "Limited-Time Rerun",
                 endDate: "2026-10-19T16:00:00Z",
                 banner: true
-            }
+            } */
         ]
     },
     nte: {
@@ -490,52 +424,52 @@ const eventDatabase = {
                 name: "Born to Race Mystery Box",
                 endDate: "2026-11-10T22:00:00Z"
             },
-             {
+            {
                 id: "nte_004",
                 name: "Everdriving",
                 endDate: "2026-11-10T22:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "nte_005",
                 name: "Terminal Depth",
                 endDate: "2026-11-10T22:00:00Z"
-            }, 
-             {
+            },
+            {
                 id: "nte_006",
                 name: "Pukaland Travelogue",
                 endDate: "2026-11-10T22:00:00Z"
-            }, 
+            },
             {
                 id: "nte_007",
                 name: "Blackbird's Invitation",
                 endDate: "2026-11-10T22:00:00Z"
             },
-             {
+            {
                 id: "nte_008",
                 name: "Divination Perks",
                 endDate: "2026-10-20T22:00:00Z"
             },
-             {
+            {
                 id: "nte_009",
                 name: "Daydream Perks",
                 endDate: "2026-10-20T22:00:00Z"
             },
             {
                 id: "nte_010",
-                name: "Stamina Recharge",
-                endDate: "2026-10-19T03:00:00Z"
+                name: "Pixel Surge",
+                endDate: "2026-10-26T03:00:00Z"
             },
             {
                 id: "nte_011",
                 name: "Coal Lump's Treasure",
                 endDate: "2026-11-10T22:00:00Z"
-            },            
+            },
             // Trial
             {
                 id: "nte_011",
                 name: "Market Opening Rehearsal",
                 endDate: "2026-10-20T22:00:00Z"
-            },                
+            },
             // Banner
             {
                 id: "nte_012",
@@ -572,11 +506,11 @@ const eventDatabase = {
                 name: "The Temporal Scale",
                 endDate: "2026-11-02T10:00:00Z"
             },
-             {
+            {
                 id: "rev_002",
                 name: "See you in the New World",
                 endDate: "2026-11-05T10:00:00Z"
-            },                 
+            },
             {
                 id: "rev_003",
                 name: "Friendly Match",
@@ -601,20 +535,20 @@ const eventDatabase = {
                 id: "rev_007",
                 name: "Focused Flashback",
                 endDate: "2026-11-05T10:00:00Z"
-            },                        
+            },
             // Banner           
             {
                 id: "rev_017",
                 name: "Event Banner",
                 endDate: "2026-11-05T10:00:00Z",
                 banner: true
-            },            
+            },
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
                 endDate: "2026-11-05T10:00:00Z",
                 banner: true
-            },       
+            },
             {
                 id: "rev_021",
                 name: "Witness of Iron and Blood",
@@ -652,7 +586,7 @@ const eventDatabase = {
                 id: "wuwa_004",
                 name: "Gifts of Waking Moon",
                 endDate: "2026-11-11T03:00:00Z"
-            },                 
+            },
             {
                 id: "wuwa_005",
                 name: "Endstate Matrix (Period)",
@@ -673,12 +607,12 @@ const eventDatabase = {
                 name: "Back to Solaris",
                 endDate: "2026-11-11T16:00:00Z"
             },
-             {
+            {
                 id: "wuwa_009",
                 name: "Artisan's Search",
                 endDate: "2026-10-26T03:00:00Z"
             },
-             {
+            {
                 id: "wuwa_010",
                 name: "Bountiful Crescendo",
                 endDate: "2026-10-22T03:00:00Z"
@@ -693,7 +627,7 @@ const eventDatabase = {
                 id: "wuwa_012",
                 name: "Acendant Aces",
                 endDate: "2026-10-22T09:00:00Z"
-            },           
+            },
             // Banner
             {
                 id: "wuwa_013",
@@ -730,7 +664,7 @@ const eventDatabase = {
                 name: "Featured Weapon Convene Rerun 2",
                 endDate: "2026-10-22T09:00:00Z",
                 banner: true
-            } 
+            }
         ]
     }
 };
@@ -745,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentRegion = savedRegion;
         updateRegionButtons();
     }
-    
+
     // Restore saved game selection
     const savedGame = localStorage.getItem('selectedGame');
     if (savedGame) {
@@ -853,12 +787,12 @@ function updateRegionButtons() {
 function loadGameEvents() {
     const select = document.getElementById('gameSelect');
     const gameKey = select.value;
-    
+
     // Save game selection to localStorage
     if (gameKey) {
         localStorage.setItem('selectedGame', gameKey);
     }
-    
+
     const container = document.querySelector('.container');
     // ... rest stays the same
 
@@ -1892,35 +1826,35 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavToggle() {
     const toggleBtn = document.getElementById('navToggle');
     const nav = document.querySelector('.game-selector');
-    
+
     if (!toggleBtn || !nav) return;
-    
+
     // Find or create wrapper for collapsible content
     let contentWrapper = nav.querySelector('.nav-content-wrapper');
     if (!contentWrapper) {
         contentWrapper = document.createElement('div');
         contentWrapper.className = 'nav-content-wrapper';
-        
+
         // Move all nav children except toggle button into wrapper
         Array.from(nav.children).forEach(child => {
             if (child !== toggleBtn) {
                 contentWrapper.appendChild(child);
             }
         });
-        
+
         nav.appendChild(contentWrapper);
     }
-    
+
     // Toggle functionality
     toggleBtn.addEventListener('click', () => {
         contentWrapper.classList.toggle('collapsed');
         toggleBtn.classList.toggle('collapsed');
-        
+
         // Save state to localStorage
         const isCollapsed = contentWrapper.classList.contains('collapsed');
         localStorage.setItem('navigationCollapsed', isCollapsed);
     });
-    
+
     // Restore saved state on load
     const savedState = localStorage.getItem('navigationCollapsed');
     if (savedState === 'true') {
