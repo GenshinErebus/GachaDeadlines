@@ -78,24 +78,14 @@ const eventDatabase = {
             },
             {
                 id: "gi_011",
-                name: "Predictive Victory Dynamics",
-                endDate: "2026-10-20T02:00:00Z"
+                name: "Carefree Snowball Fight",
+                endDate: "2026-11-02T03:00:00Z"
             },
             {
                 id: "gi_012",
                 name: "Stygian Onslaught",
                 endDate: "2026-11-03T03:00:00Z"
-            },
-            {
-                id: "gi_014",
-                name: "Participate in Starlit Gala",
-                endDate: "2026-10-21T03:00:00Z"
-            },
-            {
-                id: "gi_015",
-                name: "Starlit Gala: Wonderland Selects",
-                endDate: "2026-10-21T03:00:00Z"
-            },
+            },             
             {
                 id: "gi_016",
                 name: "Heated Battle Mode: Automatic Artistry",
@@ -203,35 +193,40 @@ const eventDatabase = {
                 name: "Planar Fissure",
                 endDate: "2026-10-25T03:00:00Z"
             },
-            // Trials
             {
                 id: "hsr_014",
+                name: "Interastral Peace Gala: One Take",
+                endDate: "2026-11-10T20:00:00Z"
+            },
+            // Trials
+            {
+                id: "hsr_015",
                 name: "Aptitude Showcase",
-                endDate: "2026-10-21T11:00:00Z"
+                endDate: "2026-11-10T14:00:00Z"
             },
             // Banner
             {
-                id: "hsr_015",
+                id: "hsr_016",
                 name: "Character Event Warp",
                 endDate: "2026-11-10T14:00:00Z",
                 banner: true
             },
             {
-                id: "hsr_016",
-                name: "Character Event Warp (Rerun)",
-                endDate: "2026-10-21T11:00:00Z",
-                banner: true
-            },
-            {
                 id: "hsr_017",
-                name: "Light Cone Event Warp",
+                name: "Character Event Warp (Rerun)",
                 endDate: "2026-11-10T14:00:00Z",
                 banner: true
             },
             {
                 id: "hsr_018",
+                name: "Light Cone Event Warp",
+                endDate: "2026-11-10T14:00:00Z",
+                banner: true
+            },
+            {
+                id: "hsr_019",
                 name: "Light Cone Event Warp (Rerun)",
-                endDate: "2026-10-21T11:00:00Z",
+                endDate: "2026-11-10T14:00:00Z",
                 banner: true
             }
         ]
@@ -247,6 +242,11 @@ const eventDatabase = {
             }
         ],
         events: [
+             {
+                id: "zzz_001",
+                name: "All-New Program",
+                endDate: "2026-12-01T03:00:00Z"
+            },
             {
                 id: "zzz_002",
                 name: "Angels Support Operation",
@@ -257,59 +257,40 @@ const eventDatabase = {
                 name: "Deadly Assault (Period)",
                 endDate: "2026-10-23T03:00:00Z"
             },
-            {
+             {
                 id: "zzz_004",
-                name: "Potential Hypothesis: Reforged in Fire",
-                endDate: "2026-10-21T03:00:00Z"
+                name: "Annihilation Simulacram",
+                endDate: "2026-12-02T03:00:00Z"
             },
-            {
-                id: "zzz_005",
-                name: "All-New Program",
-                endDate: "2026-10-20T03:00:00Z"
-            },
-            {
-                id: "zzz_007",
-                name: "Suprise Screening Plan",
-                endDate: "2026-10-20T03:00:00Z"
-            },
-            {
-                id: "zzz_008",
-                name: '"Eh Nah" Into Your Lap',
-                endDate: "2026-10-20T03:00:00Z"
-            },
-            {
-                id: "zzz_009",
-                name: "Enigma of the Labyrinth: Operation Bagel",
-                endDate: "2026-10-21T03:00:00Z"
-            },
-            {
-                id: "zzz_011",
+            // Trial
+                 {
+                id: "zzz_012",
                 name: "The Final Callback",
-                endDate: "2026-10-21T03:00:00Z"
-            },
+                endDate: "2026-11-11T03:00:00Z"
+            },        
             // Banner
             {
                 id: "zzz_013",
                 name: "Channel Exclusive",
-                endDate: "2026-10-21T03:00:00Z",
+                endDate: "2026-11-11T03:00:00Z",
                 banner: true
             },
             {
                 id: "zzz_014",
                 name: "Channel Exclusive 2",
-                endDate: "2026-10-21T03:00:00Z",
+                endDate: "2026-11-11T03:00:00Z",
                 banner: true
             },
             {
                 id: "zzz_015",
                 name: "Channel W-Engine",
-                endDate: "2026-10-21T03:00:00Z",
+                endDate: "2026-11-11T03:00:00Z",
                 banner: true
             },
             {
                 id: "zzz_016",
                 name: "Channel W-Engine 2",
-                endDate: "2026-10-21T03:00:00Z",
+                endDate: "2026-11-11T03:00:00Z",
                 banner: true
             }
         ]
@@ -374,29 +355,59 @@ const eventDatabase = {
             }
         ],
         events: [
+             {
+                id: "dna_001",
+                name: "As Tomorrow Nears",
+                endDate: "2026-11-30T16:00:00Z"
+            },
+            {
+                id: "dna_002",
+                name: "Anniversary Splendor",
+                endDate: "2026-11-30T16:00:00Z"
+            },
+             {
+                id: "dna_003",
+                name: "Traces in the Sand",
+                endDate: "2026-11-30T16:00:00Z"
+            },
+            {
+                id: "dna_004",
+                name: "Silken Serenade",
+                endDate: "2026-11-30T16:00:00Z"
+            },
             {
                 id: "dna_005",
+                name: "Vibrant Strokes",
+                endDate: "2026-11-30T16:00:00Z"
+            },
+            {
+                id: "dna_006",
                 name: "Capriccio of Whimsy",
                 endDate: "2026-11-09T16:00:00Z"
+            },
+            {
+                id: "dna_007",
+                name: "The Flame She'll Be",
+                endDate: "2026-11-30T16:00:00Z"
             },
             {
                 id: "dna_008",
                 name: "A Flame Rekindled",
                 endDate: "2026-10-27T04:00:00Z"
-            } /*,           
+            },           
             // Banner 
             {
                 id: "dna_015",
                 name: "Event Esclusive",
-                endDate: "2026-10-19T16:00:00Z",
+                endDate: "2026-11-30T16:00:00Z",
                 banner: true
             },
             {
                 id: "dna_016",
                 name: "Limited-Time Rerun",
-                endDate: "2026-10-19T16:00:00Z",
+                endDate: "2026-11-30T16:00:00Z",
                 banner: true
-            } */
+            }
         ]
     },
     nte: {
@@ -446,14 +457,9 @@ const eventDatabase = {
             },
             {
                 id: "nte_008",
-                name: "Divination Perks",
-                endDate: "2026-10-20T22:00:00Z"
-            },
-            {
-                id: "nte_009",
-                name: "Daydream Perks",
-                endDate: "2026-10-20T22:00:00Z"
-            },
+                name: "Snap! Golden Crackshot",
+                endDate: "2026-11-10T22:00:00Z"
+            },           
             {
                 id: "nte_010",
                 name: "Pixel Surge",
@@ -466,27 +472,21 @@ const eventDatabase = {
             },
             // Trial
             {
-                id: "nte_011",
+                id: "nte_012",
                 name: "Market Opening Rehearsal",
-                endDate: "2026-10-20T22:00:00Z"
+                endDate: "2026-11-10T22:00:00Z"
             },
             // Banner
             {
-                id: "nte_012",
-                name: "Foretold Finale",
-                endDate: "2026-10-20T22:00:00Z",
-                banner: true
-            },
-            {
                 id: "nte_013",
-                name: "Fading Reverie",
-                endDate: "2026-10-20T22:00:00Z",
+                name: "Dazzling Star",
+                endDate: "2026-11-10T22:00:00Z",
                 banner: true
-            },
+            },            
             {
-                id: "nte_014",
-                name: "Nocturne Special",
-                endDate: "2026-10-20T22:00:00Z",
+                id: "nte_015",
+                name: "Celestial Special",
+                endDate: "2026-11-10T22:00:00Z",
                 banner: true
             }
         ]
