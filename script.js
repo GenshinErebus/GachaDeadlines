@@ -262,6 +262,11 @@ const eventDatabase = {
                 name: "Annihilation Simulacram",
                 endDate: "2026-12-02T03:00:00Z"
             },
+             {
+                id: "zzz_005",
+                name: "Spooky Funhouse Tales",
+                endDate: "2026-11-30T03:00:00Z"
+            },
             // Trial
                  {
                 id: "zzz_012",
@@ -329,6 +334,16 @@ const eventDatabase = {
                 id: "ark_005",
                 name: "Combat Drills",
                 endDate: "2026-11-05T17:00:00Z"
+            },
+             {
+                id: "ark_006",
+                name: "Carly's Verdant Anthology",
+                endDate: "2026-11-05T09:00:00Z"
+            },
+             {
+                id: "ark_007",
+                name: "Momumental Etching: Forest of Maras",
+                endDate: "2026-11-05T09:00:00Z"
             },
             // Banner
             {
@@ -428,7 +443,7 @@ const eventDatabase = {
             {
                 id: "nte_002",
                 name: "Beyond the Rails (Period)",
-                endDate: "2026-10-21T21:00:00Z"
+                endDate: "2026-11-04T20:00:00Z"
             },
             {
                 id: "nte_003",
@@ -544,17 +559,17 @@ const eventDatabase = {
                 banner: true
             },
             {
+                id: "rev_018",
+                name: "The Shattered Product",
+                endDate: "2026-11-03T10:00:00Z",
+                banner: true
+            },
+            {
                 id: "rev_019",
                 name: "Ripples on the Water",
                 endDate: "2026-11-05T10:00:00Z",
                 banner: true
-            },
-            {
-                id: "rev_021",
-                name: "Witness of Iron and Blood",
-                endDate: "2026-10-20T10:00:00Z",
-                banner: true
-            }
+            },            
         ]
     },
     wuwa: {
@@ -614,55 +629,60 @@ const eventDatabase = {
             },
             {
                 id: "wuwa_010",
-                name: "Bountiful Crescendo",
-                endDate: "2026-10-22T03:00:00Z"
+                name: "Gifts of Singing Drizzle",
+                endDate: "2026-11-11T03:00:00Z"
             },
             {
                 id: "wuwa_011",
                 name: "Waking Moon Fishing",
                 endDate: "2026-11-01T02:00:00Z"
             },
+             {
+                id: "wuwa_012",
+                name: "Echo Erase",
+                endDate: "2026-11-09T03:00:00Z"
+            },
             // Trial                    
             {
-                id: "wuwa_012",
+                id: "wuwa_013",
                 name: "Acendant Aces",
-                endDate: "2026-10-22T09:00:00Z"
+                endDate: "2026-11-11T11:00:00Z"
             },
             // Banner
             {
-                id: "wuwa_013",
-                name: "Featured Resonator Convene",
-                endDate: "2026-10-22T09:00:00Z",
-                banner: true
-            },
-            {
                 id: "wuwa_014",
-                name: "Featured Resonator Convene Rerun",
-                endDate: "2026-10-22T09:00:00Z",
+                name: "Featured Resonator Convene",
+                endDate: "2026-11-11T11:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_015",
-                name: "Featured Resonator Convene Rerun 2",
-                endDate: "2026-10-22T09:00:00Z",
+                name: "Featured Resonator Convene Rerun",
+                endDate: "2026-11-11T11:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_016",
-                name: "Featured Weapon Convene",
-                endDate: "2026-10-22T09:00:00Z",
+                name: "Featured Resonator Convene Rerun 2",
+                endDate: "2026-11-11T11:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_017",
-                name: "Featured Weapon Convene Rerun",
-                endDate: "2026-10-22T09:00:00Z",
+                name: "Featured Weapon Convene",
+                endDate: "2026-11-11T11:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_018",
+                name: "Featured Weapon Convene Rerun",
+                endDate: "2026-11-11T11:00:00Z",
+                banner: true
+            },
+            {
+                id: "wuwa_019",
                 name: "Featured Weapon Convene Rerun 2",
-                endDate: "2026-10-22T09:00:00Z",
+                endDate: "2026-11-11T11:00:00Z",
                 banner: true
             }
         ]
