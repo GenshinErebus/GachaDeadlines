@@ -255,7 +255,7 @@ const eventDatabase = {
             {
                 id: "zzz_003",
                 name: "Deadly Assault (Period)",
-                endDate: "2026-10-23T03:00:00Z"
+                endDate: "2026-11-06T03:00:00Z"
             },
              {
                 id: "zzz_004",
@@ -550,6 +550,11 @@ const eventDatabase = {
                 id: "rev_007",
                 name: "Focused Flashback",
                 endDate: "2026-11-05T10:00:00Z"
+            },
+            {
+                id: "rev_008",
+                name: "Midnight Whistle",
+                endDate: "2026-11-02T10:00:00Z"
             },
             // Banner           
             {
