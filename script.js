@@ -88,8 +88,8 @@ const eventDatabase = {
             },             
             {
                 id: "gi_016",
-                name: "Heated Battle Mode: Automatic Artistry",
-                endDate: "2026-10-26T03:00:00Z"
+                name: "Overflowing Favor",
+                endDate: "2026-11-02T03:00:00Z"
             },
             // Trial
             {
@@ -161,7 +161,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Zero-Sum Game (Period)",
-                endDate: "2026-10-26T03:00:00Z"
+                endDate: "2026-11-02T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -176,7 +176,7 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-10-26T03:00:00Z"
+                endDate: "2026-11-02T03:00:00Z"
             },
             {
                 id: "hsr_011",
@@ -187,12 +187,7 @@ const eventDatabase = {
                 id: "hsr_012",
                 name: "Astral Imagea Park",
                 endDate: "2026-11-10T20:00:00Z"
-            },
-            {
-                id: "hsr_013",
-                name: "Planar Fissure",
-                endDate: "2026-10-25T03:00:00Z"
-            },
+            },           
             {
                 id: "hsr_014",
                 name: "Interastral Peace Gala: One Take",
@@ -266,6 +261,11 @@ const eventDatabase = {
                 id: "zzz_005",
                 name: "Spooky Funhouse Tales",
                 endDate: "2026-11-30T03:00:00Z"
+            },
+            {
+                id: "zzz_006",
+                name: "Enigma of the Labyrinth: Spooky Trial",
+                endDate: "2026-12-02T03:00:00Z"
             },
             // Trial
                  {
@@ -477,8 +477,8 @@ const eventDatabase = {
             },           
             {
                 id: "nte_010",
-                name: "Pixel Surge",
-                endDate: "2026-10-26T03:00:00Z"
+                name: "Gold Clash",
+                endDate: "2026-11-09T03:00:00Z"
             },
             {
                 id: "nte_011",
@@ -615,7 +615,7 @@ const eventDatabase = {
             {
                 id: "wuwa_006",
                 name: "Whimpering Wastes (Period)",
-                endDate: "2026-10-26T03:00:00Z"
+                endDate: "2026-11-23T03:00:00Z"
             },
             {
                 id: "wuwa_007",
@@ -626,12 +626,7 @@ const eventDatabase = {
                 id: "wuwa_008",
                 name: "Back to Solaris",
                 endDate: "2026-11-11T16:00:00Z"
-            },
-            {
-                id: "wuwa_009",
-                name: "Artisan's Search",
-                endDate: "2026-10-26T03:00:00Z"
-            },
+            },            
             {
                 id: "wuwa_010",
                 name: "Gifts of Singing Drizzle",
