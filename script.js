@@ -404,12 +404,7 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "The Flame She'll Be",
                 endDate: "2026-11-30T16:00:00Z"
-            },
-            {
-                id: "dna_008",
-                name: "A Flame Rekindled",
-                endDate: "2026-10-27T04:00:00Z"
-            },           
+            },                  
             // Banner 
             {
                 id: "dna_015",
