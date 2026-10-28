@@ -267,6 +267,11 @@ const eventDatabase = {
                 name: "Enigma of the Labyrinth: Spooky Trial",
                 endDate: "2026-12-02T03:00:00Z"
             },
+            {
+                id: "zzz_007",
+                name: "Cyber Miracle Healer, on Duty!",
+                endDate: "2026-11-16T03:00:00Z"
+            },
             // Trial
                  {
                 id: "zzz_012",
