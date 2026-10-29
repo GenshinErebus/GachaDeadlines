@@ -350,15 +350,25 @@ const eventDatabase = {
                 name: "Momumental Etching: Forest of Maras",
                 endDate: "2026-11-05T09:00:00Z"
             },
-            // Banner
+            {
+                id: "ark_008",
+                name: "Arena of Games",
+                endDate: "2026-11-19T09:00:00Z"
+            },
             {
                 id: "ark_009",
+                name: "Contigency Readiness",
+                endDate: "2026-11-05T09:00:00Z"
+            },
+            // Banner
+            {
+                id: "ark_010",
                 name: "Rejuvenation",
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
             },
             {
-                id: "ark_010",
+                id: "ark_011",
                 name: "Beddazled Issue",
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
@@ -409,7 +419,12 @@ const eventDatabase = {
                 id: "dna_007",
                 name: "The Flame She'll Be",
                 endDate: "2026-11-30T16:00:00Z"
-            },                  
+            },
+             {
+                id: "dna_008",
+                name: "Bountiful Day",
+                endDate: "2026-11-05T04:00:00Z"
+            },                        
             // Banner 
             {
                 id: "dna_015",
@@ -485,15 +500,20 @@ const eventDatabase = {
                 name: "Coal Lump's Treasure",
                 endDate: "2026-11-10T22:00:00Z"
             },
+             {
+                id: "nte_012",
+                name: "Puka Lucky Flip",
+                endDate: "2026-11-11T05:00:00Z"
+            },
             // Trial
             {
-                id: "nte_012",
+                id: "nte_013",
                 name: "Market Opening Rehearsal",
                 endDate: "2026-11-10T22:00:00Z"
             },
             // Banner
             {
-                id: "nte_013",
+                id: "nte_014",
                 name: "Dazzling Star",
                 endDate: "2026-11-10T22:00:00Z",
                 banner: true
