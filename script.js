@@ -367,10 +367,22 @@ const eventDatabase = {
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
             },
-            {
+             {
                 id: "ark_011",
+                name: "Ancestral Spring Flows Anew",
+                endDate: "2026-11-20T03:00:00Z",
+                banner: true
+            },
+            {
+                id: "ark_012",
                 name: "Beddazled Issue",
                 endDate: "2026-11-05T03:00:00Z",
+                banner: true
+            },
+            {
+                id: "ark_013",
+                name: "Tender Sprig Issue",
+                endDate: "2026-11-20T03:00:00Z",
                 banner: true
             }
         ]
