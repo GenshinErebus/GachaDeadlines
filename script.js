@@ -69,7 +69,7 @@ const eventDatabase = {
             {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
-                endDate: "2026-11-01T03:00:00Z"
+                endDate: "2026-12-01T03:00:00Z"
             },
             {
                 id: "gi_010",
@@ -360,27 +360,37 @@ const eventDatabase = {
                 name: "Contigency Readiness",
                 endDate: "2026-11-05T09:00:00Z"
             },
+             {
+                id: "ark_010",
+                name: "Yuanyuan's Blazing Stoves",
+                endDate: "2026-11-25T22:00:00Z"
+            },
+            {
+                id: "ark_011",
+                name: "New Era for the Myriad Souls",
+                endDate: "2026-11-14T09:00:00Z"
+            },
             // Banner
             {
-                id: "ark_010",
+                id: "ark_012",
                 name: "Rejuvenation",
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
             },
              {
-                id: "ark_011",
+                id: "ark_013",
                 name: "Ancestral Spring Flows Anew",
                 endDate: "2026-11-20T03:00:00Z",
                 banner: true
             },
             {
-                id: "ark_012",
+                id: "ark_014",
                 name: "Beddazled Issue",
                 endDate: "2026-11-05T03:00:00Z",
                 banner: true
             },
             {
-                id: "ark_013",
+                id: "ark_015",
                 name: "Tender Sprig Issue",
                 endDate: "2026-11-20T03:00:00Z",
                 banner: true
@@ -576,7 +586,7 @@ const eventDatabase = {
             {
                 id: "rev_006",
                 name: "Lucidscape",
-                endDate: "2026-11-01T10:00:00Z"
+               endDate: "2026-12-01T10:00:00Z"
             },
             {
                 id: "rev_007",
