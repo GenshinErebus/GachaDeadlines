@@ -31,7 +31,21 @@ const eventDatabase = {
             }
        */ ],
         events: [
-           
+            {
+                id: "gi_001",
+                name: "The Grand Defense: Defy the Unjust Judgement",
+                endDate: "2026-12-15T22:00:00Z"
+            },
+            {
+                id: "gi_002",
+                name: "Hour of Ruin",
+                endDate: "2026-12-15T14:00:00Z"
+            },
+             {
+                id: "gi_003",
+                name: "Where Kristall Roots Run Deep",
+                endDate: "2027-01-26T14:00:00Z"
+            },
             {
                 id: "gi_005",
                 name: "To Temper Thyself and Journey Far",
@@ -46,33 +60,43 @@ const eventDatabase = {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-12-01T03:00:00Z"
-            },             
-           /*
+            },
+            {
+                id: "gi_010",
+                name: "Wonderland Treasures: Polyphonic Harmony",
+                endDate: "2026-12-14T03:00:00Z"
+            },
+            {
+                id: "gi_011",
+                name: "Encounter: Interlude of the Long Journey",
+                endDate: "2026-12-15T14:00:00Z"
+            },                
+           
             // Trial
             {
                 id: "gi_017",
                 name: "Test Run",
-                endDate: "2026-11-03T14:00:00Z"
+                endDate: "2026-11-24T17:00:00Z"
             },
             // Banner
             {
                 id: "gi_018",
                 name: "Character Event Wish",
-                endDate: "2026-11-03T14:00:00Z",
+                endDate: "2026-11-24T17:00:00Z",
                 banner: true
             },
             {
                 id: "gi_019",
                 name: "Character Event Wish-2",
-                endDate: "2026-11-03T14:00:00Z",
+                endDate: "2026-11-24T17:00:00Z",
                 banner: true
             },
             {
                 id: "gi_020",
                 name: "Weapon Event Wish",
-                endDate: "2026-11-03T14:00:00Z",
+                endDate: "2026-11-24T17:00:00Z",
                 banner: true
-            } */
+            } 
         ]
     },
     hsr: {
@@ -228,6 +252,11 @@ const eventDatabase = {
                 id: "zzz_007",
                 name: "Cyber Miracle Healer, on Duty!",
                 endDate: "2026-11-16T03:00:00Z"
+            },
+            {
+                id: "zzz_008",
+                name: "Advanced Bounty: Area Patrol",
+                endDate: "2026-11-09T03:00:00Z"
             },
             // Trial
             {
@@ -615,6 +644,11 @@ const eventDatabase = {
             {
                 id: "wuwa_010",
                 name: "Gifts of Singing Drizzle",
+                endDate: "2026-11-11T03:00:00Z"
+            },
+             {
+                id: "wuwa_011",
+                name: "Chord Cleansing",
                 endDate: "2026-11-11T03:00:00Z"
             },
             {
