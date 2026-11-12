@@ -645,53 +645,95 @@ const eventDatabase = {
         ],
         events: [
             {
+                id: "wuwa_001",
+                name: "Second Coming of Solaris: Unwritten Dreams",
+                endDate: "2026-12-21T11:00:00Z"
+            },
+            {
+                id: "wuwa_002",
+                name: "Gifts of Bygone Dreams",
+                endDate: "2026-12-21T03:00:00Z"
+            },
+             {
+                id: "wuwa_003",
+                name: "Glamour Couture",
+                endDate: "2026-12-21T11:00:00Z"
+            },
+            {
+                id: "wuwa_004",
+                name: "Tactical Hologram: Simulation",
+                endDate: "2026-12-21T03:00:00Z"
+            },
+             {
+                id: "wuwa_005",
+                name: "Endstate Matrix",
+                endDate: "2026-12-21T20:00:00Z"
+            },
+            {
                 id: "wuwa_006",
                 name: "Whimpering Wastes (Period)",
                 endDate: "2026-11-23T03:00:00Z"
-            }  /*,
+            },
+            {
+                id: "wuwa_007",
+                name: "Hazard Revisited",
+                endDate: "2026-12-07T03:00:00Z"
+            },
             // Trial                    
             {
                 id: "wuwa_013",
                 name: "Acendant Aces",
-                endDate: "2026-11-11T11:00:00Z"
+                endDate: "2026-12-03T09:00:00Z"
             },
             // Banner
             {
                 id: "wuwa_014",
                 name: "Featured Resonator Convene",
-                endDate: "2026-11-11T11:00:00Z",
+                endDate: "2026-12-03T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_015",
                 name: "Featured Resonator Convene Rerun",
-                endDate: "2026-11-11T11:00:00Z",
+                endDate: "2026-12-03T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_016",
                 name: "Featured Resonator Convene Rerun 2",
-                endDate: "2026-11-11T11:00:00Z",
+                endDate: "2026-12-03T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_017",
-                name: "Featured Weapon Convene",
-                endDate: "2026-11-11T11:00:00Z",
+                name: "Reverb Resonator Convene",
+                endDate: "2026-12-21T11:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_018",
-                name: "Featured Weapon Convene Rerun",
-                endDate: "2026-11-11T11:00:00Z",
+                name: "Featured Weapon Convene",
+                endDate: "2026-12-03T09:00:00Z",
                 banner: true
             },
             {
                 id: "wuwa_019",
-                name: "Featured Weapon Convene Rerun 2",
-                endDate: "2026-11-11T11:00:00Z",
+                name: "Featured Weapon Convene Rerun",
+                endDate: "2026-12-03T09:00:00Z",
                 banner: true
-            } */
+            },
+            {
+                id: "wuwa_020",
+                name: "Featured Weapon Convene Rerun 2",
+                endDate: "2026-12-03T09:00:00Z",
+                banner: true
+            },
+            {
+                id: "wuwa_021",
+                name: "Reverb Weapon Convene",
+                endDate: "2026-12-21T11:00:00Z",
+                banner: true
+            },
         ]
     }
 };
