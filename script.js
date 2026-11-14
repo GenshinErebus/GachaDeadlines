@@ -267,12 +267,7 @@ const eventDatabase = {
                 id: "zzz_008",
                 name: "Trails of the Hobbling Crow",
                 endDate: "2026-11-30T03:00:00Z"
-            },
-            {
-                id: "zzz_009",
-                name: "Cyber Miracle Healer, on Duty!",
-                endDate: "2026-11-16T03:00:00Z"
-            },
+            },            
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Spooky Trial",
@@ -350,12 +345,7 @@ const eventDatabase = {
                 id: "ark_010",
                 name: "Yuanyuan's Blazing Stoves",
                 endDate: "2026-11-25T22:00:00Z"
-            },
-            {
-                id: "ark_011",
-                name: "New Era for the Myriad Souls",
-                endDate: "2026-11-14T09:00:00Z"
-            },
+            },           
             {
                 id: "ark_012",
                 name: "Back to the Rustics",
@@ -468,15 +458,25 @@ const eventDatabase = {
                 name: "Treasure Hunt Trials",
                 endDate: "2026-12-01T04:00:00Z"
             },
+              {
+                id: "dna_015",
+                name: "Friendly Games",
+                endDate: "2026-11-23T16:00:00Z"
+            },
+            {
+                id: "dna_016",
+                name: "Bountiful Day",
+                endDate: "2026-11-19T04:00:00Z"
+            },
             // Banner 
             {
-                id: "dna_015",
+                id: "dna_017",
                 name: "Event Esclusive",
                 endDate: "2026-11-30T16:00:00Z",
                 banner: true
             },
             {
-                id: "dna_016",
+                id: "dna_018",
                 name: "Limited-Time Rerun",
                 endDate: "2026-11-30T16:00:00Z",
                 banner: true
