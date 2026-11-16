@@ -601,7 +601,6 @@ const eventDatabase = {
                 name: "Focused Flashback",
                 endDate: "2026-12-17T10:00:00Z"
             },
-
             // Banner           
             {
                 id: "rev_017",
@@ -615,7 +614,6 @@ const eventDatabase = {
                 endDate: "2026-11-17T10:00:00Z",
                 banner: true
             },
-
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
