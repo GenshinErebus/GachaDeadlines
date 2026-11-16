@@ -59,7 +59,7 @@ const eventDatabase = {
             {
                 id: "gi_006",
                 name: "Spiral Abyss",
-                endDate: "2026-11-16T03:00:00Z"
+                endDate: "2026-12-16T03:00:00Z"
             },
             {
                 id: "gi_007",
@@ -147,12 +147,12 @@ const eventDatabase = {
             {
                 id: "hsr_006",
                 name: "Apocalyptic Shadow (Period)",
-                endDate: "2026-11-16T03:00:00Z"
+                endDate: "2026-12-28T03:00:00Z"
             },
             {
                 id: "hsr_007",
                 name: "Currency Wars: Voyage Into the Canvas (Period)",
-                endDate: "2026-11-16T03:00:00Z"
+                endDate: "2026-11-23T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -167,7 +167,7 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-11-16T03:00:00Z"
+                endDate: "2026-11-23T03:00:00Z"
             },
             {
                 id: "hsr_011",
@@ -257,12 +257,7 @@ const eventDatabase = {
                 id: "zzz_006",
                 name: "Enigma of the Labyrinth: Spooky Trial",
                 endDate: "2026-12-02T03:00:00Z"
-            },
-            {
-                id: "zzz_007",
-                name: "Cyber Miracle Healer, on Duty!",
-                endDate: "2026-11-16T03:00:00Z"
-            },
+            },            
             {
                 id: "zzz_008",
                 name: "Trails of the Hobbling Crow",
@@ -427,12 +422,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Fading Echoes Adrift",
                 endDate: "2026-11-30T16:00:00Z"
-            },
-            {
-                id: "dna_009",
-                name: "Starry Sojourn",
-                endDate: "2026-11-16T16:00:00Z"
-            },
+            },            
             {
                 id: "dna_010",
                 name: "Nocturnal Evermore",
@@ -442,12 +432,7 @@ const eventDatabase = {
                 id: "dna_011",
                 name: "Immersive Theatre Ensemble Act",
                 endDate: "2026-12-03T16:00:00Z"
-            },
-            {
-                id: "dna_012",
-                name: "Starry Gleanings II",
-                endDate: "2026-11-16T16:00:00Z"
-            },
+            },            
             {
                 id: "dna_013",
                 name: "Immersive Theatre Legends of the Brave",
@@ -533,6 +518,11 @@ const eventDatabase = {
                 name: "Resolve Perks",
                 endDate: "2026-12-01T22:00:00Z"
             },
+            {
+                id: "nte_00",
+                name: "Pixel Surge",
+                endDate: "2026-11-23T04:00:00Z"
+            },
             // Trial
             {
                 id: "nte_013",
@@ -599,7 +589,7 @@ const eventDatabase = {
             {
                 id: "rev_005",
                 name: "Limbo",
-                endDate: "2026-11-16T10:00:00Z"
+                endDate: "2026-12-16T10:00:00Z"
             },
             {
                 id: "rev_006",
