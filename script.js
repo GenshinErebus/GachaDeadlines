@@ -257,12 +257,17 @@ const eventDatabase = {
                 id: "zzz_006",
                 name: "Enigma of the Labyrinth: Spooky Trial",
                 endDate: "2026-12-02T03:00:00Z"
-            },            
+            },
+            {
+                id: "zzz_007",
+                name: "Repair! Drifting Art",
+                endDate: "2026-11-30T03:00:00Z"
+            },
             {
                 id: "zzz_008",
                 name: "Trails of the Hobbling Crow",
                 endDate: "2026-11-30T03:00:00Z"
-            },            
+            },
             {
                 id: "zzz_010",
                 name: "Enigma of the Labyrinth: Spooky Trial",
@@ -316,6 +321,11 @@ const eventDatabase = {
                 name: "Contigency Contract: Indigo Experimental Operation",
                 endDate: "2026-11-24T22:00:00Z"
             },
+             {
+                id: "ark_002",
+                name: "Sanity Supply",
+                endDate: "2026-11-24T22:00:00Z"
+            },
             {
                 id: "ark_003",
                 name: "Yuanyuan's Blazing Stoves",
@@ -331,16 +341,16 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-11-24T22:00:00Z"
             },
-            {
-                id: "ark_008",
-                name: "Arena of Games",
-                endDate: "2026-11-19T09:00:00Z"
+             {
+                id: "ark_006",
+                name: "Weekly Routine",
+                endDate: "2026-11-23T09:00:00Z"
             },
             {
                 id: "ark_010",
                 name: "Yuanyuan's Blazing Stoves",
                 endDate: "2026-11-25T22:00:00Z"
-            },           
+            },
             {
                 id: "ark_012",
                 name: "Back to the Rustics",
@@ -354,23 +364,11 @@ const eventDatabase = {
                 banner: true
             },
             {
-                id: "ark_014",
-                name: "Ancestral Spring Flows Anew",
-                endDate: "2026-11-19T03:00:00Z",
-                banner: true
-            },
-            {
                 id: "ark_015",
                 name: "Deep Cold Issue",
                 endDate: "2026-11-25T03:00:00Z",
                 banner: true
             },
-            {
-                id: "ark_016",
-                name: "Tender Sprig Issue",
-                endDate: "2026-11-19T03:00:00Z",
-                banner: true
-            }
         ]
     },
     duet: {
@@ -422,7 +420,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Fading Echoes Adrift",
                 endDate: "2026-11-30T16:00:00Z"
-            },            
+            },
             {
                 id: "dna_010",
                 name: "Nocturnal Evermore",
@@ -432,7 +430,7 @@ const eventDatabase = {
                 id: "dna_011",
                 name: "Immersive Theatre Ensemble Act",
                 endDate: "2026-12-03T16:00:00Z"
-            },            
+            },
             {
                 id: "dna_013",
                 name: "Immersive Theatre Legends of the Brave",
@@ -443,25 +441,30 @@ const eventDatabase = {
                 name: "Treasure Hunt Trials",
                 endDate: "2026-12-01T04:00:00Z"
             },
-              {
+            {
                 id: "dna_015",
                 name: "Friendly Games",
                 endDate: "2026-11-23T16:00:00Z"
             },
             {
                 id: "dna_016",
-                name: "Bountiful Day",
-                endDate: "2026-11-19T04:00:00Z"
+                name: "Wishen's Daring Adventures",
+                endDate: "2026-11-30T16:00:00Z"
             },
-            // Banner 
             {
                 id: "dna_017",
+                name: "Phoxhunter Summit",
+                endDate: "2026-12-05T04:00:00Z"
+            },                  
+            // Banner 
+            {
+                id: "dna_018",
                 name: "Event Esclusive",
                 endDate: "2026-11-30T16:00:00Z",
                 banner: true
             },
             {
-                id: "dna_018",
+                id: "dna_019",
                 name: "Limited-Time Rerun",
                 endDate: "2026-11-30T16:00:00Z",
                 banner: true
@@ -486,7 +489,7 @@ const eventDatabase = {
             {
                 id: "nte_002",
                 name: "Beyond the Rails (Period)",
-                endDate: "2026-11-18T21:00:00Z"
+                endDate: "2026-12-02T21:00:00Z"
             },
             {
                 id: "nte_003",
@@ -519,9 +522,14 @@ const eventDatabase = {
                 endDate: "2026-12-01T22:00:00Z"
             },
             {
-                id: "nte_00",
+                id: "nte_009",
                 name: "Pixel Surge",
                 endDate: "2026-11-23T04:00:00Z"
+            },
+            {
+                id: "nte_010",
+                name: "Full Tank Ahead",
+                endDate: "2026-12-22T22:00:00Z"
             },
             // Trial
             {
@@ -608,12 +616,12 @@ const eventDatabase = {
                 endDate: "2026-11-26T10:00:00Z",
                 banner: true
             },
-            {
+             {
                 id: "rev_018",
-                name: "Cognitive Dynamics",
-                endDate: "2026-11-17T10:00:00Z",
+                name: "The Brilliance Within",
+                endDate: "2026-12-01T10:00:00Z",
                 banner: true
-            },
+            },                 
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
@@ -642,7 +650,7 @@ const eventDatabase = {
                 name: "Gifts of Bygone Dreams",
                 endDate: "2026-12-21T03:00:00Z"
             },
-             {
+            {
                 id: "wuwa_003",
                 name: "Glamour Couture",
                 endDate: "2026-12-21T11:00:00Z"
@@ -652,7 +660,7 @@ const eventDatabase = {
                 name: "Tactical Hologram: Simulation",
                 endDate: "2026-12-21T03:00:00Z"
             },
-             {
+            {
                 id: "wuwa_005",
                 name: "Endstate Matrix",
                 endDate: "2026-12-21T20:00:00Z"
@@ -666,6 +674,11 @@ const eventDatabase = {
                 id: "wuwa_007",
                 name: "Hazard Revisited",
                 endDate: "2026-12-07T03:00:00Z"
+            },
+            {
+                id: "wuwa_008",
+                name: "Lahai-Roi Blocks: Turnabout",
+                endDate: "2026-12-03T03:00:00Z"
             },
             // Trial                    
             {
