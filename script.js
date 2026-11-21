@@ -67,6 +67,11 @@ const eventDatabase = {
                 endDate: "2026-12-15T22:00:00Z"
             },
             {
+                id: "gi_008",
+                name: "Heated Battle Mode: Sprinting Stratagems",
+                endDate: "2026-12-07T03:00:00Z"
+            },
+            {
                 id: "gi_009",
                 name: "Imaginarium Theater (Period)",
                 endDate: "2026-12-01T03:00:00Z"
@@ -81,7 +86,11 @@ const eventDatabase = {
                 name: "Encounter: Interlude of the Long Journey",
                 endDate: "2026-12-15T14:00:00Z"
             },
-
+            {
+                id: "gi_012",
+                name: "Stress Block Smashing Project",
+                endDate: "2026-11-30T03:00:00Z"
+            },
             // Trial
             {
                 id: "gi_017",
@@ -241,7 +250,7 @@ const eventDatabase = {
             {
                 id: "zzz_003",
                 name: "Deadly Assault (Period)",
-                endDate: "2026-11-20T03:00:00Z"
+                endDate: "2026-12-02T03:00:00Z"
             },
             {
                 id: "zzz_004",
@@ -267,6 +276,11 @@ const eventDatabase = {
                 id: "zzz_008",
                 name: "Trails of the Hobbling Crow",
                 endDate: "2026-11-30T03:00:00Z"
+            },
+            {
+                id: "zzz_009",
+                name: "The Final Battle Before Dawn",
+                endDate: "2026-12-01T03:00:00Z"
             },
             {
                 id: "zzz_010",
@@ -321,7 +335,7 @@ const eventDatabase = {
                 name: "Contigency Contract: Indigo Experimental Operation",
                 endDate: "2026-11-24T22:00:00Z"
             },
-             {
+            {
                 id: "ark_002",
                 name: "Sanity Supply",
                 endDate: "2026-11-24T22:00:00Z"
@@ -341,7 +355,7 @@ const eventDatabase = {
                 name: "Combat Drills",
                 endDate: "2026-11-24T22:00:00Z"
             },
-             {
+            {
                 id: "ark_006",
                 name: "Weekly Routine",
                 endDate: "2026-11-23T09:00:00Z"
@@ -431,6 +445,11 @@ const eventDatabase = {
                 name: "Immersive Theatre Ensemble Act",
                 endDate: "2026-12-03T16:00:00Z"
             },
+             {
+                id: "dna_012",
+                name: "Phoxhunter Summit Apex Rankings",
+                endDate: "2026-11-27T23:00:00Z"
+            },
             {
                 id: "dna_013",
                 name: "Immersive Theatre Legends of the Brave",
@@ -455,7 +474,7 @@ const eventDatabase = {
                 id: "dna_017",
                 name: "Phoxhunter Summit",
                 endDate: "2026-12-05T04:00:00Z"
-            },                  
+            },
             // Banner 
             {
                 id: "dna_018",
@@ -609,6 +628,11 @@ const eventDatabase = {
                 name: "Focused Flashback",
                 endDate: "2026-12-17T10:00:00Z"
             },
+            {
+                id: "rev_008",
+                name: "Double Echoes",
+                endDate: "2026-11-30T10:00:00Z"
+            },
             // Banner           
             {
                 id: "rev_017",
@@ -616,12 +640,12 @@ const eventDatabase = {
                 endDate: "2026-11-26T10:00:00Z",
                 banner: true
             },
-             {
+            {
                 id: "rev_018",
                 name: "The Brilliance Within",
                 endDate: "2026-12-01T10:00:00Z",
                 banner: true
-            },                 
+            },
             {
                 id: "rev_019",
                 name: "Ripples on the Water",
