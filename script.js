@@ -161,7 +161,7 @@ const eventDatabase = {
             {
                 id: "hsr_007",
                 name: "Currency Wars: Voyage Into the Canvas (Period)",
-                endDate: "2026-11-23T03:00:00Z"
+                endDate: "2026-11-30T03:00:00Z"
             },
             {
                 id: "hsr_008",
@@ -176,7 +176,7 @@ const eventDatabase = {
             {
                 id: "hsr_010",
                 name: "Divergent Universe: Arcadian Chronicles (Period)",
-                endDate: "2026-11-23T03:00:00Z"
+                endDate: "2026-11-30T03:00:00Z"
             },
             {
                 id: "hsr_011",
@@ -354,12 +354,7 @@ const eventDatabase = {
                 id: "ark_005",
                 name: "Combat Drills",
                 endDate: "2026-11-24T22:00:00Z"
-            },
-            {
-                id: "ark_006",
-                name: "Weekly Routine",
-                endDate: "2026-11-23T09:00:00Z"
-            },
+            },           
             {
                 id: "ark_010",
                 name: "Yuanyuan's Blazing Stoves",
@@ -434,12 +429,7 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Fading Echoes Adrift",
                 endDate: "2026-11-30T16:00:00Z"
-            },
-            {
-                id: "dna_010",
-                name: "Nocturnal Evermore",
-                endDate: "2026-11-22T16:00:00Z"
-            },
+            },           
             {
                 id: "dna_011",
                 name: "Immersive Theatre Ensemble Act",
@@ -459,12 +449,7 @@ const eventDatabase = {
                 id: "dna_014",
                 name: "Treasure Hunt Trials",
                 endDate: "2026-12-01T04:00:00Z"
-            },
-            {
-                id: "dna_015",
-                name: "Friendly Games",
-                endDate: "2026-11-23T16:00:00Z"
-            },
+            },            
             {
                 id: "dna_016",
                 name: "Wishen's Daring Adventures",
@@ -539,16 +524,21 @@ const eventDatabase = {
                 id: "nte_008",
                 name: "Resolve Perks",
                 endDate: "2026-12-01T22:00:00Z"
-            },
-            {
-                id: "nte_009",
-                name: "Pixel Surge",
-                endDate: "2026-11-23T04:00:00Z"
-            },
+            },           
             {
                 id: "nte_010",
                 name: "Full Tank Ahead",
                 endDate: "2026-12-22T22:00:00Z"
+            },
+            {
+                id: "nte_011",
+                name: "Gold Clash",
+                endDate: "2026-12-07T04:00:00Z"
+            },
+            {
+                id: "nte_012",
+                name: "Fishing Frenzy",
+                endDate: "2026-12-23T05:00:00Z"
             },
             // Trial
             {
@@ -692,7 +682,7 @@ const eventDatabase = {
             {
                 id: "wuwa_006",
                 name: "Whimpering Wastes (Period)",
-                endDate: "2026-11-23T03:00:00Z"
+                endDate: "2026-12-21T03:00:00Z"
             },
             {
                 id: "wuwa_007",
