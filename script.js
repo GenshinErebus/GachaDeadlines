@@ -95,25 +95,31 @@ const eventDatabase = {
             {
                 id: "gi_017",
                 name: "Test Run",
-                endDate: "2026-11-24T17:00:00Z"
+                endDate: "2026-12-15T14:00:00Z"
             },
             // Banner
             {
                 id: "gi_018",
                 name: "Character Event Wish",
-                endDate: "2026-11-24T17:00:00Z",
+                endDate: "2026-12-15T14:00:00Z",
                 banner: true
             },
             {
                 id: "gi_019",
                 name: "Character Event Wish-2",
-                endDate: "2026-11-24T17:00:00Z",
+                endDate: "2026-12-15T14:00:00Z",
                 banner: true
             },
             {
                 id: "gi_020",
                 name: "Weapon Event Wish",
-                endDate: "2026-11-24T17:00:00Z",
+                endDate: "2026-12-15T14:00:00Z",
+                banner: true
+            },
+            {
+                id: "gi_021",
+                name: "Chronicled Wish",
+                endDate: "2026-12-15T14:00:00Z",
                 banner: true
             }
         ]
@@ -429,7 +435,12 @@ const eventDatabase = {
                 id: "dna_008",
                 name: "Fading Echoes Adrift",
                 endDate: "2026-11-30T16:00:00Z"
-            },           
+            },
+            {
+                id: "dna_009",
+                name: "Where the Whistle Calls",
+                endDate: "2026-12-05T21:00:00Z"
+            },            
             {
                 id: "dna_011",
                 name: "Immersive Theatre Ensemble Act",
