@@ -293,33 +293,43 @@ const eventDatabase = {
                 name: "Enigma of the Labyrinth: Spooky Trial",
                 endDate: "2026-12-02T03:00:00Z"
             },
+            {
+                id: "zzz_011",
+                name: "Data Bounty: Combat Simulation",
+                endDate: "2026-11-30T03:00:00Z"
+            },
+             {
+                id: "zzz_012",
+                name: "To the End, Alone",
+                endDate: "2026-11-30T03:00:00Z"
+            },
             // Trial
             {
-                id: "zzz_012",
+                id: "zzz_013",
                 name: "The Final Callback",
                 endDate: "2026-12-01T03:00:00Z"
             },
             // Banner
             {
-                id: "zzz_013",
+                id: "zzz_014",
                 name: "Channel Exclusive",
                 endDate: "2026-12-01T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_014",
+                id: "zzz_015",
                 name: "Channel Exclusive 2",
                 endDate: "2026-12-01T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_015",
+                id: "zzz_016",
                 name: "Channel W-Engine",
                 endDate: "2026-12-01T03:00:00Z",
                 banner: true
             },
             {
-                id: "zzz_016",
+                id: "zzz_017",
                 name: "Channel W-Engine 2",
                 endDate: "2026-12-01T03:00:00Z",
                 banner: true
@@ -338,50 +348,58 @@ const eventDatabase = {
         events: [
             {
                 id: "ark_001",
-                name: "Contigency Contract: Indigo Experimental Operation",
-                endDate: "2026-11-24T22:00:00Z"
+                name: "Roaming Wilderpaw Sign-In",
+                endDate: "2026-12-23T17:00:00Z"
             },
             {
                 id: "ark_002",
-                name: "Sanity Supply",
-                endDate: "2026-11-24T22:00:00Z"
+                name: "Caps! Shrooms! FUNGI!",
+                endDate: "2026-12-23T17:00:00Z"
             },
             {
                 id: "ark_003",
-                name: "Yuanyuan's Blazing Stoves",
-                endDate: "2026-11-25T22:00:00Z"
+                name: "Array Building: Mend the Old Gash",
+                endDate: "2027-01-06T22:00:00Z"
             },
             {
                 id: "ark_004",
-                name: "Echoes of War",
-                endDate: "2026-11-24T22:00:00Z"
-            },
-            {
-                id: "ark_005",
-                name: "Combat Drills",
-                endDate: "2026-11-24T22:00:00Z"
+                name: "Echoes of War (Session)",
+                endDate: "2026-12-16T17:00:00Z"
             },           
             {
-                id: "ark_010",
-                name: "Yuanyuan's Blazing Stoves",
-                endDate: "2026-11-25T22:00:00Z"
-            },
+                id: "ark_005",
+                name: "I Dream of Honey Waffles",
+                endDate: "2027-01-06T22:00:00Z"
+            },           
+             // Trial
             {
-                id: "ark_012",
-                name: "Back to the Rustics",
-                endDate: "2026-11-24T22:00:00Z"
-            },
+                id: "ark_007",
+                name: "Combat Drills",
+                endDate: "2026-12-23T17:00:00Z"
+            },           
             // Banner
             {
                 id: "ark_013",
-                name: "The Hearth Fire Beckons the Starry Flow",
-                endDate: "2026-11-25T03:00:00Z",
+                name: "Chartered Headhunting",
+                endDate: "2026-12-23T03:00:00Z",
+                banner: true
+            },
+            {
+                id: "ark_014",
+                name: "RE-Factor Headhunting",
+                endDate: "2026-12-16T03:00:00Z",
                 banner: true
             },
             {
                 id: "ark_015",
-                name: "Deep Cold Issue",
-                endDate: "2026-11-25T03:00:00Z",
+                name: "Seal of Jade Issue",
+                endDate: "2026-12-23T03:00:00Z",
+                banner: true
+            },
+            {
+                id: "ark_016",
+                name: "RE-Factor Issue",
+                endDate: "2026-12-16T03:00:00Z",
                 banner: true
             },
         ]
