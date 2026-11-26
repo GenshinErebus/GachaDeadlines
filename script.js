@@ -612,12 +612,7 @@ const eventDatabase = {
             } */
         ],
         events: [
-            {
-                id: "rev_001",
-                name: "Mane's Bulletin",
-                endDate: "2026-11-26T10:00:00Z"
-            },
-            {
+                        {
                 id: "rev_002",
                 name: "Rekindled! Games of the Summer-Gold Sea",
                 endDate: "2026-12-14T10:00:00Z"
@@ -626,12 +621,7 @@ const eventDatabase = {
                 id: "rev_003",
                 name: "Musae's Arcade",
                 endDate: "2026-12-17T10:00:00Z"
-            },
-            {
-                id: "rev_004",
-                name: "Of Mortals and Immortality",
-                endDate: "2026-11-26T10:00:00Z"
-            },
+            },            
             {
                 id: "rev_005",
                 name: "Limbo",
@@ -656,7 +646,7 @@ const eventDatabase = {
             {
                 id: "rev_017",
                 name: "Event Banner",
-                endDate: "2026-11-26T10:00:00Z",
+                endDate: "2026-12-17T10:00:00Z",
                 banner: true
             },
             {
@@ -721,6 +711,11 @@ const eventDatabase = {
             {
                 id: "wuwa_008",
                 name: "Lahai-Roi Blocks: Turnabout",
+                endDate: "2026-12-03T03:00:00Z"
+            },
+            {
+                id: "wuwa_009",
+                name: "Bountiful Crescendo",
                 endDate: "2026-12-03T03:00:00Z"
             },
             // Trial                    
